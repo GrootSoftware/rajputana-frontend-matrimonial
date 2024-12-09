@@ -1,0 +1,129 @@
+.flexContainer {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  width: 75%;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+  border-bottom: 2px solid yellow;
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  margin-top: 0rem;
+  line-height: 1.5;
+  text-align: center;
+  /* font-family: "Playfair Display", serif; */
+}
+
+.quoteAuthor {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #b23b3b;
+}
+
+.imageContainer {
+  position: relative;
+  width: 15.5rem;
+  /* height: 14.5rem; */
+}
+
+.image {
+  width: 100%;
+  height: 15.5rem;
+  border-radius: 50%;
+  border: 0.1rem solid white;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: 0.4rem;
+}
+
+.navIcons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: #5a5a5a;
+}
+.quoteStyle {
+  /* position: relative; */
+  border-radius: 50%;
+  border: 1px solid #b23b3b;
+}
+
+.quoteContainer {
+  font-family: "Playfair Display", serif;
+  width: 32rem;
+  height: 32rem;
+  background-color: #f5e8d7;
+  border-radius: 50%;
+  padding: 2rem;
+  position: relative;
+  bottom: 0.6rem;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.quoteIcon {
+  /* position: absolute; */
+  align-items: center;
+  /* top: 1rem;
+  left: 1rem; */
+  font-size: 2rem;
+  color: #b23b3b;
+}
+
+.quoteText {
+  margin-top: 2rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #5a5a5a;
+}
+
+@media (max-width: 780px) {
+  .flexContainer {
+    width: 100%;
+  }
+  .heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  .quoteContainer {
+    width: 90vw;
+    height: 90vw;
+    padding: 2rem;
+  }
+  .quoteText {
+    font-size: 1rem;
+    line-height: 1;
+  }
+}
+
+@media (max-width: 440px) {
+  .quoteContainer {
+    width: 90vw;
+    height: 90vw;
+    padding: 2vw;
+    box-sizing: border-box;
+  }
+  .quoteText {
+    font-size: 0.7rem;
+    line-height: 1;
+  }
+}

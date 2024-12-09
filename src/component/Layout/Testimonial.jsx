@@ -1,0 +1,45 @@
+import React from "react";
+import styles from "./Testimonial.module.css";
+import { LiaQuoteLeftSolid } from "react-icons/lia";
+import storybg from "../../assets/images/herobgg.webp";
+
+const Testimonial = () => {
+  return (
+    <div className={styles.container}>
+      <div className={styles.flexContainer}>
+        <div className={styles.imageContainer}>
+          <h2>Real Stories,</h2>
+          <h2 className={styles.heading}>Real Connections</h2>
+          <div className={styles.quoteStyle}>
+            <img className={styles.image} src={storybg} alt="Profile" />
+          </div>
+          <div className={styles.navIcons}>
+            <i className="fas fa-chevron-left"></i>
+            <i className="fas fa-chevron-right"></i>
+          </div>
+        </div>
+        <div className={styles.quoteStyle}>
+          <div className={styles.quoteContainer}>
+            <LiaQuoteLeftSolid className={styles.quoteIcon} />
+            <p className={styles.quoteText}>
+              Priya, a software engineer from Bengaluru, and Arjun, a business
+              analyst from Mumbai, connected through our platform’s personalized
+              matching system. Their shared values and dreams brought them
+              closer, and after meaningful conversations, they decided to embark
+              on a lifelong journey together.
+              <br />
+              <br />
+              With the blessings of their families, they tied the knot in a
+              beautiful ceremony. Priya and Arjun credit our platform for
+              helping them find love and companionship. Your success story could
+              be next!
+            </p>
+            <p className={styles.quoteAuthor}>Priya & Arjun</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Testimonial;

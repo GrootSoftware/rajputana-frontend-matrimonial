@@ -1,0 +1,52 @@
+/* Dropdown Toggle Button */
+.dropdown-toggle {
+  display: none;
+  background-color: #991c1c;
+  color: white;
+  padding: 0.5rem 0.5rem;
+  border: none;
+  width: 100%;
+  text-align: right;
+  font-size: 0.7rem;
+  font-weight: 300;
+  cursor: pointer;
+
+}
+
+.dropdown-toggle:hover {
+  background-color: #991c1c;
+}
+
+/* Responsive Styles */
+@media (max-width: 740px) { */
+  .sidebar {
+    width: 100%;
+    border-right: none;
+  }
+
+  .dropdown-toggle {
+    display: block;
+    padding-inline: 1rem;
+    box-sizing: border-box;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid #867d7d;
+    margin-top: 0.5rem;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .menu li {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .menu li:last-child {
+    border-bottom: none;
+  }
+} 

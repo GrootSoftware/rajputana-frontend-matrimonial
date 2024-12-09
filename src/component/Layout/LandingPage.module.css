@@ -1,0 +1,96 @@
+.background {
+  background-image: url("../../assets/images/herobgg.webp");
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.contentContainer {
+  text-align: left;
+  color: white;
+  max-width: 75%; /* 640px */
+  font-family: "Playfair Display", serif;
+}
+
+.privacylogo {
+  height: 7rem;
+  width: 7rem;
+}
+
+.badge {
+  display: flex;
+  color: black;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.heading {
+  font-size: 2.5rem; /* 40px */
+  font-weight: bold;
+  margin-left: 2rem;
+  color: white;
+}
+
+.paragraph {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  width: 60%;
+}
+
+.ctaButton {
+  margin-top: 1.5rem;
+  background-color: #991c1c;
+  color: white;
+  padding: 1rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #a50e0e;
+}
+
+@media (max-width: 670px) {
+  .background {
+   
+    height: 120vh;
+  }
+  .contentContainer {
+    text-align: left;
+    width: 100%;
+    padding: 3rem;
+
+  }
+  .heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 0;
+  }
+  .badge {
+    flex-direction: column;
+    padding: 0%;
+  }
+  .privacylogo {
+    height: 6rem;
+  }
+  .paragraph {
+    width: 80%;
+  }
+
+  .ctaButton {
+    padding: 0.75rem 1.25rem;
+  }
+}

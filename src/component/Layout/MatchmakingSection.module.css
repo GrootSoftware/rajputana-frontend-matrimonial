@@ -1,0 +1,116 @@
+/* General container styling */
+.container {
+  margin: 0 auto;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  padding-inline: 1rem;
+  background-color: white;
+}
+
+.flexContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  width: 72%;
+  margin-inline: auto;
+}
+
+.imageContainer {
+  flex: 1;
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+}
+
+.textContainer {
+  flex: 1;
+  text-align: left;
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.heading {
+  font-size: 2.7rem;
+  font-weight: 400;
+  color: #333;
+  font-family: "Playfair Display", serif;
+}
+
+.description {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  color: rgb(27, 26, 26);
+}
+
+.ctaButton {
+  margin-top: 1.5rem; /* 24px = 1.5rem */
+  background-color: #991c1c;
+  color: white;
+  padding: 1rem 1rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #a50e0e;
+}
+
+/* Custom Border Section */
+.customBorder {
+  margin-top: 2rem; /* 32px = 2rem */
+  border-top: 0.125rem solid #ffd700; /* 2px = 0.125rem */
+  position: relative;
+}
+
+.customBorder::after {
+  content: "";
+  position: absolute;
+  top: -1rem; /* -10px = -0.625rem */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2.5rem; /* 40px = 2.5rem */
+  height: 1.25rem; /* 20px = 1.25rem */
+  background: white;
+  border-top: 0.125rem solid #ffd700; /* 2px = 0.125rem */
+  border-left: 0.125rem solid #ffd700; /* 2px = 0.125rem */
+  border-right: 0.125rem solid #ffd700; /* 2px = 0.125rem */
+  border-radius: 0 0 0.625rem 0.625rem; /* 10px = 0.625rem */
+}
+
+/* Mobile and smaller screens */
+@media (max-width: 670px) {
+  .container {
+    padding: 1rem;
+  }
+  .flexContainer {
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin-inline: auto;
+    padding: auto;
+  }
+
+  .textContainer {
+    padding: 0;
+    text-align: center;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .ctaButton {
+    padding: 0.75rem 1.25rem;
+  }
+}

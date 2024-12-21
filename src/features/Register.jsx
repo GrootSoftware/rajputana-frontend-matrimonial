@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import "./Register.css"; // Import the styles from Register.css
+import { Link } from "react-router-dom"; 
+import "./Register.css"; 
 
 // India State and District Data
 import indiaStates from "./state";

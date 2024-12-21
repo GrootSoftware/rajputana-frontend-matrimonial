@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import HeroBanner from "./HeroBanner";
+import Banner from "./Banner";
 import MatchMakingSection from "./MatchMakingSection";
 import FeatureSection from "./FeatureSection";
 import Footer from "./Footer";
@@ -27,7 +27,7 @@ function Hero() {
 
   return (
     <>
-      <HeroBanner />
+      <Banner />
       <MatchMakingSection />
       <FeatureSection />
       <RecentAddedPage />

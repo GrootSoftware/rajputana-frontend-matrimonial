@@ -4,9 +4,10 @@ import axios from "axios";
 import "./Hero.css";
 import Navbar from "./Navbar";
 import Profilenavbar from "../Profile/ProfileComp/Profilenavbar";
+import { FaSearch } from "react-icons/fa";
 import Features from "./Features";
 
-function HeroBanner() {
+function Banner() {
   const [formData, setFormData] = useState({
     search: "",
     minAge: "",
@@ -24,6 +25,7 @@ function HeroBanner() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData);
     // try {
     //   const response = await axios.post(
     //     "https://example.com/api/search",
@@ -37,7 +39,6 @@ function HeroBanner() {
 
   return (
     <>
-      {/* <Profilenavbar /> */}
       <div className="background-image">
         <div className="overlay"></div>
         <div className="hero-content">
@@ -49,7 +50,6 @@ function HeroBanner() {
 
           <form onSubmit={handleSubmit} className="search-form">
             <div className="radio-group">
-              Who?
               <label>
                 <input
                   type="radio"
@@ -57,6 +57,7 @@ function HeroBanner() {
                   value="groom"
                   checked={formData.gender === "groom"}
                   onChange={handleChange}
+                  className="me-2"
                 />
                 Groom
               </label>
@@ -67,10 +68,13 @@ function HeroBanner() {
                   value="bride"
                   checked={formData.gender === "bride"}
                   onChange={handleChange}
+                  className="me-2"
                 />
                 Bride
               </label>
+              <label className="ms-5">Select Age group</label>
             </div>
+
             <div className="age-group">
               <input
                 type="text"
@@ -79,6 +83,7 @@ function HeroBanner() {
                 value={formData.search}
                 onChange={handleChange}
               />
+
               <input
                 type="text"
                 name="minAge"
@@ -94,7 +99,7 @@ function HeroBanner() {
                 onChange={handleChange}
               />
               <button type="submit" className="search-button">
-                <i className="fas fa-search">Search</i>
+                <FaSearch />
               </button>
             </div>
           </form>
@@ -105,4 +110,4 @@ function HeroBanner() {
   );
 }
 
-export default HeroBanner;
+export default Banner;

@@ -1,0 +1,22 @@
+.textSm {
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;
+}
+
+.imgSize {
+  width: 13rem;
+  height: 13rem;
+  overflow: hidden;
+}
+
+@media (max-width: 575px) {
+  .imgSize {
+    width: auto;
+    height: 9rem;
+    margin: auto;
+  }
+  .textsm {
+    font-size: 0.7rem;
+    margin-bottom: 0.15rem;
+  }
+}

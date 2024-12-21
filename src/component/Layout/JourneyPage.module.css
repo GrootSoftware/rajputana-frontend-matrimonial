@@ -111,6 +111,9 @@
 }
 
 @media (max-width: 780px) {
+  .container {
+    padding-inline: 1rem;
+  }
   .heading {
     font-size: 2.5rem;
     font-weight: 400;
@@ -131,6 +134,14 @@
   .iconContainer {
     padding: 1.3rem;
     margin-right: 3rem;
+  }
+
+  .featureTitle {
+    font-size: 1.5rem;
+  }
+
+  .featureDescription {
+    font-size: 0.75rem;
   }
 }
 
@@ -212,10 +223,10 @@
   }
 
   .vipSection h2 {
-    font-size: 2rem; 
+    font-size: 2rem;
   }
 
   .vipSection p {
-    font-size: 1rem; 
+    font-size: 1rem;
   }
 }

@@ -2,7 +2,7 @@
   background-image: url("../../assets/images/herobgg.webp");
   background-size: cover;
   background-position: center;
-  height: 80vh;
+  height: 100vh;
 }
 
 .overlay {
@@ -38,6 +38,7 @@
   font-weight: bold;
   margin-left: 2rem;
   color: white;
+  font-family: "Playfair Display", serif;
 }
 
 .paragraph {
@@ -45,18 +46,19 @@
   font-size: 1rem;
   line-height: 1.25rem;
   width: 60%;
+  font-family: "Playfair Display", serif;
 }
 
 .ctaButton {
-  margin-top: 1.5rem;
+  margin-top: 1.5rem; /* 24px = 1.5rem */
   background-color: #991c1c;
   color: white;
   padding: 1rem 1rem;
   font-size: 0.8rem;
-  font-weight: 300;
   cursor: pointer;
   border: none;
   transition: background-color 0.3s ease;
+  font-family: "Rubik", sans-serif;
 }
 
 .ctaButton:hover {
@@ -65,14 +67,12 @@
 
 @media (max-width: 670px) {
   .background {
-   
     height: 120vh;
   }
   .contentContainer {
     text-align: left;
     width: 100%;
-    padding: 3rem;
-
+    padding: 0%;
   }
   .heading {
     font-size: 1.5rem;
@@ -91,6 +91,6 @@
   }
 
   .ctaButton {
-    padding: 0.75rem 1.25rem;
+    padding: 0.55rem 1rem;
   }
 }

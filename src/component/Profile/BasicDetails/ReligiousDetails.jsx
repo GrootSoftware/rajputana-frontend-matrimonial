@@ -1,16 +1,25 @@
 import React, { useState } from "react";
 
-import "../BasicDetails/Mydetails.css";
-import FormCard from "./FormCard";
+import styles from "../BasicDetails/Mydetails.module.css";
+import ReligionForm from "../Forms/ReligionForm";
 import { FaRegEdit } from "react-icons/fa";
 
 function ReligiousDetails() {
   const [details, setDetails] = useState({
-    religion: "Rajendra Singh Bhati",
-    casteCommunity: "09 Sep, 1996 (29 Year)",
-    subCaste: "+91 12 45 78 78 23",
-    motherTongue: "rajendrasingh@gmail.com",
-    gotra: "5ft 2in",
+    dob: "09 Sep, 1996",
+    birthHour: "10",
+    birthMinute: "30",
+    birthTimePeriod: "AM",
+    birthplace: "Hospital",
+    birthCity: "Select City",
+    birthState: "Select State",
+    birthCountry: "Select Country",
+    maglik: "Yes",
+    religion: "Hindu",
+    clan: "Rajput",
+    subclan: "Sisodia",
+    gotra: "Kashyap",
+    additionalInfo: "No additional info",
   });
 
   const [isEditing, setIsEditing] = useState(false);
@@ -39,16 +48,16 @@ function ReligiousDetails() {
   };
 
   return (
-    <div className="app-container">
-      <div className="details-header">
-        <h4 className="header-title">Religious & Cultural Information</h4>
+    <div className={styles.appContainer}>
+      <div className={styles.detailsHeader}>
+        <h4 className={styles.headerTitle}>Birth/ Religious/ Astro Details</h4>
         {!isEditing ? (
-          <div onClick={handleEditClick} className="edit-btn">
+          <div onClick={handleEditClick} className={styles.editBtn}>
             <FaRegEdit />
           </div>
         ) : (
           <div>
-            <FormCard
+            <ReligionForm
               handleCancelClick={handleCancelClick}
               details={details}
               handleInputChange={handleInputChange}
@@ -58,18 +67,18 @@ function ReligiousDetails() {
           </div>
         )}
       </div>
-      <div className="details">
+      <div className={styles.details}>
         {Object.entries(details).length > 0 ? (
           <>
             {Object.keys(details).map((key) => (
-              <div className="detail-item" key={key}>
-                <div className="label">
+              <div className={styles.detailItem} key={key}>
+                <div className={styles.label}>
                   {key
                     .replace(/([A-Z])/g, " $1") // Add space before uppercase letters
                     .replace(/^./, (str) => str.toUpperCase())}
                   :
                 </div>
-                <div className="value">{details[key]}</div>
+                <div className={styles.value}>{details[key]}</div>
               </div>
             ))}
           </>

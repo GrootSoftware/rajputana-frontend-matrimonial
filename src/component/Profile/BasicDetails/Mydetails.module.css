@@ -1,23 +1,16 @@
-.app-container {
-  width: 40%;
+.appContainer {
+  width: 49%;
   height: fit-content;
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
   margin-top: 1rem;
   background-color: white;
+
   padding: 1.5rem;
   height: auto;
   margin-top: 1rem;
 }
 
-@media (max-width: 1200px) {
-  .app-container {
-    width: 100%;
-    margin-inline: 0;
-    padding: 2%;
-  }
-}
-
-.details-header {
+.detailsHeader {
   border-bottom: 1px solid #a6a7a9;
   color: black;
   /* font-style: bold; */
@@ -28,7 +21,7 @@
   font-family: "Roboto", sans-serif;
 }
 
-.header-title {
+.headerTitle {
   font-style: bold;
   font-family: serif;
   margin: 0%;
@@ -38,7 +31,7 @@
   margin-top: 1rem;
 }
 
-.detail-item {
+.detailItem {
   display: flex;
   justify-content: flex-start;
   margin-bottom: 0.5rem;
@@ -53,7 +46,30 @@
 .value {
   min-width: 60%;
   padding-left: 2%;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: bold;
   color: black;
   box-sizing: border-box;
+}
+.textXs {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: black;
+}
+
+.textsmValue {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.textSm {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 680px) {
+  .appContainer {
+    width: 100%;
+    margin-inline: 0;
+    padding: 2%;
+  }
 }

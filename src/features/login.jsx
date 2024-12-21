@@ -57,8 +57,9 @@ function Login() {
     e.preventDefault();
     if (verify()) {
       const fakeToken = "your-auth-token";
+      console.log("loged in ");
       login(fakeToken);
-      navigate("/");
+      navigate("/home");
     } else {
       console.log("Form has errors:", errors);
     }

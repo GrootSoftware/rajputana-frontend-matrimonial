@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
-import "./Mydetails.css";
+import styles from "./Mydetails.module.css"; // Renamed style for better readability
 import axios from "axios";
-import FormCard from "./FormCard";
+import FormCard from "../Forms/FormCard";
 import { FaRegEdit } from "react-icons/fa";
 
 function BasicInfo() {
   const [details, setDetails] = useState({
-    name: "",
-    dateOfBirth: "",
-    mobile: "+91 12 45 78 78 23",
+    firstName: "Gaurav",
+    middleName: "",
+    lastName: "Singh",
+    dateOfBirth: "2000-07-28",
+    mobile: "+91 1234567890",
     email: "rajendrasingh@gmail.com",
-    height: "5ft 2in",
-    weight: "75 Kg",
-    complexion: "Fair",
-    bodyType: "Average",
+    heightFeet: "5",
+    heightInch: "2",
+    weight: "75",
     maritalStatus: "Single",
     additionalInfo: "Long established fact that a reader will be distracted.",
   });
@@ -21,17 +22,18 @@ function BasicInfo() {
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({});
 
+  // Fetch data on mount
   useEffect(() => {
     const fetchDetails = async () => {
       try {
+        // Uncomment and replace URL with your API endpoint
         // const response = await axios.get("https://api.example.com/details");
         // setDetails(response.data);
         // setFormData(response.data);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching data:", error.message);
       }
     };
-
     fetchDetails();
   }, []);
 
@@ -47,11 +49,12 @@ function BasicInfo() {
 
   const handleSaveClick = async () => {
     try {
+      // Uncomment and replace URL with your API endpoint
       // await axios.post("https://api.example.com/details", formData);
       setDetails(formData);
       setIsEditing(false);
     } catch (error) {
-      console.error("Error saving data:", error);
+      console.error("Error saving data:", error.message);
     }
   };
 
@@ -61,37 +64,39 @@ function BasicInfo() {
   };
 
   return (
-    <div className="app-container">
-      <div className="details-header">
-        <h4 className="header-title">Basic Details</h4>
+    <div className={styles.appContainer}>
+      <div className={styles.detailsHeader}>
+        <h4 className={styles.headerTitle}>Basic Details</h4>
         {!isEditing ? (
-          <div onClick={handleEditClick} className="edit-btn">
+          <div onClick={handleEditClick} className={styles.editBtn}>
             <FaRegEdit />
           </div>
         ) : (
-          <div>
-            <FormCard
-              handleCancelClick={handleCancelClick}
-              details={details}
-              handleInputChange={handleInputChange}
-              formData={formData}
-              handleSaveClick={handleSaveClick}
-            />
-          </div>
+          <FormCard
+            handleCancelClick={handleCancelClick}
+            details={details}
+            handleInputChange={handleInputChange}
+            formData={formData}
+            handleSaveClick={handleSaveClick}
+          />
         )}
       </div>
-      <div className="details">
+      <div className={styles.details}>
         {Object.entries(details).length > 0 ? (
           <>
             {Object.keys(details).map((key) => (
-              <div className="detail-item" key={key}>
-                <div className="label">
+              <div className={styles.detailItem} key={key}>
+                <div className={styles.label}>
                   {key
-                    .replace(/([A-Z])/g, " $1") 
+                    .replace(/([A-Z])/g, " $1")
                     .replace(/^./, (str) => str.toUpperCase())}
                   :
                 </div>
-                <div className="value">{details[key]}</div>
+                <div className={styles.value}>
+                  {details[key] && typeof details[key] === "object"
+                    ? JSON.stringify(details[key], null, 2) // Format objects as strings
+                    : details[key] || "N/A"}
+                </div>
               </div>
             ))}
           </>

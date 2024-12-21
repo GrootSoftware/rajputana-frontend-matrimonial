@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "../BasicDetails/Mydetails.css";
-import FormCard from "./FormCard";
+import style from "../BasicDetails/Mydetails.module.css";
+import FormCard from "../Forms/FormCard";
 import { FaRegEdit } from "react-icons/fa";
 
 function PrefrenceDetails() {
@@ -63,7 +63,7 @@ function PrefrenceDetails() {
         {Object.entries(details).length > 0 ? (
           <>
             {Object.keys(details).map((key) => (
-              <div className="detail-item" key={key}>
+              <div className="detailItem" key={key}>
                 <div className="label">
                   {key
                     .replace(/([A-Z])/g, " $1") // Add space before uppercase letters

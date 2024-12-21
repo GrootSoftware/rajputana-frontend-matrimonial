@@ -1,10 +1,10 @@
 import React from "react";
-import "./Profile.css";
+import styles from "./Profile.module.css";
 import logo from "../../../assets/images/logo.png";
 const ProfileHeader = () => {
   return (
-    <div className="profile-header">
-      <div className="relative">
+    <div className={styles.profileHeader}>
+      <div className={styles.relative}>
         <img
           src={logo}
           alt="Profile"

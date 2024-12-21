@@ -1,70 +1,95 @@
 import React, { useState } from "react";
 import "./ShortListedProfile.css";
-import ProfileCard from "./ProfileCard";
+import ProfileBoxCard from "./ProfileBoxCard";
+import { FaChevronDown } from "react-icons/fa";
+import Demoimg from "../../../assets/images/agrawal.png";
 
-const ViewedProfile = () => {
+function ViewedProfile() {
+  const [sortCriteria, setSortCriteria] = useState("");
   const [profiles, setProfiles] = useState([
     {
-      id: 1,
-      name: "Dron Rathore",
-      age: "32 Years",
-      height: "5ft 8in",
-      imgSrc: "https://placehold.co/50x50",
-      imgAlt: "Profile picture of Dron Rathore",
-      matrimonyId: "8647",
+      id: "7000",
+      imageUrl: Demoimg,
+      clan: "Rathors",
+      age: "31",
+      location: "Mumbai",
+      education: "Bachelors",
+      occupation: "Engineer",
+      class: "Business",
+      status: "pending",
     },
     {
-      id: 2,
-      name: "Aryan Singh",
-      age: "29 Years",
-      height: "5ft 10in",
-      imgSrc: "https://placehold.co/50x50",
-      imgAlt: "Profile picture of Aryan Singh",
-      matrimonyId: "8648",
+      id: "7001",
+      imageUrl: Demoimg,
+      clan: "Rajputs",
+      age: "28",
+      location: "Delhi",
+      education: "Masters",
+      occupation: "Doctor",
+      class: "Professional",
+      status: "pending",
     },
   ]);
 
-  const handleDelete = (id) => {
-    // Filter out the profile with the given id
-    const updatedProfiles = profiles.filter((profile) => profile.id !== id);
-    setProfiles(updatedProfiles);
+  const sortProfiles = (criteria) => {
+    let sortedProfiles = [...profiles];
+    if (criteria === "age") {
+      sortedProfiles = sortedProfiles.sort((a, b) => a.age - b.age);
+    } else if (criteria === "height") {
+      sortedProfiles = sortedProfiles.sort((a, b) => a.height - b.height);
+    }
+    setProfiles(sortedProfiles);
+    setSortCriteria(criteria); // Update sort criteria
   };
 
-  if (profiles.length === 0) {
-    return (
-      <div className="profileList-header">
-        <div>Viewed Profile ({profiles.length})</div>
-        <div className="filters">
-          <div className="filter-item">
-            <span>Age</span>
-          </div>
-          <div className="filter-item">
-            <span>Height</span>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // const handleDelete = (id) => setProfiles(profiles.filter((p) => p.id !== id));
+
+  const handlecheck = (id) => {
+    setProfiles(profiles.filter((profile) => profile.id !== id));
+  };
 
   return (
-    <div className="profile-container">
-      <div className="profileList-header">
-        <div>Viewed Profile ({profiles.length})</div>
+    <div className="profileContainer">
+      <div className="profileListHeader">
+        <div>Viewed profile</div>
         <div className="filters">
-          <div className="filter-item">
+          <div
+            className="filterItem"
+            onClick={() => sortProfiles("age")} // Sort by age on click
+          >
             <span>Age</span>
+            <span>
+              <FaChevronDown />
+            </span>
           </div>
-          <div className="filter-item">
+          <div
+            className="filterItem"
+            onClick={() => sortProfiles("height")} // Sort by height on click
+          >
             <span>Height</span>
+            <span>
+              <FaChevronDown />
+            </span>
           </div>
         </div>
       </div>
 
-      {profiles.map((profile) => (
-        <ProfileCard profile={profile} handleDelete={handleDelete} />
-      ))}
+      <div className="row">
+        {profiles.length === 0 ? (
+          <div>No Blocked Profiles</div>
+        ) : (
+          profiles.map((profile) => (
+            <ProfileBoxCard
+              key={profile.id}
+              profile={profile}
+              // handleDelete={() => handleDelete(profile.id)}
+              handlecheck={handlecheck}
+            />
+          ))
+        )}
+      </div>
     </div>
   );
-};
+}
 
 export default ViewedProfile;

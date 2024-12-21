@@ -1,21 +1,21 @@
-// Features.jsx
 import React from "react";
+import { FaLock, FaCheckCircle, FaHeart, FaHeadset } from "react-icons/fa"; 
 import "./Hero.css";
 
 function Features() {
   return (
     <div className="features">
       <div>
-        <i className="fas fa-lock"></i> Privacy & Confidentiality
+        <FaLock style={{ marginRight: "8px" }} /> Privacy & Confidentiality
       </div>
       <div>
-        <i className="fas fa-check-circle"></i> Profile Verification
+        <FaCheckCircle style={{ marginRight: "8px" }} /> Profile Verification
       </div>
       <div>
-        <i className="fas fa-heart"></i> Personalized Match
+        <FaHeart style={{ marginRight: "8px" }} /> Personalized Match
       </div>
       <div>
-        <i className="fas fa-headset"></i> Customer Support
+        <FaHeadset style={{ marginRight: "8px" }} /> Customer Support
       </div>
     </div>
   );

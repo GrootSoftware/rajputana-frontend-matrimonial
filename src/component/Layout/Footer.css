@@ -32,22 +32,6 @@
 .footer-links,
 .footer-legal {
   width: 20%;
-  
-}
-
-@media (max-width: 640px) {
-  .footer-container {
-    width: 100%;
-    margin: 0 auto;
-    padding: 2rem 2rem;
-    flex-direction: column;
-  }
-  .footer-about,
-  .footer-links,
-  .footer-legal {
-    width: 100%;
-    box-sizing: border-box;
-  }
 }
 
 .footer-description {
@@ -76,7 +60,7 @@
   font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 1rem;
-  font-family: "Rubik", sans-serif;
+  font-family: serif;
 }
 
 .footer-links ul,
@@ -103,7 +87,7 @@
 }
 
 /* Footer Bottom Section */
-.footer-bottom{
+.footer-bottom {
   background-color: wheat;
   text-align: center;
   color: black;
@@ -111,10 +95,34 @@
   font-weight: 300;
   margin: 0%;
 }
-/* .footer-bottom p{
-  background-color: wheat;
-  text-align: center;
-  color: black;
-  font-size: 1rem;
-  font-weight: 300;
-} */
+
+@media (max-width: 640px) {
+  .footer-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 2rem;
+    flex-direction: column;
+  }
+  .footer-about,
+  .footer-links,
+  .footer-legal {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .footer-about img {
+    height: 4rem;
+  }
+
+  .footer-description {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .footer-heading {
+    font-size: 1.2rem;
+  }
+
+  li {
+    font-size: 0.9rem;
+  }
+}

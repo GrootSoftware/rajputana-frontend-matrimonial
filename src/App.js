@@ -54,7 +54,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./component/Layout/Navbar";
-import HeroBanner from "./component/Layout/HeroBanner";
+import Banner from "./component/Layout/Banner";
 import Features from "./component/Layout/Features";
 import About from "./component/Layout/About";
 import Login from "./features/login";
@@ -66,6 +66,9 @@ import ProtectedRoute from "./component/Layout/ProtectedRoute";
 import { AuthProvider } from "./component/Layout/AuthContext";
 import Profilenavbar from "./component/Profile/ProfileComp/Profilenavbar";
 import Hero from "./component/Layout/Hero";
+import SearchPage from "./component/Layout/SearchPage";
+
+import { Navigate } from "react-router-dom";
 
 function App() {
   return (
@@ -76,8 +79,9 @@ function App() {
           path="/"
           element={
             <>
-              <HeroBanner />
-              <About />
+              {/* <Banner />
+              <About /> */}
+              <Navigate to="/login" />
             </>
           }
         />
@@ -85,7 +89,14 @@ function App() {
         <Route path="/signup" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/home" element={<Hero />} />
-        
+        <Route
+          path="/search"
+          element={
+            <ProtectedRoute>
+              <SearchPage />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/profile"
           element={
@@ -96,6 +107,8 @@ function App() {
         >
           <Route index element={<Mydetails />} />
         </Route>
+
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </AuthProvider>
   );

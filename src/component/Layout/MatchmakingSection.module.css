@@ -84,8 +84,18 @@
   border-radius: 0 0 0.625rem 0.625rem; /* 10px = 0.625rem */
 }
 
+@media (max-width: 995px) {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+}
+
 /* Mobile and smaller screens */
-@media (max-width: 670px) {
+@media (max-width: 768px) {
   .container {
     padding: 1rem;
   }
@@ -103,7 +113,7 @@
   }
 
   .heading {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .description {

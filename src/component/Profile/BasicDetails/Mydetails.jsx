@@ -3,25 +3,27 @@ import React from "react";
 import BasicInfo from "./BasicInfo";
 import ReligiousDetails from "./ReligiousDetails";
 import Educationinfo from "./Educationinfo";
-import PhysicalDetails from "./PhysicalDetails";
-import AboutmeInfo from "./AboutmeInfo";
-import MaternalInfo from "./MaternalInfo";
+import PaternalSideDetails from "./PaternalSideDetails";
 import FamilyInfo from "./FamilyInfo";
-import PrefrenceDetails from "./PrefrenceDetails";
-// import ImagesAndDocuments from "./ImagesAndDocuments";
+import ImagesAndDocuments from "./ImagesAndDocuments";
+
+// import MaternalInfo from "./MaternalInfo";
+// import PrefrenceDetails from "./PrefrenceDetails";
+// import AboutmeInfo from "./AboutmeInfo";
 
 function Mydetails() {
   return (
     <>
       <BasicInfo />
       <ReligiousDetails />
-      <Educationinfo />
-      <PhysicalDetails />
       <FamilyInfo />
-      <MaternalInfo />
-      <PrefrenceDetails />
-      <AboutmeInfo />
-      {/* <ImagesAndDocuments /> */}
+      <Educationinfo />
+      <ImagesAndDocuments />
+      <PaternalSideDetails />
+
+      {/* <MaternalInfo /> */}
+      {/* <PrefrenceDetails /> */}
+      {/* <AboutmeInfo /> */}
     </>
   );
 }

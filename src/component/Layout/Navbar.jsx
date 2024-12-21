@@ -5,10 +5,7 @@ import "./Hero.css";
 function Navbar() {
   return (
     <header className="hero-header">
-      <div className="hero-logo">
-        {" "}
-        rajputs <sub className="">matches</sub>
-      </div>
+      <div className="hero-logo"></div>
 
       <nav className="nav">
         <Link to="/about" className="hover:underline">

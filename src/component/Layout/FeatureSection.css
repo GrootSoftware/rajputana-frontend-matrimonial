@@ -81,7 +81,7 @@
 }
 
 .vip-section h2 {
-  font-size: 2.5rem; /* 30px */
+  font-size: 3rem; /* 30px */
   /* font-weight: bold; */
   margin-bottom: 1rem;
   font-family: "Playfair Display", serif;
@@ -89,12 +89,12 @@
 }
 
 .vip-section p {
-  font-size: 1rem; /* 14.4px */
+  font-size: 1.2rem; /* 14.4px */
   margin-bottom: 1rem;
 }
 
 .vip-section button {
-  background-color: #b91c1c; /* Red 700 */
+  background-color: #991c1c; /* Red 700 */
   color: white;
   padding: 0.5rem 1.5rem;
   font-weight: bold;
@@ -120,16 +120,14 @@
   }
 
   .vip-section h2 {
-    font-size: 1.5rem; /* 24px */
+    font-size: 1.2rem; /* 24px */
   }
 
   .vip-section p {
-    font-size: 0.85rem; /* 13.6px */
+    font-size: 0.9rem; /* 13.6px */
   }
 
   .vip-section button {
-    font-size: 0.6rem; /* 14.4px */
-    padding: 0.2rem 1rem;
-    border-radius: 0.2rem;
+    padding: 0.55rem 1rem;
   }
 }

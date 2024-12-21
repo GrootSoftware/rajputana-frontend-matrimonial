@@ -1,32 +1,44 @@
 import React, { useState } from "react";
-import "./Profile.css";
-import "./Sidebar.css";
 import { AiOutlineMenu } from "react-icons/ai";
+import "./Sidebar.css";
 
 const Sidebar = ({ setActiveContent }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  // const [activeContent, setActiveContent] = useState("myDetails");
+  const [activeItem, setActiveItem] = useState("myDetails");
+
+  const handleItemClick = (item) => {
+    setActiveItem(item);
+    setActiveContent(item);
+    setIsDropdownOpen(false); // Close dropdown on selection
+  };
 
   return (
-    <aside className={`sidebar ${isDropdownOpen ? "open" : ""}`}>
+    <aside className="sidebar">
       <div
         className="dropdown-toggle"
-        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+        onClick={() => setIsDropdownOpen((prev) => !prev)}
+        aria-expanded={isDropdownOpen}
       >
         <AiOutlineMenu />
       </div>
+
       <ul className={`menu ${isDropdownOpen ? "show" : ""}`}>
-        <li onClick={() => setActiveContent("myDetails")}>My Details</li>
-        <li onClick={() => setActiveContent("shortlisted")}>
-          Shortlisted Profile
-        </li>
-        <li onClick={() => setActiveContent("blocked")}>Blocked Profile</li>
-        <li onClick={() => setActiveContent("viewed")}>Viewed Profile</li>
-        <li onClick={() => setActiveContent("visited")}>
-          People Visited My Profile
-        </li>
-        <li onClick={() => setActiveContent("interest")}>My Interest</li>
-        <li onClick={() => setActiveContent("photo")}>Photo Request</li>
+        {[
+          { label: "My Details", value: "myDetails" },
+          { label: "Shortlisted Profile", value: "shortlisted" },
+          { label: "Viewed Profile", value: "viewed" },
+          { label: "Visited Profile", value: "visited" },
+          { label: "Interest Profile", value: "interest" },
+          { label: "Photo Request", value: "request" },
+        ].map((item) => (
+          <li
+            key={item.value}
+            className={activeItem === item.value ? "active" : ""}
+            onClick={() => handleItemClick(item.value)}
+          >
+            {item.label}
+          </li>
+        ))}
       </ul>
     </aside>
   );

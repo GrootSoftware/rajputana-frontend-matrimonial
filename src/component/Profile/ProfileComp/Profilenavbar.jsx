@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/images/logo.png"; // Replace with your logo path
-import "./Profile.css";
-import { CgProfile } from "react-icons/cg";
-import { RiLogoutBoxRLine } from "react-icons/ri";
+import style from "./Profile.module.css";
+import { FaSearch, FaUserCircle, FaSignOutAlt } from "react-icons/fa";
 import { useAuth } from "../../Layout/AuthContext";
 
 const Profilenavbar = () => {
@@ -17,19 +16,21 @@ const Profilenavbar = () => {
   useEffect(() => {}, [isAuthenticated]);
 
   return (
-    <header className="nav-header">
-      <div className="title">
-        <img
-          src={logo}
-          alt="Logo"
-          className="rounded-full border-4 border-white"
-        />
+    <header className={style.navHeader}>
+      <div className={style.title}>
+        <Link to="/home">
+          <img
+            src={logo}
+            alt="Logo"
+            className="rounded-full border-4 border-white"
+          />
+        </Link>
       </div>
-      <nav className="navigation">
-        <div className="menu-icon" onClick={toggleDropdown}>
+      <nav className={style.navigation}>
+        <div className={style.menuIcon} onClick={toggleDropdown}>
           ☰
         </div>
-        <ul className={`nav-links ${isDropdownOpen ? "open" : ""}`}>
+        <ul className={`${style.navLinks} ${isDropdownOpen ? style.open : ""}`}>
           {isAuthenticated ? (
             <>
               <li>
@@ -51,15 +52,19 @@ const Profilenavbar = () => {
 
           {isAuthenticated ? (
             <>
-              {" "}
+              <li>
+                <Link to="/search">
+                  <FaSearch style={{ scale: "1.1" }} />
+                </Link>
+              </li>
               <li>
                 <Link to="/profile">
-                  <CgProfile style={{ scale: "1.3" }} />
+                  <FaUserCircle style={{ scale: "1.1" }} />
                 </Link>
               </li>
               <li>
                 <Link onClick={logout}>
-                  <RiLogoutBoxRLine style={{ scale: "1.3" }} />
+                  <FaSignOutAlt style={{ scale: "1.1" }} />
                 </Link>
               </li>
             </>

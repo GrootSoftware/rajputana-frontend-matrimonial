@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "../BasicDetails/Mydetails.css";
-import FormCard from "./FormCard";
+import style from "../BasicDetails/Mydetails.module.css";
+import FormCard from "../Forms/FormCard";
 import { FaRegEdit } from "react-icons/fa";
 
 function AboutmeInfo() {
@@ -23,10 +23,7 @@ function AboutmeInfo() {
 
   const handleEditClick = () => {
     setIsEditing(true);
-    setFormData(details);
   };
-
-  // const handleCloseModal = () => {};
 
   const handleSaveClick = () => {
     setDetails(formData);
@@ -34,49 +31,42 @@ function AboutmeInfo() {
   };
 
   const handleCancelClick = () => {
-    setFormData(details);
     setIsEditing(false);
   };
 
   return (
-    <div className="app-container">
-      <div className="details-header">
-        <h4 className="header-title">About Me</h4>
-        {!isEditing ? (
-          <div onClick={handleEditClick} className="edit-btn">
-            <FaRegEdit />
-          </div>
-        ) : (
-          <div>
-            <FormCard
-              handleCancelClick={handleCancelClick}
-              details={details}
-              handleInputChange={handleInputChange}
-              formData={formData}
-              handleSaveClick={handleSaveClick}
-            />
-          </div>
+    <div className={style.appContainer}>
+      <div className={style.detailsHeader}>
+        <h4 className={style.headerTitle}>About Me</h4>
+        {!isEditing && (
+          <button onClick={handleEditClick} className={style.editBtn}>
+            <FaRegEdit /> Edit
+          </button>
         )}
       </div>
-      <div className="details">
-        {Object.entries(details).length > 0 ? (
-          <>
-            {Object.keys(details).map((key) => (
-              <div className="detail-item" key={key}>
-                <div className="label">
-                  {key
-                    .replace(/([A-Z])/g, " $1") // Add space before uppercase letters
-                    .replace(/^./, (str) => str.toUpperCase())}
-                  :
-                </div>
-                <div className="value">{details[key]}</div>
-              </div>
-            ))}
-          </>
-        ) : (
-          <p>Loading...</p>
-        )}
-      </div>
+
+      {isEditing ? (
+        <FormCard
+          handleCancelClick={handleCancelClick}
+          formData={formData}
+          handleInputChange={handleInputChange}
+          handleSaveClick={handleSaveClick}
+        />
+      ) : (
+        <div className={style.details}>
+          {Object.keys(details).map((key) => (
+            <div className={style.detailItem} key={key}>
+              <span className={style.label}>
+                {key
+                  .replace(/([A-Z])/g, " $1") // Add space before uppercase letters
+                  .replace(/^./, (str) => str.toUpperCase())}
+                :
+              </span>
+              <span className={style.value}>{details[key]}</span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

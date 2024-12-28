@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./RequestCard.module.css";
 
-
 import MessageCard from "../Forms/MessageCard";
 import { useState } from "react";
 
@@ -26,95 +25,93 @@ const RequestCard = ({ profile, handlecheck, key }) => {
   };
 
   return (
-    <div className="col-lg-6 mb-3 ">
-      <div className="card rounded-0 shadow-sm border-0">
-        <div
-          className="col-12 col-sm-12 row g-0 m-auto p-2"
-          style={{ borderBottom: "1px solid gray" }}
-        >
-          <div className="col-10 col-sm-5 m-auto">
-            <img
-              src={profile.imageUrl}
-              className={style.imgSize}
-              alt="Profile picture"
-            />
-
+    <>
+      <div
+        className="col-12 col-sm-9 col-md-6 col-xl-6 mt-2 p-0 p-sm-1  m-auto"
+        style={{ boxSizing: "border-box", marginInline: "0rem" }}
+      >
+        <div className="card shadow-sm border-0 rounded-0">
+          <div
+            className="row g-0 m-md-0 p-md-1"
+            style={{ boxSizing: "border-box", borderBottom: "2px solid gray" }}
+          >
             <div
-              className="unblock-checkbox mt-2"
-              style={{
-                position: "absolute",
-                top: "0.3vw",
-                left: "1vw",
-              }}
+              className="col-12 col-sm-6 col-md-5 d-flex align-items-center m-0"
+              style={
+                {
+                  // backgroundColor: "#656262",
+                }
+              }
             >
-              <input
-                type="checkbox"
-                id={`unblock-${profile.id}`}
+              <img
+                src={profile.imageUrl}
+                className="img-fluid m-auto"
+                alt="Profile picture"
                 style={{
-                  width: "1rem",
-                  height: "1rem",
+                  width: "14rem",
+                  height: "14rem",
+                  objectFit: "cover",
                 }}
-                onChange={() => handlecheck(profile.id)}
               />
             </div>
-          </div>
 
-          <div className="col-sm-7 col-10 m-auto">
-            <div className="card-body">
-              <div class="d-flex align-items-center">
-                <span
-                  style={{
-                    fontSize: "1.3rem",
-                    fontFamily: "'Times New Roman', Times, serif",
-                  }}
-                >
-                  Matri ID: 6589
-                </span>
-                <StatusTag text={profile.status} />
+            <div className="col-10 col-sm-6 col-md-7 m-auto">
+              <div className="card-body p-1">
+                <div className="d-flex align-items-center justify-content-start mb-2">
+                  <span
+                    style={{
+                      fontSize: "1.5rem",
+                      fontWeight: "400",
+                      fontFamily: "Lustria, serif",
+                    }}
+                  >
+                    Matri ID: {profile.id}
+                  </span>
+                  <StatusTag text={profile.status} />
+                </div>
+
+                <p className={`card-text m-1 d-flex ${style.textSm}`}>
+                  <span className="text-secondary w-50">Clan</span>
+                  <span className="fw-bold w-50">{profile.clan}</span>
+                </p>
+
+                <p className={`card-text m-1 d-flex ${style.textSm}`}>
+                  <span className="text-secondary w-50">Age</span>
+                  <span className="fw-bold w-50">{profile.age} years old</span>
+                </p>
+
+                <p className={`card-text m-1 d-flex ${style.textSm}`}>
+                  <span className="text-secondary w-50">Location</span>
+                  <span className="fw-bold w-50">{profile.location}</span>
+                </p>
+
+                <p className={`card-text m-1 d-flex ${style.textSm}`}>
+                  <span className="text-secondary w-50">High. Education</span>
+                  <span className="fw-bold w-50">{profile.education}</span>
+                </p>
+
+                <p className={`card-text m-1 d-flex ${style.textSm}`}>
+                  <span className="text-secondary w-50">Occupation</span>
+                  <span className="fw-bold w-50">{profile.occupation}</span>
+                </p>
+
+                <p className={`card-text m-1 d-flex ${style.textSm}`}>
+                  <span className="text-secondary w-50">Class</span>
+                  <span className="fw-bold w-50">{profile.class}</span>
+                </p>
               </div>
-
-              <p className={`card-text m-1 d-flex ${style.textSm}`}>
-                <span className="text-secondary w-50">Clan</span>
-                <span className="fw-bold w-50">{profile.clan}</span>
-              </p>
-
-              <p className={`card-text m-1 d-flex ${style.textSm}`}>
-                <span className="text-secondary w-50">Age</span>
-                <span className="fw-bold w-50">{profile.age} years old</span>
-              </p>
-
-              <p className={`card-text m-1 d-flex ${style.textSm}`}>
-                <span className="text-secondary w-50">Location</span>
-                <span className="fw-bold w-50">{profile.location}</span>
-              </p>
-
-              <p className={`card-text m-1 d-flex ${style.textSm}`}>
-                <span className="text-secondary w-50">High. Education</span>
-                <span className="fw-bold w-50">{profile.education}</span>
-              </p>
-
-              <p className={`card-text m-1 d-flex ${style.textSm}`}>
-                <span className="text-secondary w-50">Occupation</span>
-                <span className="fw-bold w-50">{profile.occupation}</span>
-              </p>
-
-              <p className={`card-text m-1 d-flex ${style.textSm}`}>
-                <span className="text-secondary w-50">Class</span>
-                <span className="fw-bold w-50">{profile.class}</span>
-              </p>
             </div>
           </div>
+          <ActionButtons
+            status={profile.status}
+            openMessageCard={openMessageCard}
+          />
         </div>
-
-        <ActionButtons
-          status={profile.status}
-          openMessageCard={openMessageCard}
-        />
+        {showMessageCard && (
+          <MessageCard closeMessageCard={closeMessageCard} profile={profile} />
+        )}
       </div>
-      {showMessageCard && (
-        <MessageCard closeMessageCard={closeMessageCard} profile={profile} />
-      )}
-    </div>
+    </>
   );
 };
 
@@ -129,50 +126,51 @@ const ActionButtons = ({ status, openMessageCard }) => {
             <div
               style={{
                 width: "25%",
-                // border: "1px solid gray",
+                // border: "2px solid gray",
                 textAlign: "center",
                 boxSizing: "border-box",
               }}
-              className="p-3 border-1"
+              className="p-3 border-2"
             >
-              <FaTrashAlt /> Delete
+              <FaTrashAlt />
+              <span> Delete</span>
             </div>
 
             <div
               style={{
                 width: "25%",
-                borderLeft: "1px solid gray",
-                textAlign: "center",
-                boxSizing: "border-box",
-              }}
-              className="p-3"
-            >
-              <FaEye /> View
-            </div>
-
-            <div
-              style={{
-                width: "25%",
-                borderLeft: "1px solid gray",
+                borderLeft: "2px solid gray",
                 textAlign: "center",
                 boxSizing: "border-box",
               }}
               className="p-3"
             >
-              <FaBell /> Reminder
+              <FaEye /> <span>View</span>
             </div>
 
             <div
               style={{
                 width: "25%",
-                borderLeft: "1px solid gray",
+                borderLeft: "2px solid gray",
+                textAlign: "center",
+                boxSizing: "border-box",
+              }}
+              className="p-3"
+            >
+              <FaBell /> <span>Reminder</span>
+            </div>
+
+            <div
+              style={{
+                width: "25%",
+                borderLeft: "2px solid gray",
                 textAlign: "center",
                 boxSizing: "border-box",
               }}
               className="p-3"
               onClick={openMessageCard}
             >
-              <FaEnvelope /> Message
+              <FaEnvelope /> <span>Message</span>
             </div>
           </>
         );
@@ -183,25 +181,26 @@ const ActionButtons = ({ status, openMessageCard }) => {
             <div
               style={{
                 width: "50%",
-                // border: "1px solid gray",
+                // border: "2px solid gray",
                 textAlign: "center",
                 boxSizing: "border-box",
               }}
               className="p-3"
             >
-              <FaTrashAlt /> Delete
+              <FaTrashAlt /> <span>Delete</span>
             </div>
 
             <div
               style={{
                 width: "50%",
-                borderLeft: "1px solid gray",
+                borderLeft: "2px solid gray",
                 textAlign: "center",
                 boxSizing: "border-box",
               }}
               className="p-3"
             >
-              <FaEye /> View
+              <FaEye />
+              <span> View</span>
             </div>
           </>
         );
@@ -212,37 +211,38 @@ const ActionButtons = ({ status, openMessageCard }) => {
             <div
               style={{
                 width: "33.33%",
-                // border: "1px solid gray",
+                // border: "2px solid gray",
                 textAlign: "center",
                 boxSizing: "border-box",
               }}
               className="p-3"
             >
-              <FaTrashAlt /> Delete
+              <FaTrashAlt /> <span>Delete</span>
             </div>
 
             <div
               style={{
                 width: "33.33%",
-                borderLeft: "1px solid gray",
+                borderLeft: "2px solid gray",
                 textAlign: "center",
                 boxSizing: "border-box",
               }}
               className="p-3"
             >
-              <FaEye /> View
+              <FaEye />
+              <span> View</span>
             </div>
 
             <div
               style={{
                 width: "33.33%",
-                borderLeft: "1px solid gray",
+                borderLeft: "2px solid gray",
                 textAlign: "center",
                 boxSizing: "border-box",
               }}
               className="p-3"
             >
-              <FaEnvelope /> Send Message
+              <FaEnvelope /> <span>Send Message</span>
             </div>
           </>
         );
@@ -253,36 +253,36 @@ const ActionButtons = ({ status, openMessageCard }) => {
             <div
               style={{
                 width: "33.33%",
-                // border: "1px solid gray",
+                // border: "2px solid gray",
                 textAlign: "center",
                 boxSizing: "border-box",
               }}
               className="p-3"
             >
-              <FaEye /> View
+              <FaEye /> <span>View</span>
             </div>
             <div
               style={{
                 width: "33.33%",
-                borderLeft: "1px solid gray",
+                borderLeft: "2px solid gray",
                 textAlign: "center",
                 boxSizing: "border-box",
               }}
               className="p-3"
             >
-              <FaCheckCircle /> Shortlist
+              <FaCheckCircle /> <span>Shortlist</span>
             </div>
             <div
               style={{
                 width: "33.33%",
-                borderLeft: "1px solid gray",
+                borderLeft: "2px solid gray",
                 textAlign: "center",
                 boxSizing: "border-box",
               }}
               className="p-3"
               onClick={openMessageCard}
             >
-              <FaPlusCircle /> Send Request
+              <FaPlusCircle /> <span>Send Request</span>
             </div>
           </>
         );

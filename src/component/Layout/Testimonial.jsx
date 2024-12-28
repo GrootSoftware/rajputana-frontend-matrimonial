@@ -1,14 +1,15 @@
 import React from "react";
 import styles from "./Testimonial.module.css";
 import { LiaQuoteLeftSolid } from "react-icons/lia";
-import storybg from "../../assets/images/herobgg.webp";
+import storybg from "../../assets/images/privacybg.png";
+import border from "../../assets/images/border.png";
 
 const Testimonial = () => {
   return (
     <div className={styles.container}>
       <div className={styles.flexContainer}>
         <div className={styles.imageContainer}>
-          <h2>Real Stories,</h2>
+          <h2 className={`${styles.heading} text-start`}>Real Stories,</h2>
           <h2 className={styles.heading}>Real Connections</h2>
           <div className={styles.quoteStyle}>
             <img className={styles.image} src={storybg} alt="Profile" />
@@ -18,6 +19,7 @@ const Testimonial = () => {
             <i className="fas fa-chevron-right"></i>
           </div>
         </div>
+
         <div className={styles.quoteStyle}>
           <div className={styles.quoteContainer}>
             <LiaQuoteLeftSolid className={styles.quoteIcon} />
@@ -37,6 +39,9 @@ const Testimonial = () => {
             <p className={styles.quoteAuthor}>Priya & Arjun</p>
           </div>
         </div>
+      </div>
+      <div className="text-center" style={{ marginTop: "3rem" }}>
+        <img className="w-75" src={border} alt="img" />
       </div>
     </div>
   );

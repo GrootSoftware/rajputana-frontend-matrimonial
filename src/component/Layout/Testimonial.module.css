@@ -9,17 +9,18 @@
   margin: auto;
   margin-bottom: 2rem;
   box-sizing: border-box;
-  border-bottom: 2px solid yellow;
+  /* border-bottom: 2px solid yellow; */
 }
 
 .heading {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 3rem;
+  font-size: 3.125rem;
+  font-family: "Lustria", serif;
+  font-weight: 400;
+
+  margin-bottom: 0rem;
   margin-top: 0rem;
   line-height: 1.5;
   text-align: center;
-  /* font-family: "Playfair Display", serif; */
 }
 
 .quoteAuthor {
@@ -31,13 +32,12 @@
 
 .imageContainer {
   position: relative;
-  width: 15.5rem;
-  /* height: 14.5rem; */
+  width: 30rem;
 }
 
 .image {
   width: 100%;
-  height: 15.5rem;
+  height: 28.5rem;
   border-radius: 50%;
   border: 0.1rem solid white;
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
@@ -56,15 +56,13 @@
   color: #5a5a5a;
 }
 .quoteStyle {
-  /* position: relative; */
   border-radius: 50%;
   border: 1px solid #b23b3b;
 }
 
 .quoteContainer {
-  font-family: "Playfair Display", serif;
-  width: 32rem;
-  height: 32rem;
+  width: 45rem;
+  height: 45rem;
   background-color: #f5e8d7;
   border-radius: 50%;
   padding: 2rem;
@@ -90,32 +88,40 @@
 
 .quoteText {
   margin-top: 2rem;
-  font-size: 1rem;
+  font-size: 1.25rem;
+  font-family: "Lustria", serif;
+  font-weight: 400;
   line-height: 1.5;
   color: #5a5a5a;
 }
 
-@media (max-width: 780px) {
+@media (max-width: 1700px) {
   .flexContainer {
     width: 100%;
   }
+}
+@media (max-width: 1100px) {
   .heading {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
   }
   .quoteContainer {
-    width: 90vw;
-    height: 90vw;
-    padding: 2rem;
+    width: 60vw;
+    height: 60vw;
+    padding: 1rem;
   }
   .quoteText {
-    font-size: 1rem;
+    font-size: 2vw;
     line-height: 1;
   }
 }
 
 @media (max-width: 440px) {
+  .image {
+    width: 90vw;
+    height: 90vw;
+  }
   .quoteContainer {
     width: 90vw;
     height: 90vw;
@@ -123,7 +129,7 @@
     box-sizing: border-box;
   }
   .quoteText {
-    font-size: 0.7rem;
+    font-size: 3vw;
     line-height: 1;
   }
 }

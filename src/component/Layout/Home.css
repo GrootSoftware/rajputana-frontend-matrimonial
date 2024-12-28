@@ -1,0 +1,254 @@
+.background-image {
+  background-image: url("../../assets/images/Bannerbg.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 90vh;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+  width: 75%;
+  box-sizing: border-box;
+  margin-inline: auto;
+  text-align: start;
+  height: 100%;
+
+  padding-top: 7%;
+  padding-bottom: 9%;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    margin-inline: auto;
+    text-align: center;
+    padding-top: 7%;
+    padding-bottom: 5%;
+    width: 90%;
+  }
+}
+
+.wrapper {
+  width: 55%;
+  text-align: start;
+}
+
+.hero-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+/* navbar css */
+.hero-logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(186, 78, 78);
+}
+
+.hero-text p {
+  font-size: 1.5rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+}
+
+.hero-text h1 {
+  font-size: 3.75rem;
+  font-family: "Lustria", serif;
+  font-weight: 400;
+}
+
+/* input of radio */
+
+.radio-group {
+  display: flex;
+  flex-direction: row;
+}
+.radio-group input[type="radio"] {
+  display: inline;
+}
+.radio-group label {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+
+  margin: 0 0.2rem;
+  padding: 2px 7px;
+  cursor: pointer;
+}
+
+.radio-group input[type="radio"]:checked + label:before {
+  border: 2px solid #8b0000;
+}
+.radio-group input[type="radio"]:not(:checked) + label:before {
+  background-color: #fff;
+}
+
+.age-group label {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.search-groups input {
+  width: 100%;
+}
+
+.age-group .input-field {
+  width: 35%;
+}
+
+.input-field {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+
+  box-sizing: border-box;
+  padding: 0.4rem;
+  border: 1px solid #d1d5db;
+  color: #4b5563;
+}
+
+.input-field:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #8b0000; /* Green 500 */
+}
+
+.search-form {
+  display: flex;
+  margin-top: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+}
+
+.search-button {
+  background-color: #8b0000;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+}
+
+.search-button:hover {
+  background-color: #802d2d;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  align-items: center;
+  gap: auto;
+}
+
+.features div {
+  font-size: 0.85rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1440px) {
+  .wrapper {
+    width: 70%;
+  }
+}
+
+@media (max-width: 995px) {
+  .features div {
+    font-size: 0.65rem;
+  }
+
+  .search-form {
+    flex-direction: column;
+    width: 60%;
+  }
+  .age-group div {
+    flex-direction: column;
+  }
+  .search-button {
+    width: 100%;
+  }
+  .age-group .input-field {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1140px) {
+  .wrapper {
+    width: 80%;
+  }
+}
+
+@media (max-width: 640px) {
+  .wrapper {
+    text-align: center;
+    width: 100%;
+  }
+
+  .search-form {
+    margin-inline: auto;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  .hero-text p {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .radio-group label {
+    font-size: 0.85rem;
+  }
+  .age-group .input-field {
+    width: 100%;
+  }
+  .search-button {
+    text-align: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .search-form {
+    margin-inline: auto;
+    width: 80%;
+  }
+  .age-group {
+    flex-direction: column;
+  }
+  .age-group input {
+    width: 100%;
+    padding: 0.2rem;
+  }
+
+  .features div {
+    font-size: 0.5rem;
+  }
+}
+
+/* hero.css */

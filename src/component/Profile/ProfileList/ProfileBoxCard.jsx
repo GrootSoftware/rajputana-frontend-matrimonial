@@ -4,46 +4,46 @@ import style from "./RequestCard.module.css";
 
 const ProfileCard = ({ profile, handlecheck, key }) => {
   return (
-    <div className="col-lg-6 mb-3 shadow-sm">
-      <div className="card rounded-0 border-0">
-        <div className="col-12 col-sm-12 col-md-12 row g-0 m-auto p-2">
-          <div className="col-10 col-sm-5 m-auto">
+    <div
+      className="col-12 col-sm-11 col-md-6 col-xl-6 mb-2 mt-1 p-0 p-sm-1 m-auto"
+      style={{ boxSizing: "border-box" }}
+    >
+      <div className="card shadow-sm border-0 rounded-0">
+        <div
+          className="row g-0 m-md-1 p-1 p-md-0"
+          style={{ boxSizing: "border-box" }}
+        >
+          <div
+            className="col-12 col-sm-6 col-md-5 d-flex align-items-center m-0"
+            style={
+              {
+                // backgroundColor: "#656262",
+              }
+            }
+          >
             <img
               src={profile.imageUrl}
-              className={style.imgSize}
+              className="img-fluid m-auto"
               alt="Profile picture"
-            />
-
-            {/* <div
-              className="unblock-checkbox mt-2"
               style={{
-                position: "absolute",
-                top: "0.3vw",
-                left: "1vw",
+                width: "14rem",
+                height: "14rem",
+                objectFit: "cover",
               }}
-            >
-              <input
-                type="checkbox"
-                id={`unblock-${profile.id}`}
-                style={{
-                  width: "1rem",
-                  height: "1rem",
-                }}
-                onChange={() => handlecheck(profile.id)}
-              />
-            </div> */}
+            />
           </div>
 
-          <div className="col-sm-7 col-10 m-auto">
-            <div className="card-body">
-              <div class="d-flex align-items-center">
+          <div className="col-10 col-sm-6 col-md-7 m-auto">
+            <div className="card-body p-1">
+              <div className="d-flex align-items-center justify-content-start mb-2">
                 <span
                   style={{
-                    fontSize: "1.3rem",
-                    fontFamily: "serif",
+                    fontSize: "1.5rem",
+                    fontWeight: "400",
+                    fontFamily: "Lustria, serif",
                   }}
                 >
-                  Matri ID: 6589
+                  Matri ID: {profile.id}
                 </span>
               </div>
 

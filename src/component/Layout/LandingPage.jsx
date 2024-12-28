@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./LandingPage.module.css";
-import privacylogo from "../../assets/images/privacybg.png";
+import privacylogo from "../../assets/images/privacylogo.png";
 
 const LandingPage = () => {
   return (

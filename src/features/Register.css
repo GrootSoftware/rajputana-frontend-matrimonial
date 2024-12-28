@@ -3,12 +3,12 @@
 .register-container {
   display: flex;
   align-items: center;
-  padding-left: 15%;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  min-height: 100vh;
+  padding-left: 13%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  min-height: 85vh;
   /* background-color: rgba(0, 0, 0, 0.5); */
-  background-image: url("https://cdn0.weddingwire.in/article/7686/original/1280/jpg/126867-rangbaricinema-by-krishnapal4.jpeg");
+  background-image: url("../assets/images/Bannerbg.jpg");
   box-sizing: border-box;
   background-position: center;
   background-size: cover;
@@ -17,22 +17,34 @@
 
 .register-box {
   background-color: #ffffff;
-  padding: 1.5rem;
+  padding-inline: 1rem;
+  padding-top: 0%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   max-width: 100%;
+  width: 600px;
   box-sizing: border-box;
 }
 
-.register-title {
-  margin-bottom: 1rem;
+.signup-prompt {
+  margin-top: 0.4rem;
+  text-align: left;
+  color: rgba(0, 0, 0, 1); /* Gray 700 */
+  font-size: 1.125rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
 }
 
+.register-title {
+  margin-bottom: 0.2rem;
+}
 
-.text-center {
-  text-align: center;
-  font-size: 1.2rem;
-  font-family: "Roboto", sans-serif;
-  font-weight: bold;
+.subtitle {
+  text-align: left;
+  font-size: 1.75rem;
+  font-family: "Lustria", serif;
+  font-weight: 400;
+  margin: 0.2rem;
+  color: "rgba(0, 0, 0, 1)";
 }
 
 /* Form Styles */
@@ -43,14 +55,11 @@
   margin-bottom: 0.5rem;
 }
 
-.form-group div {
-  display: flex;
-  flex-direction: column;
-}
-
 label {
   margin-bottom: 0.3rem;
-  /* font-weight: 600; */
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
 }
 
 .input-field {
@@ -59,6 +68,10 @@ label {
   font-size: 1rem;
   width: 100%;
   box-sizing: border-box;
+
+  font-size: 1.125rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
 }
 
 .password-field {
@@ -67,7 +80,7 @@ label {
 
 .password-field .icon {
   position: absolute;
-  top: 1rem;
+  top: 1.3rem;
   right: 0.75rem;
   color: #333231; /* Gray 500 */
 }
@@ -82,13 +95,14 @@ label {
 
 /* Button Styles */
 .submit-btn {
-  background-color: #991c1c;
+  background-color: rgba(153, 37, 37, 1);
   color: #fff;
-  padding: 0.75rem;
+  padding: 1rem 1rem;
   margin-top: 0.8rem;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
 
-  width: 40%;
-  font-size: 1rem;
   cursor: pointer;
   border: none;
   transition: background-color 0.3s;
@@ -100,8 +114,13 @@ label {
 
 /* Link Styles */
 .link {
-  color: #991c1c;
+  color: rgba(153, 37, 37, 1);
   text-decoration: none;
+  margin-top: 1rem;
+
+  font-size: 1.125rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
 }
 
 .link:hover {
@@ -112,20 +131,12 @@ label {
 @media (max-width: 768px) {
   /* Adjust layout for tablets and smaller screens */
   .register-container {
-    padding: 0%;
+    padding: 2rem;
     justify-content: center;
-  }
-  .register-box {
-    padding: 1.5rem;
-    width: 50%;
   }
 
   .register-title {
     font-size: 1.8rem;
-  }
-
-  .form-group {
-    grid-template-columns: 1fr; /* Stack the form fields */
   }
 
   .submit-btn {
@@ -133,25 +144,22 @@ label {
     font-size: 1.1rem;
   }
 
-  .text-center {
+  .text-left {
     font-size: 1rem;
-
   }
 }
 
 @media (max-width: 480px) {
   /* Adjust layout for mobile screens */
   .register-container {
-    padding: 0%;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
     justify-content: center;
+    width: 100%;
+    padding-inline: 0rem;
   }
   .register-title {
     font-size: 1.5rem;
-  }
-
-  .register-box {
-    padding: 1rem;
-    width: 90%;
   }
 
   .form-group {
@@ -168,7 +176,7 @@ label {
     font-size: 1rem;
   }
 
-  .text-center p {
+  .text-left p {
     font-size: 0.9rem;
   }
 }

@@ -1,8 +1,8 @@
 .background {
-  background-image: url("../../assets/images/herobgg.webp");
+  background-image: url("../../assets/images/Testimonialbg.jpg");
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: 90vh;
 }
 
 .overlay {
@@ -18,47 +18,50 @@
   text-align: left;
   color: white;
   max-width: 75%; /* 640px */
-  font-family: "Playfair Display", serif;
 }
 
 .privacylogo {
-  height: 7rem;
-  width: 7rem;
+  /* height: 8rem; */
+  width: 8rem;
 }
 
 .badge {
   display: flex;
   color: black;
   padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .heading {
-  font-size: 2.5rem; /* 40px */
-  font-weight: bold;
+  font-size: 3.125rem;
+  font-family: "Lustria", serif;
+  font-weight: 400;
+
   margin-left: 2rem;
   color: white;
-  font-family: "Playfair Display", serif;
 }
 
 .paragraph {
   margin-bottom: 1.5rem;
-  font-size: 1rem;
   line-height: 1.25rem;
   width: 60%;
-  font-family: "Playfair Display", serif;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
 }
 
 .ctaButton {
   margin-top: 1.5rem; /* 24px = 1.5rem */
-  background-color: #991c1c;
+  background-color: rgba(153, 37, 37, 1);
   color: white;
   padding: 1rem 1rem;
-  font-size: 0.8rem;
+
   cursor: pointer;
   border: none;
   transition: background-color 0.3s ease;
-  font-family: "Rubik", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
 }
 
 .ctaButton:hover {
@@ -84,7 +87,7 @@
     padding: 0%;
   }
   .privacylogo {
-    height: 6rem;
+    width: 6rem;
   }
   .paragraph {
     width: 80%;

@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import "./ForgetPassword.css"; // Import the CSS file
 import logo from "../assets/images/logowhite.png";
 
+import Profilenavbar from "../component/Profile/ProfileComp/Profilenavbar";
+
 function ForgotPassword() {
   const [formData, setFormData] = useState({ username: "" });
   const [errorMessage, setErrorMessage] = useState("");
@@ -51,47 +53,51 @@ function ForgotPassword() {
   };
 
   return (
-    <div className="forgot-password-page">
-      <div className="overlay"></div>
-      <div className="forgot-password-container">
-        <div className="title">
-          <img
-            src={logo}
-            alt="Logo"
-            className="rounded-full border-4 border-white"
-          />
-        </div>
-        <form onSubmit={handleSubmit}>
-          <div className="input-group">
-            <label htmlFor="emailOrmobile">Email / mobile Number</label>
-            <input
-              id="username"
-              name="username"
-              type="text"
-              placeholder="Enter email / mobile"
-              value={formData.username}
-              onChange={handleChange}
+    <>
+      <Profilenavbar />
+      <div className="forgot-password-page">
+        <div className="overlay"></div>
+        <div className="forgot-password-container">
+          <div className="title">
+            <img
+              src={logo}
+              alt="Logo"
+              className="rounded-full border-4 border-white"
             />
           </div>
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
-          {successMessage && (
-            <p className="success-message">{successMessage}</p>
-          )}
-          {errors.username && <p className="error-text">{errors.username}</p>}
-          <div className="button-group">
-            <button type="submit">RESET PASSWORD</button>
-          </div>
-          <div className="signup-link">
-            <p>
-              Are you a new user?{" "}
-              <Link to="/signup" className="signup-now">
-                Signup Now
-              </Link>
-            </p>
-          </div>
-        </form>
+          <p className="subtitle">Opps! are you forget password?</p>
+          <form onSubmit={handleSubmit}>
+            <div className="input-group">
+              <label htmlFor="emailOrmobile">Email / mobile Number</label>
+              <input
+                id="username"
+                name="username"
+                type="text"
+                placeholder="Enter email / mobile"
+                value={formData.username}
+                onChange={handleChange}
+              />
+            </div>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            {successMessage && (
+              <p className="success-message">{successMessage}</p>
+            )}
+            {errors.username && <p className="error-text">{errors.username}</p>}
+            <div className="button-group">
+              <button type="submit">RESET PASSWORD</button>
+            </div>
+            <div className="signup-link">
+              <p>
+                Are you a new user?{" "}
+                <Link to="/signup" className="signup-now">
+                  Signup Now
+                </Link>
+              </p>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

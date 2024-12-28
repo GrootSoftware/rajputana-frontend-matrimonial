@@ -4,10 +4,21 @@ import { FaRegEdit } from "react-icons/fa";
 import DocumentForm from "../Forms/DocumentForm";
 import style from "./Mydetails.module.css";
 
+import profile from "../../../assets/images/profile.png";
+
 const ImagesAndDocuments = () => {
   const fontSize = "2vh";
   const [isEditing, setIsEditing] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("onRequest");
 
+  const options = [
+    { id: "publicOption", value: "public", label: "Public" },
+    { id: "onRequestOption", value: "onRequest", label: "On Request" },
+  ];
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
   const handleEditClick = () => {
     setIsEditing(true);
   };
@@ -22,7 +33,7 @@ const ImagesAndDocuments = () => {
 
   const images = [
     {
-      src: "https://placehold.co/200*200",
+      src: profile,
       alt: "Profile image of a bride in traditional attire",
     },
   ];
@@ -64,7 +75,7 @@ const ImagesAndDocuments = () => {
   return (
     <div className={`${style.appContainer} p-3`}>
       <div className={style.detailsHeader}>
-        <h4 className={style.headerTitle}>Documents</h4>
+        <h4 className={style.headerTitle}>Images and Documents</h4>
         {!isEditing ? (
           <div onClick={handleEditClick} className="edit-btn">
             <FaRegEdit />
@@ -78,7 +89,7 @@ const ImagesAndDocuments = () => {
           </div>
         )}
       </div>
-      <div className={`${styles.sectionTitle} h5`}>Images</div>
+      <div className={`${styles.sectionTitle}`}>Images</div>
       <div className="row">
         {images.map((image, index) => (
           <div className="col-4 col-sm-3 mb-3" key={index}>
@@ -101,45 +112,28 @@ const ImagesAndDocuments = () => {
         ))}
       </div>
       <div className="row">
-        <div className="col">
-          <span style={{ fontSize, fontWeight: "400" }}>Images privacy</span>
-          <div className="form-check form-check-inline ms-3">
-            <input
-              className="form-check-input"
-              type="radio"
-              name="privacyOptions"
-              id="publicOption"
-              value="public"
-            />
-            <label
-              className="form-check-label"
-              htmlFor="publicOption"
-              style={{ fontSize, fontWeight: "400" }}
-            >
-              Public
-            </label>
-          </div>
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="radio"
-              name="privacyOptions"
-              id="onRequestOption"
-              value="onRequest"
-              defaultChecked
-            />
-            <label
-              className="form-check-label"
-              htmlFor="onRequestOption"
-              style={{ fontSize, fontWeight: "400" }}
-            >
-              On Request
-            </label>
-          </div>
+        <div className="col d-flex gap-2 align-content-center">
+          <span className={styles.sectionTitle}>Images Privacy</span>
+          {options.map((option) => (
+            <div key={option.id} className="content-center">
+              <input
+                className="form-check-input m-3"
+                type="radio"
+                name="privacyOptions"
+                id={option.id}
+                value={option.value}
+                checked={selectedOption === option.value}
+                onChange={handleOptionChange}
+              />
+              <label className={styles.sectionTitle} htmlFor={option.id}>
+                {option.label}
+              </label>
+            </div>
+          ))}
         </div>
       </div>
       {/* Documents Section */}
-      <div className={`${styles.sectionTitle} h5 mt-4`}>Documents</div>
+      <div className={`${styles.sectionTitle}`}>Documents</div>
       <div className="row">
         {documents.map((doc, index) => (
           <div className="col-4 col-sm-3 mb-3" key={index}>

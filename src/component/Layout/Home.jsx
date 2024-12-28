@@ -1,4 +1,4 @@
-// Hero.jsx
+// Home.jsx
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -11,7 +11,7 @@ import Testimonial from "./Testimonial";
 import RecentAddedPage from "./RecentAddedPage";
 import JourneyPage from "./JourneyPage";
 
-function Hero() {
+function Home() {
   const handleSubmit = async (e) => {
     // e.preventDefault();
     // try {
@@ -39,4 +39,4 @@ function Hero() {
   );
 }
 
-export default Hero;
+export default Home;

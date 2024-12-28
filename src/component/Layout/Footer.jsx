@@ -1,10 +1,16 @@
 // Footer.jsx
 import React from "react";
-import "./Hero.css";
+import "./Home.css";
 import { Link } from "react-router-dom";
 import "./Footer.css";
-import redlogo from "../../assets/images/redlogo.png";
+import Logo from "../../assets/images/Logo.png";
 import { useAuth } from "../../component/Layout/AuthContext";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaYoutube,
+  FaPinterest,
+} from "react-icons/fa";
 
 function Footer() {
   const { logout } = useAuth();
@@ -17,7 +23,7 @@ function Footer() {
           {/* About Section */}
           <div className="footer-about">
             <img
-              src={redlogo}
+              src={Logo}
               alt="Logo"
               className="rounded-full border-4 border-white"
             />
@@ -28,20 +34,20 @@ function Footer() {
               offer a tailored experience for those who value heritage,
               tradition, and privacy.
             </p>
-            {/* <div className="footer-socials">
-              <a href="#" className="footer-icon">
-                <i className="fab fa-facebook"></i>
+            <div className="footer-socials">
+              <a href="#" className="footer-icon" aria-label="Facebook">
+                <FaFacebook size={24} color="" />
               </a>
-              <a href="#" className="footer-icon">
-                <i className="fab fa-instagram"></i>
+              <a href="#" className="footer-icon" aria-label="Instagram">
+                <FaInstagram size={24} color="" />
               </a>
-              <a href="#" className="footer-icon">
-                <i className="fab fa-youtube"></i>
+              <a href="#" className="footer-icon" aria-label="YouTube">
+                <FaYoutube size={24} color="" />
               </a>
-              <a href="#" className="footer-icon">
-                <i className="fab fa-pinterest"></i>
+              <a href="#" className="footer-icon" aria-label="Pinterest">
+                <FaPinterest size={24} color="" />
               </a>
-            </div> */}
+            </div>
           </div>
 
           {/* Quick Links */}

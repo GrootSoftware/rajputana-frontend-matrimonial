@@ -1,6 +1,7 @@
 import React from "react";
 import RecentAddedPageCss from "./RecentAddedPage.module.css";
-import logobg from "../../assets/images/herobg.png";
+import profile from "../../assets/images/profile.png";
+import profile2 from "../../assets/images/profile2.png";
 import ProfileBoxCard from "../Profile/ProfileList/ProfileBoxCard";
 import { useState } from "react";
 
@@ -8,8 +9,8 @@ function RecentAddedPage() {
   const [profiles, setProfiles] = useState([
     {
       id: "7002",
-      imageUrl: logobg,
-      clan: "Guptas",
+      imageUrl: profile,
+      clan: "Solanki",
       age: "29",
       location: "Pune",
       education: "Bachelors",
@@ -20,8 +21,8 @@ function RecentAddedPage() {
 
     {
       id: "7004",
-      imageUrl: logobg,
-      clan: "Mehtas",
+      imageUrl: profile2,
+      clan: "Ratore",
       age: "30",
       location: "Chennai",
       education: "Bachelors",
@@ -38,7 +39,7 @@ function RecentAddedPage() {
         <div className={RecentAddedPageCss.divider}></div>
       </div>
 
-      <div className="row">
+      <div className="row m-0 p-0">
         {profiles.length === 0 ? (
           <div>No Blocked Profiles</div>
         ) : (

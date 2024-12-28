@@ -94,7 +94,7 @@ function BasicInfo() {
                 </div>
                 <div className={styles.value}>
                   {details[key] && typeof details[key] === "object"
-                    ? JSON.stringify(details[key], null, 2) // Format objects as strings
+                    ? JSON.stringify(details[key], null, 2)
                     : details[key] || "N/A"}
                 </div>
               </div>

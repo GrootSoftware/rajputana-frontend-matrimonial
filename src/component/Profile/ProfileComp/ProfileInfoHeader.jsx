@@ -1,34 +1,125 @@
 import React from "react";
 import style from "./Profile.module.css";
+import ProfileHeader from "./ProfileHeader";
 
 const ProfileInfoHeader = () => {
   return (
-    <div className="border pt-2 pb-3 bg-white">
-      <div className="d-flex justify-content-evenly align-items-end row m-0">
-        {/* Left Section */}
-        <div className="col-md-1"></div>
-        <div className=" col-md-4  mt-5 mt-sm-1 accordion text-center">
-          <p className="mb-1 fw-bold text-muted small" style={{ fontFamily: "serif" }}>
-            Matri ID: <span className="text-warning">8647 </span>
-            <span className="text-dark ml-2">30 Years</span>
+    <div className="border pb-3 bg-white text-right">
+      <ProfileHeader />
+      <div className="d-flex row p-0 m-0">
+        <div
+          className={`col-12 col-md-8 col-lg-5 mt-md-2 accordion ${style.Relative}`}
+        >
+          <p className="mb-1">
+            <span
+              className=""
+              style={{
+                fontfamily: "Open Sans, sans-serif",
+                fontWeight: "400",
+                fontSize: "1rem",
+                padding: "0.2rem 0.7rem",
+                color: "rgba(153, 37, 37, 1)",
+                backgroundColor: "rgba(248, 235, 210, 1)",
+              }}
+            >
+              {" "}
+              Matri ID: 8647
+            </span>
+            <span
+              style={{
+                fontSize: "0.875rem",
+                fontFamily: "Open Sans, sans-serif",
+                fontWeight: "700",
+                color: "rgba(119, 119, 119, 1)",
+              }}
+            >
+              {" "}
+              30 Years
+            </span>
           </p>
 
-          <h3 className="mb-0">Gaurav Singh</h3>
+          <div
+            className="mb-0"
+            style={{
+              fontFamily: "Lustria, serif ",
+              fontWeight: "400",
+              fontSize: "1.75rem",
+            }}
+          >
+            Gaurav Singh Solanki
+          </div>
         </div>
 
         {/* Right Section */}
-        <div className="col-md-7 d-flex justify-content-evenly flex-wrap">
+        <div className="col-lg-7 d-flex justify-content-evenly flex-wrap mt-2">
           <div className="col-md-2">
-            <p className="mb-1 text-muted small">Birth Date:</p>
-            <p className="mb-1 fw-bold text-dark">09 Sep, 1996</p>
+            <p
+              className="mb-1"
+              style={{
+                fontFamily: "Open Sans, sans-serif",
+                fontWeight: "400",
+                fontSize: "0.75rem",
+                color: "rgba(122, 121, 115, 1)",
+              }}
+            >
+              Birth Date:
+            </p>
+            <p
+              className="mb-1"
+              style={{
+                fontFamily: "Open Sans, sans-serif",
+                fontWeight: "400",
+                fontSize: "1rem",
+              }}
+            >
+              09 Sep, 1996
+            </p>
           </div>
-          <div className="col-md-3">
-            <p className="mb-1 text-muted small">Mobile Number:</p>
-            <p className="mb-1 fw-bold text-dark">1245787825</p>
+          <div className="col-md-2">
+            <p
+              className="mb-1"
+              style={{
+                fontFamily: "Open Sans, sans-serif",
+                fontWeight: "400",
+                fontSize: "0.75rem",
+                color: "rgba(122, 121, 115, 1)",
+              }}
+            >
+              Mobile Number:
+            </p>
+            <p
+              className="mb-1"
+              style={{
+                fontFamily: "Open Sans, sans-serif",
+                fontWeight: "400",
+                fontSize: "1rem",
+              }}
+            >
+              9587481609
+            </p>
           </div>
-          <div className="">
-            <p className="mb-1 text-muted small">Email ID:</p>
-            <p className="mb-1 fw-bold text-dark">rajendrasingh@gmail.com</p>
+          <div className="col-md-2">
+            <p
+              className="mb-1"
+              style={{
+                fontFamily: "Open Sans, sans-serif",
+                fontWeight: "400",
+                fontSize: "0.75rem",
+                color: "rgba(122, 121, 115, 1)",
+              }}
+            >
+              Email ID:
+            </p>
+            <p
+              className="mb-1"
+              style={{
+                fontFamily: "Open Sans, sans-serif",
+                fontWeight: "400",
+                fontSize: "1rem",
+              }}
+            >
+              gauravpanahera@gmail
+            </p>
           </div>
         </div>
       </div>

@@ -4,11 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import style from "./Form.module.css";
 
 const DocumentForm = ({ handleCancelClick, handleSaveClick }) => {
-  const [images, setImages] = useState([
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIz4qZKTOplGKCIt860B8HP3mTBMZGACNFg&s",
-  ]);
-  
-
+  const [images, setImages] = useState([""]);
 
   const [profileImage, setProfileImage] = useState(null);
 
@@ -27,7 +23,7 @@ const DocumentForm = ({ handleCancelClick, handleSaveClick }) => {
     <div className={style.modalContainer}>
       <div className={style.modalContent}>
         <div className={style.modalHeader}>
-          <h1>Documents</h1>
+          <h1>Images and Documents</h1>
           <div>
             <AiOutlineClose
               onClick={handleCancelClick}

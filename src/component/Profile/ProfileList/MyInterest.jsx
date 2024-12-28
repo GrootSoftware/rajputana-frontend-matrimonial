@@ -115,10 +115,10 @@ function MyInterest() {
   return (
     <div className="profileContainer">
       <div className="profileListHeader">
-        <div>My Interests</div>
+        <div className="pagetitle">My Interests</div>
         <div className="filters">
           <div
-            className="filterItem"
+            className="filterItem d-flex justify-content-between"
             onClick={() => sortProfiles("age")}
           >
             <span>Age</span>
@@ -129,7 +129,7 @@ function MyInterest() {
         </div>
       </div>
 
-      <div className="row m-0 p-0 d-flex justify-content-between bg-white">
+      <div className="row m-0 mb-1 p-0 d-flex justify-content-between bg-white">
         <div className="col-4 col-sm-5 d-flex p-0">
           <div
             onClick={() => handleShowData("requestSent")}
@@ -139,6 +139,10 @@ function MyInterest() {
               color: activeButton === "requestSent" ? "white" : "black",
               cursor: "pointer",
               padding: "0.7rem 1.5rem",
+
+              fontFamily: "Open Sans, sans-serif",
+              fontWeight: "600",
+              fontSize: "1rem",
             }}
           >
             Request Sent
@@ -151,12 +155,17 @@ function MyInterest() {
               color: activeButton === "requestReceived" ? "white" : "black",
               cursor: "pointer",
               padding: "0.7rem 1.5rem",
+
+              fontFamily: "Open Sans, sans-serif",
+              fontWeight: "600",
+              fontSize: "1rem",
             }}
           >
             Request Received
           </div>
         </div>
-        <div className="col-sm-2">
+
+        {/* <div className="col-sm-2">
           <div className="dropdown">
             <button
               className="btn btn-primary dropdown-toggle"
@@ -167,7 +176,7 @@ function MyInterest() {
               aria-expanded="false"
               style={{ color: "black" }}
             >
-              Action
+              <FaChevronDown />
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <Link className="dropdown-item" to="#">
@@ -181,10 +190,10 @@ function MyInterest() {
               </Link>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
-      <div className="row mt-3">
+      <div className="row m-0 p-0">
         {getProfilesForCurrentPage().length === 0 ? (
           <div>No Profiles</div>
         ) : (

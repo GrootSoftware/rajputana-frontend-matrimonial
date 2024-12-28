@@ -4,6 +4,10 @@ import PaternalfamilyinfoForm from "../Forms/PaternalfamilyinfoForm";
 import { FaRegEdit } from "react-icons/fa";
 
 function PaternalSideDetails() {
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [view, setView] = useState(false);
+
   const [details, setDetails] = useState({
     grandFatherName: "",
     sonOf: "",
@@ -52,11 +56,7 @@ function PaternalSideDetails() {
       },
     ],
   });
-
-  const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState(details);
-  const [view, setView] = useState(false);
-
   const handletoggle = () => {
     setView(!view);
   };
@@ -72,15 +72,15 @@ function PaternalSideDetails() {
     }
   };
 
-  // const handleAddRow = (arrayName) => {
-  //   const newRow = {
-  //     name: "",
-  //     marriedto: "",
-  //     daughterof: "",
-  //     thikana: "",
-  //   };
-  //   setFormData({ ...formData, [arrayName]: [...formData[arrayName], newRow] });
-  // };
+  const handleAddRow = (arrayName) => {
+    const newRow = {
+      name: "",
+      marriedto: "",
+      daughterof: "",
+      thikana: "",
+    };
+    setFormData({ ...formData, [arrayName]: [...formData[arrayName], newRow] });
+  };
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -104,12 +104,13 @@ function PaternalSideDetails() {
         {!isEditing ? (
           <div onClick={handleEditClick} className={style.editBtn}>
             <FaRegEdit />
+            Edit
           </div>
         ) : (
           <div>
             <PaternalfamilyinfoForm
               handleCancelClick={handleCancelClick}
-              // handleAddRow={handleAddRow}
+              handleAddRow={handleAddRow}
               handleInputChange={handleInputChange}
               formData={formData}
               handleSaveClick={handleSaveClick}

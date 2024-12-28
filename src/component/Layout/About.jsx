@@ -1,6 +1,6 @@
 // WhoWeAre.jsx
 import React from "react";
-import "./Hero.css";
+import "./Home.css";
 
 function About() {
   return (

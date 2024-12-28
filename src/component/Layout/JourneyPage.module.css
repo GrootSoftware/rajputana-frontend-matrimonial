@@ -1,10 +1,12 @@
 .container {
-  padding-inline: 12.5vw;
+  width: 75%;
   padding-bottom: 3rem;
+  margin-inline: auto;
 }
 .section {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 4vh auto;
 }
 
@@ -16,24 +18,28 @@
 }
 
 .heading {
-  font-size: 3rem;
+  font-size: 3.125rem;
   font-weight: 400;
+  font-family: "Lustria", serif;
   margin-bottom: 1vh;
-  font-family: "Playfair Display", serif;
 }
 
 .description {
-  font-size: 1.3rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
   margin-bottom: 1.5vh;
 }
 
 .ctaButton {
   margin-top: 1.5vh;
-  background-color: #991c1c;
+  background-color: rgba(153, 37, 37, 1);
   color: white;
   padding: 1rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 300;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+
   cursor: pointer;
   border: none;
   transition: background-color 0.3s ease;
@@ -52,6 +58,7 @@
 .feature {
   display: flex;
   align-items: start;
+  margin-top: 2rem;
 }
 
 .iconContainer {
@@ -64,55 +71,71 @@
   padding: 1.3rem;
   margin-right: 1.5rem;
 
-  background-color: #f4efce;
+  background-color: rgba(248, 235, 210, 1);
   border: 1px dashed #b91c1c;
   border-radius: 50%;
   font-size: 1.7rem;
   font-weight: 400;
-  color: #b91c1c;
+  color: rgba(153, 37, 37, 1);
   box-sizing: border-box;
 }
 
 .textContainer {
-  /* padding-left: 4.1rem; */
   margin-left: 2rem;
-  /* position: relative; */
-  /* left: -3.8rem;
-  border-left: 1px dashed #b91c1c ;
-  z-index: 1; */
 }
 
 .featureTitle {
   font-size: 1.5rem;
+  font-family: "Lustria", serif;
   font-weight: 400;
   margin-bottom: 0.5vh;
-  font-family: "Playfair Display", serif;
+  margin-bottom: 1rem;
 }
 
 .featureDescription {
-  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
   line-height: 1.2;
 }
 
-@media (max-width: 1240px) {
+@media (max-width: 1100px) {
   .container {
-    padding-inline: 2rem;
+    padding-inline: 2%;
+    width: 100%;
+    padding-bottom: 1rem;
   }
   .leftSection {
-    width: 80%;
+    width: 45%;
     box-sizing: border-box;
     margin-inline: auto;
   }
+  .heading {
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin-bottom: 1vh;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
   .rightSection {
     margin-top: 2rem;
-    width: 90%;
+    width: 40%;
     margin-inline: auto;
+  }
+  .featureTitle {
+    font-size: 1.2rem;
+  }
+
+  .featureDescription {
+    font-size: 0.55rem;
   }
 }
 
 @media (max-width: 780px) {
   .container {
-    padding-inline: 1rem;
+    padding-inline: 2%;
   }
   .heading {
     font-size: 2.5rem;
@@ -126,6 +149,15 @@
   .section {
     padding: 1vh;
     flex-direction: column;
+  }
+  .leftSection {
+    width: 80%;
+    margin: auto;
+  }
+  .rightSection {
+    margin-top: 3rem;
+    width: 80%;
+    margin-inline: auto;
   }
   .ctaButton {
     font-size: 0.8rem;
@@ -178,55 +210,121 @@
 
 /* VVIP Section */
 .vipSection {
-  background-color: #fef3c7; /* Yellow 100 */
-  padding: 2rem;
   display: flex;
   align-items: center;
-  border-radius: 10rem;
-  padding: 2rem 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-  text-align: center;
+  width: 90%;
+  margin-inline: auto;
+  box-sizing: border-box;
+  padding: 7vw;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/images/vipsectionbg.png");
+  background-position: center;
+  background-size: contain;  
+
 }
 
-.vipSection::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 2px solid #fcd34d; /* Yellow 300 */
-  border-radius: 0.5rem;
-  clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
-  z-index: 0;
+.vipSection img {
+  max-width: 100%;
+  height: auto;
+}
+
+.vipSection div {
+  text-align: left;
 }
 
 .vipSection h2 {
-  font-size: 2.5rem; /* 30px */
-  /* font-weight: bold; */
-  margin-bottom: 1rem;
-  font-family: "Playfair Display", serif;
+  font-size: 3.125rem;
+  font-family: "Lustria", serif;
   font-weight: 400;
+  padding: 0rem 8vw;
+  margin-bottom: 1rem;
 }
 
 .vipSection p {
-  font-size: 1rem; /* 14.4px */
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
   margin-bottom: 1rem;
+  text-align: start;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 780px) {
-  .vipSection {
-    padding: 3rem 2rem;
-    flex-direction: column;
-    margin: 0%;
-    box-sizing: border-box;
-    border-radius: 0%;
-  }
+.vipSection button {
+  background-color: rgba(153, 37, 37, 1);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  font-size: 14px; /* 16px */
+  font-family: "Now", sans-serif;
+  font-weight: 500;
+}
 
+.vipSection button:hover {
+  background-color: #991b1b;
+}
+
+/* Add media queries for fine control */
+@media (max-width: 1235px) {
+  .vipSection {
+    padding: 7vw;
+    width: 100%;
+    margin-inline: auto;
+  }
   .vipSection h2 {
-    font-size: 2rem;
+    font-size: 3.5vw;
+    margin-bottom: 0%;
   }
 
   .vipSection p {
-    font-size: 1rem;
+    font-size: 1.5vw;
+    margin-bottom: 0%;
+  }
+}
+
+@media (max-width: 768px) {
+  .vipSection {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .vipSection div {
+    text-align: center;
+  }
+
+  .vipSection h2 {
+    font-size: 3.5vw;
+  }
+
+  .vipSection p {
+    padding-inline: 2vw;
+    font-size: 1.5vw;
+  }
+
+  .vipSection button {
+    padding: 0.55rem 1rem;
+    font-size: 1vw;
+    font-family: "Now", sans-serif;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 576px) {
+  .vipSection {
+    /* padding: 2vw; */
+    flex-direction: column;
+  }
+  .vipSection h2 {
+    font-size: 3.5vw;
+  }
+
+  .vipSection p {
+    padding-inline: 5vw;
+    font-size: 1.75vw;
+  }
+
+  .vipSection button {
+    padding: 0.3rem 0.7rem;
+    font-size: 1.2vw;
   }
 }

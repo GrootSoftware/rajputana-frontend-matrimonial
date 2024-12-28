@@ -52,43 +52,52 @@
 // export default Hero;
 
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Navbar from "./component/Layout/Navbar";
+
 import Banner from "./component/Layout/Banner";
+
 import Features from "./component/Layout/Features";
 import About from "./component/Layout/About";
+
 import Login from "./features/login";
 import Register from "./features/Register";
-import ForgotPassword from ".//features/ForgetPassword";
+import ForgotPassword from "./features/ForgetPassword";
 import Profile from "./component/Profile/ProfileComp/Profile";
 import Mydetails from "./component/Profile/BasicDetails/Mydetails";
 import ProtectedRoute from "./component/Layout/ProtectedRoute";
 import { AuthProvider } from "./component/Layout/AuthContext";
 import Profilenavbar from "./component/Profile/ProfileComp/Profilenavbar";
-import Hero from "./component/Layout/Hero";
 import SearchPage from "./component/Layout/SearchPage";
-
-import { Navigate } from "react-router-dom";
+import Home from "./component/Layout/Home"; // Assuming you have a Home component
+import NewPassword from "./features/NewPassword";
 
 function App() {
   return (
     <AuthProvider>
-      <Profilenavbar />
       <Routes>
-        <Route
-          path="/"
+        {/* Public Routes */}
+        <Route path="/" element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Register />} />
+        <Route path="forgot-password" element={<ForgotPassword />} />
+        <Route path="set-new-password" element={<NewPassword />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+
+        {/* Protected Routes */}
+        {/* <Route
+          path="/home"
           element={
-            <>
-              {/* <Banner />
-              <About /> */}
-              <Navigate to="/login" />
-            </>
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
           }
-        />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/home" element={<Hero />} />
+        /> */}
         <Route
           path="/search"
           element={
@@ -107,8 +116,7 @@ function App() {
         >
           <Route index element={<Mydetails />} />
         </Route>
-
-        <Route path="*" element={<Navigate to="/" replace />} />
+        {/* Fallback Route */}
       </Routes>
     </AuthProvider>
   );

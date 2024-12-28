@@ -191,10 +191,10 @@ function PhotoRequest() {
   return (
     <div className="profileContainer">
       <div className="profileListHeader">
-        <div>Request</div>
+        <div className="pagetitle">Request</div>
         <div className="filters">
           <div
-            className="filterItem"
+            className="filterItem d-flex justify-content-between"
             onClick={() => sortProfiles("age")} // Sort by age on click
           >
             <span>Age</span>
@@ -203,7 +203,7 @@ function PhotoRequest() {
             </span>
           </div>
           <div
-            className="filterItem"
+            className="filterItem d-flex justify-content-between"
             onClick={() => sortProfiles("height")} // Sort by height on click
           >
             <span>Height</span>
@@ -214,10 +214,9 @@ function PhotoRequest() {
         </div>
       </div>
 
-      <div className="row m-0 p-0 d-flex justify-content-between bg-white">
-        <div className="col-4 col-sm-5 d-flex p-0">
+      <div className="row m-0 mb-1 p-0 d-flex justify-content-between bg-white">
+        <div className="col-4 col-sm-5 d-flex p-0 mb-1">
           <div
-            className=""
             onClick={() => handleShowData("requestSent")}
             style={{
               backgroundColor:
@@ -225,12 +224,15 @@ function PhotoRequest() {
               color: activeButton === "requestSent" ? "white" : "black",
               cursor: "pointer",
               padding: "0.7rem 1.5rem",
+
+              fontFamily: "Open Sans, sans-serif",
+              fontWeight: "600",
+              fontSize: "1rem",
             }}
           >
             Request Sent
           </div>
           <div
-            className=""
             onClick={() => handleShowData("requestReceived")}
             style={{
               backgroundColor:
@@ -238,6 +240,10 @@ function PhotoRequest() {
               color: activeButton === "requestReceived" ? "white" : "black",
               cursor: "pointer",
               padding: "0.7rem 1.5rem",
+
+              fontFamily: "Open Sans, sans-serif",
+              fontWeight: "600",
+              fontSize: "1rem",
             }}
           >
             Request Received
@@ -271,7 +277,14 @@ function PhotoRequest() {
         </div>
       </div>
 
-      <div className="row mt-3">
+      <div
+        className="row m-0 p-0"
+        style={{
+          width: "98%",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         {getProfilesForCurrentPage().length === 0 ? (
           <div>No Profiles</div>
         ) : (

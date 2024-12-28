@@ -4,7 +4,7 @@ import "./Sidebar.css";
 
 const Sidebar = ({ setActiveContent }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState("myDetails");
+  const [activeItem, setActiveItem] = useState("");
 
   const handleItemClick = (item) => {
     setActiveItem(item);
@@ -16,10 +16,9 @@ const Sidebar = ({ setActiveContent }) => {
     <aside className="sidebar">
       <div
         className="dropdown-toggle"
-        onClick={() => setIsDropdownOpen((prev) => !prev)}
         aria-expanded={isDropdownOpen}
       >
-        <AiOutlineMenu />
+        <AiOutlineMenu    onClick={() => setIsDropdownOpen((prev) => !prev)}/>
       </div>
 
       <ul className={`menu ${isDropdownOpen ? "show" : ""}`}>
@@ -33,7 +32,7 @@ const Sidebar = ({ setActiveContent }) => {
         ].map((item) => (
           <li
             key={item.value}
-            className={activeItem === item.value ? "active" : ""}
+            className={` ${activeItem === item.value ? "active" : ""}`}
             onClick={() => handleItemClick(item.value)}
           >
             {item.label}

@@ -7,6 +7,8 @@ import style from "../../component/Profile/Forms/Form.module.css";
 import styles from "../Profile/ProfileComp/Profile.module.css";
 import Demoimg from "../../assets/images/agrawal.png";
 
+import Profilenavbar from "../Profile/ProfileComp/Profilenavbar";
+
 const SearchPage = () => {
   const [profiles, setProfiles] = useState([
     {
@@ -97,112 +99,117 @@ const SearchPage = () => {
   };
 
   return (
-    <div className={`${styles.Container} p-4"`}>
-      <div className="bg-white p-4 shadow">
-        <div className="row g-3">
-          <div className="col-md-4">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search name or ID"
-              value={searchName}
-              onChange={(e) => setSearchName(e.target.value)}
-            />
+    <>
+      <Profilenavbar />
+      <div className={`${styles.Container} p-4"`}>
+        <div className="bg-white p-4 shadow">
+          <div className="row g-3">
+            <div className="col-md-4">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search name or ID"
+                value={searchName}
+                onChange={(e) => setSearchName(e.target.value)}
+              />
+            </div>
+            <div className="col-md-4">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Looking for?"
+                value={lookingFor}
+                onChange={(e) => setLookingFor(e.target.value)}
+              />
+            </div>
+            <div className="col-md-4 d-flex gap-2">
+              <select
+                className="form-select"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+              >
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+              <select
+                className="form-select"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+              >
+                <option value="">Age</option>
+                <option value="18-25">18-25</option>
+                <option value="26-35">26-35</option>
+                <option value="36-45">36-45</option>
+              </select>
+            </div>
           </div>
-          <div className="col-md-4">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Looking for?"
-              value={lookingFor}
-              onChange={(e) => setLookingFor(e.target.value)}
-            />
+          <div className="text-end mt-2">
+            <Link to="/advanced-search" className="text-danger">
+              Advance search?
+            </Link>
           </div>
-          <div className="col-md-4 d-flex gap-2">
-            <select
-              className="form-select"
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
-            >
-              <option value="">Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
-            <select
-              className="form-select"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-            >
-              <option value="">Age</option>
-              <option value="18-25">18-25</option>
-              <option value="26-35">26-35</option>
-              <option value="36-45">36-45</option>
-            </select>
-          </div>
-        </div>
-        <div className="text-end mt-2">
-          <Link to="/advanced-search" className="text-danger">
-            Advance search?
-          </Link>
-        </div>
-        <div className={style.modalFooter}>
-          <button
-            type="button"
-            className={`btn btn-primary ${style.saveButton}`}
-            onClick={handleSearch}
-          >
-            Search
-          </button>
-        </div>
-      </div>
-
-      <div className="row mt-3">
-        {getProfilesForCurrentPage().length === 0 ? (
-          <div>No Profiles</div>
-        ) : (
-          getProfilesForCurrentPage().map((profile) => (
-            <RequestCard
-              key={profile.id}
-              profile={profile}
-              handlecheck={() =>
-                setProfiles(profiles.filter((p) => p.id !== profile.id))
-              }
-            />
-          ))
-        )}
-      </div>
-      <div className="d-flex align-items-center justify-content-center">
-        <div className="d-flex align-items-center gap-2">
-          <button
-            className="btn"
-            onClick={handlePrevPage}
-            disabled={currentPage === 1}
-          >
-            <FaChevronLeft />
-          </button>
-
-          {Array.from({ length: totalPages }).map((_, index) => (
+          <div className={style.modalFooter}>
             <button
-              key={index}
-              className={`btn rounded-circle px-3 fw-bold ${
-                currentPage === index + 1 ? "btn-danger text-white" : "bg-white"
-              }`}
-              onClick={() => handlePageClick(index + 1)}
+              type="button"
+              className={`btn btn-primary ${style.saveButton}`}
+              onClick={handleSearch}
             >
-              {index + 1}
+              Search
             </button>
-          ))}
+          </div>
+        </div>
 
-          <button
-            className="btn"
-            onClick={handleNextPage}
-            disabled={currentPage === totalPages}
-          >
-            <FaChevronRight />
-          </button>
+        <div className="row mt-3">
+          {getProfilesForCurrentPage().length === 0 ? (
+            <div>No Profiles</div>
+          ) : (
+            getProfilesForCurrentPage().map((profile) => (
+              <RequestCard
+                key={profile.id}
+                profile={profile}
+                handlecheck={() =>
+                  setProfiles(profiles.filter((p) => p.id !== profile.id))
+                }
+              />
+            ))
+          )}
+        </div>
+        <div className="d-flex align-items-center justify-content-center">
+          <div className="d-flex align-items-center gap-2">
+            <button
+              className="btn"
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+            >
+              <FaChevronLeft />
+            </button>
+
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <button
+                key={index}
+                className={`btn rounded-circle px-3 fw-bold ${
+                  currentPage === index + 1
+                    ? "btn-danger text-white"
+                    : "bg-white"
+                }`}
+                onClick={() => handlePageClick(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+
+            <button
+              className="btn"
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+            >
+              <FaChevronRight />
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

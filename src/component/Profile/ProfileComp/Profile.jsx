@@ -2,10 +2,12 @@ import React from "react";
 import { useState } from "react";
 
 import style from "./Profile.module.css";
+import { AiOutlineRight } from "react-icons/ai";
 
 import ProfileHeader from "./ProfileHeader";
 import ProfileInfoHeader from "./ProfileInfoHeader";
 import Sidebar from "./Sidebar";
+import Profilenavbar from "./Profilenavbar";
 
 import Mydetails from "../BasicDetails/Mydetails";
 import BasicDetails from "../BasicDetails/BasicDetails";
@@ -19,7 +21,7 @@ import FeatureSection from "../../Layout/FeatureSection";
 import Footer from "../../Layout/Footer";
 
 const Profile = () => {
-  const [activeContent, setActiveContent] = useState("basicdetails");
+  const [activeContent, setActiveContent] = useState("myDetails");
 
   const renderContent = () => {
     switch (activeContent) {
@@ -35,16 +37,23 @@ const Profile = () => {
         return <MyInterest />;
       case "request":
         return <PhotoRequest />;
+      // default:
+      //   return <BasicDetails />;
       default:
-        return <BasicDetails />;
+        return <Mydetails />;
     }
   };
   return (
     <div className={style.minhScreen}>
-      {/* <Profilenavbar /> */}
+      <Profilenavbar />
+
       <div className={style.Container}>
+        <div className={style.routerpathtext}>
+          {"Home  "}
+          <AiOutlineRight />
+          {"  My Profile"}
+        </div>
         <div className={`${style.minhScreen} bg-gray-100}`}>
-          <ProfileHeader />
           <ProfileInfoHeader />
           <Sidebar setActiveContent={setActiveContent} />
           <div className={style.content}>
@@ -52,7 +61,6 @@ const Profile = () => {
           </div>
         </div>
       </div>
-
       <FeatureSection />
       <Footer />
     </div>

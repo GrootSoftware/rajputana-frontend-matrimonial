@@ -1,6 +1,6 @@
 import React from "react";
-import { FaLock, FaCheckCircle, FaHeart, FaHeadset } from "react-icons/fa"; 
-import "./Hero.css";
+import { FaLock, FaCheckCircle, FaHeart, FaHeadset } from "react-icons/fa";
+import "./Home.css";
 
 function Features() {
   return (

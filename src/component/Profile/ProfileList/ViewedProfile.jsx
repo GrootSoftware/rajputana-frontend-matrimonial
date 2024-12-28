@@ -51,10 +51,10 @@ function ViewedProfile() {
   return (
     <div className="profileContainer">
       <div className="profileListHeader">
-        <div>Viewed profile</div>
+        <div className="pagetitle">Viewed profile</div>
         <div className="filters">
           <div
-            className="filterItem"
+            className="filterItem d-flex justify-content-between"
             onClick={() => sortProfiles("age")} // Sort by age on click
           >
             <span>Age</span>
@@ -63,7 +63,7 @@ function ViewedProfile() {
             </span>
           </div>
           <div
-            className="filterItem"
+            className="filterItem d-flex justify-content-between"
             onClick={() => sortProfiles("height")} // Sort by height on click
           >
             <span>Height</span>
@@ -74,7 +74,7 @@ function ViewedProfile() {
         </div>
       </div>
 
-      <div className="row">
+      <div className="row mb-2 m-0 p-0">
         {profiles.length === 0 ? (
           <div>No Blocked Profiles</div>
         ) : (

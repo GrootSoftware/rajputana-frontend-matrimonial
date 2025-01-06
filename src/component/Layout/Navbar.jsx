@@ -50,7 +50,7 @@ const Navbar = () => {
             <Link to="/stories">Stories</Link>
           </li>
           <li>
-            <Link to="/contact">Contact Us</Link>
+            <Link to="/contact-us">Contact Us</Link>
           </li>
 
           {isAuthenticated ? (

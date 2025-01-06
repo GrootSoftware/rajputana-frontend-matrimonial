@@ -24,10 +24,11 @@
 
 .footer-about {
   width: 40%;
+  
 }
 .footer-links,
 .footer-legal {
-  width: 10%;
+  width: 50%;
 }
 
 .footer-description {

@@ -12,7 +12,11 @@ const Testimonial = () => {
           <h2 className={`${styles.heading} text-start`}>Real Stories,</h2>
           <h2 className={styles.heading}>Real Connections</h2>
           <div className={styles.quoteStyle}>
-            <img className={styles.image} src={storybg} alt="Profile" />
+            <img
+              className={`img-fluid ${styles.image}`}
+              src={storybg}
+              alt="Profile"
+            />
           </div>
           <div className={styles.navIcons}>
             <i className="fas fa-chevron-left"></i>
@@ -40,8 +44,8 @@ const Testimonial = () => {
           </div>
         </div>
       </div>
-      <div className="text-center" style={{ marginTop: "3rem" }}>
-        <img className="w-75" src={border} alt="img" />
+      <div className="m-auto" style={{ marginTop: "3rem", width: "80%" }}>
+        <img className="w-100" src={border} alt="border" />
       </div>
     </div>
   );

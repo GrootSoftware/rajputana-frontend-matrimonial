@@ -30,7 +30,7 @@
   text-align: start;
   height: 100%;
 
-  padding-top: 7%;
+  padding-top: 8%;
   padding-bottom: 9%;
 }
 
@@ -61,11 +61,6 @@
 }
 
 /* navbar css */
-.hero-logo {
-  font-size: 2rem;
-  font-weight: bold;
-  color: rgb(186, 78, 78);
-}
 
 .hero-text p {
   font-size: 1.5rem;
@@ -118,9 +113,9 @@
 }
 
 .age-group .input-field {
-  width: 35%;
+  width: 39%;
 }
-
+/* 
 .input-field {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
@@ -130,7 +125,7 @@
   padding: 0.4rem;
   border: 1px solid #d1d5db;
   color: #4b5563;
-}
+} */
 
 .input-field:focus {
   outline: none;
@@ -190,12 +185,22 @@
   .age-group div {
     flex-direction: column;
   }
-  .search-button {
-    width: 100%;
-  }
+
   .age-group .input-field {
     width: 100%;
   }
+
+  .search-button {
+    text-align: center;
+    padding: 0.4rem;
+    margin: auto;
+    border-radius: 2rem;
+    width: 40%;
+    margin-top: 0.5rem;
+  }
+  /* .age-group .input-field {
+    width: 100%;
+  } */
 }
 
 @media (max-width: 1140px) {
@@ -227,9 +232,22 @@
   }
   .age-group .input-field {
     width: 100%;
+    padding: 0.3rem;
+  }
+  .age-group label {
+    margin-top: 1rem;
+    text-align: left;
+  }
+  .search-groups input {
+    padding: 0.3rem;
   }
   .search-button {
     text-align: center;
+    padding: 0.4rem;
+    margin: auto;
+    border-radius: 2rem;
+    width: 40%;
+    margin-top: 0.5rem;
   }
 }
 

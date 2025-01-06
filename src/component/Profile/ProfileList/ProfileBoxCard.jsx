@@ -5,7 +5,7 @@ import style from "./RequestCard.module.css";
 const ProfileCard = ({ profile, handlecheck, key }) => {
   return (
     <div
-      className="col-12 col-sm-11 col-md-6 col-xl-6 mb-2 mt-1 p-0 p-sm-1 m-auto"
+      className="col-10 col-sm-11 col-md-6 col-xl-6 mb-2 mt-1 p-0 p-sm-1 m-auto"
       style={{ boxSizing: "border-box" }}
     >
       <div className="card shadow-sm border-0 rounded-0">

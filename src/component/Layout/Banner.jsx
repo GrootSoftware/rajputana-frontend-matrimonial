@@ -75,25 +75,28 @@ function Banner() {
               </div>
 
               <div className="d-flex flex-column m-lg-3 ms-lg-3 w-100 w-md-75 age-group">
-                <label className="p-1">Select Age group</label>
-                <div className="d-flex gap-1">
-                  <input
-                    type="number"
-                    name="minAge"
-                    placeholder="Age"
-                    value={formData.minAge}
-                    onChange={handleChange}
-                    className="input-field"
-                  />
-                  <h5 className="m-2">to</h5>
-                  <input
-                    type="number"
-                    name="maxAge"
-                    placeholder="Age"
-                    value={formData.maxAge}
-                    onChange={handleChange}
-                    className="input-field"
-                  />
+                <label className="p-1 text-align-left">Select Age group</label>
+                <div className="d-flex">
+                  <div className="d-flex flex-row">
+                    {/* <h5 className="m-2">From</h5> */}
+                    <input
+                      type="number"
+                      name="minAge"
+                      placeholder="Age"
+                      value={formData.minAge}
+                      onChange={handleChange}
+                      className="input-field"
+                    />
+                    <h5 className="m-2">to</h5>
+                    <input
+                      type="number"
+                      name="maxAge"
+                      placeholder="Age"
+                      value={formData.maxAge}
+                      onChange={handleChange}
+                      className="input-field"
+                    />
+                  </div>
                   <button type="submit" className="search-button">
                     <FaSearch />
                   </button>

@@ -112,7 +112,7 @@ function Login() {
                   onChange={handleChange}
                   placeholder="Enter password"
                   className="input-field"
-                />
+                />   
                 <FaRegEye
                   className="icon"
                   onClick={togglePasswordVisibility}

@@ -10,8 +10,8 @@
   background-size: cover;
   background-position: center;
 
-  height: 90vh; 
-  width: 100vw; 
+  height: 90vh;
+  width: 100vw;
 }
 
 .login-box {
@@ -60,8 +60,8 @@
   width: 100%;
   box-sizing: border-box;
   padding: 0.7rem;
-  border: 1px solid #d1d5db; /* Gray 300 */
-  color: #4b5563; /* Gray 700 */
+  border: 1px solid #d1d5db;
+  color: #4b5563;
 }
 
 .input-field:focus {

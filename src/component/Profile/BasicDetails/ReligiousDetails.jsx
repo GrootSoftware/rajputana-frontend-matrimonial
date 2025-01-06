@@ -6,7 +6,7 @@ import { FaRegEdit } from "react-icons/fa";
 
 function ReligiousDetails() {
   const [details, setDetails] = useState({
-    dob: "09 Sep, 1996",
+    dateOfBirth: "09 Sep, 1996",
     birthHour: "10",
     birthMinute: "30",
     birthTimePeriod: "AM",

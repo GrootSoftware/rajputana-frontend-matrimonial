@@ -51,40 +51,42 @@ function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="footer-links">
-            <p className="footer-heading">Quick Links</p>
-            <ul>
-              <li>
-                <Link to="/about">About Us</Link>
-              </li>
-              <li>
-                <Link to="/stories">Stories</Link>
-              </li>
-              <li>
-                <Link to="/contact">Contact Us</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/signup" onClick={logout}>
-                  Signup
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <div className="footer-about d-flex flex-wrap">
+            <div className="footer-links">
+              <p className="footer-heading">Quick Links</p>
+              <ul>
+                <li>
+                  <Link to="/about">About Us</Link>
+                </li>
+                <li>
+                  <Link to="/stories">Stories</Link>
+                </li>
+                <li>
+                  <Link to="/contact">Contact Us</Link>
+                </li>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+                <li>
+                  <Link to="/signup" onClick={logout}>
+                    Signup
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-          {/* Legal Section */}
-          <div className="footer-legal">
-            <p className="footer-heading">Legal</p>
-            <ul>
-              <li>
-                <Link to="/terms-of-use">Terms of Use</Link>
-              </li>
-              <li>
-                <Link to="/privacy-policy">Privacy Policy</Link>
-              </li>
-            </ul>
+            {/* Legal Section */}
+            <div className="footer-legal">
+              <p className="footer-heading">Legal</p>
+              <ul>
+                <li>
+                  <Link to="/terms-of-use">Terms of Use</Link>
+                </li>
+                <li>
+                  <Link to="/privacy-policy">Privacy Policy</Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

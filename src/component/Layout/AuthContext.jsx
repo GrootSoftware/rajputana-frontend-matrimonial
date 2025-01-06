@@ -4,31 +4,64 @@ import axios from "axios";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const [message, setMessage] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(
     typeof window !== "undefined" && !!localStorage.getItem("authToken")
   );
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const login = async (token) => {
-    console.log("Logging in with token:", token);
+  // Utility: Store and retrieve token
+  const setToken = (token) => {
     localStorage.setItem("authToken", token);
+  };
+
+  const getToken = () => {
+    return localStorage.getItem("authToken");
+  };
+
+  const removeToken = () => {
+    localStorage.removeItem("authToken");
+  };
+
+  // Register User
+  const register = async (route, data) => {
+    try {
+      const response = await axios.post(`http://localhost:5000/${route}`, data);
+      const { message, token } = response.data;
+      setMessage(message);
+      if (token) {
+        setToken(token);
+        setIsAuthenticated(true);
+      }
+    } catch (error) {
+      const errorMessage =
+        error.response?.data?.message || "An error occurred. Please try again.";
+      setMessage(errorMessage);
+      console.error("Registration error:", error);
+    }
+  };
+
+  // Login User
+  const login = async (token) => {
+    setToken(token);
     setIsAuthenticated(true);
   };
 
-  const logout = async() => {
-    console.log("Logging out");
-    localStorage.removeItem("authToken");
+  // Logout User
+  const logout = async () => {
+    removeToken();
     setIsAuthenticated(false);
     setUserData(null);
   };
 
+  // Fetch User Data
   const fetchUserData = async () => {
     setLoading(true);
     try {
-      const token = localStorage.getItem("authToken");
-      console.log("Fetching user data with token:", token);
-      const response = await axios.get("https://api.example.com/user", {
+      const token = getToken();
+      if (!token) throw new Error("No authentication token found");
+      const response = await axios.get("http://localhost:5000/user", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -36,9 +69,44 @@ export const AuthProvider = ({ children }) => {
       setUserData(response.data);
     } catch (error) {
       console.error("Failed to fetch user data:", error);
-      // logout();
     } finally {
       setLoading(false);
+    }
+  };
+
+  // Protected POST Request
+  const postData = async (route, data) => {
+    try {
+      const token = getToken();
+      const response = await axios.post(
+        `http://localhost:5000/${route}`,
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to POST to ${route}:`, error);
+      throw error;
+    }
+  };
+
+  // Protected GET Request
+  const getData = async (route) => {
+    try {
+      const token = getToken();
+      const response = await axios.get(`http://localhost:5000/${route}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to GET from ${route}:`, error);
+      throw error;
     }
   };
 
@@ -49,7 +117,19 @@ export const AuthProvider = ({ children }) => {
   }, [isAuthenticated]);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, userData, login, logout, loading }}>
+    <AuthContext.Provider
+      value={{
+        isAuthenticated,
+        userData,
+        message,
+        register,
+        login,
+        logout,
+        loading,
+        postData,
+        getData,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

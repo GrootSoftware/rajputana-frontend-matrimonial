@@ -53,7 +53,7 @@ const Profilenavbar = () => {
               <Link to="/stories">Stories</Link>
             </li>
             <li>
-              <Link to="/contact">Contact Us</Link>
+              <Link to="/contact-us">Contact</Link>
             </li>
 
             {isAuthenticated ? (

@@ -35,10 +35,10 @@ const ReligionForm = ({
                   <input
                     type="date"
                     className="form-control"
-                    id="dob"
-                    name="dob"
+                    id="dateOfBirth"
+                    name="dateOfBirth"
                     placeholder="09 Sep, 1996"
-                    value={formData.dob || ""}
+                    value={formData.dateOfBirth || ""}
                     onChange={handleInputChange}
                   />
                 </div>

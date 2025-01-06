@@ -8,6 +8,7 @@ import styles from "../Profile/ProfileComp/Profile.module.css";
 import Demoimg from "../../assets/images/agrawal.png";
 
 import Profilenavbar from "../Profile/ProfileComp/Profilenavbar";
+import Footer from "./Footer";
 
 const SearchPage = () => {
   const [profiles, setProfiles] = useState([
@@ -99,11 +100,11 @@ const SearchPage = () => {
   };
 
   return (
-    <>
+    <div style={{ backgroundColor: "rgba(248, 235, 210, 1)" }}>
       <Profilenavbar />
-      <div className={`${styles.Container} p-4"`}>
+      <div className={`${styles.Container} p-4 mt-2"`}>
         <div className="bg-white p-4 shadow">
-          <div className="row g-3">
+          <div className="row g-1">
             <div className="col-md-4">
               <input
                 type="text"
@@ -160,7 +161,7 @@ const SearchPage = () => {
           </div>
         </div>
 
-        <div className="row mt-3">
+        <div className="row mt-2">
           {getProfilesForCurrentPage().length === 0 ? (
             <div>No Profiles</div>
           ) : (
@@ -209,7 +210,8 @@ const SearchPage = () => {
           </div>
         </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 };
 

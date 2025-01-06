@@ -4,6 +4,33 @@ import { AiOutlineClose } from "react-icons/ai";
 import style from "./Form.module.css";
 
 const DocumentForm = ({ handleCancelClick, handleSaveClick }) => {
+
+  // const uploadPhotos = async (photos, documents, token) => {
+  //   try {
+  //     const response = await fetch("/api/upload/photos", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         token: token, // User's token from authentication
+  //       },
+  //       body: JSON.stringify({
+  //         photos: photos,
+  //         documents: documents,
+  //         isPrivate: false,
+  //       }),
+  //     });
+  
+  //     const data = await response.json();
+  //     if (response.ok) {
+  //       console.log("Upload successful:", data);
+  //     } else {
+  //       console.error("Upload failed:", data.message);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error uploading photos:", error);
+  //   }
+  // };
+  
   const [images, setImages] = useState([""]);
 
   const [profileImage, setProfileImage] = useState(null);

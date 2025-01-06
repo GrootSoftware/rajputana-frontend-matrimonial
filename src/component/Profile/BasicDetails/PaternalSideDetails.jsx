@@ -25,34 +25,34 @@ function PaternalSideDetails() {
     maternalGrandMotherthikana: "",
     badePapa: [
       {
-        name: "Gaurav",
-        marriedto: "hhhhhhh",
-        daughterof: "hhh",
-        thikana: "Kotya",
+        name: "Th Maharan p s",
+        marriedto: "Sunita kanwar",
+        daughterof: "th Ram singh",
+        thikana: "Kotipuri",
       },
     ],
     kakosa: [
       {
-        name: "Gaurav",
-        marriedto: "hhhhhhh",
-        daughterof: "hhh",
-        thikana: "Kotya",
+        name: "Th Maharan p s",
+        marriedto: "Sunita kanwar",
+        daughterof: "th Ram singh",
+        thikana: "Kotipuri",
       },
     ],
     mamosa: [
       {
-        name: "Gaurav",
-        marriedto: "hhhhhhh",
-        daughterof: "hhh",
-        thikana: "Kotya",
+        name: "Th Maharan p s",
+        marriedto: "Sunita kanwar",
+        daughterof: "th Ram singh",
+        thikana: "Kotipuri",
       },
     ],
     masisa: [
       {
-        name: "Gaurav",
-        marriedto: "hhhhhhh",
-        daughterof: "hhh",
-        thikana: "Kotya",
+        name: "Th Maharan p s",
+        marriedto: "Sunita kanwar",
+        daughterof: "th Ram singh",
+        thikana: "Kotipuri",
       },
     ],
   });
@@ -174,15 +174,15 @@ function PaternalSideDetails() {
 function BadePapaHukum({ details }) {
   return (
     <div className="mt-4">
-      <div className={style.textSm}>Badepapa Hukum</div>
+      <div className={style.textsmValue}>Badepapa Hukum</div>
       <div className="table-responsive w-100 mx-auto">
         <table className="table table-sm">
           <thead>
-            <tr>
-              <th className={`${style.textSm} text-secondary`}>Name</th>
-              <th className={`${style.textXs} text-secondary`}>Married to</th>
-              <th className={`${style.textXs} text-secondary`}>D/O</th>
-              <th className={`${style.textXs} text-secondary`}>Thikana</th>
+            <tr className={style.label}>
+              <th>Name</th>
+              <th>Married to</th>
+              <th>D/O</th>
+              <th>Thikana</th>
             </tr>
           </thead>
           <tbody>
@@ -204,7 +204,7 @@ function BadePapaHukum({ details }) {
 function KakosaHukum({ details }) {
   return (
     <div className="mt-4">
-      <div className={`mb-2 ${style.textSm}`}>Kakosa Hukum</div>
+      <div className={`mb-2 ${style.textsmValue}`}>Kakosa Hukum</div>
       <div className="table-responsive w-100 mx-auto">
         <table className="table table-sm">
           <thead>
@@ -234,7 +234,7 @@ function KakosaHukum({ details }) {
 function MamosaHukum({ details, handleInputChange, handleAddRow }) {
   return (
     <div className="mt-4">
-      <div className={`mb-2 ${style.textSm}`}>Mamosa Hukum</div>
+      <div className={`mb-2 ${style.textsmValue}`}>Mamosa Hukum</div>
       <div className="table-responsive w-100 mx-auto">
         <table className="table table-sm">
           <thead>
@@ -264,15 +264,15 @@ function MamosaHukum({ details, handleInputChange, handleAddRow }) {
 function MasisaHukum({ details }) {
   return (
     <div className="mt-4">
-      <div className={`mb-2 ${style.textSm}`}>Masisa Hukum</div>
+      <div className={`mb-2 ${style.textsmValue}`}>Masisa Hukum</div>
       <div className="table-responsive w-100 mx-auto">
         <table className="table table-sm">
           <thead>
             <tr>
-              <th className={`${style.textSm} text-secondary`}>Name</th>
-              <th className={`${style.textXs} text-secondary`}>Married to</th>
-              <th className={`${style.textXs} text-secondary`}>D/O</th>
-              <th className={`${style.textXs} text-secondary`}>Thikana</th>
+              <th>Name</th>
+              <th>Married to</th>
+              <th>D/O</th>
+              <th>Thikana</th>
             </tr>
           </thead>
           <tbody>

@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import styles from "./JourneyPage.module.css";
 
 import { IoLockClosedOutline } from "react-icons/io5";
@@ -97,8 +99,13 @@ const JourneyPage = () => {
             partner within a community that respects your legacy and honors your
             privacy. Let us guide you in finding a partner who complements your
             values, lifestyle, and heritage.
-          </p>
-          <button className={styles.ctaButton}>JOIN THE RAJPUT LEGACY</button>
+          </p>{" "}
+          <Link to="/login">
+            {" "}
+            <button className={styles.ctaButton}>
+              JOIN THE RAJPUT LEGACY{" "}
+            </button>
+          </Link>
         </div>
       </div>
 

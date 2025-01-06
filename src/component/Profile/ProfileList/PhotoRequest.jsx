@@ -215,7 +215,7 @@ function PhotoRequest() {
       </div>
 
       <div className="row m-0 mb-1 p-0 d-flex justify-content-between bg-white">
-        <div className="col-4 col-sm-5 d-flex p-0 mb-1">
+        <div className="col-9 d-flex p-0">
           <div
             onClick={() => handleShowData("requestSent")}
             style={{
@@ -223,11 +223,11 @@ function PhotoRequest() {
                 activeButton === "requestSent" ? "#991c1c" : "transparent",
               color: activeButton === "requestSent" ? "white" : "black",
               cursor: "pointer",
-              padding: "0.7rem 1.5rem",
-
+              padding: "0.6rem 1.5rem",
+              alignContent: "center",
               fontFamily: "Open Sans, sans-serif",
               fontWeight: "600",
-              fontSize: "1rem",
+              fontSize: "clamp(12px, 2vw, 14px)",
             }}
           >
             Request Sent
@@ -240,47 +240,48 @@ function PhotoRequest() {
               color: activeButton === "requestReceived" ? "white" : "black",
               cursor: "pointer",
               padding: "0.7rem 1.5rem",
-
+              alignContent: "center",
               fontFamily: "Open Sans, sans-serif",
               fontWeight: "600",
-              fontSize: "1rem",
+              fontSize: "clamp(12px, 2vw, 14px)",
             }}
           >
             Request Received
           </div>
         </div>
-        <div className="col-sm-2">
-          <div class="dropdown">
-            <button
-              class="btn btn-primary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              style={{ color: "black" }}
-            >
-              Action
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <Link class="dropdown-item" href="#">
-                Action 1
-              </Link>
-              <Link class="dropdown-item" href="#">
-                Action 2
-              </Link>
-              <Link class="dropdown-item" href="#">
-                Action 3
-              </Link>
-            </div>
-          </div>
+        <div className="col-3 p-0 p-sm-2" style={{ alignContent: "center" }}>
+          <select
+            class="form-select form-select-lg m-0"
+            style={{
+              color: "rgba(97, 97, 97, 1)",
+              borderRadius: "0%",
+              border: "1px solid rgba(97, 97, 97, 1)",
+              padding: "0.7rem 1.5rem",
+              fontFamily: "Open Sans, sans-serif",
+              fontWeight: "600",
+              fontSize: "clamp(12px, 2vw, 14px)",
+              outline: "none",
+            }}
+            aria-label=".form-select-lg example"
+          >
+            <option selected>
+              <div className="d-flex justify-content-between">
+                <span className="">All request</span>
+                <span>
+                  <FaChevronDown />
+                </span>
+              </div>{" "}
+            </option>
+            <option value="1">Pending</option>
+            <option value="2">Accepted</option>
+            <option value="3">Rejected</option>
+          </select>
         </div>
       </div>
 
       <div
         className="row m-0 p-0"
         style={{
-          width: "98%",
           display: "flex",
           justifyContent: "space-between",
         }}

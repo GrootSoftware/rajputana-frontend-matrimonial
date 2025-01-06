@@ -46,7 +46,6 @@ const Profile = () => {
   return (
     <div className={style.minhScreen}>
       <Profilenavbar />
-
       <div className={style.Container}>
         <div className={style.routerpathtext}>
           {"Home  "}

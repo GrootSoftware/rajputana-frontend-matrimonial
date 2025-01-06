@@ -2,11 +2,10 @@
 
 .feature-container {
   margin: auto;
-  max-width: 1400px;
+  max-width: 1125px;
   margin-top: 1rem;
   padding: 3rem 2rem;
   box-sizing: border-box;
-  background-color: white;
 }
 
 /* Features Section */
@@ -43,6 +42,12 @@
     padding: 1px 2px;
   }
 }
+
+@media (min-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 /* Responsive Grid Layout */
 @media (max-width: 768px) {
   .feature-container {
@@ -55,37 +60,29 @@
   .features-grid {
     grid-template-columns: repeat(1, 1fr);
   }
+
 }
 
-@media (min-width: 1024px) {
-  .features-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
+
 
 /* VVIP Section */
 .vip-section {
   display: flex;
   align-items: center;
-  max-width: 90%;
-  margin-bottom: 2rem;
+  width: 90%;
   margin-inline: auto;
   box-sizing: border-box;
   padding: 7vw;
   background-repeat: no-repeat;
-
   background-image: url("../../assets/images/vipsectionbg.png");
-
   background-position: center;
-  background-size: contain;
-  position: relative;
+  background-size: contain;  
+
 }
 
-/* Ensure text and child elements scale proportionally */
 .vip-section img {
   max-width: 100%;
   height: auto;
-  /* background-color: white; */
 }
 
 .vip-section div {
@@ -118,6 +115,7 @@
   font-size: 14px; /* 16px */
   font-family: "Now", sans-serif;
   font-weight: 500;
+  text-decoration: none;
 }
 
 .vip-section button:hover {
@@ -171,6 +169,7 @@
 
 @media (max-width: 576px) {
   .vip-section {
+    padding: 4vw;
     flex-direction: column;
   }
   .vip-section h2 {

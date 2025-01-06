@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Register.css";
-
-
+import { useAuth } from "../component/Layout/AuthContext";
 // India State and District Data
 import indiaStates from "./state";
 import Profilenavbar from "../component/Profile/ProfileComp/Profilenavbar";
@@ -11,6 +10,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import logo from "../assets/images/logowhite.png";
 
 function Register() {
+  const { register, message } = useAuth();
   // State to manage password visibility
   const [showPassword, setShowPassword] = useState(false);
 
@@ -30,7 +30,6 @@ function Register() {
 
   // State to manage cities for the state selection
   const [cities, setCities] = useState([]);
-
   // State to manage errors
   const [errors, setErrors] = useState({});
 
@@ -77,13 +76,18 @@ function Register() {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
-  // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate form inputs (assumes `verify` is a function for validation)
     if (verify()) {
-      console.log("Form Submitted Successfully", formData);
-      // Submit form data (e.g., send to an API)
+      const route = "signup";
+      console.log("Form Data Submitted:", formData);
+      // try {
+      //   await register(route, formData); // Calls the `register` from `AuthProvider`
+      // } catch (error) {
+      //   console.error("Error during registration:", error);
+      // }
     } else {
       console.log("Form has errors:", errors);
     }
@@ -256,6 +260,7 @@ function Register() {
                   onChange={handleChange}
                   placeholder="Enter your password"
                   className="input-field"
+                  autoComplete="new-password" 
                 />
                 {showPassword ? (
                   <FaRegEyeSlash
@@ -279,6 +284,7 @@ function Register() {
             <button type="submit" className="submit-btn">
               SIGNUP NOW
             </button>
+            {message && <p className="error-text">{message}</p>}
           </form>
 
           <p className="signup-prompt">

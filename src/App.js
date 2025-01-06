@@ -76,6 +76,8 @@ import Profilenavbar from "./component/Profile/ProfileComp/Profilenavbar";
 import SearchPage from "./component/Layout/SearchPage";
 import Home from "./component/Layout/Home"; // Assuming you have a Home component
 import NewPassword from "./features/NewPassword";
+import Stories from "./component/Layout/Stories";
+import ContactUs from "./component/Layout/ContactUs";
 
 function App() {
   return (
@@ -87,7 +89,12 @@ function App() {
         <Route path="signup" element={<Register />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="set-new-password" element={<NewPassword />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+
+        <Route path="about" element={<About />} />
+        <Route path="stories" element={<Stories />} />
+        <Route path="contact-us" element={<ContactUs />} />
+
+        <Route path="*" element={<Home />} />
 
         {/* Protected Routes */}
         {/* <Route

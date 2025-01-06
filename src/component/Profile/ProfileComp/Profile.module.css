@@ -4,6 +4,7 @@
 }
 
 .routerpathtext {
+  margin-left: 0.5rem;
   font-size: 16px;
   font-family: "Open Sans", sans-serif;
   font-weight: 500;
@@ -15,8 +16,8 @@
 .navHeader {
   background-color: #991c1c;
   color: white;
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,14 +27,13 @@
 }
 
 .navHeader .title {
-  width: 9rem;
+  margin-left: 1rem;
+  width: 10rem;
   z-index: 10;
 }
 
 .navHeader .title img {
   width: 100%;
-  margin-top: 0.5rem;
-  margin-left: 0.7rem;
 }
 
 .navigation {
@@ -100,13 +100,13 @@
 
   .navHeader .title {
     width: 9rem;
-    margin-left: 0.3rem;
   }
 }
 
 @media (max-width: 768px) {
   .navHeader .title {
     width: 7rem;
+    margin-left: 0.5rem;
   }
   .navLinks {
     display: none;
@@ -133,7 +133,7 @@
     text-align: left;
     padding: 0.3rem;
     transition: background-color 0.3s ease;
-    width: 8rem;
+    /* width: 8rem; */
   }
   .navLinks li span {
     display: inline;
@@ -151,7 +151,7 @@
     display: block;
     color: white;
     font-size: 1.5rem;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     cursor: pointer;
   }
 }
@@ -316,7 +316,7 @@
     padding-left: 0;
   }
   .navHeader .title {
-    margin-left: 1.5rem;
+    margin-left: 0.5rem;
   }
 }
 
@@ -360,5 +360,27 @@
   .mainContent .menuIcon .textSm {
     font-size: 0.9rem;
     color: black;
+  }
+
+  .routerpathtext {
+    font-size: 12px;
+    line-height: 4;
+  }
+}
+
+.storycard {
+  width: 48%;
+  margin-bottom: 2rem;
+  
+}
+
+@media (max-width: 540px) {
+  .storycard {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 2rem;
+  }
+  .storycard p {
+    padding-left: 0rem !important;
   }
 }

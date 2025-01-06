@@ -1,66 +1,121 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "./FeatureSection.css";
 
 import { LiaCrownSolid } from "react-icons/lia";
-import { IoShieldOutline } from "react-icons/io5";
-import { IoAccessibilityOutline } from "react-icons/io5";
+import { IoShieldOutline, IoAccessibilityOutline } from "react-icons/io5";
 import { LiaChessKingSolid } from "react-icons/lia";
 
-function FeatureSection() {
-  return (
-    <>
-      <div style={{ backgroundColor: "white" }}>
-        <div className="feature-container">
-          {/* Features Section */}
-          <div className="features-grid">
-            <FeatureCard
-              iconClass={<LiaCrownSolid />}
-              title="Elite Rajput Profiles"
-              description="We feature only verified, high-quality profiles of Rajput singles dedicated to serious, long-term relationships."
-            />
-            <FeatureCard
-              iconClass={<IoShieldOutline />}
-              title="Privacy-First Approach"
-              description="Protecting your personal information is our top priority. No names, identities, or personal details are disclosed until you’re ready."
-            />
-            <FeatureCard
-              iconClass={<IoAccessibilityOutline />}
-              title="Exclusive Access"
-              description="Experience premium matchmaking services, from VIP introductions to personalized guidance, all tailored to Rajputs who seek the finest."
-            />
-            <FeatureCard
-              iconClass={<LiaChessKingSolid />}
-              title="Traditional Values"
-              description="Honoring Rajput values in a contemporary, user-friendly platform that seamlessly blends tradition with technology."
-            />
-          </div>
+var featuresData = [
+  {
+    icon: <LiaCrownSolid />,
+    title: "Elite Rajput Profiles",
+    description:
+      "We feature only verified, high-quality profiles of Rajput singles dedicated to serious, long-term relationships.",
+  },
+  {
+    icon: <IoShieldOutline />,
+    title: "Privacy-First Approach",
+    description:
+      "Protecting your personal information is our top priority. No names, identities, or personal details are disclosed until you’re ready.",
+  },
+  {
+    icon: <IoAccessibilityOutline />,
+    title: "Exclusive Access",
+    description:
+      "Experience premium matchmaking services, from VIP introductions to personalized guidance, all tailored to Rajputs who seek the finest.",
+  },
+  {
+    icon: <LiaChessKingSolid />,
+    title: "Traditional Values",
+    description:
+      "Honoring Rajput values in a contemporary, user-friendly platform that seamlessly blends tradition with technology.",
+  },
+];
 
-          {/* VVIP Section */}
-          <div className="vip-section">
-            <h2>VVIP Services for Ultimate Discretion</h2>
-            <div>
-              <p>
-                For those seeking an even more exclusive experience, our VVIP
-                membership provides a personal matchmaking manager, access to
-                non-listed profiles, and personalized introductions.
-              </p>
-              <button>JOIN THE RAJPUT LEGACY</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+function FeatureSection() {
+  const vvipData = {
+    title: "VVIP Services for Ultimate Discretion",
+    description:
+      "For those seeking an even more exclusive experience, our VVIP membership provides a personal matchmaking manager, access to non-listed profiles, and personalized introductions.",
+    buttonText: "JOIN THE RAJPUT LEGACY",
+  };
+
+  return (
+    <section style={{ backgroundColor: "white" }}>
+      <Features />
+      <VVIPSection
+        title={vvipData.title}
+        description={vvipData.description}
+        buttonText={vvipData.buttonText}
+      />
+    </section>
   );
 }
 
-const FeatureCard = ({ iconClass, title, description }) => {
+export const Features = () => {
   return (
     <div>
-      <i style={{ fontSize: "3.75rem", color: "rgba(153, 37, 37, 1)" }}>
+      <div className="feature-container">
+        {/* Features Section */}
+        <div className="features-grid">
+          {featuresData.map((feature, index) => (
+            <FeatureCard
+              key={index}
+              iconClass={feature.icon}
+              title={feature.title}
+              description={feature.description}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const FeatureCard = ({ iconClass, title, description }) => {
+  return (
+    <div>
+      <i
+        className=""
+        style={{
+          color: "rgba(153, 37, 37, 1)",
+          fontSize: "clamp(2rem, 5vw, 3.75rem)",
+        }}
+      >
         {iconClass}
       </i>
-      <div>{title}</div>
-      <p>{description}</p>
+      <div
+        style={{
+          fontSize: "clamp(1.2rem, 5vw, 1.25rem)",
+        }}
+      >
+        {title}
+      </div>
+      <p
+        style={{
+          fontSize: "clamp(0.8rem, 3vw, 1rem)",
+        }}
+      >
+        {description}
+      </p>
+    </div>
+  );
+};
+
+export const VVIPSection = ({ title, description, buttonText }) => {
+  return (
+    <div className="vip-section">
+      <h2>{title}</h2>
+      <div>
+        <p>{description}</p>
+
+        <Link to="/login">
+          {" "}
+          <button>{buttonText} </button>
+        </Link>
+      </div>
     </div>
   );
 };

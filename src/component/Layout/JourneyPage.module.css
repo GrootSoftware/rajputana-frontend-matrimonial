@@ -1,0 +1,333 @@
+.container {
+  width: 75%;
+  padding-bottom: 16rem;
+  margin-inline: auto;
+}
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4vh auto;
+}
+
+/* Left Section */
+.leftSection {
+  width: 40%;
+  margin-bottom: 2vh;
+  padding-right: 0;
+}
+
+.heading {
+  font-size: 3.125rem;
+  font-weight: 400;
+  font-family: "Lustria", serif;
+  margin-bottom: 1vh;
+}
+
+.description {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
+  margin-bottom: 1.5vh;
+}
+
+.ctaButton {
+  margin-top: 1.5vh;
+  background-color: rgba(153, 37, 37, 1);
+  color: white;
+  padding: 1rem 1.5rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #a50e0e;
+}
+
+/* Right Section */
+.rightSection {
+  width: 47%;
+  padding-left: 0;
+  box-sizing: border-box;
+}
+.feature {
+  display: flex;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+  top: 1rem;
+  padding: 1.3rem;
+  margin-right: 1.5rem;
+
+  background-color: rgba(248, 235, 210, 1);
+  border: 1px dashed #b91c1c;
+  border-radius: 50%;
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: rgba(153, 37, 37, 1);
+  box-sizing: border-box;
+}
+
+.textContainer {
+  margin-left: 2rem;
+}
+
+.featureTitle {
+  font-size: 1.5rem;
+  font-family: "Lustria", serif;
+  font-weight: 400;
+  margin-bottom: 0.5vh;
+  margin-bottom: 1rem;
+}
+
+.featureDescription {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+@media (max-width: 1100px) {
+  .container {
+    padding-inline: 2%;
+    width: 100%;
+    padding-bottom: 1rem;
+  }
+  .leftSection {
+    width: 45%;
+    box-sizing: border-box;
+    margin-inline: auto;
+  }
+  .heading {
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin-bottom: 1vh;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+  .rightSection {
+    margin-top: 2rem;
+    width: 40%;
+    margin-inline: auto;
+  }
+  .featureTitle {
+    font-size: 1.2rem;
+  }
+
+  .featureDescription {
+    font-size: 0.55rem;
+  }
+}
+
+@media (max-width: 780px) {
+  .container {
+    padding-inline: 2%;
+  }
+  .heading {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 1vh;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+  .section {
+    padding: 1vh;
+    flex-direction: column;
+  }
+  .leftSection {
+    width: 80%;
+    margin: auto;
+  }
+  .rightSection {
+    margin-top: 3rem;
+    width: 80%;
+    margin-inline: auto;
+  }
+  .ctaButton {
+    font-size: 0.8rem;
+    padding: 0.8rem 1.2rem;
+  }
+  .iconContainer {
+    padding: 1.3rem;
+    margin-right: 3rem;
+  }
+
+  .featureTitle {
+    font-size: 1.5rem;
+  }
+
+  .featureDescription {
+    font-size: 0.75rem;
+  }
+}
+
+.feature {
+  display: flex;
+  align-items: start;
+}
+
+@media (max-width: 440px) {
+  .feature {
+    flex-direction: column;
+    align-items: center;
+  }
+  .featureTitle {
+    text-align: center;
+    margin: 1rem;
+  }
+  .rightSection {
+    margin-top: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .featureDescription {
+    text-align: center;
+  }
+  .iconContainer {
+    margin: 0%;
+  }
+  .textContainer {
+    margin-left: 0;
+  }
+}
+
+/* VVIP Section */
+.vipSection {
+  position: absolute;
+  top: 48.5%;
+  left: 5%;
+
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin-inline: auto;
+  box-sizing: border-box;
+  padding: 7vw;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/images/vipsectionbg.png");
+  background-position: center;
+  background-size: contain;
+}
+
+.vipSection img {
+  max-width: 100%;
+  height: auto;
+}
+
+.vipSection div {
+  text-align: left;
+}
+
+.vipSection h2 {
+  font-size: 3.125rem;
+  font-family: "Lustria", serif;
+  font-weight: 400;
+  padding: 0rem 8vw;
+  margin-bottom: 1rem;
+}
+
+.vipSection p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  text-align: start;
+}
+
+.vipSection button {
+  background-color: rgba(153, 37, 37, 1);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+  font-family: "Now", sans-serif;
+  font-weight: 500;
+}
+
+.vipSection button:hover {
+  background-color: #991b1b;
+}
+
+/* Add media queries for fine control */
+@media (max-width: 1235px) {
+  .vipSection {
+    padding: 7vw;
+    width: 100%;
+    margin-inline: auto;
+  }
+  .vipSection h2 {
+    font-size: 3.5vw;
+    margin-bottom: 0%;
+  }
+
+  .vipSection p {
+    font-size: 1.5vw;
+    margin-bottom: 0%;
+  }
+}
+
+@media (max-width: 768px) {
+  .vipSection {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .vipSection div {
+    text-align: center;
+  }
+
+  .vipSection h2 {
+    font-size: 3.5vw;
+  }
+
+  .vipSection p {
+    padding-inline: 2vw;
+    font-size: 1.5vw;
+  }
+
+  .vipSection button {
+    padding: 0.55rem 1rem;
+    font-size: 1vw;
+    font-family: "Now", sans-serif;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 576px) {
+  .vipSection {
+    padding: 3vw;
+    flex-direction: column;
+  }
+  .vipSection h2 {
+    font-size: 3.5vw;
+  }
+
+  .vipSection p {
+    padding-inline: 5vw;
+    font-size: 1.75vw;
+  }
+
+  .vipSection button {
+    padding: 0.3rem 0.7rem;
+    font-size: 1.2vw;
+  }
+}

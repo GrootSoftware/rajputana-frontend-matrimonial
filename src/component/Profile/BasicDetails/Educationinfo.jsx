@@ -58,6 +58,31 @@ function Educationinfo() {
     setIsEditing(false);
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    let validValue = value;
+
+    const textRegex = /^[a-zA-Z\s]*$/;
+    const incomeRegex = /^(Below \d+ LPA|\d+-\d+ LPA|Above \d+ LPA)?$/;
+    const hobbiesRegex = /^[a-zA-Z\s,]*$/;
+    const additionalInfoRegex = /^[a-zA-Z0-9.,'"() ]{0,100}$/;
+
+    if (
+      ["qualifications", "institution", "professional", "class"].includes(name)
+    ) {
+      if (!textRegex.test(value)) return;
+    } else if (name === "annualIncome") {
+      if (!incomeRegex.test(value)) return;
+    } else if (name === "hobbies") {
+      if (!hobbiesRegex.test(value)) return;
+      validValue = value.split(",").map((hobby) => hobby.trim());
+    } else if (name === "additionalInfo") {
+      if (!additionalInfoRegex.test(value)) return;
+    }
+
+    setFormData({ ...formData, [name]: validValue });
+  };
+
   useEffect(() => {
     fetchData();
   }, [isEditing]);
@@ -73,16 +98,7 @@ function Educationinfo() {
         ) : (
           <EducationinfoForm
             handleCancelClick={handleCancelClick}
-            handleInputChange={(e) => {
-              const { name, value } = e.target;
-
-              if (name === "hobbies") {
-                console.log(value);
-                setFormData({ ...formData, [name]: value });
-              } else {
-                setFormData({ ...formData, [name]: value });
-              }
-            }}
+            handleInputChange={handleInputChange}
             formData={formData}
             handleSaveClick={handleSaveClick}
           />

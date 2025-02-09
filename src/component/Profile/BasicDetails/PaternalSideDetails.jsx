@@ -10,6 +10,25 @@ function PaternalSideDetails() {
   const [isEditing, setIsEditing] = useState(false);
   const [view, setView] = useState(false);
 
+  const keyNameMapping = {
+    grandFatherName: "Grandfather Name",
+    grandFathersonOf: "Son of",
+    grandFatheroccupation: "Occupation",
+    grandFatherthikana: "Address",
+    grandMotherName: "GrandMother Name",
+    grandMotherdaughterOf: "Daughter of",
+    grandmotherthikana: "Address",
+    maternalGrandFatherName: "Maternal Grandfather",
+    maternalGrandFathersonOf: "Son of",
+    maternalGrandFatheroccupation: "Occupation",
+    maternalGrandFatherthikana: "Address",
+    maternalGrandMotherName: "Maternal Grandmother",
+    maternalGrandMotherdaughterOf: "Daughter of",
+    maternalGrandMotherthikana: "Address",
+  };
+
+  const excludedKeys = ["badePapa", "kakosa", "mamosa", "masisa"];
+
   const [details, setDetails] = useState({
     grandFatherName: "",
     grandFathersonOf: "",
@@ -65,6 +84,12 @@ function PaternalSideDetails() {
 
   const handleInputChange = (e, index, arrayName) => {
     const { name, value } = e.target;
+
+    const nameRegex = /^[a-zA-Z\s]{0,20}$/;
+    const placeRegex = /^[a-zA-Z\s,.'-]{0,20}$/;
+
+    if (!nameRegex.test(value) && !placeRegex.test(value)) return;
+
     if (arrayName) {
       const updatedArray = [...formData[arrayName]];
       updatedArray[index] = { ...updatedArray[index], [name]: value };
@@ -117,8 +142,7 @@ function PaternalSideDetails() {
           </div>
         )}
       </div>
-
-      <div className={style.details}>
+      {/* <div className={style.details}>
         {Object.entries(details).length > 0 ? (
           <>
             {Object.keys(details)
@@ -154,6 +178,140 @@ function PaternalSideDetails() {
                   <KakosaHukum details={details} />
                   <MamosaHukum details={details} />
                   <MasisaHukum details={details} />
+                  <div className="text-danger fw-bold" onClick={handletoggle}>
+                    View less
+                  </div>
+                </>
+              )}
+            </div>
+          </>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div> */}
+
+      {/* <div className={style.details}>
+  {Object.entries(details).length > 0 ? (
+    <>
+      {Object.keys(details)
+        .filter((key) => !Array.isArray(details[key]) && !excludedKeys.includes(key))
+        .slice(0, 7)
+        .map((key) => (
+          <div className={style.detailItem} key={key}>
+            <div className={`${style.label}`}>
+              {key.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase())}
+            </div>
+            <div className={`${style.value}`}>
+              {details[key] && typeof details[key] === "object"
+                ? JSON.stringify(details[key], null, 2)
+                : details[key] || "N/A"}
+            </div>
+          </div>
+        ))}
+
+      <div>
+        {!view ? (
+          <div className="text-danger fw-bold" onClick={handletoggle}>
+            View more
+          </div>
+        ) : (
+          <>
+            <BadePapaHukum details={details} />
+            <KakosaHukum details={details} />
+
+            {Object.keys(details)
+              .filter((key) => !Array.isArray(details[key]) && !excludedKeys.includes(key))
+              .slice(7, 14)
+              .map((key) => (
+                <div className={style.detailItem} key={key}>
+                  <div className={`${style.label}`}>
+                    {key.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase())}
+                  </div>
+                  <div className={`${style.value}`}>
+                    {details[key] && typeof details[key] === "object"
+                      ? JSON.stringify(details[key], null, 2)
+                      : details[key] || "N/A"}
+                  </div>
+                </div>
+              ))}
+
+            <div className="tables-section">
+              <MamosaHukum details={details} />
+              <MasisaHukum details={details} />
+            </div>
+
+            <div className="text-danger fw-bold" onClick={handletoggle}>
+              View less
+            </div>
+          </>
+        )}
+      </div>
+    </>
+  ) : (
+    <p>Loading...</p>
+  )}
+</div> */}
+      <div className={style.details}>
+        {Object.entries(details).length > 0 ? (
+          <>
+            {/* Show first 7 keys */}
+            {Object.keys(details)
+              .filter(
+                (key) =>
+                  !Array.isArray(details[key]) && !excludedKeys.includes(key)
+              )
+              .slice(0, 7)
+              .map((key) => (
+                <div className={style.detailItem} key={key}>
+                  <div className={`${style.label}`}>
+                    {keyNameMapping[key] || key} {/* Use mapped key name */}
+                  </div>
+                  <div className={`${style.value}`}>
+                    {details[key] && typeof details[key] === "object"
+                      ? JSON.stringify(details[key], null, 2)
+                      : details[key] || "N/A"}
+                  </div>
+                </div>
+              ))}
+
+            <div>
+              {!view ? (
+                <div className="text-danger fw-bold" onClick={handletoggle}>
+                  View more
+                </div>
+              ) : (
+                <>
+                  <BadePapaHukum details={details} />
+                  <KakosaHukum details={details} />
+
+                  {/* Show the next 7 keys */}
+                  {Object.keys(details)
+                    .filter(
+                      (key) =>
+                        !Array.isArray(details[key]) &&
+                        !excludedKeys.includes(key)
+                    )
+                    .slice(7, 14)
+                    .map((key) => (
+                      <div className={style.detailItem} key={key}>
+                        <div className={`${style.label}`}>
+                          {keyNameMapping[key] || key}{" "}
+                          {/* Use mapped key name */}
+                        </div>
+                        <div className={`${style.value}`}>
+                          {details[key] && typeof details[key] === "object"
+                            ? JSON.stringify(details[key], null, 2)
+                            : details[key] || "N/A"}
+                        </div>
+                      </div>
+                    ))}
+
+                  {/* Display tables */}
+                  <div className="tables-section">
+                    <MamosaHukum details={details} />
+                    <MasisaHukum details={details} />
+                  </div>
+
                   <div className="text-danger fw-bold" onClick={handletoggle}>
                     View less
                   </div>

@@ -7,9 +7,11 @@ import Features from "./Features";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 
+const ageOptions = Array.from({ length: 33 }, (_, i) => 18 + i);
+
 function Banner() {
   const { isAuthenticated, setFormData, formData } = useAuth();
-  const [redirectPath, setRedirectPath] = useState(null); // State to handle navigation
+  const [redirectPath, setRedirectPath] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,19 +24,16 @@ function Banner() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isAuthenticated) {
-      setRedirectPath("/login"); // Set path to redirect to login
+      setRedirectPath("/login");
     } else {
       try {
-        // Perform any API call if required before navigation
-        // await axios.post("/api/search", formData);
-        setRedirectPath("/search"); // Set path to redirect to search
+        setRedirectPath("/search");
       } catch (error) {
         console.error("Error during submission:", error);
       }
     }
   };
 
-  // If redirectPath is set, navigate to the specified path
   if (redirectPath) {
     return <Navigate to={redirectPath} replace />;
   }
@@ -97,26 +96,41 @@ function Banner() {
                 <label className="p-1 text-align-left">Select Age group</label>
                 <div className="d-flex">
                   <div className="d-flex flex-row">
-                    <input
-                      type="number"
+                    <select
                       name="minAge"
-                      placeholder="minAge"
                       value={formData.minAge}
                       onChange={handleChange}
                       className="input-field"
-                    />
+                    >
+                      <option value="">Age</option>
+                      {Array.from({ length: 33 }, (_, i) => 18 + i).map(
+                        (age) => (
+                          <option key={age} value={age}>
+                            {age}
+                          </option>
+                        )
+                      )}
+                    </select>
+
                     <h5 className="m-2">to</h5>
-                    <input
-                      type="number"
+
+                    <select
                       name="maxAge"
-                      placeholder="maxAge"
                       value={formData.maxAge}
                       onChange={handleChange}
                       className="input-field"
-                    />
+                    >
+                      <option value="">Age</option>
+                      {Array.from({ length: 33 }, (_, i) => 18 + i).map(
+                        (age) => (
+                          <option key={age} value={age}>
+                            {age}
+                          </option>
+                        )
+                      )}
+                    </select>
                   </div>
 
-                  {/* Submit Button */}
                   <button type="submit" className="search-button">
                     <FaSearch />
                   </button>

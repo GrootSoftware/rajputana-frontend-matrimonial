@@ -1,19 +1,21 @@
-import React, { useState } from "react";
-import "./Register.css";
-import { useAuth } from "../component/Layout/AuthContext";
-// India State and District Data
-import indiaStates from "./state";
-import Profilenavbar from "../component/Profile/ProfileComp/Profilenavbar";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { Country, State, City } from "country-state-city";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { useAuth } from "../component/Layout/AuthContext";
+import Profilenavbar from "../component/Profile/ProfileComp/Profilenavbar";
 import logo from "../assets/images/logowhite.png";
+
+import "./Register.css";
 
 function Register() {
   const { register, message } = useAuth();
-
-  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const [countries, setCountries] = useState([]);
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -26,46 +28,43 @@ function Register() {
     state: "",
     city: "",
     password: "",
+    countryCode: "",
   });
 
-  // State to manage cities for the state selection
-  const [cities, setCities] = useState([]);
-  // State to manage errors
   const [errors, setErrors] = useState({});
 
-  // Toggle password visibility
   const togglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
+    setShowPassword((prev) => !prev);
   };
 
-  // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
-
-    // Update cities based on selected state
-    if (name === "state" && indiaStates[value]) {
-      setCities(indiaStates[value]);
-    }
+      ...(name === "country" ? { state: "", city: "" } : {}),
+      ...(name === "state" ? { city: "" } : {}),
+    }));
   };
 
-  // Validation function
   const verify = () => {
     const newErrors = {};
+    const nameRegex = /^[A-Za-z\s]+$/;
+    const mobileRegex = /^\d{10}$/;
+    const emailRegex = /\S+@\S+\.\S+/;
 
-    if (!formData.firstName.trim())
-      newErrors.firstName = "First Name is required.";
-    if (!formData.lastName.trim())
-      newErrors.lastName = "Last Name is required.";
-    if (!formData.mobile.trim() || !/^\d{10}$/.test(formData.mobile))
+    if (!formData.firstName.trim() || !nameRegex.test(formData.firstName))
+      newErrors.firstName = "Valid First Name is required.";
+    if (!formData.lastName.trim() || !nameRegex.test(formData.lastName))
+      newErrors.lastName = "Valid Last Name is required.";
+    if (!formData.mobile.trim() || !mobileRegex.test(formData.mobile))
       newErrors.mobile = "Mobile must be a valid 10-digit number.";
-    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email))
+    if (!formData.email.trim() || !emailRegex.test(formData.email))
       newErrors.email = "Email must be valid.";
     if (!formData.dateOfBirth.trim())
       newErrors.dateOfBirth = "Date of Birth is required.";
+    if (!formData.countryCode.trim())
+      newErrors.countryCode = "Country Code is required.";
     if (!formData.gender.trim()) newErrors.gender = "Gender is required.";
     if (!formData.country.trim()) newErrors.country = "Country is required.";
     if (!formData.state.trim()) newErrors.state = "State is required.";
@@ -74,25 +73,56 @@ function Register() {
       newErrors.password = "Password must be at least 6 characters.";
 
     setErrors(newErrors);
+    console.log("newweerrrioor", newErrors);
     return Object.keys(newErrors).length === 0;
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validate form inputs (assumes `verify` is a function for validation)
     if (verify()) {
-      const route = "signup";
-      console.log("Form Data Submitted:", formData);
       try {
-        await register(route, formData);
-        navigate("/home"); // Calls the `register` from `AuthProvider`
+        console.log(formData);
+        await register("signup", formData);
+        navigate("/home");
       } catch (error) {
         console.error("Error during registration:", error);
       }
-    } else {
-      console.log("Form has errors:", errors);
     }
   };
+
+  useEffect(() => {
+    setCountries(Country.getAllCountries());
+  }, []);
+
+  useEffect(() => {
+    if (formData.country) {
+      const selectedCountry = countries.find(
+        (c) => c.name === formData.country
+      );
+      if (selectedCountry) {
+        setStates(State.getStatesOfCountry(selectedCountry.isoCode));
+      }
+    } else {
+      setStates([]);
+      setCities([]);
+    }
+  }, [formData.country, countries]);
+
+  useEffect(() => {
+    if (formData.state) {
+      const selectedState = states.find((s) => s.name === formData.state);
+      if (selectedState) {
+        setCities(
+          City.getCitiesOfState(
+            selectedState.countryCode,
+            selectedState.isoCode
+          )
+        );
+      }
+    } else {
+      setCities([]);
+    }
+  }, [formData.state, states]);
 
   return (
     <>
@@ -142,15 +172,44 @@ function Register() {
             <div className="form-group">
               <div>
                 <label>Mobile</label>
-                <input
-                  type="text"
-                  name="mobile"
-                  value={formData.mobile}
-                  onChange={handleChange}
-                  placeholder="Enter Mobile"
-                  className="input-field"
-                />
-                {errors.mobile && <p className="error-text">{errors.mobile}</p>}
+                <div className="d-flex">
+                  <select
+                    className="input-field w-25 p-0"
+                    id="countryCode"
+                    name="countryCode"
+                    aria-label="Country code"
+                    value={formData.countryCode}
+                    onChange={handleChange}
+                  >
+                    <option value="+1">+1(USA)</option>
+                    <option value="+44">+44(UK)</option>
+                    <option value="+91">+91(India)</option>
+                    <option value="+61">+61(Australia)</option>
+                    <option value="+81">+81(Japan)</option>
+                    <option value="+49">+49(Germany)</option>
+                    <option value="+33">+33(France)</option>
+                    <option value="+39">+39(Italy)</option>
+                    <option value="+55">+55(Brazil)</option>
+                    <option value="+7">+7(Russia)</option>
+                    <option value="+86">+86(China)</option>
+                    <option value="+971">+971(UAE)</option>
+                  </select>
+                  <input
+                    type="text"
+                    name="mobile"
+                    value={formData.mobile}
+                    onChange={handleChange}
+                    placeholder="Enter Mobile"
+                    className="input-field w-75"
+                  />
+
+                  {errors.mobile && (
+                    <p className="error-text">{errors.mobile}</p>
+                  )}
+                  {errors.countryCode && (
+                    <p className="error-text">{errors.countryCode}</p>
+                  )}
+                </div>
               </div>
               <div>
                 <label>Email</label>
@@ -197,7 +256,10 @@ function Register() {
               </div>
             </div>
 
-            <div className="form-group">
+            {/* <div
+              className="d-flex flex-sm-row flex-column"
+              style={{ gap: "1rem" }}
+            >
               <div>
                 <label>Country</label>
                 <select
@@ -207,7 +269,11 @@ function Register() {
                   className="input-field"
                 >
                   <option value="">Select Country</option>
-                  <option value="India">India</option>
+                  {countries.map((country) => (
+                    <option key={country.name} value={country.name}>
+                      {country.name}
+                    </option>
+                  ))}
                 </select>
                 {errors.country && (
                   <p className="error-text">{errors.country}</p>
@@ -222,12 +288,11 @@ function Register() {
                   className="input-field"
                 >
                   <option value="">Select State</option>
-                  {formData.country === "India" &&
-                    Object.keys(indiaStates).map((state) => (
-                      <option key={state} value={state}>
-                        {state}
-                      </option>
-                    ))}
+                  {states.map((state) => (
+                    <option key={state.name} value={state.name}>
+                      {state.name}
+                    </option>
+                  ))}
                 </select>
                 {errors.state && <p className="error-text">{errors.state}</p>}
               </div>
@@ -240,12 +305,70 @@ function Register() {
                   className="input-field"
                 >
                   <option value="">Select City</option>
-                  {cities.length > 0 &&
-                    cities.map((city) => (
-                      <option key={city} value={city}>
-                        {city}
-                      </option>
-                    ))}
+                  {cities.map((city) => (
+                    <option key={city.name} value={city.name}>
+                      {city.name}
+                    </option>
+                  ))}
+                </select>
+                {errors.city && <p className="error-text">{errors.city}</p>}
+              </div>
+            </div> */}
+
+            <div
+              className="d-flex flex-sm-row flex-column"
+              style={{ gap: "1rem" }}
+            >
+              <div style={{ flexGrow: 1 }}>
+                <label>Country</label>
+                <select
+                  name="country"
+                  value={formData.country}
+                  onChange={handleChange}
+                  className="input-field"
+                >
+                  <option value="">Select Country</option>
+                  {countries.map((country) => (
+                    <option key={country.name} value={country.name}>
+                      {country.name}
+                    </option>
+                  ))}
+                </select>
+                {errors.country && (
+                  <p className="error-text">{errors.country}</p>
+                )}
+              </div>
+              <div style={{ flexGrow: 1 }}>
+                <label>State</label>
+                <select
+                  name="state"
+                  value={formData.state}
+                  onChange={handleChange}
+                  className="input-field"
+                >
+                  <option value="">Select State</option>
+                  {states.map((state) => (
+                    <option key={state.name} value={state.name}>
+                      {state.name}
+                    </option>
+                  ))}
+                </select>
+                {errors.state && <p className="error-text">{errors.state}</p>}
+              </div>
+              <div style={{ flexGrow: 1 }}>
+                <label>City</label>
+                <select
+                  name="city"
+                  value={formData.city}
+                  onChange={handleChange}
+                  className="input-field"
+                >
+                  <option value="">Select City</option>
+                  {cities.map((city) => (
+                    <option key={city.name} value={city.name}>
+                      {city.name}
+                    </option>
+                  ))}
                 </select>
                 {errors.city && <p className="error-text">{errors.city}</p>}
               </div>
@@ -282,7 +405,7 @@ function Register() {
               </div>
             </div>
 
-            <button type="submit" className="submit-btn">
+            <button type="submit" className="submit-btn" onClick={handleSubmit}>
               SIGNUP NOW
             </button>
             {message && <p className="error-text">{message}</p>}

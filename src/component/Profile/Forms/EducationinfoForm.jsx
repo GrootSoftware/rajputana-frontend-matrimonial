@@ -2,7 +2,6 @@ import React from "react";
 import style from "./Form.module.css";
 import { MdOutlineCancelPresentation } from "react-icons/md";
 
-
 function EducationinfoForm({
   handleCancelClick,
   handleInputChange,
@@ -124,7 +123,7 @@ function EducationinfoForm({
                 id="hobbies"
                 name="hobbies"
                 placeholder="Enter hobbies (Dot separated)"
-                value={formData.hobbies.join("' ")}
+                value={formData.hobbies.join(",")}
                 onChange={handleInputChange}
               />
 

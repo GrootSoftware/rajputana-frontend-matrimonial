@@ -14,12 +14,13 @@ function ReligiousDetails() {
     birthHour: "",
     birthMinute: "",
     birthTimePeriod: "",
+    dateOfBirth: "",
     birthplace: "",
     birthCity: "",
     birthState: "",
     birthCountry: "",
     maglik: "",
-    religion: "",
+    // religion: "",
     clan: "",
     subclan: "",
     gotra: "",
@@ -32,6 +33,7 @@ function ReligiousDetails() {
       var route = "get-religiondetails";
       var userData = await fetchUserData(route);
       setDetails({
+        dateOfBirth: userData.dateOfBirth || "",
         birthHour: userData.birthHour || "",
         birthMinute: userData.birthMinute || "",
         birthTimePeriod: userData.birthTimePeriod || "",
@@ -59,6 +61,11 @@ function ReligiousDetails() {
       const numericValue =
         value.slice(0, 2).replace(/[^0-9]/g, "") + value.slice(2);
       setFormData({ ...formData, [name]: numericValue });
+    } else if (name === "dateOfBirth") {
+      const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+      if (dateRegex.test(value) || value === "") {
+        setFormData({ ...formData, [name]: value });
+      }
     } else if (name === "additionalInfo") {
       const validValue = value.replace(/[^a-zA-Z.,'"() ]/g, "").slice(0, 25);
       setFormData({ ...formData, [name]: validValue });

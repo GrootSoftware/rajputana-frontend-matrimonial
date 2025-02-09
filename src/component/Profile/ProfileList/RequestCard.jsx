@@ -21,9 +21,9 @@ const RequestCard = ({
   profile,
   status,
   handlecheck,
-  fetchData,
   activeTab,
   ProfileImagerender,
+  fetchData,
 }) => {
   const [showMessageCard, setShowMessageCard] = useState(false);
   const openMessageCard = () => setShowMessageCard(true);

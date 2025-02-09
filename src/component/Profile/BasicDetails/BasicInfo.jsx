@@ -5,6 +5,7 @@ import FormCard from "../Forms/FormCard";
 import { FaRegEdit, FaUsersSlash } from "react-icons/fa";
 import { useAuth } from "../../Layout/AuthContext";
 
+
 function BasicInfo() {
   const { fetchUserData, updateData } = useAuth();
   const [details, setDetails] = useState({
@@ -18,6 +19,7 @@ function BasicInfo() {
     weight: "",
     maritalStatus: "",
     additionalInfo: "",
+    countryCode: "",
   });
 
   const [isEditing, setIsEditing] = useState(false);
@@ -66,6 +68,7 @@ function BasicInfo() {
         weight: userData.weight || "",
         maritalStatus: userData.maritalStatus || "",
         additionalInfo: userData.additionalInfo || "",
+        countryCode: userData.countryCode || "",
       });
     } catch (error) {
       console.error("Error fetching data:", error.message);
@@ -86,29 +89,48 @@ function BasicInfo() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if (name === "weight") {
-      let numericValue = value.replace(/[^0-9]/g, "");
-      let regex = /^[0-9]{1,3}$/;
-      if (regex.test(numericValue) || value=="") {
-        setFormData({ ...formData, [name]: numericValue });
-      }
-    } else {
-      const validValue = value.replace(/[^a-zA-Z.,'"() ]/g, "").slice(0, 25);
+    let validValue = value;
 
-      if (name === "heightFeet" || name === "heightInch") {
-        setFormData({
-          ...formData,
-          height: {
-            ...formData.height,
-            [name === "heightFeet" ? "feet" : "inches"]:
-              parseInt(value, 10) || 0,
-          },
-        });
-      } else {
-        setFormData({ ...formData, [name]: validValue });
-      }
+    const nameRegex = /^[a-zA-Z\s]{0,25}$/;
+    const mobileRegex = /^[0-9]{0,10}$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    const weightRegex = /^[0-9]{0,3}$/;
+    const heightRegex = /^[0-9]{0,2}$/;
+    const additionalInfoRegex = /^[a-zA-Z0-9.,'"() ]{0,100}$/;
+    const countryCodeRegex = /^\+\d{1,4}$/; // Allows + followed by 1 to 4 digits
+
+    if (
+      ["firstName", "middleName", "lastName", "maritalStatus"].includes(name)
+    ) {
+      if (!nameRegex.test(value)) return;
+    } else if (name === "mobile") {
+      if (!mobileRegex.test(value)) return;
+    } else if (name === "email") {
+      if (value && !emailRegex.test(value)) return;
+    } else if (name === "dateOfBirth") {
+      if (value && !dateRegex.test(value)) return;
+    } else if (name === "weight") {
+      if (!weightRegex.test(value)) return;
+    } else if (name === "additionalInfo") {
+      if (!additionalInfoRegex.test(value)) return;
+    } else if (name === "heightFeet" || name === "heightInch") {
+      if (!heightRegex.test(value)) return;
+      setFormData({
+        ...formData,
+        height: {
+          ...formData.height,
+          [name === "heightFeet" ? "feet" : "inches"]:
+            parseInt(value, 10) || "",
+        },
+      });
+      return;
+    } else if (name === "countryCode") {
+      if (!countryCodeRegex.test(value)) return;
     }
-  }
+
+    setFormData({ ...formData, [name]: validValue });
+  };
 
   const handleEditClick = () => {
     setIsEditing(true);

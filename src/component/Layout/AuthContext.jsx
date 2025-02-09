@@ -6,6 +6,7 @@ const AuthContext = createContext();
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export const AuthProvider = ({ children }) => {
+  const [userId, setuserId] = useState("");
   const [message, setMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
@@ -34,7 +35,9 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (route, data) => {
     try {
+      console.log(data);
       const response = await axios.post(`${BASE_URL}/${route}`, data);
+      console.log(response.data);
       const { message, token } = response.data;
       setMessage(message);
       if (token) {

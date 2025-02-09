@@ -1,6 +1,5 @@
 import React from "react";
 import style from "./Form.module.css";
-import indiaStates from "../../../features/state";
 import { MdOutlineCancelPresentation } from "react-icons/md";
 
 function FormCard({
@@ -40,7 +39,7 @@ function FormCard({
                   name="firstName"
                   placeholder="Enter Name"
                   value={formData.firstName}
-                  readOnly
+                  onChange={handleInputChange}
                 />
               </div>
 
@@ -69,8 +68,8 @@ function FormCard({
                   id="lastName"
                   name="lastName"
                   placeholder="Enter Name"
-                  value={formData.lastName}
-                  readOnly
+                  value={formData.lastName || ""}
+                  onChange={handleInputChange}
                 />
               </div>
             </div>
@@ -87,7 +86,6 @@ function FormCard({
                   name="dateOfBirth"
                   value={formData.dateOfBirth}
                   onChange={handleInputChange}
-                  readOnly
                 />
               </div>
             </div>
@@ -102,10 +100,21 @@ function FormCard({
                     id="countryCode"
                     name="countryCode"
                     aria-label="Country code"
-                    value={formData.countryCode || "+91"}
+                    value={formData.countryCode || ""}
                     onChange={handleInputChange}
                   >
-                    <option value="+91">+91</option>
+                    <option value="+1">+1 (USA)</option>
+                    <option value="+44">+44 (UK)</option>
+                    <option value="+91">+91 (India)</option>
+                    <option value="+61">+61 (Australia)</option>
+                    <option value="+81">+81 (Japan)</option>
+                    <option value="+49">+49 (Germany)</option>
+                    <option value="+33">+33 (France)</option>
+                    <option value="+39">+39 (Italy)</option>
+                    <option value="+55">+55 (Brazil)</option>
+                    <option value="+7">+7 (Russia)</option>
+                    <option value="+86">+86 (China)</option>
+                    <option value="+971">+971 (UAE)</option>
                   </select>
                   <input
                     type="text"
@@ -115,7 +124,7 @@ function FormCard({
                     aria-label="Mobile number"
                     style={{ width: "65%" }}
                     value={formData.mobile || ""}
-                    readOnly
+                    onChange={handleInputChange}
                   />
                 </div>
               </div>
@@ -131,7 +140,7 @@ function FormCard({
                   name="email"
                   placeholder="Enter email"
                   value={formData.email || ""}
-                  readOnly
+                  onChange={handleInputChange}
                 />
               </div>
 

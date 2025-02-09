@@ -154,7 +154,6 @@ const ReligionForm = ({
               />
             </div>
 
-            {/* Country, State, City Dropdowns */}
             <div className="row mb-3">
               {/* Birth Country */}
               <div className="col-md-4">
@@ -225,7 +224,7 @@ const ReligionForm = ({
                   onChange={(e) => {
                     setFormData({
                       ...formData,
-                      birthCity: e.target.value, // Store city name
+                      birthCity: e.target.value, 
                     });
                   }}
                   disabled={!formData.birthState}
@@ -236,6 +235,36 @@ const ReligionForm = ({
                       {city.name}
                     </option>
                   ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="row mb-3">
+              {/* Birth Country */}
+              <div className="col-12">
+                <label htmlFor="" className="form-label">
+                  Manglik
+                </label>
+                <select
+                  className="form-select rounded-0"
+                  id="maglik"
+                  name="maglik"
+                  value={formData.maglik || ""}
+                  onChange={(e) => {
+                    setFormData({
+                      ...formData,
+                      maglik: e.target.value,
+                    });
+                  }}
+                >
+                  <option value="">Select Manglik</option>
+
+                  <option key={1} value="Yes">
+                    Yes
+                  </option>
+                  <option key={2} value="No">
+                    No
+                  </option>
                 </select>
               </div>
             </div>

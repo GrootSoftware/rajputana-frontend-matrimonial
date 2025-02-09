@@ -73,10 +73,11 @@ const Navbar = () => {
               </li>
               <li>
                 <Link onClick={logout}>
-                  <icon>
+                  Logout
+                  {/* <icon>
                     <FaSignOutAlt style={{ scale: "1.1" }} />
                   </icon>
-                  <span>Logout</span>
+                  <span>Logout</span> */}
                 </Link>
               </li>
             </>

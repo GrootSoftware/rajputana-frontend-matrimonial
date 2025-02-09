@@ -11,92 +11,6 @@ import { useAuth } from "../../Layout/AuthContext";
 import styles from "./RequestCard.module.css";
 import pro from "../../../assets/images/blurimage.png";
 
-export function InterestImageContainer({ profile }) {
-  const { updateData } = useAuth();
-
-  const handlePhotoReq = async (profileId) => {
-    try {
-      let route = "profile/photoRequest";
-      await updateData(route, profileId);
-    } catch (error) {
-      console.error("Error sending photo request:", error);
-    }
-  };
-
-  if (!profile?.filesId?.photos || profile?.filesId?.photos.length === 0) {
-    return (
-      <div
-        className="image-container"
-        style={{ position: "relative", width: "100%", height: "14rem" }}
-      >
-        <img
-          src={pro}
-          className="img-fluid m-auto"
-          alt="Profile"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "top",
-          }}
-        />
-        <div
-          className={styles.vipSection}
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            textAlign: "center",
-          }}
-        >
-          <p className="m-0 mb-1">Send request for photos</p>
-          <button
-            className={styles.ctaButton}
-            onClick={() => handlePhotoReq(profile?._id)}
-          >
-            Request now
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "14rem",
-        overflow: "hidden",
-      }}
-    >
-      {profile?.filesId?.photos?.map((photo, index) => (
-        <img
-          key={photo._id}
-          src={photo.url}
-          className={`img-fluid m-auto ${
-            index === 0 ? "visible-image" : "hidden-image"
-          }`}
-          alt="Profile"
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "top",
-            zIndex: index === 0 ? 1 : 0,
-            opacity: index === 0 ? 1 : 0,
-            transition: "opacity 0.5s ease",
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
 function MyInterest() {
   const [activeTab, setActiveTab] = useState("requestSent");
   const { fetchUserData } = useAuth();
@@ -107,9 +21,9 @@ function MyInterest() {
   const [sortCriteria, setSortCriteria] = useState("");
   const [sortDirection, setSortDirection] = useState("asc");
   const [statusFilter, setStatusFilter] = useState("all");
-
   const profilesPerPage = 4;
   const [currentPage, setCurrentPage] = useState(1);
+  const [refreshKey, setRefreshKey] = useState(0);
   const totalPages = Math.ceil(profiles?.length / profilesPerPage);
 
   const getProfilesForCurrentPage = () => {
@@ -129,17 +43,19 @@ function MyInterest() {
     setCurrentPage(page);
   };
 
+  const refreshData = () => {
+    setRefreshKey((prevKey) => prevKey + 1);
+  };
+
   const fetchData = async () => {
     try {
       setLoading(true);
       setError(null);
       const route = "profile/myrequests";
       const fetchedData = await fetchUserData(route);
-
       if (!fetchedData || !fetchedData.reqSent || !fetchedData.reqReceived) {
         throw new Error("Invalid data format");
       }
-
       setData(fetchedData);
       setProfiles(fetchedData.reqSent);
     } catch (err) {
@@ -149,8 +65,6 @@ function MyInterest() {
       setLoading(false);
     }
   };
-
-
 
   const calculateAge = (dob) => {
     if (!dob) return 0;
@@ -202,7 +116,6 @@ function MyInterest() {
         return 0;
       });
     }
-
     setProfiles(filteredProfiles);
   };
 
@@ -212,9 +125,96 @@ function MyInterest() {
     setCurrentPage(1);
   };
 
+  function InterestImageContainer({ profile, fetchData }) {
+    const { updateData } = useAuth();
+
+    const handlePhotoReq = async (profileId) => {
+      try {
+        let route = "profile/photoRequest";
+        await updateData(route, profileId);
+        await fetchData();
+      } catch (error) {
+        console.error("Error sending photo request:", error);
+      }
+    };
+
+    if (!profile?.filesId?.photos || profile?.filesId?.photos.length === 0) {
+      return (
+        <div
+          className="image-container"
+          style={{ position: "relative", width: "100%", height: "14rem" }}
+        >
+          <img
+            src={pro}
+            className="img-fluid m-auto"
+            alt="Profile"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "top",
+            }}
+          />
+          <div
+            className={styles.vipSection}
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+            }}
+          >
+            <p className="m-0 mb-1">Send request for photos</p>
+            <button
+              className={styles.ctaButton}
+              onClick={() => handlePhotoReq(profile?._id)}
+            >
+              Request now
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "14rem",
+          overflow: "hidden",
+        }}
+      >
+        {profile?.filesId?.photos?.map((photo, index) => (
+          <img
+            key={photo._id}
+            src={photo.url}
+            className={`img-fluid m-auto ${
+              index === 0 ? "visible-image" : "hidden-image"
+            }`}
+            alt="Profile"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "top",
+              zIndex: index === 0 ? 1 : 0,
+              opacity: index === 0 ? 1 : 0,
+              transition: "opacity 0.5s ease",
+            }}
+          />
+        ))}
+      </div>
+    );
+  }
+
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [refreshKey]);
 
   if (loading) {
     return <div className="profileContainer">Loading...</div>;

@@ -18,9 +18,10 @@ function FormCard({
         <div className={style.modalHeader}>
           <h4 className={style.headerTitle}>Basic Details</h4>
           <div>
-            <MdOutlineCancelPresentation
+          <MdOutlineCancelPresentation
               onClick={handleCancelClick}
               className={style.closeIcon}
+              size="22"
             />
           </div>
         </div>

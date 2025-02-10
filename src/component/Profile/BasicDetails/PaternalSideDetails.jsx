@@ -39,6 +39,7 @@ function PaternalSideDetails() {
     grandmotherthikana: "",
     badePapa: [{ name: "", marriedto: "", daughterof: "", thikana: "" }],
     kakosa: [{ name: "", marriedto: "", daughterof: "", thikana: "" }],
+    bhuasa: [{ name: "", marriedto: "", sonof: "", thikana: "" }],
     maternalGrandFatherName: "",
     maternalGrandFatherthikana: "",
     maternalGrandFathersonOf: "",
@@ -85,8 +86,8 @@ function PaternalSideDetails() {
   const handleInputChange = (e, index, arrayName) => {
     const { name, value } = e.target;
 
-    const nameRegex = /^[a-zA-Z\s]{0,20}$/;
-    const placeRegex = /^[a-zA-Z\s,.'-]{0,20}$/;
+    const nameRegex = /^[a-zA-Z\s]{0,25}$/;
+    const placeRegex = /^[a-zA-Z\s,.'-]{0,25}$/;
 
     if (!nameRegex.test(value) && !placeRegex.test(value)) return;
 
@@ -103,10 +104,18 @@ function PaternalSideDetails() {
     const newRow = {
       name: "",
       marriedto: "",
-      ...(arrayName === "masisa" ? { sonof: "" } : { daughterof: "" }),
+      ...(arrayName === "masisa" && "bhuasa"
+        ? { sonof: "" }
+        : { daughterof: "" }),
       thikana: "",
     };
     setFormData({ ...formData, [arrayName]: [...formData[arrayName], newRow] });
+  };
+
+  const removeRow = (arrayName) => {
+    if (formData[arrayName].length === 0) return;
+    const updatedArray = formData[arrayName].slice(0, -1);
+    setFormData({ ...formData, [arrayName]: updatedArray });
   };
 
   const handleEditClick = () => {
@@ -128,7 +137,7 @@ function PaternalSideDetails() {
         <h4 className={style.headerTitle}>Paternal Details</h4>
         {!isEditing ? (
           <div onClick={handleEditClick} className={style.editBtn}>
-            <FaRegEdit />
+            <FaRegEdit size="18" />
           </div>
         ) : (
           <div>
@@ -283,6 +292,7 @@ function PaternalSideDetails() {
                 <>
                   <BadePapaHukum details={details} />
                   <KakosaHukum details={details} />
+                  <BhuasaHukum details={details} />
 
                   {/* Show the next 7 keys */}
                   {Object.keys(details)
@@ -379,6 +389,7 @@ function KakosaHukum({ details }) {
               <th className={`${style.textXs} text-secondary`}>Married to</th>
               <th className={`${style.textXs} text-secondary`}>D/O</th>
               <th className={`${style.textXs} text-secondary`}>Thikana</th>
+             
             </tr>
           </thead>
           <tbody>
@@ -391,6 +402,42 @@ function KakosaHukum({ details }) {
                 <td className={style.textsmValue}>
                   {renderValue(item.daughterof)}
                 </td>
+                <td className={style.textsmValue}>
+                  {renderValue(item.thikana)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+function BhuasaHukum({ details }) {
+  const renderValue = (value) => (value ? value : "Not available");
+
+  return (
+    <div className="mt-4">
+      <div className={`mb-2 ${style.textsmValue}`}>Bhuasa Hukum</div>
+      <div className="table-responsive w-100 mx-auto">
+        <table className="table table-sm">
+          <thead>
+            <tr>
+              <th className={`${style.textSm} text-secondary`}>Name</th>
+              <th className={`${style.textXs} text-secondary`}>Married to</th>
+              <th className={`${style.textXs} text-secondary`}>Son of</th>
+              <th className={`${style.textXs} text-secondary`}>Thikana</th>
+            </tr>
+          </thead>
+          <tbody>
+            {details.masisa.map((item, index) => (
+              <tr key={index} className={style.textSm}>
+                <td className={style.textsmValue}>{renderValue(item.name)}</td>
+                <td className={style.textsmValue}>
+                  {renderValue(item.marriedto)}
+                </td>
+                <td className={style.textsmValue}>{renderValue(item.sonof)}</td>
                 <td className={style.textsmValue}>
                   {renderValue(item.thikana)}
                 </td>
@@ -453,7 +500,7 @@ function MasisaHukum({ details }) {
             <tr>
               <th className={`${style.textSm} text-secondary`}>Name</th>
               <th className={`${style.textXs} text-secondary`}>Married to</th>
-              <th className={`${style.textXs} text-secondary`}>D/O</th>
+              <th className={`${style.textXs} text-secondary`}>Son of</th>
               <th className={`${style.textXs} text-secondary`}>Thikana</th>
             </tr>
           </thead>

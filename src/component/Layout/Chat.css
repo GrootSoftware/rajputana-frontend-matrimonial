@@ -17,10 +17,25 @@
   overflow: hidden;
 }
 
+.chatbodysms {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: clamp(12px, 14px, 16px);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
 .smstextbold {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: clamp(12px, 14px, 16px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .btnstyle {

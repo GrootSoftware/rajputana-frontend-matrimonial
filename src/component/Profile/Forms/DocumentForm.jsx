@@ -19,7 +19,7 @@ const DocumentForm = ({
   selectedOption,
   setSelectedOption,
 }) => {
-  const { updateData } = useAuth();
+  const { updateData, fetchUserData, fetchprofile } = useAuth();
   const [profileImage, setProfileImage] = useState(null);
 
   const options = [
@@ -143,6 +143,7 @@ const DocumentForm = ({
         }
       );
 
+      await fetchprofile();
       if (response.data?.message) {
         toast.success(response.data.message);
       }
@@ -192,6 +193,7 @@ const DocumentForm = ({
           <MdOutlineCancelPresentation
             onClick={handleCancelClick}
             className={style.closeIcon}
+            size="22"
           />
         </div>
 

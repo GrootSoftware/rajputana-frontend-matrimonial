@@ -5,7 +5,6 @@ import FormCard from "../Forms/FormCard";
 import { FaRegEdit, FaUsersSlash } from "react-icons/fa";
 import { useAuth } from "../../Layout/AuthContext";
 
-
 function BasicInfo() {
   const { fetchUserData, updateData } = useAuth();
   const [details, setDetails] = useState({
@@ -152,7 +151,7 @@ function BasicInfo() {
         <h4 className={styles.headerTitle}>Basic Details</h4>
         {!isEditing ? (
           <div onClick={handleEditClick} className={styles.editBtn}>
-            <FaRegEdit /> Edit
+            <FaRegEdit size="18" />
           </div>
         ) : (
           <FormCard

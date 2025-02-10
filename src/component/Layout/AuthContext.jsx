@@ -8,6 +8,9 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 export const AuthProvider = ({ children }) => {
   const [userId, setuserId] = useState("");
   const [message, setMessage] = useState("");
+  const [profile, setProfile] = useState(
+    "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="
+  );
   const [formData, setFormData] = useState({
     name: "",
     minAge: "",
@@ -146,6 +149,24 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const fetchprofile = async () => {
+    try {
+      const route = "profile";
+      const Data = await fetchUserData(route);
+
+      console.log("Fetched profile Data:", JSON.stringify(Data));
+
+      const profileUrl = Data?.userProfile?.url
+        ? Data.userProfile.url
+        : "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=";
+
+      console.log("Constructed Profile URL:", profileUrl);
+      setProfile(profileUrl);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   useEffect(() => {
     if (isAuthenticated) {
       setUserData(fetchUserData("user"));
@@ -159,6 +180,8 @@ export const AuthProvider = ({ children }) => {
         message,
         userData,
         formData,
+        profile,
+        fetchprofile,
         setUserData,
         setFormData,
         updateData,

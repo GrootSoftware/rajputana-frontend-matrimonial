@@ -106,7 +106,29 @@ export function ContactForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    let updatedValue = value.trimStart();
+
+    const nameRegex = /^[a-zA-Z]*$/;
+    const mobileRegex = /^\d*$/;
+    const additionalInfoRegex = /^[a-zA-Z\s,.]*$/;
+
+    switch (name) {
+      case "firstName":
+      case "lastName":
+        if (!nameRegex.test(value)) return;
+        break;
+
+      case "mobile":
+        if (!mobileRegex.test(value)) return;
+        break;
+      case "additionalInfo":
+        if (!additionalInfoRegex.test(value)) return;
+        break;
+      default:
+        break;
+    }
+
+    setFormData((prevData) => ({ ...prevData, [name]: updatedValue }));
     setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 

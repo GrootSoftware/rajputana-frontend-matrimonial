@@ -17,6 +17,7 @@ function EducationinfoForm({
             <MdOutlineCancelPresentation
               onClick={handleCancelClick}
               className={style.closeIcon}
+              size="22"
             />
           </div>
         </div>
@@ -159,6 +160,8 @@ function EducationinfoForm({
                 <option value="Working">Working</option>
                 <option value="Service">Service</option>
                 <option value="Private">Private</option>
+                <option value="Royalty">Royalty</option>
+                <option value="Political">Political</option>
                 <option value="Others">Others</option>
               </select>
             </div>

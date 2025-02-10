@@ -15,10 +15,35 @@ function Banner() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    let updatedValue = value.trimStart();
+
+    const nameRegex = /^[a-zA-Z\s]*$/;
+    const occupationRegex = /^[a-zA-Z\s]*$/;
+    const numberRegex = /^\d*$/;
+
+    switch (name) {
+      case "name":
+        if (numberRegex.test(value) || nameRegex.test(value)) {
+          updatedValue = value;
+        } else {
+          return;
+        }
+        break;
+
+      case "gender":
+        if (!occupationRegex.test(value)) return;
+        break;
+
+      case "minAge":
+      case "maxAge":
+        if (!numberRegex.test(value)) return;
+        break;
+
+      default:
+        break;
+    }
+
+    setFormData({ ...formData, [name]: updatedValue });
   };
 
   const handleSubmit = async (e) => {

@@ -19,6 +19,7 @@ function PaternalfamilyinfoForm({
             <MdOutlineCancelPresentation
               onClick={handleCancelClick}
               className={style.closeIcon}
+              size="22"
             />
           </div>
         </div>
@@ -118,7 +119,7 @@ function PaternalfamilyinfoForm({
                   id="grandmotherthikana"
                   name="grandmotherthikana"
                   className="form-control"
-                  placeholder="grand Mother Thikana"
+                  placeholder=""
                   aria-label="Thikana"
                   value={formData.grandmotherthikana}
                   onChange={handleInputChange}
@@ -137,7 +138,7 @@ function PaternalfamilyinfoForm({
                       id={`name-${index}`}
                       name="name"
                       className="form-control"
-                      placeholder="Late Maharaj Maan Singh Ji Jhala"
+                      placeholder=""
                       aria-label="name"
                       value={item.name || ""}
                       onChange={(e) => handleInputChange(e, index, "badePapa")}
@@ -150,7 +151,7 @@ function PaternalfamilyinfoForm({
                       id={`marriedto-${index}`}
                       name="marriedto"
                       className="form-control"
-                      placeholder="Hans Kunwar"
+                      placeholder=""
                       aria-label="marriedto"
                       value={item.marriedto || ""}
                       onChange={(e) => handleInputChange(e, index, "badePapa")}
@@ -163,7 +164,7 @@ function PaternalfamilyinfoForm({
                       id={`daughterof-${index}`}
                       name="daughterof"
                       className="form-control"
-                      placeholder="Mj. Thakur Chawand Singh"
+                      placeholder=""
                       aria-label="daughterof"
                       value={item.daughterof || ""}
                       onChange={(e) => handleInputChange(e, index, "badePapa")}
@@ -176,7 +177,7 @@ function PaternalfamilyinfoForm({
                       id={`thikana-${index}`}
                       name="thikana"
                       className="form-control"
-                      placeholder="Gyangarh, Mewar"
+                      placeholder=""
                       aria-label="thikana"
                       value={item.thikana || ""}
                       onChange={(e) => handleInputChange(e, index, "badePapa")}
@@ -208,7 +209,7 @@ function PaternalfamilyinfoForm({
                       id={`kakosa-name-${index}`}
                       name="name"
                       className="form-control"
-                      placeholder="Late Maharaj Maan Singh Ji Jhala"
+                      placeholder=""
                       aria-label="name"
                       value={item.name || ""}
                       onChange={(e) => handleInputChange(e, index, "kakosa")}
@@ -223,7 +224,7 @@ function PaternalfamilyinfoForm({
                       id={`kakosa-marriedto-${index}`}
                       name="marriedto"
                       className="form-control"
-                      placeholder="Hans Kunwar"
+                      placeholder=""
                       aria-label="marriedto"
                       value={item.marriedto || ""}
                       onChange={(e) => handleInputChange(e, index, "kakosa")}
@@ -238,7 +239,7 @@ function PaternalfamilyinfoForm({
                       id={`kakosa-daughterof-${index}`}
                       name="daughterof"
                       className="form-control"
-                      placeholder="Mj. Thakur Chawand Singh"
+                      placeholder=""
                       aria-label="daughterof"
                       value={item.daughterof || ""}
                       onChange={(e) => handleInputChange(e, index, "kakosa")}
@@ -251,7 +252,7 @@ function PaternalfamilyinfoForm({
                       id={`kakosa-thikana-${index}`}
                       name="thikana"
                       className="form-control"
-                      placeholder="Gyangarh, Mewar"
+                      placeholder=""
                       aria-label="thikana"
                       value={item.thikana || ""}
                       onChange={(e) => handleInputChange(e, index, "kakosa")}
@@ -264,6 +265,79 @@ function PaternalfamilyinfoForm({
                   <span
                     className="custom-add"
                     onClick={() => handleAddRow("kakosa")}
+                    style={{ cursor: "pointer" }}
+                  >
+                    + ADD
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <label>All Bhuasa</label>
+            <div className="mt-2 p-3" style={{ backgroundColor: "wheat" }}>
+              {formData.bhuasa?.map((item, index) => (
+                <div key={index} className="row">
+                  <div className="col-md-4">
+                    <label htmlFor={`bhuasa-name-${index}`}>Bhuasa</label>
+                    <input
+                      type="text"
+                      id={`bhuasa-name-${index}`}
+                      name="name"
+                      className="form-control"
+                      placeholder=""
+                      aria-label="name"
+                      value={item.name || ""}
+                      onChange={(e) => handleInputChange(e, index, "bhuasa")}
+                    />
+                  </div>
+                  <div className="col-md-4">
+                    <label htmlFor={`kakosa-marriedto-${index}`}>
+                      Married To
+                    </label>
+                    <input
+                      type="text"
+                      id={`bhuasa-marriedto-${index}`}
+                      name="marriedto"
+                      className="form-control"
+                      placeholder=""
+                      aria-label="marriedto"
+                      value={item.marriedto || ""}
+                      onChange={(e) => handleInputChange(e, index, "bhuasa")}
+                    />
+                  </div>
+                  <div className="col-md-4">
+                    <label htmlFor={`bhuasa-daughterof-${index}`}>son of</label>
+                    <input
+                      type="text"
+                      id={`bhuasa-sonof-${index}`}
+                      name="sonof"
+                      className="form-control"
+                      placeholder=""
+                      aria-label="sonof"
+                      value={item.sonof || ""}
+                      onChange={(e) => handleInputChange(e, index, "bhuasa")}
+                    />
+                  </div>
+                  <div className="col-md-4">
+                    <label htmlFor={`bhuasa-thikana-${index}`}>Thikana</label>
+                    <input
+                      type="text"
+                      id={`bhuasa-thikana-${index}`}
+                      name="thikana"
+                      className="form-control"
+                      placeholder=""
+                      aria-label="thikana"
+                      value={item.thikana || ""}
+                      onChange={(e) => handleInputChange(e, index, "bhuasa")}
+                    />
+                  </div>
+                </div>
+              ))}
+              <div className="row">
+                <div className="col-12 text-end text-danger">
+                  <span
+                    className="custom-add"
+                    onClick={() => handleAddRow("bhuasa")}
                     style={{ cursor: "pointer" }}
                   >
                     + ADD
@@ -408,7 +482,7 @@ function PaternalfamilyinfoForm({
                       id={`mamosa-name-${index}`}
                       name="name"
                       className="form-control"
-                      placeholder="Late Maharaj Maan Singh Ji Jhala"
+                      placeholder=""
                       aria-label="name"
                       value={item.name || ""}
                       onChange={(e) => handleInputChange(e, index, "mamosa")}
@@ -423,7 +497,7 @@ function PaternalfamilyinfoForm({
                       id={`mamosa-marriedto-${index}`}
                       name="marriedto"
                       className="form-control"
-                      placeholder="Hans Kunwar"
+                      placeholder=""
                       aria-label="marriedto"
                       value={item.marriedto || ""}
                       onChange={(e) => handleInputChange(e, index, "mamosa")}
@@ -483,7 +557,7 @@ function PaternalfamilyinfoForm({
                       id={`masisa-name-${index}`}
                       name="name"
                       className="form-control"
-                      placeholder="Lt Maharaj"
+                      placeholder=""
                       aria-label="name"
                       value={item.name || ""}
                       onChange={(e) => handleInputChange(e, index, "masisa")}
@@ -498,24 +572,22 @@ function PaternalfamilyinfoForm({
                       id={`masisa-marriedto-${index}`}
                       name="marriedto"
                       className="form-control"
-                      placeholder="Hans Kunwar"
+                      placeholder=""
                       aria-label="marriedto"
                       value={item.marriedto || ""}
                       onChange={(e) => handleInputChange(e, index, "masisa")}
                     />
                   </div>
                   <div className="col-md-4">
-                    <label htmlFor={`masisa-daughterof-${index}`}>
-                      Daughter Of
-                    </label>
+                    <label htmlFor={`masisa-daughterof-${index}`}>Son Of</label>
                     <input
                       type="text"
-                      id={`masisa-daughterof-${index}`}
-                      name="daughterof"
+                      id={`masisa-sonof-${index}`}
+                      name="sonof"
                       className="form-control"
-                      placeholder="Mj. Thakur Chawand Singh"
-                      aria-label="daughterof"
-                      value={item.daughterof || ""}
+                      placeholder=""
+                      aria-label="sonof"
+                      value={item.sonof || ""}
                       onChange={(e) => handleInputChange(e, index, "masisa")}
                     />
                   </div>
@@ -526,7 +598,7 @@ function PaternalfamilyinfoForm({
                       id={`masisa-thikana-${index}`}
                       name="thikana"
                       className="form-control"
-                      placeholder="Gyangarh, Mewar"
+                      placeholder=""
                       aria-label="thikana"
                       value={item.thikana || ""}
                       onChange={(e) => handleInputChange(e, index, "masisa")}

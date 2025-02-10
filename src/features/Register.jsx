@@ -29,6 +29,7 @@ function Register() {
     city: "",
     password: "",
     countryCode: "",
+    profilefor: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -50,6 +51,7 @@ function Register() {
   const verify = () => {
     const newErrors = {};
     const nameRegex = /^[A-Za-z\s]+$/;
+    const stringRegex = /^[A-Za-z\s]+$/;
     const mobileRegex = /^\d{10}$/;
     const emailRegex = /\S+@\S+\.\S+/;
 
@@ -57,6 +59,9 @@ function Register() {
       newErrors.firstName = "Valid First Name is required.";
     if (!formData.lastName.trim() || !nameRegex.test(formData.lastName))
       newErrors.lastName = "Valid Last Name is required.";
+    if (!formData.profilefor.trim() || !stringRegex.test(formData.profilefor))
+      newErrors.profilefor = "Valid profile for is required.";
+
     if (!formData.mobile.trim() || !mobileRegex.test(formData.mobile))
       newErrors.mobile = "Mobile must be a valid 10-digit number.";
     if (!formData.email.trim() || !emailRegex.test(formData.email))
@@ -227,7 +232,7 @@ function Register() {
 
             <div className="form-group">
               <div>
-                <label>Birth Date</label>
+                <label>Date of Birth</label>
                 <input
                   type="date"
                   name="dateOfBirth"
@@ -250,7 +255,6 @@ function Register() {
                   <option value="">Select Gender</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
-                  <option value="Other">Other</option>
                 </select>
                 {errors.gender && <p className="error-text">{errors.gender}</p>}
               </div>
@@ -371,6 +375,30 @@ function Register() {
                   ))}
                 </select>
                 {errors.city && <p className="error-text">{errors.city}</p>}
+              </div>
+            </div>
+
+            <div className="form-group">
+              <div>
+                <label className="mt-4">Profile is for whom?</label>
+                <select
+                  name="profilefor"
+                  value={formData.profilefor}
+                  onChange={handleChange}
+                  className="input-field"
+                >
+                  <option value="">Select Option</option>
+                  <option value="Myself">Myself</option>
+                  <option value="My Brother">My Son</option>{" "}
+                  <option value="My Brother">My Daughter</option>{" "}
+                  <option value="My Brother">My Brother</option>{" "}
+                  <option value="My Brother">My Sister</option>
+                  <option value="My Brother">My Friend</option>
+                  <option value="My Daughter">My Relative</option>
+                </select>
+                {errors.firstName && (
+                  <p className="error-text">{errors.firstName}</p>
+                )}
               </div>
             </div>
 

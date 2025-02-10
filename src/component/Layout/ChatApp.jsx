@@ -190,18 +190,28 @@ const ChatApp = () => {
             </Link>{" "}
             <AiOutlineRight /> {" Success Stories"}
           </div>
-          <section className="container-fluid bg-white">
-            <div className="row p-0">
+          <section className="container-fluid bg-white p-0">
+            <div className="row p-0 m-0">
               {(!isMobile || !activeChat) && (
-                <div className="col-sm-5 col-md-4 p-3 border-end">
-                  <input
-                    type="text"
-                    className="form-control rounded-0 p-2"
-                    placeholder="Search"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                  />
-                  <div className="mt-3">
+                <div className="col-sm-5 col-md-4 border-end p-0">
+                  <div
+                    className="p-3"
+                    style={{
+                      borderBottom: "1px solid gray",
+                    }}
+                  >
+                    <input
+                      type="text"
+                      className="form-control rounded-0"
+                      placeholder="Search"
+                      style={{
+                        boxSizing: "border-box",
+                      }}
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </div>
+                  <div className="">
                     {chats
                       ?.filter((chat) => {
                         return (
@@ -223,7 +233,14 @@ const ChatApp = () => {
                       .map((chat, index) => (
                         <div
                           key={chat._id}
-                          className="pt-3 pb-2 border-bottom"
+                          className={`p-3`}
+                          style={{
+                            backgroundColor:
+                              chat?._id === activeChat
+                                ? "rgba(248, 235, 210, 1)"
+                                : "white",
+                            borderBottom: "1px solid gray",
+                          }}
                           onClick={() => {
                             loadMessages(chat?._id);
                             setMatrID(
@@ -256,7 +273,7 @@ const ChatApp = () => {
                             </p>
                           ) : chat?.lastMessage?.seenBy?.length >=
                             chat?.participants?.length - 1 ? (
-                            <p className="smstext mt-1 mb-1">
+                            <p className="chatbodysms mt-1 mb-1">
                               {chat.lastMessage?.message}
                             </p>
                           ) : null}
@@ -347,15 +364,26 @@ const ChatApp = () => {
                               style={{
                                 backgroundColor:
                                   msg.sender?._id === userId
-                                    ? "#d1e7dd"
-                                    : "rgba(248, 235, 210, 1)",
-                                borderRadius: "10px",
+                                    ? " rgba(248, 235, 210, 1)"
+                                    : "white",
+                                border:
+                                  msg.sender?._id === userId
+                                    ? "none"
+                                    : "1px solid gray",
                               }}
                             >
                               <p className="p-0 m-0 smstext">{msg.message}</p>
                             </div>
                             <div className="rounded p-1">
-                              <p className="timetext text-end">
+                              <p
+                                className="timetext"
+                                style={{
+                                  textAlign:
+                                    msg.sender?._id === userId
+                                      ? "text-end"
+                                      : "text-start",
+                                }}
+                              >
                                 {formatDate(msg.createdAt)}
                               </p>
                             </div>
@@ -367,7 +395,7 @@ const ChatApp = () => {
                       <input
                         type="text"
                         className="rounded-0 p-2 flex-grow-1"
-                        style={{ outline: "none", border: "none" }}
+                        style={{ outline: "none", border: "1px solid gray" }}
                         placeholder="Type a message..."
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
@@ -376,11 +404,11 @@ const ChatApp = () => {
                         className="p-2"
                         onClick={sendMessage}
                         style={{
-                          backgroundColor: "",
-                          border: "none",
+                          backgroundColor: "#8b0000",
+                          // border: "1px solid gray",
                         }}
                       >
-                        <IoSendSharp />
+                        <IoSendSharp style={{ color: "white" }} size="20" />
                       </button>
                     </div>
                   </div>

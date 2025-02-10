@@ -10,7 +10,7 @@
   background-size: cover;
   background-position: center;
 
-  height: 90vh;
+  min-height: 90vh;
   width: 100vw;
 }
 
@@ -34,8 +34,8 @@
   font-family: "Lustria", serif;
   font-weight: 400;
   color: rgba(0, 0, 0, 1);
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
   text-align: left;
 }
 

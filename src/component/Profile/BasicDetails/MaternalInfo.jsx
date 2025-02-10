@@ -44,7 +44,7 @@ function MaternalInfo() {
         <h4 className="header-title">Maternal Family Details</h4>
         {!isEditing ? (
           <div onClick={handleEditClick} className="edit-btn">
-            <FaRegEdit />
+           <FaRegEdit  size="18" />
           </div>
         ) : (
           <div>

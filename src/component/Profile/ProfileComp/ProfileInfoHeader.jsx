@@ -83,7 +83,7 @@ const ProfileInfoHeader = () => {
                 color: "rgba(119, 119, 119, 1)",
               }}
             >
-              {calculateAge(userData?.dateOfBirth)} Years
+              {` ${calculateAge(userData?.dateOfBirth)} Years`}
             </span>
           </p>
           <div

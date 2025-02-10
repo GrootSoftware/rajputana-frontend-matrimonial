@@ -14,13 +14,13 @@ function ReligiousDetails() {
     birthHour: "",
     birthMinute: "",
     birthTimePeriod: "",
-    dateOfBirth: "",
+    // dateOfBirth: "",
     birthplace: "",
     birthCity: "",
     birthState: "",
     birthCountry: "",
     maglik: "",
-    // religion: "",
+
     clan: "",
     subclan: "",
     gotra: "",
@@ -33,7 +33,6 @@ function ReligiousDetails() {
       var route = "get-religiondetails";
       var userData = await fetchUserData(route);
       setDetails({
-        dateOfBirth: userData.dateOfBirth || "",
         birthHour: userData.birthHour || "",
         birthMinute: userData.birthMinute || "",
         birthTimePeriod: userData.birthTimePeriod || "",
@@ -42,7 +41,7 @@ function ReligiousDetails() {
         birthState: userData.birthState || "",
         birthCountry: userData.birthCountry || "",
         maglik: userData.maglik || "",
-        religion: userData.religion || "",
+
         clan: userData.clan || "",
         subclan: userData.subclan || "",
         gotra: userData.gotra || "",
@@ -107,7 +106,7 @@ function ReligiousDetails() {
         <h4 className={style.headerTitle}>Birth/ Religious/ Astro Details</h4>
         {!isEditing ? (
           <div onClick={handleEditClick} className={style.editBtn}>
-            <FaRegEdit />
+           <FaRegEdit  size="18" />
           </div>
         ) : (
           <div>

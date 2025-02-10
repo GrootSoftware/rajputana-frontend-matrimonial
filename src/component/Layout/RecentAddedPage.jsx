@@ -48,7 +48,10 @@ function RecentAddedPage() {
   };
 
   return (
-    <div className={RecentAddedPageCss.container}>
+    <div
+      className={RecentAddedPageCss.container}
+      style={{ overflowY: "scroll" }}
+    >
       <div className={RecentAddedPageCss.header}>
         <p className={RecentAddedPageCss.mainTitle}>Recent Added Profile</p>
         <div className={RecentAddedPageCss.divider}></div>

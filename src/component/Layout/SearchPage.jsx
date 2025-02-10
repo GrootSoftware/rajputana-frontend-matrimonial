@@ -104,9 +104,14 @@ const SearchPage = () => {
   const { isAuthenticated, setFormData, formData, updateData } = useAuth();
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [advanceSearch, setAdvanceSearch] = useState(false);
 
   const profilesPerPage = 4;
   const [currentPage, setCurrentPage] = useState(1);
+
+  const handleAdvance = () => {
+    setAdvanceSearch(!advanceSearch);
+  };
 
   const totalPages = Math.max(
     1,
@@ -136,7 +141,39 @@ const SearchPage = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    let updatedValue = value.trimStart();
+
+    const nameRegex = /^[a-zA-Z\s]*$/;
+    const occupationRegex = /^[a-zA-Z\s]*$/;
+    const numberRegex = /^\d*$/;
+
+    switch (name) {
+      case "name":
+        if (numberRegex.test(value) || nameRegex.test(value)) {
+          updatedValue = value;
+        } else {
+          return;
+        }
+        break;
+
+      case "occupation":
+      case "gender":
+      case "maritalStatus":
+        if (!occupationRegex.test(value)) return;
+        break;
+
+      case "minAge":
+      case "maxAge":
+      case "HeightFeetfrom":
+      case "HeightFeetto":
+        if (!numberRegex.test(value)) return;
+        break;
+
+      default:
+        break;
+    }
+
+    setFormData({ ...formData, [name]: updatedValue });
   };
 
   const handleSearch = async () => {
@@ -177,80 +214,256 @@ const SearchPage = () => {
         <div className="bg-white p-4 shadow">
           <div className="row g-1 m-0 p-0">
             {/* Search by name or ID */}
-            <div className="col-md-4">
+            <div className="col-md-4 p-2">
+              <label
+                className="text-secondary"
+                style={{
+                  fontSize: "16px",
+                  marginBottom: "5px",
+                  fontWeight: "100",
+                }}
+              >
+                Search name or ID
+              </label>
               <input
                 type="text"
-                className="form-control"
-                placeholder="Search name or ID"
+                className="form-control p-2"
+                placeholder="Search"
                 name="name"
+                style={{
+                  borderRadius: "0px",
+                }}
                 value={formData.name}
                 onChange={handleChange}
               />
             </div>
-            <div className="col-md-8 d-flex gap-2">
+            <div className="col-md-4 p-2">
+              <label
+                className="text-secondary"
+                style={{
+                  fontSize: "16px",
+                  marginBottom: "5px",
+                  fontWeight: "100",
+                }}
+              >
+                Looking For?
+              </label>
               <select
-                className="form-select"
+                className="form-select p-2"
                 placeholder="Looking for?"
                 name="gender"
+                style={{
+                  borderRadius: "0px",
+                }}
                 value={formData.gender}
                 onChange={handleChange}
               >
-                <option value="">Looking For</option>
+                <option value="">Select Gender</option>
                 <option value="Male">Groom</option>
                 <option value="Female">Bride</option>
               </select>
-
+            </div>
+            <div className="col-md-4 p-2">
               {/* Min Age dropdown */}
-              <select
-                className="form-select"
-                name="minAge"
-                value={formData.minAge}
-                onChange={handleChange}
+              <label
+                className="text-secondary"
+                style={{
+                  fontSize: "16px",
+                  marginBottom: "5px",
+                  fontWeight: "100",
+                }}
               >
-                <option value="">Min Age</option>
-                {Array.from({ length: 50 - 18 + 1 }, (_, i) => i + 18).map(
-                  (age) => (
-                    <option key={age} value={age}>
-                      {age}
-                    </option>
-                  )
-                )}
-              </select>
+                Select Age group
+              </label>
+              <div className="d-flex gap-2">
+                <select
+                  className="form-select p-2"
+                  name="minAge"
+                  value={formData.minAge}
+                  onChange={handleChange}
+                  style={{
+                    borderRadius: "0px",
+                  }}
+                >
+                  <option value="">Age</option>
+                  {Array.from({ length: 50 - 18 + 1 }, (_, i) => i + 18).map(
+                    (age) => (
+                      <option key={age} value={age}>
+                        {age}
+                      </option>
+                    )
+                  )}
+                </select>
 
-              <select
-                className="form-select"
-                name="maxAge"
-                value={formData.maxAge}
-                onChange={handleChange}
-              >
-                <option value="">Max Age</option>
-                {Array.from({ length: 50 - 18 + 1 }, (_, i) => i + 18).map(
-                  (age) => (
-                    <option key={age} value={age}>
-                      {age}
-                    </option>
-                  )
-                )}
-              </select>
+                <select
+                  className="form-select p-2"
+                  name="maxAge"
+                  value={formData.maxAge}
+                  onChange={handleChange}
+                  style={{
+                    borderRadius: "0px",
+                  }}
+                >
+                  <option value="">Age</option>
+                  {Array.from({ length: 50 - 18 + 1 }, (_, i) => i + 18).map(
+                    (age) => (
+                      <option key={age} value={age}>
+                        {age}
+                      </option>
+                    )
+                  )}
+                </select>
+              </div>
             </div>
           </div>
 
           {/* Advanced search link */}
-          <div className="text-end mt-2">
-            <Link to="/advanced-search" className="text-danger">
-              Advance search?
-            </Link>
-          </div>
+          {advanceSearch && (
+            <div className="row g-1 m-0 p-0">
+              <div className="col-md-4 p-2">
+                {/* Min Age dropdown */}
+                <label
+                  className="text-secondary"
+                  style={{
+                    fontSize: "16px",
+                    marginBottom: "5px",
+                    fontWeight: "100",
+                  }}
+                >
+                  Height
+                </label>
+                <div className="d-flex gap-2">
+                  <select
+                    className="form-select p-2"
+                    name="HeightFeetfrom"
+                    value={formData.HeightFeetfrom}
+                    onChange={handleChange}
+                    style={{
+                      borderRadius: "0px",
+                    }}
+                  >
+                    <option value="">From</option>
+                    {Array.from({ length: 8 }, (_, i) => i + 1).map(
+                      (height) => (
+                        <option key={height} value={height}>
+                          {height} feet
+                        </option>
+                      )
+                    )}
+                  </select>
 
-          {/* Search button */}
-          <div className={style.modalFooter}>
-            <button
-              type="button"
-              className={`btn btn-primary ${style.saveButton}`}
-              onClick={handleSearch}
-            >
-              Search
-            </button>
+                  <select
+                    className="form-select p-2"
+                    name="HeightFeetto"
+                    value={formData.HeightFeetto}
+                    onChange={handleChange}
+                    style={{
+                      borderRadius: "0px",
+                    }}
+                  >
+                    <option value="">To</option>
+                    {Array.from({ length: 8 }, (_, i) => i + 1).map(
+                      (height) => (
+                        <option key={height} value={height}>
+                          {height} feet
+                        </option>
+                      )
+                    )}
+                  </select>
+                </div>
+              </div>
+              <div className="col-md-4 p-2">
+                <label
+                  className="text-secondary"
+                  style={{
+                    fontSize: "16px",
+                    marginBottom: "5px",
+                    fontWeight: "100",
+                  }}
+                >
+                  Marital Status
+                </label>
+                <select
+                  className="form-select p-2"
+                  id="maritalStatus"
+                  name="maritalStatus"
+                  value={formData.maritalStatus || ""}
+                  style={{
+                    borderRadius: "0px",
+                  }}
+                  onChange={handleChange}
+                >
+                  <option value="">Select</option>
+                  <option value="Single">Single</option>
+                  <option value="Married">Married</option>
+                  <option value="Divorced">Divorced</option>
+                  <option value="Widowed">Widowed</option>
+                </select>
+              </div>
+              <div className="col-md-4 p-2">
+                <label
+                  className="text-secondary"
+                  style={{
+                    fontSize: "16px",
+                    marginBottom: "5px",
+                    fontWeight: "100",
+                  }}
+                >
+                  Occupation
+                </label>
+
+                <input
+                  type="text"
+                  className="form-control p-2"
+                  placeholder="Occupation"
+                  id="occupation"
+                  name="occupation"
+                  value={formData.occupation}
+                  style={{
+                    borderRadius: "0px",
+                  }}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+          )}
+
+          <div className="row g-1 m-0 p-0">
+            {!advanceSearch && (
+              <div
+                className=" mt-4 col-sm-6 p-2 "
+                style={{
+                  fontWeight: "600",
+                  color: "rgba(153, 37, 37, 1)",
+                }}
+                onClick={handleAdvance}
+              >
+                Advance search?
+              </div>
+            )}
+
+            {advanceSearch && (
+              <div
+                className=" mt-4 col-sm-6 p-2 "
+                style={{
+                  fontWeight: "600",
+                  color: "rgba(153, 37, 37, 1)",
+                }}
+                onClick={handleAdvance}
+              >
+                View lass?
+              </div>
+            )}
+
+            <div className={`col-sm-6 ${style.modalFooter}`}>
+              <button
+                type="button"
+                className={` ${style.saveButton}`}
+                onClick={handleSearch}
+              >
+                SEARCH
+              </button>
+            </div>
           </div>
         </div>
 

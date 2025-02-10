@@ -14,9 +14,10 @@ function FamilyinfoForm({
         <div className={style.modalHeader}>
           <h4 className={style.headerTitle}>Family Details</h4>
           <div>
-            <MdOutlineCancelPresentation
+          <MdOutlineCancelPresentation
               onClick={handleCancelClick}
               className={style.closeIcon}
+              size="22"
             />
           </div>
         </div>

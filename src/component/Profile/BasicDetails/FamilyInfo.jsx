@@ -108,7 +108,7 @@ function FamilyInfo() {
         <h4 className={style.headerTitle}>Family Details</h4>
         {!isEditing ? (
           <div onClick={handleEditClick} className={style.editBtn}>
-            <FaRegEdit />
+           <FaRegEdit  size="18" />
           </div>
         ) : (
           <FamilyinfoForm

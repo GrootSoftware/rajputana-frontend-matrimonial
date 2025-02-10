@@ -70,6 +70,7 @@ const ReligionForm = ({
             <MdOutlineCancelPresentation
               onClick={handleCancelClick}
               className={styles.closeIcon}
+              size="22"
             />
           </div>
         </div>
@@ -77,7 +78,7 @@ const ReligionForm = ({
         <form className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="row">
-              <div className="col-sm-6">
+              {/* <div className="col-sm-6">
                 <label htmlFor="dateOfBirth" className="form-label">
                   Date Of Birth
                 </label>
@@ -90,7 +91,7 @@ const ReligionForm = ({
                   onChange={handleInputChange}
                   required
                 />
-              </div>
+              </div> */}
 
               <div className="col-sm-6">
                 <label htmlFor="birthTime" className="form-label">
@@ -137,21 +138,21 @@ const ReligionForm = ({
                   </select>
                 </div>
               </div>
-            </div>
 
-            <div className="mb-3">
-              <label htmlFor="birthplace" className="form-label">
-                Birthplace
-              </label>
-              <input
-                type="text"
-                className="form-control rounded-0"
-                id="birthplace"
-                name="birthplace"
-                placeholder="Ex: Hospital/Home"
-                value={formData.birthplace || ""}
-                onChange={handleInputChange}
-              />
+              <div className="mb-3 col-sm-6">
+                <label htmlFor="birthplace" className="form-label">
+                  Birthplace
+                </label>
+                <input
+                  type="text"
+                  className="form-control rounded-0"
+                  id="birthplace"
+                  name="birthplace"
+                  placeholder="Ex: Hospital/Home"
+                  value={formData.birthplace || ""}
+                  onChange={handleInputChange}
+                />
+              </div>
             </div>
 
             <div className="row mb-3">
@@ -224,7 +225,7 @@ const ReligionForm = ({
                   onChange={(e) => {
                     setFormData({
                       ...formData,
-                      birthCity: e.target.value, 
+                      birthCity: e.target.value,
                     });
                   }}
                   disabled={!formData.birthState}

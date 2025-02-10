@@ -125,14 +125,13 @@ function MyInterest() {
     setCurrentPage(1);
   };
 
-  function InterestImageContainer({ profile, fetchData }) {
+  function InterestImageContainer({ profile }) {
     const { updateData } = useAuth();
 
     const handlePhotoReq = async (profileId) => {
       try {
         let route = "profile/photoRequest";
         await updateData(route, profileId);
-        await fetchData();
       } catch (error) {
         console.error("Error sending photo request:", error);
       }

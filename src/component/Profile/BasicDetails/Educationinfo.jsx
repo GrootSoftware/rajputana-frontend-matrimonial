@@ -93,7 +93,7 @@ function Educationinfo() {
         <h4 className={styles.headerTitle}>Academics Details</h4>
         {!isEditing ? (
           <div onClick={handleEditClick} className={styles.editBtn}>
-            <FaRegEdit />
+           <FaRegEdit  size="18" />
           </div>
         ) : (
           <EducationinfoForm

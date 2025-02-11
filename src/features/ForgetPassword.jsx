@@ -5,12 +5,11 @@ import "./ForgetPassword.css"; // Import the CSS file
 import logo from "../assets/images/logowhite.png";
 
 import Profilenavbar from "../component/Profile/ProfileComp/Profilenavbar";
-
 function ForgotPassword() {
   const [formData, setFormData] = useState({ username: "" });
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  // Front-end validation
+
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -40,11 +39,11 @@ function ForgotPassword() {
         console.log("Form has errors:", errors);
         return;
       }
-      // const response = await axios.post(
-      //   `${process.env.REACT_APP_BASE_URL}/forgot-password`,
-      //   formData
-      // );
-      setSuccessMessage("Check your email or mobile for reset instructions.");
+      const response = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/forgot-password`,
+        formData
+      );
+      setSuccessMessage("Check your email or mobile for reset otp.");
       setErrorMessage("");
     } catch (error) {
       setErrorMessage("Failed to reset password. Please try again.");

@@ -37,15 +37,15 @@ const Profilenavbar = () => {
           <ul
             className={`${style.navLinks} ${isDropdownOpen ? style.open : ""}`}
           >
-            {isAuthenticated ? (
-              <>
-                <li>
-                  <Link to="/home">Home</Link>
-                </li>
-              </>
+            {/* {isAuthenticated ? (
+              <> */}
+            <li>
+              <Link to="/home">Home</Link>
+            </li>
+            {/* </>
             ) : (
               <></>
-            )}
+            )} */}
             <li>
               <Link to="/about">About Us</Link>
             </li>

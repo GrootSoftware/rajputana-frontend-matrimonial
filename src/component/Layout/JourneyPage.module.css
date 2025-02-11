@@ -103,7 +103,7 @@
   .container {
     padding-inline: 2%;
     width: 100%;
-    padding-bottom: 1rem;
+    padding-bottom: 10%;
   }
   .leftSection {
     width: 45%;
@@ -211,9 +211,9 @@
 /* VVIP Section */
 .vipSection {
   position: absolute;
-  top: 48.5%;
-  left: 5%;
-
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   width: 90%;
@@ -221,7 +221,7 @@
   box-sizing: border-box;
   padding: 7vw;
   background-repeat: no-repeat;
-  background-image: url("../../assets/images/vipsectionbg.png");
+  background-image: url("../../assets/images/vvipsectionbg.jpg");
   background-position: center;
   background-size: contain;
 }
@@ -239,7 +239,7 @@
   font-size: 3.125rem;
   font-family: "Lustria", serif;
   font-weight: 400;
-  padding: 0rem 8vw;
+  padding: 0rem 7vw;
   margin-bottom: 1rem;
 }
 
@@ -271,7 +271,7 @@
 @media (max-width: 1235px) {
   .vipSection {
     padding: 7vw;
-    width: 100%;
+    width: 95%;
     margin-inline: auto;
   }
   .vipSection h2 {

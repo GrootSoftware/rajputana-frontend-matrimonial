@@ -55,10 +55,12 @@ function ReligiousDetails() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
+  
+    // Function to apply max length
+    const applyMaxLength = (val) => val.slice(0, 25);
+  
     if (name === "birthHour" || name === "birthMinute") {
-      const numericValue =
-        value.slice(0, 2).replace(/[^0-9]/g, "") + value.slice(2);
+      const numericValue = value.replace(/[^0-9]/g, "").slice(0, 2);
       setFormData({ ...formData, [name]: numericValue });
     } else if (name === "dateOfBirth") {
       const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
@@ -66,14 +68,16 @@ function ReligiousDetails() {
         setFormData({ ...formData, [name]: value });
       }
     } else if (name === "additionalInfo") {
-      const validValue = value.replace(/[^a-zA-Z.,'"() ]/g, "").slice(0, 25);
-      setFormData({ ...formData, [name]: validValue });
+      // Allows letters, spaces, and specific punctuation (.,'"())
+      const validValue = value.replace(/[^a-zA-Z.,'"() ]/g, "");
+      setFormData({ ...formData, [name]: applyMaxLength(validValue) });
     } else {
-      const validValue = value.replace(/[^a-zA-Z ]/g, "").slice(0, 25);
-      setFormData({ ...formData, [name]: validValue });
+      // General case: Only letters and spaces allowed
+      const validValue = value.replace(/[^a-zA-Z ]/g, "");
+      setFormData({ ...formData, [name]: applyMaxLength(validValue) });
     }
   };
-
+  
   const handleEditClick = () => {
     setIsEditing(true);
     setFormData(details);

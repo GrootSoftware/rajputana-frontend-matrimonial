@@ -17,8 +17,9 @@ function Banner() {
     const { name, value } = e.target;
     let updatedValue = value.trimStart();
 
-    const nameRegex = /^[a-zA-Z\s]*$/;
-    const occupationRegex = /^[a-zA-Z\s]*$/;
+    const nameRegex = /^[a-zA-Z\s]{1,20}$/;
+    const occupationRegex = /^[a-zA-Z\s]{1,20}$/;
+
     const numberRegex = /^\d*$/;
 
     switch (name) {

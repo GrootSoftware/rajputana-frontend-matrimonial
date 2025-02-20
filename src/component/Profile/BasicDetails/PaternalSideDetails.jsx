@@ -14,20 +14,20 @@ function PaternalSideDetails() {
     grandFatherName: "Grandfather Name",
     grandFathersonOf: "Son of",
     grandFatheroccupation: "Occupation",
-    grandFatherthikana: "Address",
+    grandFatherthikana: "Native Place",
     grandMotherName: "GrandMother Name",
     grandMotherdaughterOf: "Daughter of",
-    grandmotherthikana: "Address",
+    grandmotherthikana: "Native Place",
     maternalGrandFatherName: "Maternal Grandfather",
     maternalGrandFathersonOf: "Son of",
     maternalGrandFatheroccupation: "Occupation",
-    maternalGrandFatherthikana: "Address",
+    maternalGrandFatherthikana: "Native Place",
     maternalGrandMotherName: "Maternal Grandmother",
     maternalGrandMotherdaughterOf: "Daughter of",
-    maternalGrandMotherthikana: "Address",
+    maternalGrandMotherthikana: "Native Place",
   };
 
-  const excludedKeys = ["badePapa", "kakosa", "mamosa", "masisa"];
+  const excludedKeys = ["badePapa", "kakosa", "mamosa", "masisa", "bhuasa"];
 
   const [details, setDetails] = useState({
     grandFatherName: "",
@@ -389,7 +389,6 @@ function KakosaHukum({ details }) {
               <th className={`${style.textXs} text-secondary`}>Married to</th>
               <th className={`${style.textXs} text-secondary`}>D/O</th>
               <th className={`${style.textXs} text-secondary`}>Thikana</th>
-             
             </tr>
           </thead>
           <tbody>

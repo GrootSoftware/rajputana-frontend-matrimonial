@@ -207,14 +207,11 @@ function Register() {
                     placeholder="Enter Mobile"
                     className="input-field w-75"
                   />
-
-                  {errors.mobile && (
-                    <p className="error-text">{errors.mobile}</p>
-                  )}
-                  {errors.countryCode && (
-                    <p className="error-text">{errors.countryCode}</p>
-                  )}
                 </div>
+                {errors.mobile && <p className="error-text">{errors.mobile}</p>}
+                {errors.countryCode && (
+                  <p className="error-text">{errors.countryCode}</p>
+                )}
               </div>
               <div>
                 <label>Email</label>

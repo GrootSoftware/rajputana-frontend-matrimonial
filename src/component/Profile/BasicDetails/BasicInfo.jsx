@@ -90,7 +90,7 @@ function BasicInfo() {
     const { name, value } = e.target;
     let validValue = value;
 
-    const nameRegex = /^[a-zA-Z\s]{0,25}$/;
+    const nameRegex = /^[a-zA-Z\s]{0,20}$/;
     const mobileRegex = /^[0-9]{0,10}$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     const dateRegex = /^\d{4}-\d{2}-\d{2}$/;

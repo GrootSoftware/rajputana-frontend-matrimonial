@@ -108,7 +108,7 @@ export function ContactForm() {
     const { name, value } = e.target;
     let updatedValue = value.trimStart();
 
-    const nameRegex = /^[a-zA-Z]*$/;
+    const nameRegex = /^[a-zA-Z\s]{1,20}$/;
     const mobileRegex = /^\d*$/;
     const additionalInfoRegex = /^[a-zA-Z\s,.]*$/;
 

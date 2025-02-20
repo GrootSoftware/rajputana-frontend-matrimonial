@@ -18,8 +18,10 @@ import { FaRegHeart } from "react-icons/fa6";
 import { FaUserPlus } from "react-icons/fa6";
 import { IoImageSharp } from "react-icons/io5";
 import { MdOutlineCancelPresentation } from "react-icons/md";
+import { GiCancel } from "react-icons/gi";
+import { FaCheck } from "react-icons/fa6";
 
-const RequestCard = ({
+const MyInterestCard = ({
   profile,
   status,
   handlecheck,
@@ -83,7 +85,11 @@ const RequestCard = ({
         >
           <div className="col-12 col-sm-6 col-md-5 d-flex align-items-center m-0">
             {profile && (
-              <ProfileImagerender profile={profile} activeButton={activeTab} />
+              <ProfileImagerender
+                profile={profile}
+                status={status}
+                activeButton={activeTab}
+              />
             )}
           </div>
 
@@ -116,7 +122,7 @@ const RequestCard = ({
   );
 };
 
-RequestCard.propTypes = {
+MyInterestCard.propTypes = {
   profile: PropTypes.object.isRequired,
   handlecheck: PropTypes.func,
   fetchData: PropTypes.func.isRequired,
@@ -149,14 +155,13 @@ const ActionButtons = ({
   };
 
   var buttonConfig = [];
-
   if (activeTab == "requestReceived") {
     buttonConfig = {
       pending: [
         {
           icon: <RiDeleteBin4Line />,
           label: "Delete",
-          onClick: () => handleAction("delete/delete", profile._id),
+          onClick: () => handleAction("req/delete", profile._id),
         },
         {
           icon: <FaRegEye />,
@@ -166,21 +171,28 @@ const ActionButtons = ({
             handleAction("view", profile._id);
           },
         },
-        { icon: <BsBell />, label: "Reminder" },
+        // { icon: <BsBell />, label: "Reminder" },
         {
-          icon: <TiMessages />,
-          label: "Message",
+          icon: <GiCancel />,
+          label: "Reject",
           onClick: () => {
-            openMessageCard("message", profile._id);
+            handleAction("reqsent/reject", profile._id);
+          },
+        },
+        {
+          icon: <FaCheck />,
+          label: "Accept",
+          onClick: () => {
+            handleAction("reqsent/accept", profile._id);
           },
         },
       ],
       rejected: [
-        // {
-        //   icon: <RiDeleteBin4Line />,
-        //   label: "Delete",
-        //   onClick: () => handleAction("delete", profile._id),
-        // },
+        //   {
+        //     icon: <RiDeleteBin4Line />,
+        //     label: "Delete",
+        //     onClick: () => handleAction("delete", profile._id),
+        //   },
         {
           icon: <FaRegEye />,
           label: "View",
@@ -370,4 +382,4 @@ StatusTag.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
-export default RequestCard;
+export default MyInterestCard;

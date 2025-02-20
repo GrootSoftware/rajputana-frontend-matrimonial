@@ -12,10 +12,15 @@ export const AuthProvider = ({ children }) => {
     "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="
   );
   const [formData, setFormData] = useState({
-    name: "",
-    minAge: "",
-    maxAge: "",
+    HeightFeetfrom: "",
+    HeightFeetto: "",
     gender: "",
+    maritalStatus: "",
+    maxAge: "",
+    minAge: "",
+    name: "",
+    occupation: "",
+    class: "",
   });
 
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -107,7 +112,7 @@ export const AuthProvider = ({ children }) => {
         },
       });
       console.log(response.data);
-      return response.data.user;
+      return response.data?.user;
     } catch (error) {
       console.log("Failed to fetch user data:", error);
     } finally {

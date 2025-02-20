@@ -2,7 +2,7 @@ import React from "react";
 import "./ShortListedProfile.css";
 
 import { formatDate, calculateAge } from "../ProfileComp/ProfileInfoHeader";
-
+import { useParams, useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
@@ -12,6 +12,13 @@ function ProfileCard({
   ProfileImagerender,
   handleBookmark,
 }) {
+  const navigate = useNavigate();
+
+  const handleView = (profileId) => {
+    console.log(profileId);
+    navigate(`view/${profileId}`);
+  };
+
   return (
     <div key={element?._id} className="profileCard">
       <div className="profileInfo">
@@ -59,7 +66,7 @@ function ProfileCard({
         <div className="actions">
           <FaEye
             className="actionIcon"
-            onClick={() => handleDelete(element?.profile?._id)}
+            onClick={() => handleView(element?.profile?._id)}
           />
         </div>
       </div>

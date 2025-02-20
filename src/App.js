@@ -20,8 +20,13 @@ import ContactUs from "./component/Layout/ContactUs";
 import NotFoundPage from "./component/Layout/NotFoundPage";
 import ChatApp from "./component/Layout/ChatApp";
 
+import ViewImages from "./component/Profile/Forms/ViewImages";
+import ViewPage from "./component/Profile/Forms/ViewPage";
+
 import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function App() {
   return (
@@ -81,6 +86,38 @@ function App() {
             </ProtectedRoute>
           }
         ></Route>
+        <Route
+          path="profile/view/:profileId"
+          element={
+            <ProtectedRoute>
+              <ViewPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="search/view/:profileId"
+          element={
+            <ProtectedRoute>
+              <ViewPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="search/view/images/:profileId"
+          element={
+            <ProtectedRoute>
+              <ViewImages />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="profile/view/images/:profileId"
+          element={
+            <ProtectedRoute>
+              <ViewImages />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </AuthProvider>
   );

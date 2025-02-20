@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./ForgetPassword.css"; // Import the CSS file
 import logo from "../assets/images/logowhite.png";
+import { toast } from "react-toastify";
 
 import Profilenavbar from "../component/Profile/ProfileComp/Profilenavbar";
 function ForgotPassword() {
@@ -20,7 +21,9 @@ function ForgotPassword() {
     const newErrors = {};
 
     if (!formData.username.trim()) {
-      newErrors.username = "Email or mobile Number is required.";
+      newErrors.username = "Email or mobile number is required.";
+    } else if (formData.username.length > 25) {
+      newErrors.username = "Username must not exceed 25 characters.";
     } else if (
       !/\S+@\S+\.\S+/.test(formData.username) &&
       !/^\d{10}$/.test(formData.username)
@@ -35,19 +38,33 @@ function ForgotPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (!verify()) {
-        console.log("Form has errors:", errors);
-        return;
+      if (verify()) {
+        console.log(formData);
+        const response = await axios.post(
+          `${process.env.REACT_APP_BASE_URL}/forgot-password`,
+          formData
+        );
+        console.log(response);
+        if (response) {
+          alert("Verify Otp");
+        }
+
+        if (response.data?.message) {
+          toast.success(response.data.message, {
+            position: "top-center",
+            autoClose: 2000,
+          });
+        }
       }
-      const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/forgot-password`,
-        formData
-      );
-      setSuccessMessage("Check your email or mobile for reset otp.");
-      setErrorMessage("");
     } catch (error) {
-      setErrorMessage("Failed to reset password. Please try again.");
-      setSuccessMessage("");
+      toast.error(
+        error.response?.data?.message ||
+          "An error occurred while updating the data.",
+        {
+          position: "top-center",
+          autoClose: 3000,
+        }
+      );
     }
   };
 

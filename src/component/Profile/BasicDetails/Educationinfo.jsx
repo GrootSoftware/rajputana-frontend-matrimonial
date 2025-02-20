@@ -64,7 +64,7 @@ function Educationinfo() {
 
     const textRegex = /^[a-zA-Z\s]*$/;
     const incomeRegex = /^(Below \d+ LPA|\d+-\d+ LPA|Above \d+ LPA)?$/;
-    const hobbiesRegex = /^[a-zA-Z\s,]*$/;
+    const hobbiesRegex = /^[a-zA-Z\s,]{1,40}$/;
     const additionalInfoRegex = /^[a-zA-Z0-9.,'"() ]{0,100}$/;
 
     if (
@@ -93,7 +93,7 @@ function Educationinfo() {
         <h4 className={styles.headerTitle}>Academics Details</h4>
         {!isEditing ? (
           <div onClick={handleEditClick} className={styles.editBtn}>
-           <FaRegEdit  size="18" />
+            <FaRegEdit size="18" />
           </div>
         ) : (
           <EducationinfoForm

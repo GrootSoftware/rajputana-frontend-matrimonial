@@ -54,10 +54,10 @@ function FamilyInfo() {
       motherName: /^[A-Za-z\s]+$/, // Only letters and spaces
       motherNativePlace: /^[A-Za-z\s]+$/, // Only letters and spaces
       maternalGotra: /^[A-Za-z\s]+$/, // Only letters and spaces
-      siblings: /^[0-9]{1}$/, // Numbers up to 2 digits
+      siblings: /^[0-9]{1}$/, // Only single-digit numbers (0-9)
       familyLocation: /^[A-Za-z\s]+$/, // Only letters and spaces
-      additionalMaternal: /^[0-2]{1}$/, // Numbers 0-2, up to 2 digits
-      familyInfo: /^[A-Za-z0-9\s,.;!?]*$/, // Alphanumeric and common punctuation
+      additionalMaternal: /^[0-2]{1}$/, // Only numbers 0, 1, or 2
+      familyInfo: /^[A-Za-z0-9\s,.;!?]*$/,
     };
 
     // If the value is empty, just update the state without validation

@@ -40,7 +40,7 @@ const ProfileBoxCard = ({ profile, handlecheck, key, ProfileImagerender }) => {
               <p className={`card-text m-1 d-flex ${style.textSm}`}>
                 <span className="text-secondary w-50">Clan</span>
                 <span className="fw-bold w-50">
-                  {profile?.HoroscopicId?.clan}
+                  {profile?.HoroscopicId?.clan || "N/A"}
                 </span>
               </p>
 
@@ -68,21 +68,21 @@ const ProfileBoxCard = ({ profile, handlecheck, key, ProfileImagerender }) => {
               <p className={`card-text m-1 d-flex ${style.textSm}`}>
                 <span className="text-secondary w-50">High. Education</span>
                 <span className="fw-bold w-50">
-                  {profile.profdetailsId?.qualifications}
+                  {profile.profdetailsId?.qualifications || "N/A"}
                 </span>
               </p>
 
               <p className={`card-text m-1 d-flex ${style.textSm}`}>
                 <span className="text-secondary w-50">Occupation</span>
                 <span className="fw-bold w-50">
-                  {profile.familydetailsId?.occupation}
+                  {profile.familydetailsId?.occupation || "N/A"}
                 </span>
               </p>
 
               <p className={`card-text m-1 d-flex ${style.textSm}`}>
                 <span className="text-secondary w-50">Class</span>
                 <span className="fw-bold w-50">
-                  {profile.profdetailsId?.class}
+                  {profile.profdetailsId?.class || "N/A"}
                 </span>
               </p>
             </div>

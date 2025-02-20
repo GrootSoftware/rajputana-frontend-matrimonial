@@ -116,6 +116,7 @@ function Login() {
                   onChange={handleChange}
                   placeholder="Enter password"
                   className="input-field"
+                  autoComplete="current-password"
                 />
                 <FaRegEye
                   className="icon"

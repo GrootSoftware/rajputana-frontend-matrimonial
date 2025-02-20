@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { AiOutlineRight } from "react-icons/ai";
+import { IoImageSharp } from "react-icons/io5";
 import RequestCard from "../Profile/ProfileList/RequestCard";
 import style from "../Profile/Forms/Form.module.css";
 import styles from "../Profile/ProfileComp/Profile.module.css";
@@ -10,9 +11,16 @@ import Profilenavbar from "../Profile/ProfileComp/Profilenavbar";
 import Footer from "./Footer";
 import { useAuth } from "./AuthContext";
 import pro from "../../assets/images/blurimage.png";
-
+import { useParams, useNavigate } from "react-router-dom";
 export function Interestimagecontainer({ profile, status }) {
   const { updateData } = useAuth();
+
+  const totalPhotos = profile?.filesId?.totalPhotos;
+  const navigate = useNavigate();
+  const handleViewimage = (profileId) => {
+    console.log(profileId);
+    navigate(`view/images/${profileId}`);
+  };
 
   const HandlePhotoReq = async (profileId) => {
     try {
@@ -41,6 +49,26 @@ export function Interestimagecontainer({ profile, status }) {
             objectPosition: "top",
           }}
         />
+        <span
+          style={{
+            position: "absolute",
+            bottom: "0%",
+            right: "0%",
+            color: "white",
+            backgroundColor: "black",
+            padding: "3px 5px",
+
+            fontFamily: "Open Sans, sans-serif",
+          }}
+          onClick={() => {
+            handleViewimage(profile._id);
+          }}
+        >
+          <IoImageSharp size={15} color="white" />
+          <span style={{ color: "white", fontSize: "14px" }} className="p-1">
+            0{totalPhotos}
+          </span>
+        </span>
         <div
           className={styles.vipSection}
           style={{
@@ -74,26 +102,51 @@ export function Interestimagecontainer({ profile, status }) {
         }}
       >
         {profile?.filesId?.photos?.map((photo, index) => (
-          <img
-            key={photo._id}
-            src={photo.url}
-            className={`img-fluid m-auto ${
-              index === 0 ? "visible-image" : "hidden-image"
-            }`}
-            alt="Profile"
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "top",
-              zIndex: index === 0 ? 1 : 0, // Ensure the first image is on top
-              opacity: index === 0 ? 1 : 0, // Hide other images visually
-              transition: "opacity 0.5s ease", // Add smooth fade transition if needed
-            }}
-          />
+          <>
+            <img
+              key={photo._id}
+              src={photo.url}
+              className={`img-fluid m-auto ${
+                index === 0 ? "visible-image" : "hidden-image"
+              }`}
+              alt="Profile"
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "top",
+                zIndex: index === 0 ? 1 : 0, // Ensure the first image is on top
+                opacity: index === 0 ? 1 : 0, // Hide other images visually
+                transition: "opacity 0.5s ease", // Add smooth fade transition if needed
+              }}
+            />
+            <span
+              style={{
+                position: "absolute",
+                bottom: "0%",
+                right: "0%",
+                color: "white",
+                backgroundColor: "black",
+                padding: "3px 5px",
+                zIndex: "20",
+                fontFamily: "Open Sans, sans-serif",
+              }}
+              onClick={() => {
+                handleViewimage(profile._id);
+              }}
+            >
+              <IoImageSharp size={15} color="white" />
+              <span
+                style={{ color: "white", fontSize: "14px" }}
+                className="p-1"
+              >
+                0{totalPhotos}
+              </span>
+            </span>
+          </>
         ))}
       </div>
     </>
@@ -105,6 +158,7 @@ const SearchPage = () => {
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [advanceSearch, setAdvanceSearch] = useState(false);
+  const [activeTab, setActiveTab] = useState("requestSent");
 
   const profilesPerPage = 4;
   const [currentPage, setCurrentPage] = useState(1);
@@ -143,11 +197,12 @@ const SearchPage = () => {
     const { name, value } = e.target;
     let updatedValue = value.trimStart();
 
-    const nameRegex = /^[a-zA-Z\s]*$/;
-    const occupationRegex = /^[a-zA-Z\s]*$/;
+    const nameRegex = /^[a-zA-Z\s]{1,20}$/;
+    const occupationRegex = /^[a-zA-Z\s]{1,20}$/;
     const numberRegex = /^\d*$/;
 
     switch (name) {
+      case "occupation":
       case "name":
         if (numberRegex.test(value) || nameRegex.test(value)) {
           updatedValue = value;
@@ -156,7 +211,6 @@ const SearchPage = () => {
         }
         break;
 
-      case "occupation":
       case "gender":
       case "maritalStatus":
         if (!occupationRegex.test(value)) return;
@@ -320,7 +374,7 @@ const SearchPage = () => {
           {/* Advanced search link */}
           {advanceSearch && (
             <div className="row g-1 m-0 p-0">
-              <div className="col-md-4 p-2">
+              <div className="col-md-3 p-2">
                 {/* Min Age dropdown */}
                 <label
                   className="text-secondary"
@@ -372,7 +426,7 @@ const SearchPage = () => {
                   </select>
                 </div>
               </div>
-              <div className="col-md-4 p-2">
+              <div className="col-md-3 p-2">
                 <label
                   className="text-secondary"
                   style={{
@@ -400,7 +454,7 @@ const SearchPage = () => {
                   <option value="Widowed">Widowed</option>
                 </select>
               </div>
-              <div className="col-md-4 p-2">
+              <div className="col-md-3 p-2">
                 <label
                   className="text-secondary"
                   style={{
@@ -424,6 +478,38 @@ const SearchPage = () => {
                   }}
                   onChange={handleChange}
                 />
+              </div>
+              <div className="col-md-3 p-2">
+                <label
+                  className="text-secondary"
+                  style={{
+                    fontSize: "16px",
+                    marginBottom: "5px",
+                    fontWeight: "100",
+                  }}
+                >
+                  Class
+                </label>
+                <select
+                  className="form-select rounded-0"
+                  id="class"
+                  name="class"
+                  style={{
+                    borderRadius: "0px",
+                  }}
+                  value={formData.class || ""}
+                  onChange={handleChange}
+                >
+                  <option value="">Family type</option>
+                  <option value="Business">Business</option>
+                  <option value="Agriculture">Agriculture</option>
+                  <option value="Working">Working</option>
+                  <option value="Service">Service</option>
+                  <option value="Private">Private</option>
+                  <option value="Royalty">Royalty</option>
+                  <option value="Political">Political</option>
+                  <option value="Others">Others</option>
+                </select>
               </div>
             </div>
           )}
@@ -478,6 +564,7 @@ const SearchPage = () => {
                 <RequestCard
                   key={profile._id}
                   profile={profile}
+                  activeTab={activeTab}
                   status="new"
                   ProfileImagerender={Interestimagecontainer}
                   handlecheck={() =>

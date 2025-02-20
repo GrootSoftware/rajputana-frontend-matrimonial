@@ -14,6 +14,10 @@
   overflow-y: scroll;
 }
 
+.viewPage {
+  width: 90% !important;
+}
+
 .modalContent {
   position: absolute;
   top: 1rem;
@@ -104,16 +108,21 @@
   .modalContent {
     width: 70%;
   }
+  .viewPage {
+    width: 90% !important;
+  }
+}
 
-  @media (max-width: 576px) {
-    .modalContent {
-      width: 95%;
-    }
-
-    .modalContent {
-      margin: 1rem;
-      background-color: white;
-      padding: 0.5rem;
-    }
+@media (max-width: 576px) {
+  .modalContent {
+    width: 95%;
+  }
+  .modalContent {
+    margin: 1rem;
+    background-color: white;
+    padding: 0.5rem;
+  }
+  .viewPage {
+    width: 100% !important;
   }
 }

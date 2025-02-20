@@ -10,6 +10,9 @@ import Footer from "./Footer";
 import { AiOutlineRight, AiOutlineClose } from "react-icons/ai";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { IoChevronBackOutline } from "react-icons/io5";
+import { toast } from "react-toastify";
+import { GiCancel } from "react-icons/gi";
+import { FaCheck } from "react-icons/fa6";
 
 import "./Chat.css";
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
@@ -26,6 +29,7 @@ const ChatApp = () => {
   const [userId, setuserId] = useState("");
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [Status, setStatus] = useState("");
 
   const formatDate = (dateString) => {
     if (!dateString) return "";
@@ -52,8 +56,9 @@ const ChatApp = () => {
         },
       });
       console.log("loading");
+
       console.log(response?.data?.user._id);
-      setuserId(response?.data?.user?._id);
+      setuserId(response?.data?.user._id);
     } catch (err) {
       setError("Unable to load messages");
     }
@@ -69,12 +74,12 @@ const ChatApp = () => {
         },
       });
 
-      // console.log(response.data);
+      console.log(response?.data);
       setChats(response.data || []);
       if (response.data.length > 0) {
         const chat = response.data[0];
         await loadMessages(chat?.lastMessage?.chatId);
-        var user = await getuserId();
+        await getuserId();
 
         const firstMatrID = chat?.participants
           ?.filter((participant) => participant._id !== userId)
@@ -132,10 +137,12 @@ const ChatApp = () => {
   const sendMessage = async () => {
     if (!activeChat) return;
     console.log(activeChat);
+
     const data = { chatId: activeChat, message };
+
     try {
       const token = localStorage.getItem("authToken");
-      await axios.post(
+      const response = await axios.post(
         `${BASE_URL}/message/send`,
         { data },
         {
@@ -145,14 +152,33 @@ const ChatApp = () => {
           },
         }
       );
+
+      // Emit message via socket
       socket.emit("sendMessage", data);
+
       setMessage("");
       loadChats();
+
+      // Show success toast
+      toast.success(response.data.message || "Message sent successfully", {
+        position: "top-center",
+        autoClose: 1500,
+      });
+
       await loadMessages(activeChat);
     } catch (error) {
-      setError("Failed to send message");
+      const errorMessage =
+        error.response?.data?.error || "Failed to send message";
+      setError(errorMessage);
+
+      toast.error(errorMessage, {
+        position: "top-center",
+        autoClose: 1500,
+      });
     }
   };
+
+  const handleResponse = async (chatId) => {};
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 576);
@@ -243,6 +269,7 @@ const ChatApp = () => {
                           }}
                           onClick={() => {
                             loadMessages(chat?._id);
+                            setStatus(chat?.status);
                             setMatrID(
                               chat?.participants
                                 ?.filter(
@@ -293,103 +320,175 @@ const ChatApp = () => {
                       className="d-flex justify-content-between p-3 text-white"
                       style={{ backgroundColor: "rgba(243, 243, 243, 1)" }}
                     >
-                      <span className="matrifont">
-                        {isMobile && (
-                          <IoChevronBackOutline
-                            size="22"
-                            style={{
-                              color: "black",
-                              marginBottom: "0.3rem",
-                              marginRight: "0.3rem",
-                            }}
-                            onClick={() => {
-                              setActiveChat(null);
-                            }}
-                          />
-                        )}
-                        {MatrID}
-                      </span>
-
-                      <span>
-                        <RiDeleteBin5Line
-                          onClick={() => {
-                            setShowDeleteModal(true);
-                          }}
-                          style={{ color: "black" }}
-                          size="22"
-                        />
-                      </span>
-                      {showDeleteModal && (
-                        <div
-                          className="modal-overlay"
-                          style={{ width: "250px", position: "relative" }}
-                        >
-                          <div className="modal-content">
-                            <button
-                              onClick={() => {
-                                deletechat(activeChat, true);
-                                setShowDeleteModal(false);
-                              }}
-                            >
-                              Delete for Everyone
-                            </button>
-                            <button
-                              onClick={() => {
-                                deletechat(activeChat, false);
-                                setShowDeleteModal(false);
-                              }}
-                            >
-                              Delete for Me
-                            </button>
-                            <button onClick={() => setShowDeleteModal(false)}>
-                              Cancel
-                            </button>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex-grow-1 p-3 d-flex flex-column overflow-y-scroll">
-                      {messages?.map((msg, index) => (
-                        <div
-                          key={msg._id}
-                          className={`d-flex flex-column ${
-                            msg.sender?._id === userId
-                              ? "align-items-start"
-                              : "align-items-end"
-                          }`}
-                        >
-                          <div className="messageStyle">
-                            <div
-                              className="p-2"
+                      <>
+                        <span className="matrifont">
+                          {isMobile && (
+                            <IoChevronBackOutline
+                              size="22"
                               style={{
-                                backgroundColor:
-                                  msg.sender?._id === userId
-                                    ? " rgba(248, 235, 210, 1)"
-                                    : "white",
-                                border:
-                                  msg.sender?._id === userId
-                                    ? "none"
-                                    : "1px solid gray",
+                                color: "black",
+                                marginBottom: "0.3rem",
+                                marginRight: "0.3rem",
                               }}
+                              onClick={() => {
+                                setActiveChat(null);
+                              }}
+                            />
+                          )}
+                          {MatrID}
+                        </span>
+
+                        <span>
+                          <RiDeleteBin5Line
+                            onClick={() => {
+                              setShowDeleteModal(true);
+                            }}
+                            style={{ color: "black" }}
+                            size="22"
+                          />
+                        </span>
+                        {showDeleteModal && (
+                          <div
+                            className="modal fade show d-block"
+                            tabIndex="-1"
+                            role="dialog"
+                            style={{ background: "rgba(0, 0, 0, 0.5)" }}
+                          >
+                            <div
+                              className="modal-dialog modal-sm modal-dialog-centered"
+                              role="document"
                             >
-                              <p className="p-0 m-0 smstext">{msg.message}</p>
+                              <div className="modal-content">
+                                <div className="modal-header">
+                                  <h5 className="modal-title">
+                                    Confirm Deletion
+                                  </h5>
+                                  <button
+                                    type="button"
+                                    className="btn-close"
+                                    onClick={() => setShowDeleteModal(false)}
+                                  ></button>
+                                </div>
+                                <div className="modal-body text-center">
+                                  <p>
+                                    Are you sure you want to delete this chat?
+                                  </p>
+                                </div>
+                                <div className="modal-footer d-flex justify-content-between">
+                                  <button
+                                    className="btn btn-danger w-100 me-2"
+                                    onClick={() => {
+                                      deletechat(activeChat, true);
+                                      setShowDeleteModal(false);
+                                    }}
+                                  >
+                                    Delete for Everyone
+                                  </button>
+                                  <button
+                                    className="btn btn-warning w-100"
+                                    onClick={() => {
+                                      deletechat(activeChat, false);
+                                      setShowDeleteModal(false);
+                                    }}
+                                  >
+                                    Delete for Me
+                                  </button>
+                                </div>
+                                <div className="modal-footer">
+                                  <button
+                                    className="btn btn-secondary w-100"
+                                    onClick={() => setShowDeleteModal(false)}
+                                  >
+                                    Cancel
+                                  </button>
+                                </div>
+                              </div>
                             </div>
-                            <div className="rounded p-1">
-                              <p
-                                className="timetext"
+                          </div>
+                        )}
+                      </>
+                    </div>
+
+                    {Status && (
+                      <div
+                        className="d-flex flex-column flex-sm-row align-items-center justify-content-between p-3 text-white smstext"
+                        style={{
+                          backgroundColor: "white",
+                          borderBottom: "1px solid gray",
+                          fontSize: "clamp(10px, 12px, 13px)",
+                        }}
+                      >
+                        {/* Text Section */}
+                        <p className="m-0 text-dark smstext text-center text-sm-start flex-grow-1">
+                          Matri ID: {MatrID} is interested in chatting with you.
+                          Would you like to start a conversation?
+                        </p>
+
+                        {/* Buttons Section */}
+                        <div className="d-flex gap-3 mt-2 mt-sm-0 justify-content-sm-between">
+                          <span
+                            className="text-success d-flex align-items-center gap-1 cursor-pointer"
+                            onClick={() => handleResponse("accepted")}
+                            style={{ cursor: "pointer" }}
+                          >
+                            <FaCheck /> Accept
+                          </span>
+
+                          <span
+                            className="text-danger d-flex align-items-center gap-1 cursor-pointer"
+                            onClick={() => handleResponse("rejected")}
+                            style={{ cursor: "pointer" }}
+                          >
+                            <GiCancel /> Reject
+                          </span>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="flex-grow-1 p-3 d-flex flex-column overflow-y-scroll">
+                      <>
+                        {messages?.map((msg, index) => (
+                          <div
+                            key={msg._id}
+                            className={`d-flex flex-column ${
+                              msg.sender?._id === userId
+                                ? "align-items-start"
+                                : "align-items-end"
+                            }`}
+                          >
+                            <div className="messageStyle">
+                              <div
+                                className="p-2"
                                 style={{
-                                  textAlign:
+                                  backgroundColor:
                                     msg.sender?._id === userId
-                                      ? "text-end"
-                                      : "text-start",
+                                      ? " rgba(248, 235, 210, 1)"
+                                      : "white",
+                                  border:
+                                    msg.sender?._id === userId
+                                      ? "none"
+                                      : "1px solid gray",
                                 }}
                               >
-                                {formatDate(msg.createdAt)}
-                              </p>
+                                <p className="p-0 m-0 smstext">{msg.message}</p>
+                              </div>
+                              <div className="rounded p-1">
+                                <p
+                                  className="timetext"
+                                  style={{
+                                    textAlign:
+                                      msg.sender?._id === userId
+                                        ? "text-end"
+                                        : "text-start",
+                                  }}
+                                >
+                                  {formatDate(msg.createdAt)}
+                                </p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </>
                     </div>
                     <div className="p-3 d-flex border-top bg-white">
                       <input

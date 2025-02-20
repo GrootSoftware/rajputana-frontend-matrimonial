@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./ShortListedProfile.css";
-import RequestCard from "./RequestCard";
+import MyInterestCard from "./MyInterestCard";
 import {
   FaChevronLeft,
   FaChevronRight,
   FaChevronDown,
   FaChevronUp,
 } from "react-icons/fa";
+import { IoImageSharp } from "react-icons/io5";
 import { useAuth } from "../../Layout/AuthContext";
 import styles from "./RequestCard.module.css";
-import pro from "../../../assets/images/blurimage.png";
+import { useParams, useNavigate } from "react-router-dom";
+import placeholderImage from "../../../assets/images/blurimage.png";
 
 function MyInterest() {
   const [activeTab, setActiveTab] = useState("requestSent");
@@ -125,90 +127,164 @@ function MyInterest() {
     setCurrentPage(1);
   };
 
-  function InterestImageContainer({ profile }) {
+  function RequestImageContainer({ profile, activeButton }) {
     const { updateData } = useAuth();
+      const navigate = useNavigate();
+    const totalPhotos = profile?.filesId?.totalPhotos;
 
-    const handlePhotoReq = async (profileId) => {
+    const handleViewimage = (profileId) => {
+      console.log(profileId);
+      navigate(`view/images/${profileId}`);
+    };
+
+    const handleAction = async (action, profileId) => {
       try {
-        let route = "profile/photoRequest";
-        await updateData(route, profileId);
+        const route = `profile/reqsent/${action}`;
+        if (
+          action === "withdrawal" ||
+          action === "accept" ||
+          action === "reject"
+        ) {
+          await updateData(route, profileId);
+          fetchData();
+          refreshData();
+        }
       } catch (error) {
-        console.error("Error sending photo request:", error);
+        console.error(`Error handling ${action} request:`, error);
       }
     };
 
-    if (!profile?.filesId?.photos || profile?.filesId?.photos.length === 0) {
-      return (
+    const renderEmptyState = (actionButtons = null) => (
+      <div
+        className="image-container"
+        style={{ position: "relative", width: "100%", height: "14rem" }}
+      >
+        <img
+          src={placeholderImage}
+          className="img-fluid m-auto"
+          alt="Placeholder"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "top",
+          }}
+        />
+
+        <span
+          style={{
+            position: "absolute",
+            bottom: "0%",
+            right: "0%",
+            color: "white",
+            backgroundColor: "black",
+            padding: "3px 5px",
+            zIndex: "20",
+            fontFamily: "Open Sans, sans-serif",
+          }}
+
+          onClick={() => {
+            handleViewimage(profile._id);
+          }}
+        >
+          <IoImageSharp size={15} color="white" />
+          <span style={{ color: "white", fontSize: "14px" }} className="p-1">
+            0{totalPhotos}
+          </span>
+        </span>
+        <div
+          className={styles.vipSection}
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            textAlign: "center",
+            padding: "1rem",
+          }}
+        >
+          {/* <p className="m-0 mb-1"></p> */}
+          {actionButtons}
+        </div>
+      </div>
+    );
+
+    if (!profile?.filesId?.photos?.length) {
+      if (activeButton === "requestSent") {
+        return renderEmptyState(
+          <button
+            className={styles.ctaButton}
+            onClick={() => handleAction("withdrawal", profile._id)}
+          >
+            Withdraw Request
+          </button>
+        );
+      }
+      if (activeButton === "requestReceived") {
+        return renderEmptyState(
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <button
+              className={`${styles.ctaButton} accept-button w-50`}
+              style={{ backgroundColor: "green", color: "white" }}
+              onClick={() => handleAction("accept", profile._id)}
+            >
+              Accept
+            </button>
+            <button
+              className={`${styles.ctaButton} reject-button w-50`}
+              style={{ backgroundColor: "#991c1c", color: "white" }}
+              onClick={() => handleAction("reject", profile._id)}
+            >
+              Reject
+            </button>
+          </div>
+        );
+      }
+    }
+
+    return profile?.filesId?.photos?.map((photo) => (
+      <>
         <div
           className="image-container"
           style={{ position: "relative", width: "100%", height: "14rem" }}
         >
           <img
-            src={pro}
+            key={photo._id}
+            src={photo.url}
             className="img-fluid m-auto"
             alt="Profile"
             style={{
               width: "100%",
-              height: "100%",
+              height: "14rem",
               objectFit: "cover",
               objectPosition: "top",
             }}
           />
-          <div
-            className={styles.vipSection}
+
+          <span
             style={{
               position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              textAlign: "center",
+              bottom: "0%",
+              right: "0%",
+              color: "white",
+              backgroundColor: "black",
+              padding: "3px 5px",
+              zIndex: "20",
+              fontFamily: "Open Sans, sans-serif",
+            }}
+
+            onClick={() => {
+              handleViewimage(profile._id);
             }}
           >
-            <p className="m-0 mb-1">Send request for photos</p>
-            <button
-              className={styles.ctaButton}
-              onClick={() => handlePhotoReq(profile?._id)}
-            >
-              Request now
-            </button>
-          </div>
+            <IoImageSharp size={15} color="white" />
+            <span style={{ color: "white", fontSize: "14px" }} className="p-1">
+              0{totalPhotos}
+            </span>
+          </span>
         </div>
-      );
-    }
-
-    return (
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          height: "14rem",
-          overflow: "hidden",
-        }}
-      >
-        {profile?.filesId?.photos?.map((photo, index) => (
-          <img
-            key={photo._id}
-            src={photo.url}
-            className={`img-fluid m-auto ${
-              index === 0 ? "visible-image" : "hidden-image"
-            }`}
-            alt="Profile"
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "top",
-              zIndex: index === 0 ? 1 : 0,
-              opacity: index === 0 ? 1 : 0,
-              transition: "opacity 0.5s ease",
-            }}
-          />
-        ))}
-      </div>
-    );
+      </>
+    ));
   }
 
   useEffect(() => {
@@ -295,12 +371,13 @@ function MyInterest() {
           <div className="pagetitle text-center">No Profiles Found</div>
         ) : (
           getProfilesForCurrentPage().map((profile) => (
-            <RequestCard
+            <MyInterestCard
               key={profile._id}
               profile={profile?.userId}
               status={profile?.status}
               activeTab={activeTab}
-              ProfileImagerender={InterestImageContainer}
+              ProfileImagerender={RequestImageContainer}
+              fetchData={fetchData}
             />
           ))
         )}

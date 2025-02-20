@@ -100,8 +100,8 @@ const ProfileInfoHeader = () => {
           </div>
         </div>
 
-        <div className="col-lg-7 d-flex justify-content-evenly flex-wrap mt-2">
-          <div className="col-md-2">
+        <div className="col-lg-7 d-flex justify-content-around flex-wrap mt-2">
+          <div className="">
             <p
               className="mb-1"
               style={{
@@ -124,7 +124,7 @@ const ProfileInfoHeader = () => {
               {formatDate(userData?.dateOfBirth)}
             </p>
           </div>
-          <div className="col-md-2">
+          <div className="">
             <p
               className="mb-1"
               style={{
@@ -147,7 +147,7 @@ const ProfileInfoHeader = () => {
               {userData?.mobile}
             </p>
           </div>
-          <div className="col-md-2">
+          <div className="">
             <p
               className="mb-1"
               style={{

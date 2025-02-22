@@ -86,9 +86,12 @@ function Register() {
     e.preventDefault();
     if (verify()) {
       try {
-        console.log(formData);
-        await register("signup", formData);
-        navigate("/home");
+        console.log("Submitting form:", formData);
+        let response = await register("signup", formData, navigate);
+
+        if (response && response.success) {
+          navigate("/login");
+        }
       } catch (error) {
         console.error("Error during registration:", error);
       }

@@ -54,6 +54,11 @@
   width: 55%;
 }
 
+.chatrequestBtn:hover {
+  background-color: rgb(250, 249, 249);
+  border-radius: 5px;
+}
+
 @media (max-width: 768px) {
   .messageStyle {
     width: 75%;

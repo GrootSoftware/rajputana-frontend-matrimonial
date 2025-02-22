@@ -40,31 +40,51 @@ export const AuthProvider = ({ children }) => {
   const removeToken = () => {
     localStorage.removeItem("authToken");
   };
-
-  const register = async (route, data) => {
+  const register = async (route, data, navigate) => {
     try {
-      console.log(data);
+      console.log("Registering user with data:", data);
       const response = await axios.post(`${BASE_URL}/${route}`, data);
-      console.log(response.data);
-      const { message, token } = response.data;
-      setMessage(message);
-      if (token) {
-        setToken(token);
-        setIsAuthenticated(true);
+      console.log("Server response:", response.data);
+
+      const { message, token, success } = response.data;
+      if (message) setMessage(message);
+
+      if (success) {
+        if (token) {
+          setToken(token);
+          // setIsAuthenticated(true);
+        }
         toast.success("Registration successful!", {
           position: "top-center",
           autoClose: 2000,
         });
+        return response.data;
+      } else {
+        toast.error(message || "Registration failed. Please try again.", {
+          position: "top-center",
+          autoClose: 3000,
+        });
+        return response.data;
       }
     } catch (error) {
+      console.error("Registration error:", error);
       const errorMessage =
         error.response?.data?.message || "An error occurred. Please try again.";
       setMessage(errorMessage);
-      console.error("Registration error:", error);
-      toast.error(errorMessage, {
-        position: "top-center",
-        autoClose: 3000,
-      });
+
+      if (error.response?.status === 404) {
+        toast.error("Email is not verified. Redirecting to verification...", {
+          position: "top-center",
+          autoClose: 3000,
+        });
+        navigate("/auth/emailverification");
+      } else {
+        toast.error(errorMessage, {
+          position: "top-center",
+          autoClose: 3000,
+        });
+      }
+      return null;
     }
   };
 
@@ -123,6 +143,7 @@ export const AuthProvider = ({ children }) => {
   const updateData = async (route, data) => {
     try {
       const token = getToken();
+      console.log(data);
       const response = await axios.put(
         `${BASE_URL}/${route}`,
         { data },

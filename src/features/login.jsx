@@ -140,8 +140,8 @@ function Login() {
             {message && <p className="error-text">{message}</p>}
             <p className="signup-prompt">
               Are you a new user?{" "}
-              <Link to="/signup" className="signup-link">
-                Signup Now
+              <Link to="/auth/emailverification" className="signup-link">
+                Register
               </Link>
             </p>
           </form>

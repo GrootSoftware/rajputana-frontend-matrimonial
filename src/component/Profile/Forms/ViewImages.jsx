@@ -263,7 +263,7 @@ const ViewImages = () => {
               </div>
             )}
           </div>
-          <div className=" mt-2">
+          {/* <div className=" mt-2">
             <div class="border-1" id="accordionExample">
               <div class="d-flex shadow-md p-2 bg-light mb-2 justify-content-between align-items-center">
                 <label>About</label>
@@ -427,7 +427,7 @@ const ViewImages = () => {
                 </div>
               )}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

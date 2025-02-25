@@ -42,11 +42,17 @@ const ViewPage = () => {
       }
 
       const formattedHeight = response.height
-        ? `${response.height.feet}'${response.height.inches}"`
+        ? `${response.height.feet} feet ${response.height.inches} inches`
         : "N/A";
 
       const formattedDateOfBirth = response.dateOfBirth
-        ? response.dateOfBirth.split("T")[0]
+        ? new Date(response.dateOfBirth)
+            .toLocaleDateString("en-GB", {
+              day: "2-digit",
+              month: "long",
+              year: "numeric",
+            })
+            .replace(/ /g, "-")
         : "N/A";
 
       setData(response);
@@ -59,30 +65,41 @@ const ViewPage = () => {
       }
 
       setFormData({
-        matrimonialid: response.martId || "N/A",
-        firstName: response.firstName || "N/A",
-        middleName: response.middleName || "N/A",
-        lastName: response.lastName || "N/A",
+        matrimonialid: response.martrId || "N/A",
+        name: `${response.firstName || ""} ${response.middleName || ""} ${
+          response.lastName || ""
+        }`.trim(),
         dateOfBirth: formattedDateOfBirth,
         mobile: response.mobile || "N/A",
         email: response.email || "N/A",
         height: formattedHeight,
         weight: response.weight || "N/A",
         maritalStatus: response.maritalStatus || "N/A",
+        address:
+          `${response.address?.city || ""}, ${response.address?.state || ""}, ${
+            response.address?.country || ""
+          }`.trim() || "N/A",
+        profileFor: response.profilefor || "N/A",
       });
 
       setDetails({
-        matrimonialid: response.martId || "N/A",
-        firstName: response.firstName || "N/A",
-        middleName: response.middleName || "N/A",
-        lastName: response.lastName || "N/A",
+        matrimonialid: response.martrId || "N/A",
+        name: `${response.firstName || ""} ${response.middleName || ""} ${
+          response.lastName || ""
+        }`.trim(),
         dateOfBirth: formattedDateOfBirth,
         mobile: response.mobile || "N/A",
         email: response.email || "N/A",
         height: formattedHeight,
         weight: response.weight || "N/A",
         maritalStatus: response.maritalStatus || "N/A",
+        address:
+          `${response.address?.city || ""}, ${response.address?.state || ""}, ${
+            response.address?.country || ""
+          }`.trim() || "N/A",
+        profileFor: response.profilefor || "N/A",
       });
+
       setLoading(false);
     } catch (error) {
       setError(error);
@@ -189,12 +206,11 @@ const ViewPage = () => {
                 <ChevronLeft size={40} />
               </button>
 
-              {/* Next Button */}
               <button
                 onClick={nextSlide}
                 className="carousel-control-next"
                 type="button"
-                style={{ color: "black", filter: "invert(100%)" }} // Makes icon black
+                style={{ color: "black", filter: "invert(100%)" }}
               >
                 <ChevronRight size={40} />
               </button>
@@ -222,7 +238,7 @@ const ViewPage = () => {
                 })}
             </div>
 
-            {document.length !== 0 && (
+            {documents.length != 0 && (
               <>
                 <div
                   id="carouselExampleIndicators"
@@ -273,13 +289,12 @@ const ViewPage = () => {
                     <span className="sr-only">Previous</span>
                   </a>
 
-                  {/* Next Button */}
                   <a
                     className="carousel-control-next"
                     href="#carouselExampleIndicators"
                     role="button"
                     data-slide="next"
-                    style={{ filter: "invert(100%)" }} // Makes icon black
+                    style={{ filter: "invert(100%)" }}
                   >
                     <span
                       className="carousel-control-next-icon"
@@ -309,7 +324,6 @@ const ViewPage = () => {
                       {Object.keys(details).map((key) => {
                         let displayValue = details[key] || "N/A";
 
-                        // Mask mobile number (show only first 3 digits)
                         if (
                           key.toLowerCase() === "mobile" &&
                           typeof displayValue === "string"

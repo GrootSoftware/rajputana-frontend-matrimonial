@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import "./ForgetPassword.css";
+import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 import Profilenavbar from "../component/Profile/ProfileComp/Profilenavbar";
@@ -187,6 +188,12 @@ function Verification() {
               </div>
             </motion.form>
           )}
+          {/* <p className="signup-prompt">
+            Verify{" "}
+            <Link to="/auth/emailverification" className="signup-link">
+              Email
+            </Link>
+          </p> */}
         </div>
       </div>
     </>

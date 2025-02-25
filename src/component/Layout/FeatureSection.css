@@ -1,0 +1,184 @@
+/* General Styles */
+
+.feature-container {
+  margin: auto;
+  max-width: 1125px;
+  margin-top: 1rem;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+}
+
+/* Features Section */
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  text-align: center;
+}
+
+.features-grid .icon {
+  font-size: 60px;
+  color: rgba(153, 37, 37, 1);
+  margin-bottom: 1rem;
+}
+
+.features-grid div {
+  font-size: 1.25rem;
+  font-family: "Lustria", serif;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.features-grid p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 1);
+}
+
+@media (max-width: 1024) {
+  .feature-container {
+    width: 80%;
+    padding: 1px 2px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+/* Responsive Grid Layout */
+@media (max-width: 768px) {
+  .feature-container {
+    margin-inline: 0px;
+    width: 80%;
+    margin-inline: auto;
+    box-sizing: border-box;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* VVIP Section */
+.vip-section {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin-inline: auto;
+  box-sizing: border-box;
+  padding: 7vw;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/images/vvipsectionbg.jpg");
+  background-position: center;
+  background-size: contain;
+}
+
+.vip-section img {
+  max-width: 100%;
+  height: auto;
+}
+
+.vip-section div {
+  text-align: left;
+}
+
+.vip-section h2 {
+  font-size: 3.125rem;
+  font-family: "Lustria", serif;
+  font-weight: 400;
+  padding: 0rem 8vw;
+  margin-bottom: 1rem;
+}
+
+.vip-section p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  text-align: start;
+}
+
+.vip-section button {
+  background-color: rgba(153, 37, 37, 1);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  font-size: 14px; /* 16px */
+  font-family: "Now", sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.vip-section button:hover {
+  background-color: #991b1b;
+}
+
+/* Add media queries for fine control */
+@media (max-width: 1235px) {
+  .vip-section {
+    padding: 7vw;
+    width: 100%;
+    margin-inline: auto;
+  }
+  .vip-section h2 {
+    font-size: 3.5vw;
+    margin-bottom: 0%;
+  }
+
+  .vip-section p {
+    font-size: 1.5vw;
+    margin-bottom: 0%;
+  }
+}
+
+@media (max-width: 768px) {
+  .vip-section {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .vip-section div {
+    text-align: center;
+  }
+
+  .vip-section h2 {
+    font-size: 3.5vw;
+  }
+
+  .vip-section p {
+    padding-inline: 2vw;
+    font-size: 1.5vw;
+  }
+
+  .vip-section button {
+    padding: 0.55rem 1rem;
+    font-size: 1vw;
+    font-family: "Now", sans-serif;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 576px) {
+  .vip-section {
+    padding: 4vw;
+    flex-direction: column;
+  }
+  .vip-section h2 {
+    font-size: 3.5vw;
+  }
+
+  .vip-section p {
+    padding-inline: 5vw;
+    font-size: 1.75vw;
+  }
+
+  .vip-section button {
+    padding: 0.3rem 0.7rem;
+    font-size: 1.2vw;
+  }
+}

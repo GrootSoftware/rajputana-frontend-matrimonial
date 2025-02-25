@@ -1,0 +1,422 @@
+/* General Header Styles */
+.minhScreen {
+  background-color: rgba(248, 235, 210, 1);
+}
+
+.routerpathtext {
+  margin-left: 0.5rem;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  line-height: 4;
+}
+.header {
+  background-color: #991c1c;
+}
+.navHeader {
+  background-color: #991c1c;
+  color: white;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 75%;
+  margin-inline: auto;
+}
+
+.navHeader .title {
+  margin-left: 1rem;
+  width: 10rem;
+  z-index: 10;
+}
+
+.navHeader .title img {
+  width: 100%;
+}
+
+.navigation {
+  position: relative;
+}
+
+.navLinks {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+}
+
+.navLinks li {
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  margin-right: 1rem;
+}
+.navLinks li span {
+  display: none;
+}
+.navLinks a {
+  color: white;
+  text-decoration: none;
+}
+
+.navLinks a:hover {
+  text-decoration: underline;
+}
+
+/* Dropdown menu icon */
+.menuIcon {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+/* Header Section */
+.Container {
+  width: 75%;
+  /* padding-top: 9vh; */
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1242px) {
+  .Container {
+    width: 100%;
+    padding-inline: 0%;
+    border: 0cm;
+    margin: 0%;
+  }
+  .navHeader {
+    width: 100%;
+  }
+}
+
+@media (max-width: 995px) {
+  .Container {
+    width: 100%;
+    padding-inline: 0%;
+    margin: 0%;
+  }
+
+  .navHeader .title {
+    width: 9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navHeader .title {
+    width: 7rem;
+    margin-left: 0.5rem;
+  }
+  .navLinks {
+    display: none;
+    flex-direction: column;
+    background: #992525;
+    color: white;
+    position: absolute;
+    top: 100%;
+    right: 0rem;
+    width: 9rem;
+    z-index: 20;
+    border-top: 1px solid #fff;
+    /* align-items: left; */
+
+    gap: 0.2rem;
+  }
+
+  .navLinks.open {
+    display: flex;
+  }
+  .navLinks ul {
+    padding-inline: auto;
+  }
+
+  .navLinks li {
+    display: flex;
+    text-align: left;
+    padding: 0.4rem;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+  }
+  .navLinks li span {
+    display: inline;
+  }
+  .navLinks li icon {
+    display: none;
+  }
+
+  .navLinks li icon {
+    display: none;
+    margin-left: 0.3rem;
+  }
+
+  .menuIcon {
+    display: block;
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+}
+
+.profileHeader {
+  /* background-color: #fdd835; */
+  background-image: url("../../../assets/images/bgHeader.png");
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 10rem;
+  box-sizing: border-box;
+
+  padding: 0%;
+}
+
+.profileHeader img {
+  border-radius: 50%;
+  border: 2px solid green;
+  position: relative;
+  object-position: top;
+  object-fit: cover;
+  width: 10.2rem;
+  height: 10.2rem;
+  top: 10vh;
+  left: 2%;
+}
+
+.Relative {
+  position: relative;
+  left: 11.5rem;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .Relative {
+    position: relative;
+    margin-top: 6rem;
+    left: 0%;
+    text-align: center;
+  }
+}
+
+/* Profile Details Section */
+.profileDetails {
+  background-color: white;
+  padding-inline: 1.5rem;
+  box-sizing: border-box;
+}
+
+.profileDetails .infoHeader .info {
+  margin-left: 0;
+}
+.profileDetails .infoHeader .info h3 {
+  margin: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.profileDetails .infoHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-left: 3%;
+  padding-top: 2vh;
+  padding-bottom: 1.5rem;
+  font-family: "Roboto", sans-serif;
+}
+
+@media (max-width: 760px) {
+  .profileDetails .infoHeader {
+    padding-top: 10vh;
+    margin-left: 0;
+  }
+}
+
+.profileDetails .infoHeader .textSm {
+  font-size: 1rem;
+  color: rgb(101, 101, 101);
+}
+
+.profileDetails .infoHeader div {
+  text-align: left;
+}
+
+.profileDetails .infoHeader h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.profileDetails .textRight {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+}
+
+.profileDetails .infoHeader .text-right div {
+  text-align: left;
+  width: 12rem;
+}
+
+.sidebar {
+  background-color: white;
+  margin-top: 0.3vw;
+}
+.sidebar ul {
+  display: flex;
+  list-style: none;
+  margin: 0%;
+  padding: 0%;
+}
+
+.sidebar ul li {
+  width: fit-content;
+  padding: 0.7rem 1rem;
+  margin: auto;
+  text-align: center;
+  color: #333;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar ul li.active {
+  color: #faf7f7;
+  background-color: #832828; /* Same as hover effect */
+}
+
+.sidebar ul li.active:hover {
+  background-color: #832828;
+  color: #faf7f7;
+}
+
+/* Sidebar Section */
+.content {
+  background-color: rgba(248, 235, 210, 1);
+  margin-top: 0.3vw;
+}
+@media (max-width: 768px) {
+  .content {
+    margin: 0;
+  }
+}
+
+/* Main Content Section */
+.mainContent {
+  padding-bottom: 0%;
+  /* background-color: white; */
+  background-color: rgba(248, 235, 210, 1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@media (max-width: 630px) {
+  .mainContent {
+    width: 100%;
+    margin-top: 0.3vw;
+  }
+  .mainContent .basicDetails {
+    padding-left: 0;
+  }
+  .navHeader .title {
+    margin-left: 0.5rem;
+  }
+}
+
+.mainContent .basicDetails {
+  width: 100%;
+  padding-left: 1rem;
+}
+
+.mainContent .basicDetails .edit {
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.mainContent .menuIcon {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.mainContent .menuIcon div {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.mainContent .menuIcon .textLg {
+  font-size: 1.125rem;
+}
+
+.mainContent .menuIcon .textSm {
+  font-size: 1.12rem;
+  color: black;
+  /* color: #656262; */
+}
+
+@media (max-width: 630px) {
+  .mainContent .menuIcon .textLg {
+    font-size: 0.9rem;
+  }
+
+  .mainContent .menuIcon .textSm {
+    font-size: 0.9rem;
+    color: black;
+  }
+
+  .routerpathtext {
+    font-size: 12px;
+    line-height: 4;
+  }
+}
+
+.storycard {
+  width: 48%;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 540px) {
+  .storycard {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 2rem;
+  }
+  .storycard p {
+    padding-left: 0rem !important;
+  }
+}
+
+/* Seqarch page  */
+
+.vipSection {
+  flex-direction: column;
+  width: 100%;
+  margin-inline: auto;
+  color: white;
+}
+
+.vipSection button {
+  background-color: rgba(153, 37, 37, 1);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  font-size: 15px;
+  font-family: "Now", sans-serif;
+  font-weight: 500;
+}
+
+.vipSection button:hover {
+  background-color: #991b1b;
+}
+
+@media (max-width: 576px) {
+  .vipSection button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+  }
+}

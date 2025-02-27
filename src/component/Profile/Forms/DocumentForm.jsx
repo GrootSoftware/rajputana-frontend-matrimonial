@@ -8,6 +8,8 @@ import style from "./Form.module.css";
 import { useAuth } from "../../Layout/AuthContext";
 import { toast } from "react-toastify";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const DocumentForm = ({
   handleCancelClick,
   handleSaveClick,

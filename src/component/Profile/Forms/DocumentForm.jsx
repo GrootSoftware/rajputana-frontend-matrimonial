@@ -63,7 +63,8 @@ const DocumentForm = ({
       const token = localStorage.getItem("authToken");
       console.log("Form Data:", formData);
       const response = await axios.post(
-        "http://localhost:5000/upload-files",
+        `${BASE_URL}/upload-files`,
+       
         formData,
         {
           headers: {
@@ -103,7 +104,7 @@ const DocumentForm = ({
       const token = localStorage.getItem("authToken");
       console.log("Form Data:", formData);
       const response = await axios.post(
-        "http://localhost:5000/upload-documents",
+          `${BASE_URL}/upload-documents`,
         formData,
         {
           headers: {
@@ -134,7 +135,7 @@ const DocumentForm = ({
       setImages(updatedImages);
       let route = "set-profile-image";
       let response = await axios.put(
-        `http://localhost:5000/${route}`,
+        `${BASE_URL}/${route}`,
         { data },
         {
           headers: {
@@ -165,7 +166,7 @@ const DocumentForm = ({
 
       let route = "delete-image";
       let response = await axios.put(
-        `http://localhost:5000/${route}`,
+        `${BASE_URL}/${route}`,
         { data },
         {
           headers: {

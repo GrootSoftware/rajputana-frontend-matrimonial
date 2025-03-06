@@ -44,8 +44,8 @@
 
 .navIcons {
   position: absolute;
-  top: 50%;
-  width: 100%;
+  top: 60%;
+  width: 99%;
   display: flex;
   justify-content: space-between;
   transform: translateY(-50%);

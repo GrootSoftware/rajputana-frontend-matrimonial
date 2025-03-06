@@ -100,9 +100,9 @@ const JourneyPage = () => {
         className="text-center"
         style={{ marginTop: "1rem", position: "relative" }}
       >
-        <img
+      <img
           className=""
-          style={{ height: "700px", width: "100%" }}
+          style={{ maxHeight: "700px", width: "100%" }}
           src={royalbg}
           alt="img"
         />

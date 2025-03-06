@@ -69,13 +69,14 @@
 }
 
 @media (max-width: 670px) {
-  .background {
-    height: 120vh;
+ .background {
+    /* height: 120vh; */
+    height: fit-content;
   }
   .contentContainer {
     text-align: left;
     width: 100%;
-    padding: 0%;
+    padding: 5%;
   }
   .heading {
     font-size: 1.5rem;

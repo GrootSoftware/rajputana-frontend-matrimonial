@@ -25,7 +25,7 @@ function ContactUs() {
             >
               Home
             </Link>
-            <AiOutlineRight /> {" Contact Us"}
+              <AiOutlineRight size={15} style={{ marginInline: "5px" }} /> {" Contact Us"}
           </div>
 
           <section className="contact-info text-center p-2">

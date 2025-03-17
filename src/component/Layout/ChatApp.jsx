@@ -244,7 +244,7 @@ const ChatApp = () => {
             >
               Home
             </Link>{" "}
-            <AiOutlineRight /> {" Success Stories"}
+              <AiOutlineRight size={15} style={{ marginInline: "5px" }} /> {" Success Stories"}
           </div>
           <section className="container-fluid bg-white p-0">
             <div className="row p-0 m-0">

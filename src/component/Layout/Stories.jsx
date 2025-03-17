@@ -69,7 +69,7 @@ function Stories() {
             >
               Home
             </Link>
-            <AiOutlineRight /> {" Success Stories"}
+              <AiOutlineRight size={15} style={{ marginInline: "5px" }} /> {" Success Stories"}
           </div>
 
           {/* Hero Section */}

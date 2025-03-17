@@ -33,7 +33,7 @@ function PaternalfamilyinfoForm({
                   type="text"
                   id="grandFatherName"
                   name="grandFatherName"
-                  className="form-control"
+                  className="form-control rounded-0"
                   placeholder="Enter Name"
                   aria-label="Grand Father Name"
                   value={formData.grandFatherName}
@@ -47,7 +47,7 @@ function PaternalfamilyinfoForm({
                   type="text"
                   id="grandFathersonOf"
                   name="grandFathersonOf" // name added
-                  className="form-control"
+                  className="form-control rounded-0"
                   placeholder="Enter Occupation"
                   aria-label="Son of"
                   value={formData.grandFathersonOf}
@@ -62,7 +62,7 @@ function PaternalfamilyinfoForm({
                   type="text"
                   id="grandFatheroccupation"
                   name="grandFatheroccupation" // name added
-                  className="form-control"
+                  className="form-control rounded-0"
                   placeholder="Enter Occupation"
                   aria-label="grandFatheroccupation"
                   value={formData.grandFatheroccupation} // value bound to state
@@ -75,7 +75,7 @@ function PaternalfamilyinfoForm({
                   type="text"
                   id="grandFatherthikana"
                   name="grandFatherthikana"
-                  className="form-control"
+                  className="form-control rounded-0"
                   placeholder="Grand Father Thikana"
                   aria-label="grandFatherthikana"
                   value={formData.grandFatherthikana}
@@ -90,7 +90,7 @@ function PaternalfamilyinfoForm({
                   type="text"
                   id="grandMotherName"
                   name="grandMotherName"
-                  className="form-control"
+                  className="form-control rounded-0"
                   placeholder="Enter Name"
                   aria-label="Grand Mother Name"
                   value={formData.grandMotherName}
@@ -103,7 +103,7 @@ function PaternalfamilyinfoForm({
                   type="text"
                   id="grandMotherdaughterOf"
                   name="grandMotherdaughterOf"
-                  className="form-control"
+                  className="form-control rounded-0"
                   placeholder="Enter Name"
                   aria-label="Daughter of"
                   value={formData.grandMotherdaughterOf}
@@ -118,7 +118,7 @@ function PaternalfamilyinfoForm({
                   type="text"
                   id="grandmotherthikana"
                   name="grandmotherthikana"
-                  className="form-control"
+                  className="form-control rounded-0"
                   placeholder=""
                   aria-label="Thikana"
                   value={formData.grandmotherthikana}
@@ -137,7 +137,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`name-${index}`}
                       name="name"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="name"
                       value={item.name || ""}
@@ -150,7 +150,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`marriedto-${index}`}
                       name="marriedto"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="marriedto"
                       value={item.marriedto || ""}
@@ -163,7 +163,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`daughterof-${index}`}
                       name="daughterof"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="daughterof"
                       value={item.daughterof || ""}
@@ -176,7 +176,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`thikana-${index}`}
                       name="thikana"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="thikana"
                       value={item.thikana || ""}
@@ -208,7 +208,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`kakosa-name-${index}`}
                       name="name"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="name"
                       value={item.name || ""}
@@ -223,7 +223,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`kakosa-marriedto-${index}`}
                       name="marriedto"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="marriedto"
                       value={item.marriedto || ""}
@@ -238,7 +238,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`kakosa-daughterof-${index}`}
                       name="daughterof"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="daughterof"
                       value={item.daughterof || ""}
@@ -251,7 +251,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`kakosa-thikana-${index}`}
                       name="thikana"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="thikana"
                       value={item.thikana || ""}
@@ -283,7 +283,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`bhuasa-name-${index}`}
                       name="name"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="name"
                       value={item.name || ""}
@@ -298,7 +298,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`bhuasa-marriedto-${index}`}
                       name="marriedto"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="marriedto"
                       value={item.marriedto || ""}
@@ -311,7 +311,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`bhuasa-sonof-${index}`}
                       name="sonof"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="sonof"
                       value={item.sonof || ""}
@@ -324,7 +324,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`bhuasa-thikana-${index}`}
                       name="thikana"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="thikana"
                       value={item.thikana || ""}
@@ -353,7 +353,7 @@ function PaternalfamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="maternalGrandFatherName"
                   name="maternalGrandFatherName"
                   placeholder="Name"
@@ -370,7 +370,7 @@ function PaternalfamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="maternalGrandFathersonOf"
                   name="maternalGrandFathersonOf"
                   placeholder="Enter Name"
@@ -390,7 +390,7 @@ function PaternalfamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="maternalGrandFatheroccupation"
                   name="maternalGrandFatheroccupation"
                   placeholder="maternalGrandFatheroccupation"
@@ -407,7 +407,7 @@ function PaternalfamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="maternalGrandFatherthikana"
                   name="maternalGrandFatherthikana"
                   placeholder="Enter Thikana"
@@ -424,7 +424,7 @@ function PaternalfamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="maternalGrandMotherName"
                   name="maternalGrandMotherName"
                   placeholder="Enter Name"
@@ -441,7 +441,7 @@ function PaternalfamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="maternalGrandMotherdaughterOf"
                   name="maternalGrandMotherdaughterOf"
                   placeholder="Enter Name"
@@ -461,7 +461,7 @@ function PaternalfamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="maternalGrandMotherthikana"
                   name="maternalGrandMotherthikana"
                   placeholder="Maternal Grand Mother Thikana"
@@ -481,7 +481,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`mamosa-name-${index}`}
                       name="name"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="name"
                       value={item.name || ""}
@@ -496,7 +496,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`mamosa-marriedto-${index}`}
                       name="marriedto"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="marriedto"
                       value={item.marriedto || ""}
@@ -511,7 +511,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`mamosa-daughterof-${index}`}
                       name="daughterof"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder="Mj. Thakur"
                       aria-label="daughterof"
                       value={item.daughterof || ""}
@@ -524,7 +524,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`mamosa-thikana-${index}`}
                       name="thikana"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder="City"
                       aria-label="thikana"
                       value={item.thikana || ""}
@@ -556,7 +556,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`masisa-name-${index}`}
                       name="name"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="name"
                       value={item.name || ""}
@@ -571,7 +571,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`masisa-marriedto-${index}`}
                       name="marriedto"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="marriedto"
                       value={item.marriedto || ""}
@@ -584,7 +584,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`masisa-sonof-${index}`}
                       name="sonof"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="sonof"
                       value={item.sonof || ""}
@@ -597,7 +597,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`masisa-thikana-${index}`}
                       name="thikana"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="thikana"
                       value={item.thikana || ""}
@@ -673,7 +673,7 @@ export default PaternalfamilyinfoForm;
 //                     type="text"
 //                     id="name"
 //                     name="badePapa.name"
-//                     className="form-control"
+//                     className="form-control rounded-0"
 //                     placeholder="Late Maharaj Maan Singh Ji Jhala"
 //                     aria-label="name"
 //                     value={formData.badePapa?.name || ""}
@@ -686,7 +686,7 @@ export default PaternalfamilyinfoForm;
 //                     type="text"
 //                     id="marriedto"
 //                     name="badePapa.marriedto"
-//                     className="form-control"
+//                     className="form-control rounded-0"
 //                     placeholder="Hans Kunwar"
 //                     aria-label="marriedto"
 //                     value={formData.badePapa?.marriedto || ""}
@@ -699,7 +699,7 @@ export default PaternalfamilyinfoForm;
 //                     type="text"
 //                     id="daughterof"
 //                     name="badePapa.daughterof"
-//                     className="form-control"
+//                     className="form-control rounded-0"
 //                     placeholder="Mj. Thakur Chawand Singh"
 //                     aria-label="daughterof"
 //                     value={formData.badePapa?.daughterof || ""}
@@ -712,7 +712,7 @@ export default PaternalfamilyinfoForm;
 //                     type="text"
 //                     id="Thikana"
 //                     name="badePapa.Thikana"
-//                     className="form-control"
+//                     className="form-control rounded-0"
 //                     placeholder="Gyangarh, Mewar"
 //                     aria-label="Thikana"
 //                     value={formData.badePapa?.Thikana || ""}
@@ -742,7 +742,7 @@ export default PaternalfamilyinfoForm;
 //                     type="text"
 //                     id="name"
 //                     name="badeChacha.name"
-//                     className="form-control"
+//                     className="form-control rounded-0"
 //                     placeholder="Late Maharaj Maan Singh Ji Jhala"
 //                     aria-label="name"
 //                     value={formData.badeChacha?.name || ""}
@@ -755,7 +755,7 @@ export default PaternalfamilyinfoForm;
 //                     type="text"
 //                     id="marriedto"
 //                     name="badeChacha.marriedto"
-//                     className="form-control"
+//                     className="form-control rounded-0"
 //                     placeholder="Hans Kunwar"
 //                     aria-label="marriedto"
 //                     value={formData.badeChacha?.marriedto || ""}
@@ -768,7 +768,7 @@ export default PaternalfamilyinfoForm;
 //                     type="text"
 //                     id="daughterof"
 //                     name="badeChacha.daughterof"
-//                     className="form-control"
+//                     className="form-control rounded-0"
 //                     placeholder="Mj. Thakur Chawand Singh"
 //                     aria-label="daughterof"
 //                     value={formData.badeChacha?.daughterof || ""}
@@ -781,7 +781,7 @@ export default PaternalfamilyinfoForm;
 //                     type="text"
 //                     id="Thikana"
 //                     name="badeChacha.Thikana"
-//                     className="form-control"
+//                     className="form-control rounded-0"
 //                     placeholder="Gyangarh, Mewar"
 //                     aria-label="Thikana"
 //                     value={formData.badeChacha?.Thikana || ""}

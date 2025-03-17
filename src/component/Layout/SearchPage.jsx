@@ -262,7 +262,7 @@ const SearchPage = () => {
           <Link to="/home" style={{ textDecoration: "none", color: "inherit" }}>
             Home
           </Link>
-          <AiOutlineRight />
+            <AiOutlineRight size={15} style={{ marginInline: "5px" }} />
           {"Search"}
         </div>
         <div className="bg-white p-4 shadow">

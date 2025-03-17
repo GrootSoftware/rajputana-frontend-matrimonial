@@ -81,7 +81,7 @@ function About() {
             >
               Home
             </Link>
-            <AiOutlineRight />
+              <AiOutlineRight size={15} style={{ marginInline: "5px" }} />
             {"  About Us"}
           </div>
 

@@ -283,7 +283,7 @@ const ReligionForm = ({
                   placeholder="Enter Clan"
                   value={formData.clan || ""}
                   onChange={handleInputChange}
-                />
+                />  
               </div>
 
               <div className="col-md-4">

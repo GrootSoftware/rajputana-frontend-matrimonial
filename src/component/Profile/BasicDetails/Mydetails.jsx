@@ -7,6 +7,8 @@ import PaternalSideDetails from "./PaternalSideDetails";
 import FamilyInfo from "./FamilyInfo";
 import ImagesAndDocuments from "./ImagesAndDocuments";
 
+import FeatureSection from "../../Layout/FeatureSection";
+
 // import MaternalInfo from "./MaternalInfo";
 // import PrefrenceDetails from "./PrefrenceDetails";
 // import AboutmeInfo from "./AboutmeInfo";
@@ -20,10 +22,10 @@ function Mydetails() {
       <Educationinfo />
       <ImagesAndDocuments />
       <PaternalSideDetails />
-
       {/* <MaternalInfo /> */}
       {/* <PrefrenceDetails /> */}
       {/* <AboutmeInfo /> */}
+      {/* <FeatureSection /> */}
     </>
   );
 }

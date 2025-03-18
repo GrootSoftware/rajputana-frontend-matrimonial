@@ -62,14 +62,15 @@ function Educationinfo() {
     const { name, value } = e.target;
     let validValue = value;
 
-    const textRegex = /^[a-zA-Z\s]*$/;
+    const textRegex = /^[a-zA-Z0-9\s,./"'()-]*$/;
     const incomeRegex = /^(Below \d+ LPA|\d+-\d+ LPA|Above \d+ LPA)?$/;
     const hobbiesRegex = /^[a-zA-Z\s,]{1,40}$/;
     const additionalInfoRegex = /^[a-zA-Z0-9.,'"() ]{0,100}$/;
 
-    if (
-      ["qualifications", "institution", "professional", "class"].includes(name)
-    ) {
+    if (["qualifications", "institution", "class"].includes(name)) {
+      // Allow letters, spaces, commas, single/double quotes, and slashes
+      if (!/^[a-zA-Z\s,/'"]*$/.test(value)) return;
+    } else if (name === "professional") {
       if (!textRegex.test(value)) return;
     } else if (name === "annualIncome") {
       if (!incomeRegex.test(value)) return;
@@ -110,7 +111,7 @@ function Educationinfo() {
           <div className={styles.detailItem} key={key}>
             <div className={styles.label}>
               {key
-                .replace(/([A-Z])/g, " $1") // Add space before uppercase letters
+                .replace(/([A-Z])/g, " $1")
                 .replace(/^./, (str) => str.toUpperCase())}
             </div>
             <div className={styles.value}>

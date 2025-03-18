@@ -10,16 +10,19 @@ const ProfileBoxCard = ({ profile, handlecheck, key, ProfileImagerender }) => {
 
   return (
     <div
-      className="col-11 col-sm-11 col-md-6 col-xl-6 mb-2 mt-1 p-0 p-sm-1 m-auto"
-      style={{ boxSizing: "border-box" }}
+      className="col-11 col-sm-11 col-lg-6 mb-2 mt-1 p-0 p-sm-1 m-auto"
+      style={{ boxSizing: "border-box", maxWidth: "690px" }}
       key={key}
     >
       <div className="card shadow-sm border-0 rounded-0">
         <div
-          className="row g-0 m-md-1 p-1 p-md-0"
+          className="row g-0 m-md-1 p-1 p-md-1"
           style={{ boxSizing: "border-box" }}
         >
-          <div className="col-12 col-sm-6 col-md-5 d-flex align-items-center m-0">
+          <div
+            className="col-12 col-sm-6 col-md-5 d-flex align-items-center  m-sm-0 m-auto"
+            style={{ maxWidth: "230px" }}
+          >
             {profile && <ProfileImagerender profile={profile} />}
           </div>
 
@@ -66,7 +69,17 @@ const ProfileBoxCard = ({ profile, handlecheck, key, ProfileImagerender }) => {
               </p>
 
               <p className={`card-text m-1 d-flex ${style.textSm}`}>
-                <span className="text-secondary w-50">High. Education</span>
+                <span
+                  className="text-secondary w-50"
+                  style={{
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    width: "50%",
+                  }}
+                >
+                  High. Education
+                </span>
                 <span className="fw-bold w-50">
                   {profile.profdetailsId?.qualifications || "N/A"}
                 </span>

@@ -8,6 +8,7 @@ import { useAuth } from "../../Layout/AuthContext";
 import styles from "./RequestCard.module.css";
 import pro from "../../../assets/images/blurimage.png";
 import ViewPage from "../Forms/ViewPage";
+import axios from "axios";
 
 import { RiDeleteBin4Line } from "react-icons/ri";
 import { IoEyeOutline } from "react-icons/io5";
@@ -27,8 +28,33 @@ const RequestCard = ({
   ProfileImagerender,
   fetchData,
 }) => {
+  const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
   const [showMessageCard, setShowMessageCard] = useState(false);
-  const openMessageCard = () => setShowMessageCard(true);
+  const navigate = useNavigate();
+  const openMessageCard = async (message, profile) => {
+    try {
+      const token = localStorage.getItem("authToken");
+
+      const response = await axios.post(
+        `${BASE_URL}/chat/validate`,
+        { profileId: profile }, // Request body
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.data?.success) {
+        navigate("/message");
+      } else {
+        setShowMessageCard(true);
+      }
+    } catch (error) {
+      console.error("Error validating chat:", error);
+      setShowMessageCard(true);
+    }
+  };
   const closeMessageCard = () => setShowMessageCard(false);
 
   const renderProfileDetails = () => {
@@ -52,9 +78,18 @@ const RequestCard = ({
 
     return details.map(({ label, value }, index) => (
       <div key={index} className={`card-text m-1 d-flex ${styles.textSm}`}>
-        <span className="text-secondary w-50">{label}</span>
         <span
-          className="w-50"
+          className={`text-secondary w-50`}
+          style={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {label}
+        </span>
+        <span
+          className="w-50 text-black fw-bold"
           style={{
             whiteSpace: "nowrap",
             overflow: "hidden",
@@ -69,19 +104,22 @@ const RequestCard = ({
 
   return (
     <div
-      className="col-11 col-sm-11 col-md-6 col-xl-6 mb-2 mt-1 p-0 p-sm-1 m-auto"
-      style={{ boxSizing: "border-box" }}
+      className="col-11 col-sm-11 col-md-10 mb-2 mt-1 p-0 p-sm-1 m-auto"
+      style={{ boxSizing: "border-box", maxWidth: "690px" }}
     >
       <div className="card shadow-sm border-0 rounded-0">
         <div
-          className="row g-0 mt-1 ms-1 me-1 mb-0 p-1 bg-bg-white"
+          className="row g-0  p-1 bg-white "
           style={{
             borderBottom: "1px solid gray",
             // backgroundColor: "white",
             boxSizing: "border-box",
           }}
         >
-          <div className="col-12 col-sm-6 col-md-5 d-flex align-items-center m-0">
+          <div
+            className="col-12 col-sm-6 col-md-5 d-flex align-items-center m-sm-0 m-auto"
+            style={{ maxWidth: "230px" }}
+          >
             {profile && (
               <ProfileImagerender profile={profile} activeButton={activeTab} />
             )}
@@ -315,18 +353,22 @@ const ActionButtons = ({
       {buttonConfig[status]?.map(({ icon, label, onClick }, index) => (
         <div
           key={index}
-          className={`p-2 ${index > 0 ? "borderLeft" : ""}`}
+          className={`${index > 0 ? "borderLeft" : ""}`}
           style={{
             width: `${100 / buttonConfig[status].length}%`,
             textAlign: "center",
             backgroundColor: "white",
             borderLeft: index > 0 ? "1px solid gray" : "none",
             cursor: "pointer",
+            minHeight: "50px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center", // Ensures both icon and text are centered
           }}
           onClick={onClick}
         >
           <span className={styles.actionIcon}>
-            {icon ? React.cloneElement(icon, { strokeWidth: 1.2 }) : null}
+            {icon ? React.cloneElement(icon, { strokeWidth: 1.25 }) : null}
           </span>
           <span className={styles.actionText}> {label}</span>
         </div>

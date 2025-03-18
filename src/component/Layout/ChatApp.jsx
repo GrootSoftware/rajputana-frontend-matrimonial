@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { IoSendSharp } from "react-icons/io5";
+
 import io from "socket.io-client";
 import axios from "axios";
 // Styles and Components
@@ -10,13 +10,15 @@ import Footer from "./Footer";
 import { AiOutlineRight, AiOutlineClose } from "react-icons/ai";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { IoChevronBackOutline } from "react-icons/io5";
+import { IoSendSharp, IoAttach } from "react-icons/io5";
+
 import { toast } from "react-toastify";
 import { GiCancel } from "react-icons/gi";
 import { FaCheck } from "react-icons/fa6";
 import { useAuth } from "./AuthContext";
 
 import "./Chat.css";
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const socket = io(BASE_URL, { autoConnect: false });
 
 const ChatApp = () => {
@@ -244,7 +246,8 @@ const ChatApp = () => {
             >
               Home
             </Link>{" "}
-            <AiOutlineRight /> {" Success Stories"}
+            <AiOutlineRight size={15} style={{ marginInline: "5px" }} />{" "}
+            {" Chat"}
           </div>
           <section className="container-fluid bg-white p-0">
             <div className="row p-0 m-0">
@@ -253,7 +256,7 @@ const ChatApp = () => {
                   <div
                     className="p-3"
                     style={{
-                      borderBottom: "1px solid gray",
+                      borderBottom: "1px solid lightgray",
                     }}
                   >
                     <input
@@ -295,7 +298,7 @@ const ChatApp = () => {
                               chat?._id === activeChat
                                 ? "rgba(248, 235, 210, 1)"
                                 : "white",
-                            borderBottom: "1px solid gray",
+                            borderBottom: "1px solid lightgray",
                           }}
                           onClick={() => {
                             loadMessages(chat?._id);
@@ -521,7 +524,7 @@ const ChatApp = () => {
                         ))}
                       </>
                     </div>
-                    <div className="p-3 d-flex border-top bg-white">
+                    {/* <div className="p-3 d-flex border-top bg-white">
                       <input
                         type="text"
                         className="rounded-0 p-2 flex-grow-1"
@@ -537,6 +540,44 @@ const ChatApp = () => {
                         style={{
                           backgroundColor: "#8b0000",
                           // border: "1px solid gray",
+                        }}
+                      >
+                        <IoSendSharp style={{ color: "white" }} size="20" />
+                      </button>
+                    </div> */}
+                    <div className="p-3 d-flex border-top bg-white position-relative">
+                      <input
+                        type="text"
+                        className="rounded-0 p-2 flex-grow-1 "
+                        style={{ outline: "none", border: "1px solid gray" }}
+                        placeholder="Type a message..."
+                        value={message}
+                        maxLength={100}
+                        onChange={(e) => setMessage(e.target.value)}
+                      />
+
+                      {/* File Attachment Button */}
+                      <button
+                        className="p-2 mx-2 position-absolute"
+                        style={{
+                          backgroundColor: "transparent",
+                          border: "none",
+                          right: "55px",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <IoAttach
+                          size="22"
+                          style={{ color: "gray", transform: "rotate(45deg)" }}
+                        />
+                      </button>
+
+                      {/* Send Button */}
+                      <button
+                        className="p-2"
+                        onClick={sendMessage}
+                        style={{
+                          backgroundColor: "#8b0000",
                         }}
                       >
                         <IoSendSharp style={{ color: "white" }} size="20" />

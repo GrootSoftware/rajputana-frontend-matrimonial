@@ -55,7 +55,7 @@ function PhotoRequest() {
   function RequestImageContainer({ profile, activeButton }) {
     const { updateData } = useAuth();
     const totalPhotos = profile?.filesId?.totalPhotos;
-      const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleViewimage = (profileId) => {
       console.log(profileId);
@@ -80,19 +80,15 @@ function PhotoRequest() {
     };
 
     const renderEmptyState = (actionButtons = null) => (
-      <div
-        className="image-container"
-        style={{ position: "relative", width: "100%", height: "14rem" }}
-      >
+      <div className="image-container" style={{ position: "relative" }}>
         <img
           src={placeholderImage}
           className="img-fluid m-auto"
           alt="Placeholder"
           style={{
-            width: "100%",
-            height: "100%",
+            width: "230px",
+            height: "230px",
             objectFit: "cover",
-            objectPosition: "top",
           }}
         />
 
@@ -168,20 +164,16 @@ function PhotoRequest() {
 
     return profile?.filesId?.photos?.map((photo) => (
       <>
-        <div
-          className="image-container"
-          style={{ position: "relative", width: "100%", height: "14rem" }}
-        >
+        <div className="image-container" style={{ position: "relative" }}>
           <img
             key={photo._id}
             src={photo.url}
             className="img-fluid m-auto"
             alt="Profile"
             style={{
-              width: "100%",
-              height: "14rem",
+              width: "230px",
+              height: "230px",
               objectFit: "cover",
-              objectPosition: "top",
             }}
           />
 
@@ -236,26 +228,30 @@ function PhotoRequest() {
         ? [...data.photoReqReceived]
         : [...data.photoReqSent];
 
+    // Filtering based on status
     if (status !== "all") {
       filteredProfiles = filteredProfiles.filter(
         (profile) => profile.status === status
       );
     }
 
+    // Sorting based on criteria
     if (criteria) {
       filteredProfiles.sort((a, b) => {
+        const direction = sortDirection?.direction === "asc" ? 1 : -1;
+
         if (criteria === "age") {
-          return sortDirection === "asc"
-            ? calculateAge(a.userId.dateOfBirth) -
-                calculateAge(b.userId.dateOfBirth)
-            : calculateAge(b.userId.dateOfBirth) -
-                calculateAge(a.userId.dateOfBirth);
+          return (
+            direction *
+            (calculateAge(a.userId.dateOfBirth) -
+              calculateAge(b.userId.dateOfBirth))
+          );
         } else if (criteria === "height") {
-          return sortDirection === "asc"
-            ? calculateHeightInInches(a.userId) -
-                calculateHeightInInches(b.userId)
-            : calculateHeightInInches(b.userId) -
-                calculateHeightInInches(a.userId);
+          return (
+            direction *
+            (calculateHeightInInches(a.userId) -
+              calculateHeightInInches(b.userId))
+          );
         }
         return 0;
       });
@@ -300,7 +296,7 @@ function PhotoRequest() {
     <div className="profileContainer">
       <div className="profileListHeader">
         <div className="pagetitle">Photo Request</div>
-        <div className="filters">
+        {/* <div className="filters">
           {["age", "height"].map((criteria) => (
             <div
               key={criteria}
@@ -319,11 +315,28 @@ function PhotoRequest() {
               </span>
             </div>
           ))}
+        </div> */}
+        <div className="filters">
+          {["age", "height"].map((criteria) => (
+            <select
+              key={criteria}
+              onChange={(e) =>
+                setSortDirection({ criteria, direction: e.target.value })
+              }
+              className="form-select form-select-lg p-2 filterItem"
+            >
+              <option value="asc">
+                {criteria.charAt(0).toUpperCase() + criteria.slice(1)}
+              </option>
+              <option value="asc">Increasing</option>
+              <option value="desc">Decreasing</option>
+            </select>
+          ))}
         </div>
       </div>
 
       <div className="row m-0 mb-1 p-0 bg-white">
-        <div className="col-9 d-flex p-0">
+        <div className="col-8 col-sm-9 col-md-10 d-flex p-0">
           {["requestSent", "requestReceived"].map((tab) => (
             <div
               key={tab}
@@ -338,7 +351,10 @@ function PhotoRequest() {
             </div>
           ))}
         </div>
-        <div className="col-3 p-0 p-sm-2" style={{ alignContent: "center" }}>
+        <div
+          className="col-4 col-sm-3 col-md-2 p-2 "
+          style={{ alignContent: "center" }}
+        >
           <select
             className="form-select form-select-lg m-0"
             style={{
@@ -384,9 +400,9 @@ function PhotoRequest() {
         )}
       </div>
 
-      <div className="d-flex align-items-center justify-content-center mt-3">
+      {/* <div className="d-flex align-items-center justify-content-center mt-3 mb-3">
         <button
-          className="btn"
+          className=""
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
         >
@@ -396,15 +412,16 @@ function PhotoRequest() {
           <button
             key={index}
             className={`btn rounded-circle px-3 fw-bold ${
-              currentPage === index + 1 ? "btn-danger text-white" : "bg-white"
+              currentPage === index + 1 ? "text-white" : "bg-white text-black"
             }`}
+            style={{ backgroundColor: "rgba(153, 37, 37, 1)" }}
             onClick={() => setCurrentPage(index + 1)}
           >
             {index + 1}
           </button>
         ))}
         <button
-          className="btn"
+          className=""
           onClick={() =>
             setCurrentPage((prev) => Math.min(prev + 1, totalPages))
           }
@@ -412,6 +429,53 @@ function PhotoRequest() {
         >
           <FaChevronRight />
         </button>
+      </div> */}
+
+      <div className="d-flex align-items-center justify-content-center mt-3 mb-3">
+        <div className="d-flex align-items-center gap-2">
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            style={{
+              all: "unset",
+              cursor: currentPage === 1 ? "default" : "pointer",
+            }}
+          >
+            <FaChevronLeft />
+          </button>
+
+          {Array.from({ length: totalPages }).map((_, index) => (
+            <button
+              key={index}
+              className={`btn fw-bold d-flex align-items-center justify-content-center ${
+                currentPage === index + 1 ? "text-white" : "bg-white text-black"
+              }`}
+              style={{
+                backgroundColor: "rgba(153, 37, 37, 1)",
+                width: "40px",
+                height: "40px",
+                borderRadius: "50%",
+                padding: 0,
+              }}
+              onClick={() => setCurrentPage(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))}
+
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            style={{
+              all: "unset",
+              cursor: currentPage === totalPages ? "default" : "pointer",
+            }}
+          >
+            <FaChevronRight />
+          </button>
+        </div>
       </div>
     </div>
   );

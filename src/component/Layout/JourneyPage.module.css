@@ -1,20 +1,22 @@
 .container {
-  width: 75%;
-  padding-bottom: 16rem;
+  max-width: 1400px;
+  padding-bottom: 14rem;
   margin-inline: auto;
+  min-height: 739px;
+  max-height: fit-content;
 }
 .section {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin: 4vh auto;
 }
 
 /* Left Section */
 .leftSection {
-  width: 40%;
+  margin-top: 2rem;
+  max-width: 510px;
   margin-bottom: 2vh;
-  padding-right: 0;
+  /* padding: 1rem; */
 }
 
 .heading {
@@ -28,6 +30,7 @@
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-size: 1.125rem;
+  line-height: 1.5;
   margin-bottom: 1.5vh;
 }
 
@@ -35,10 +38,10 @@
   margin-top: 1.5vh;
   background-color: rgba(153, 37, 37, 1);
   color: white;
-  padding: 1rem 1.5rem;
+  padding: 1rem 2rem;
   font-family: "Open Sans", sans-serif;
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 14px;
 
   cursor: pointer;
   border: none;
@@ -51,7 +54,7 @@
 
 /* Right Section */
 .rightSection {
-  width: 47%;
+  max-width: 621px;
   padding-left: 0;
   box-sizing: border-box;
 }
@@ -88,6 +91,7 @@
   font-size: 1.5rem;
   font-family: "Lustria", serif;
   font-weight: 400;
+  line-height: 1.16;
   margin-bottom: 0.5vh;
   margin-bottom: 1rem;
 }
@@ -96,46 +100,22 @@
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-size: 16px;
-  line-height: 1.2;
+  line-height: 24px;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1400px) {
   .container {
-    padding-inline: 2%;
-    width: 100%;
-    padding-bottom: 10%;
-  }
-  .leftSection {
-    width: 45%;
-    box-sizing: border-box;
-    margin-inline: auto;
-  }
-  .heading {
-    font-size: 1.75rem;
-    font-weight: 400;
-    margin-bottom: 1vh;
-  }
+    padding-inline: 1%;
 
-  .description {
-    font-size: 0.9rem;
-  }
-  .rightSection {
-    margin-top: 2rem;
-    width: 40%;
-    margin-inline: auto;
-  }
-  .featureTitle {
-    font-size: 1.2rem;
-  }
-
-  .featureDescription {
-    font-size: 0.55rem;
+    width: 98%;
+    /* padding-bottom: 10%; */
   }
 }
 
 @media (max-width: 780px) {
   .container {
     padding-inline: 2%;
+    padding-bottom: 5rem;
   }
   .heading {
     font-size: 2.5rem;
@@ -165,7 +145,7 @@
   }
   .iconContainer {
     padding: 1.3rem;
-    margin-right: 3rem;
+    margin-right: 1rem;
   }
 
   .featureTitle {
@@ -210,20 +190,26 @@
 
 /* VVIP Section */
 .vipSection {
-  position: absolute;
-  top: 0%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
-  width: 90%;
-  margin-inline: auto;
+  max-width: 1360px;
   box-sizing: border-box;
-  padding: 7vw;
+  margin-inline: auto;
+  padding: 100px;
+  max-height: 328px;
   background-repeat: no-repeat;
-  background-image: url("../../assets/images/vvipsectionbg.jpg");
+  /* background-image: url("../../assets/images/vvipsectionbg.jpg"); */
+  background-color: rgba(248, 235, 210, 1);
   background-position: center;
   background-size: contain;
+
+  position: relative;
+  bottom: 10px;
+}
+
+.box {
+  padding-inline: 10px;
+  border: 2px solid rgba(255, 210, 64, 1);
 }
 
 .vipSection img {
@@ -239,7 +225,8 @@
   font-size: 3.125rem;
   font-family: "Lustria", serif;
   font-weight: 400;
-  padding: 0rem 7vw;
+  padding: 0rem;
+  padding-right: 112px;
   margin-bottom: 1rem;
 }
 
@@ -255,12 +242,14 @@
   background-color: rgba(153, 37, 37, 1);
   color: white;
   padding: 0.5rem 1.5rem;
+  margin-top: 10px;
   font-weight: bold;
   cursor: pointer;
   border: none;
   font-size: 14px;
   font-family: "Now", sans-serif;
   font-weight: 500;
+  text-decoration: none;
 }
 
 .vipSection button:hover {
@@ -268,66 +257,85 @@
 }
 
 /* Add media queries for fine control */
-@media (max-width: 1235px) {
+@media (max-width: 1200px) {
+  .box {
+    padding-inline: 8px;
+    bottom: 2px;
+    border: 1px solid rgba(255, 210, 64, 1);
+  }
   .vipSection {
-    padding: 7vw;
-    width: 95%;
+    padding: 40px;
+    width: 100%;
     margin-inline: auto;
+    min-height: 250px;
+    bottom: 8px;
   }
   .vipSection h2 {
-    font-size: 3.5vw;
+    font-size: 2.75rem;
     margin-bottom: 0%;
+    text-align: left;
+    padding-right: 50px;
+    min-width: 230px;
   }
 
   .vipSection p {
-    font-size: 1.5vw;
+    font-size: 1rem;
     margin-bottom: 0%;
   }
 }
 
-@media (max-width: 768px) {
-  .vipSection {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .vipSection div {
-    text-align: center;
-  }
-
+@media (max-width: 992px) {
   .vipSection h2 {
-    font-size: 3.5vw;
+    font-size: 2.5rem;
+    padding-right: 10px;
   }
-
-  .vipSection p {
-    padding-inline: 2vw;
-    font-size: 1.5vw;
-  }
-
-  .vipSection button {
-    padding: 0.55rem 1rem;
-    font-size: 1vw;
-    font-family: "Now", sans-serif;
-    font-weight: 500;
+  .vipSection {
+    padding: 20px;
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 780px) {
+  .box {
+    padding-inline: 5px;
+    bottom: 2px;
+    border: 2px solid rgba(255, 210, 64, 1);
+  }
   .vipSection {
-    padding: 3vw;
+    min-height: 180px;
+    padding: 15px;
     flex-direction: column;
+    min-height: fit-content;
+    bottom: 5px;
   }
   .vipSection h2 {
+    text-align: center;
     font-size: 3.5vw;
+    margin-bottom: 8px;
   }
 
   .vipSection p {
     padding-inline: 5vw;
     font-size: 1.75vw;
+    margin-bottom: 8px;
+  }
+  .vipSection div {
+    text-align: center;
   }
 
   .vipSection button {
-    padding: 0.3rem 0.7rem;
+    padding: 0.5rem 1rem;
     font-size: 1.2vw;
+  }
+}
+
+@media (max-width: 678px) {
+  .hideBelow679 {
+    display: none !important;
+  }
+}
+
+@media (max-width: 678px) {
+  .showBelow678 {
+    display: block !important;
   }
 }

@@ -34,7 +34,14 @@ const MatchmakingSection = () => {
         </div>
         {/* Decorative Border */}
         <div className="text-center" style={{ marginTop: "5rem" }}>
-          <img className="w-75" src={border} alt="img" />
+          <img
+            style={{
+              width: "100%",
+              maxWidth: "1400px",
+            }}
+            src={border}
+            alt="img"
+          />
         </div>
       </div>
     </>

@@ -10,33 +10,34 @@
   background-size: cover;
   background-position: center;
 
-  min-height: 90vh;
+  min-height: 85vh;
   width: 100vw;
 }
 
 .login-box {
   background-color: white;
-  padding: 1rem;
+  padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 450px;
+  max-width: 450px;
+  /* width: 42%; */
   box-sizing: border-box;
 }
 
 /* Title and subtitle styling */
 .title img {
-  width: 50%;
+  width: 40%;
+  max-width: 209px;
   margin: 0%;
   padding: 0%;
 }
 
-.subtitle {
-  font-size: 1.75rem;
+.login-box .subtitle {
+  font-size: 30px;
   font-family: "Lustria", serif;
   font-weight: 400;
   color: rgba(0, 0, 0, 1);
-  margin-top: 1.2rem;
-  margin-bottom: 1.2rem;
-  text-align: left;
+  line-height: 40px;
+  text-align: start;
 }
 
 /* Form styling */
@@ -44,7 +45,7 @@
   margin-bottom: 1.5rem;
 }
 
-.label {
+.form-groups .label {
   font-size: 18px;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
@@ -53,8 +54,8 @@
   margin-bottom: 0.5rem;
 }
 
-.input-field {
-  font-size: 1.125rem;
+.form-groups .input-field {
+  font-size: 1rem;
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   width: 100%;
@@ -138,6 +139,13 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .login-box {
+    width: 70%;
+    min-width: 50px;
+  }
+  .login-box .subtitle {
+    font-size: 20px;
+  }
   .login-container {
     min-height: 93vh;
     padding-inline: auto;
@@ -171,6 +179,7 @@
     padding: 5%;
     margin: 0;
     width: 100%;
+    min-width: none;
   }
 }
 

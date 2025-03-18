@@ -26,6 +26,7 @@ function Login() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData({
       ...formData,
       [name]: value,
@@ -35,13 +36,23 @@ function Login() {
   const verify = () => {
     const newErrors = {};
 
+    const emailRegex =
+      /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|outlook|hotmail|aol|icloud)\.(com|co|in)$/;
+    const mobileRegex = /^\d{6,14}$/;
+
     if (!formData.username.trim()) {
-      newErrors.username = "Email or mobile Number is required.";
+      newErrors.username = "Email or mobile number is required.";
     } else if (
-      !/\S+@\S+\.\S+/.test(formData.username) &&
-      !/^\d{10}$/.test(formData.username)
+      !emailRegex.test(formData.username) &&
+      !mobileRegex.test(formData.username)
     ) {
-      newErrors.username = "Enter a valid email or a 10-digit mobile number.";
+      newErrors.username = "Enter a valid email or mobile number.";
+    } else if (
+      emailRegex.test(formData.username) &&
+      mobileRegex.test(formData.username)
+    ) {
+      newErrors.username =
+        "Enter either an email or a mobile number, not both.";
     }
 
     if (!formData.password.trim()) {
@@ -137,7 +148,7 @@ function Login() {
                 Forgot Password?
               </Link>
             </div>
-            {message && <p className="error-text">{message}</p>}
+            {/* {message && <p className="error-text">{message}</p>} */}
             <p className="signup-prompt">
               Are you a new user?{" "}
               <Link to="/auth/emailverification" className="signup-link">

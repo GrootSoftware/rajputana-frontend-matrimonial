@@ -9,6 +9,7 @@ function PaternalSideDetails() {
   const { fetchUserData, updateData } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [view, setView] = useState(false);
+  const [error, setError] = useState("");
 
   const keyNameMapping = {
     grandFatherName: "Grandfather Name",
@@ -73,6 +74,33 @@ function PaternalSideDetails() {
   };
 
   const handleSaveClick = async () => {
+    // Check if all fields in the nested arrays are filled (except index 0)
+    for (const arrayName of [
+      "badePapa",
+      "kakosa",
+      "bhuasa",
+      "mamosa",
+      "masisa",
+    ]) {
+      if (formData[arrayName]) {
+        for (let index = 0; index < formData[arrayName].length; index++) {
+          const item = formData[arrayName][index];
+
+          // Skip validation for index 0
+          if (index === 0) continue;
+
+          for (const key in item) {
+            if (!item[key]?.trim()) {
+              setError(
+                `Please fill all fields in ${arrayName}, row ${index + 1}`
+              );
+              return;
+            }
+          }
+        }
+      }
+    }
+
     try {
       const route = "updatepaternal-details";
       await updateData(route, formData);
@@ -112,9 +140,9 @@ function PaternalSideDetails() {
     setFormData({ ...formData, [arrayName]: [...formData[arrayName], newRow] });
   };
 
-  const removeRow = (arrayName) => {
-    if (formData[arrayName].length === 0) return;
-    const updatedArray = formData[arrayName].slice(0, -1);
+  const handleRemoveRow = (index, arrayName) => {
+    if (formData[arrayName].length === 1) return;
+    const updatedArray = formData[arrayName].filter((_, i) => i !== index);
     setFormData({ ...formData, [arrayName]: updatedArray });
   };
 
@@ -144,9 +172,11 @@ function PaternalSideDetails() {
             <PaternalfamilyinfoForm
               handleCancelClick={handleCancelClick}
               handleAddRow={handleAddRow}
+              handleRemoveRow={handleRemoveRow}
               handleInputChange={handleInputChange}
               formData={formData}
               handleSaveClick={handleSaveClick}
+              error={error}
             />
           </div>
         )}
@@ -285,7 +315,10 @@ function PaternalSideDetails() {
 
             <div>
               {!view ? (
-                <div className="text-danger fw-bold" onClick={handletoggle}>
+                <div
+                  className="text-danger fw-bold text-decoration-underline mb-4 mt-4"
+                  onClick={handletoggle}
+                >
                   View more
                 </div>
               ) : (
@@ -322,7 +355,10 @@ function PaternalSideDetails() {
                     <MasisaHukum details={details} />
                   </div>
 
-                  <div className="text-danger fw-bold" onClick={handletoggle}>
+                  <div
+                    className="text-danger fw-bold text-decoration-underline mb-4 mt-4"
+                    onClick={handletoggle}
+                  >
                     View less
                   </div>
                 </>

@@ -1,22 +1,25 @@
 /* Global Styles */
 .container {
   margin: 0 auto;
-  padding: 2rem;
-  padding-inline: 12.5%;
+  /* padding: 2rem; */
+  padding-inline: auto;
+  max-width: 1400px;
   background-color: rgba(249, 249, 249, 1);
+  min-height: 546px;
+  max-height: fit-content;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 25px;
+  margin-top: 75px;
 }
 
-.divider {
+/* .divider {
   width: 60px;
   height: 3px;
-  background-color: #ffcc00; /* Yellow Divider */
   margin: 10px auto;
-}
+} */
 
 .mainTitle {
   font-size: 3.125rem;
@@ -25,9 +28,9 @@
   color: rgba(70, 44, 44, 1);
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .container {
-    padding-inline: 2%;
+    padding-inline: 10px;
   }
 }
 

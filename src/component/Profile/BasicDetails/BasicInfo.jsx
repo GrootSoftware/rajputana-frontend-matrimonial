@@ -7,6 +7,10 @@ import { useAuth } from "../../Layout/AuthContext";
 
 function BasicInfo() {
   const { fetchUserData, updateData } = useAuth();
+  const [error, setError] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+
+  // Initial state for details and formData
   const [details, setDetails] = useState({
     firstName: "",
     middleName: "",
@@ -21,14 +25,12 @@ function BasicInfo() {
     countryCode: "",
   });
 
-  const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState();
+  const [formData, setFormData] = useState({ ...details });
 
   const fetchData = async () => {
     try {
       const route = "user";
       const userData = await fetchUserData(route);
-      console.log(userData);
 
       const formattedHeight = userData.height
         ? `${userData.height.feet}'${userData.height.inches}"`
@@ -58,8 +60,8 @@ function BasicInfo() {
         dateOfBirth: formattedDateOfBirth,
         mobile: userData.mobile || "",
         email: userData.email || "",
-        heightFeet: userData.height?.feet,
-        heightInch: userData.height?.inches,
+        heightFeet: userData.height?.feet || "",
+        heightInch: userData.height?.inches || "",
         height: {
           feet: userData.height?.feet || "",
           inches: userData.height?.inches || "",
@@ -74,61 +76,115 @@ function BasicInfo() {
     }
   };
 
-  const handleSaveClick = async () => {
-    try {
-      const route = "update-profile";
-      console.log("Saving Data:", formData);
-      await updateData(route, formData);
-      setIsEditing(false);
-      await fetchData();
-    } catch (error) {
-      console.error("Error updating data:", error.message);
+  const verifyInput = (name, value) => {
+    const nameRegex = /^[a-zA-Z]{1,20}$/;
+    const mobileRegex = /^\d{6,14}$/;
+    const emailRegex =
+      /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|outlook|hotmail|aol|icloud)\.(com|co|in)$/;
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    const weightRegex = /^(?:1[0-4][0-9]|150|[1-9]?[0-9])$/;
+    const countryCodeRegex = /^\+?[1-9]\d{0,3}$/;
+
+    let errorMsg = "";
+
+    switch (name) {
+      case "firstName":
+      case "middleName":
+      case "lastName":
+      case "maritalStatus":
+        if (!nameRegex.test(value)) {
+          errorMsg = "Only alphabetic characters allowed (1-20).";
+        }
+        break;
+
+      case "mobile":
+        if (!mobileRegex.test(value)) {
+          errorMsg = "Invalid mobile number (6-14 digits).";
+        }
+        break;
+
+      case "email":
+        if (!emailRegex.test(value)) {
+          errorMsg = "Invalid email format.";
+        }
+        break;
+      case "dateOfBirth":
+        if (!dateRegex.test(value)) {
+          errorMsg = "Invalid date format (YYYY-MM-DD).";
+        } else {
+          const selectedDate = new Date(value);
+          const today = new Date();
+          const minDate = new Date(
+            today.getFullYear() - 18,
+            today.getMonth(),
+            today.getDate()
+          );
+
+          if (selectedDate > today) {
+            errorMsg = "Date of birth cannot be in the future.";
+          } else if (selectedDate > minDate) {
+            errorMsg = "You must be at least 18 years old.";
+          }
+        }
+        break;
+
+      case "weight":
+        if (!weightRegex.test(value)) {
+          errorMsg = "Weight must be between 1 and 150 kg.";
+        }
+        break;
+
+      case "countryCode":
+        if (!countryCodeRegex.test(value)) {
+          errorMsg = "Invalid country code format.";
+        }
+        break;
+
+      default:
+        errorMsg = "";
     }
+
+    setError(errorMsg);
+
+    return !errorMsg;
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    let validValue = value;
+    if (value.length > 25) {
+      setError("Input cannot exceed 25 characters.");
+      return;
+    } else {
+      setError("");
+    }
 
-    const nameRegex = /^[a-zA-Z\s]{0,20}$/;
-    const mobileRegex = /^[0-9]{0,10}$/;
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-    const weightRegex = /^[0-9]{0,3}$/;
-    const heightRegex = /^[0-9]{0,2}$/;
-    const additionalInfoRegex = /^[a-zA-Z0-9.,'"() ]{0,100}$/;
-    const countryCodeRegex = /^\+\d{1,4}$/; // Allows + followed by 1 to 4 digits
-
-    if (
-      ["firstName", "middleName", "lastName", "maritalStatus"].includes(name)
-    ) {
-      if (!nameRegex.test(value)) return;
-    } else if (name === "mobile") {
-      if (!mobileRegex.test(value)) return;
-    } else if (name === "email") {
-      if (value && !emailRegex.test(value)) return;
-    } else if (name === "dateOfBirth") {
-      if (value && !dateRegex.test(value)) return;
-    } else if (name === "weight") {
-      if (!weightRegex.test(value)) return;
-    } else if (name === "additionalInfo") {
-      if (!additionalInfoRegex.test(value)) return;
-    } else if (name === "heightFeet" || name === "heightInch") {
-      if (!heightRegex.test(value)) return;
-      setFormData({
-        ...formData,
+    if (name === "heightFeet" || name === "heightInch") {
+      setFormData((prev) => ({
+        ...prev,
         height: {
-          ...formData.height,
+          ...prev.height,
           [name === "heightFeet" ? "feet" : "inches"]:
             parseInt(value, 10) || "",
         },
-      });
-      return;
-    } else if (name === "countryCode") {
-      if (!countryCodeRegex.test(value)) return;
+      }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
     }
+  };
 
-    setFormData({ ...formData, [name]: validValue });
+  const handleSaveClick = async () => {
+    const isValid = Object.keys(formData).every((key) =>
+      verifyInput(key, formData[key])
+    );
+    if (!isValid) return;
+    try {
+      const route = "update-profile";
+      await updateData(route, formData);
+      setIsEditing(false);
+      fetchData();
+    } catch (error) {
+      console.error("Error updating data:", error.message);
+    }
   };
 
   const handleEditClick = () => {
@@ -136,11 +192,13 @@ function BasicInfo() {
     setFormData(details);
   };
 
+  // Cancel edit mode
   const handleCancelClick = () => {
     setFormData(details);
     setIsEditing(false);
   };
 
+  // Fetch data on component mount or when edit mode changes
   useEffect(() => {
     fetchData();
   }, [isEditing]);
@@ -160,6 +218,7 @@ function BasicInfo() {
             handleInputChange={handleInputChange}
             formData={formData}
             handleSaveClick={handleSaveClick}
+            error={error}
           />
         )}
       </div>

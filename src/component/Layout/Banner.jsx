@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Home.css";
 import Navbar from "./Navbar";
-import { FaSearch } from "react-icons/fa";
+
+import { LiaSearchSolid } from "react-icons/lia";
+
 import Features from "./Features";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
@@ -81,8 +83,8 @@ function Banner() {
 
             <form onSubmit={handleSubmit} className="search-form">
               {/* Gender Radio Buttons */}
-              <div className="d-flex flex-column m-lg-3 ms-lg-3 w-100 w-md-25">
-                <div className="radio-group mb-2">
+              <div className="d-flex flex-column w-100 w-md-25 mt-lg-3 mb-lg-3">
+                <div className="radio-group mb-3">
                   <input
                     type="radio"
                     id="groom"
@@ -118,47 +120,63 @@ function Banner() {
               </div>
 
               {/* Age Group Selection */}
-              <div className="d-flex flex-column m-lg-3 ms-lg-3 w-100 w-md-75 age-group">
-                <label className="p-1 text-align-left">Select Age group</label>
+              <div className="d-flex flex-column m-lg-3 ms-lg-3 w-100 age-group">
+                <label className="text-align-left">Select Age group</label>
                 <div className="d-flex">
-                  <div className="d-flex flex-row">
-                    <select
-                      name="minAge"
-                      value={formData.minAge}
-                      onChange={handleChange}
-                      className="input-field"
-                    >
-                      <option value="">Age</option>
-                      {Array.from({ length: 33 }, (_, i) => 18 + i).map(
-                        (age) => (
-                          <option key={age} value={age}>
-                            {age}
-                          </option>
-                        )
-                      )}
-                    </select>
+                  <div className="d-flex flex-row flex-grow-1">
+                    <>
+                      <select
+                        name="minAge"
+                        value={formData.minAge}
+                        onChange={handleChange}
+                        className="input-field"
+                        style={{ paddingRight: "30px" }} // Add padding for icon space
+                      >
+                        <option value="">Age</option>
+                        {Array.from({ length: 33 }, (_, i) => 18 + i).map(
+                          (age) => (
+                            <option key={age} value={age}>
+                              {age}
+                            </option>
+                          )
+                        )}
+                      </select>
+                    </>
 
-                    <h5 className="m-2">to</h5>
-
-                    <select
-                      name="maxAge"
-                      value={formData.maxAge}
-                      onChange={handleChange}
-                      className="input-field"
+                    <h5
+                      className="m-2"
+                      style={{
+                        fontSize: "17px",
+                        fontWeight: "700",
+                      }}
                     >
-                      <option value="">Age</option>
-                      {Array.from({ length: 33 }, (_, i) => 18 + i).map(
-                        (age) => (
-                          <option key={age} value={age}>
-                            {age}
-                          </option>
-                        )
-                      )}
-                    </select>
+                      to
+                    </h5>
+
+                    <>
+                      <select
+                        name="maxAge"
+                        value={formData.maxAge}
+                        onChange={handleChange}
+                        className="input-field"
+                        style={{ paddingRight: "30px" }} // Same padding for icon space
+                      >
+                        <option value="">Age</option>
+                        {Array.from({ length: 33 }, (_, i) => 18 + i).map(
+                          (age) => (
+                            <option key={age} value={age}>
+                              {age}
+                            </option>
+                          )
+                        )}
+                      </select>
+                    </>
                   </div>
 
                   <button type="submit" className="search-button">
-                    <FaSearch />
+                    <LiaSearchSolid
+                      style={{ fontWeight: "900", fontSize: "1.5rem" }}
+                    />
                   </button>
                 </div>
               </div>

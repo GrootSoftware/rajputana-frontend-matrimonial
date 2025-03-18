@@ -148,7 +148,7 @@ const ReligionForm = ({
                   className="form-control rounded-0"
                   id="birthplace"
                   name="birthplace"
-                  placeholder="Ex: Hospital/Home"
+                  placeholder="Exact Place"
                   value={formData.birthplace || ""}
                   onChange={handleInputChange}
                 />

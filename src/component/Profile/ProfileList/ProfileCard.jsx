@@ -27,7 +27,9 @@ function ProfileCard({
         <div>
           <div className="matrId">Matr ID: {element?.profile?.martrId}</div>
           <div className="profileName">
-            {`${element?.profile?.firstName} ${element?.profile?.middleName} ${element?.profile?.lastName}`}
+            {/* {`${element?.profile?.firstName} ${element?.profile?.middleName} ${element?.profile?.lastName}`}
+          </div> */}
+            {`${element?.profile?.middleName} ${element?.profile?.lastName}`}
           </div>
         </div>
       </div>
@@ -57,17 +59,21 @@ function ProfileCard({
             {formatDate(element?.dateShortlisted)}
           </div>
         </div>
-        <div className={`${element.isbookmarked ? "bookmarked" : "actions"}`}>
-          <MdDelete
-            className="actionIcon"
-            onClick={() => handleDelete(element?.profile._id)}
-          />
+        <div className="detailItems">
+          <div className={`${element.isbookmarked ? "bookmarked" : "actions"}`}>
+            <MdDelete
+              className="actionIcon"
+              onClick={() => handleDelete(element?.profile._id)}
+            />
+          </div>
         </div>
-        <div className="actions">
-          <FaEye
-            className="actionIcon"
-            onClick={() => handleView(element?.profile?._id)}
-          />
+        <div className="detailItems">
+          <div className="actions">
+            <FaEye
+              className="actionIcon"
+              onClick={() => handleView(element?.profile?._id)}
+            />
+          </div>
         </div>
       </div>
     </div>

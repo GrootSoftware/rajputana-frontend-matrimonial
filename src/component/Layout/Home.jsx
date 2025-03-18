@@ -32,7 +32,7 @@ function Home() {
       <FeatureSection />
       <RecentAddedPage />
       <LandingPage />
-      <Testimonial />
+      {/* <Testimonial /> */}
       <JourneyPage />
       <Footer />
     </>

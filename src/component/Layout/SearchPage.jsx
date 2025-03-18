@@ -84,7 +84,7 @@ export function Interestimagecontainer({ profile, status }) {
             className={styles.ctaButton}
             onClick={() => HandlePhotoReq(profile?._id)}
           >
-            Request now
+            Request image
           </button>
         </div>
       </div>
@@ -262,7 +262,7 @@ const SearchPage = () => {
           <Link to="/home" style={{ textDecoration: "none", color: "inherit" }}>
             Home
           </Link>
-          <AiOutlineRight />
+            <AiOutlineRight size={15} style={{ marginInline: "5px" }} />
           {"Search"}
         </div>
         <div className="bg-white p-4 shadow">
@@ -576,12 +576,15 @@ const SearchPage = () => {
           </div>
         </div>
 
-        <div className="d-flex align-items-center justify-content-center mt-3">
+        <div className="d-flex align-items-center justify-content-center mt-3 mb-3">
           <div className="d-flex align-items-center gap-2">
             <button
-              className="btn"
               onClick={handlePrevPage}
               disabled={currentPage === 1}
+              style={{
+                all: "unset",
+                cursor: currentPage === 1 ? "default" : "pointer",
+              }}
             >
               <FaChevronLeft />
             </button>
@@ -589,21 +592,31 @@ const SearchPage = () => {
             {Array.from({ length: totalPages }).map((_, index) => (
               <button
                 key={index}
-                className={`btn rounded-circle px-3 fw-bold ${
+                className={`btn fw-bold d-flex align-items-center justify-content-center ${
                   currentPage === index + 1
-                    ? "btn-danger text-white"
-                    : "bg-white"
+                    ? "text-white"
+                    : "bg-white text-black"
                 }`}
-                onClick={() => handlePageClick(index + 1)}
+                style={{
+                  backgroundColor: "rgba(153, 37, 37, 1)",
+                  width: "40px", // Adjust size as needed
+                  height: "40px",
+                  borderRadius: "50%", // Ensures circular shape
+                  padding: 0, // Prevents extra spacing
+                }}
+                onClick={() => setCurrentPage(index + 1)}
               >
                 {index + 1}
               </button>
             ))}
 
             <button
-              className="btn"
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
+              style={{
+                all: "unset",
+                cursor: currentPage === totalPages ? "default" : "pointer",
+              }}
             >
               <FaChevronRight />
             </button>

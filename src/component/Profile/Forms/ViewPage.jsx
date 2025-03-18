@@ -66,9 +66,10 @@ const ViewPage = () => {
 
       setFormData({
         matrimonialid: response.martrId || "N/A",
-        name: `${response.firstName || ""} ${response.middleName || ""} ${
-          response.lastName || ""
-        }`.trim(),
+        // name: `${response.firstName || ""} ${response.middleName || ""} ${
+        //   response.lastName || ""
+        // }`.trim(),
+        lastName: `${response.lastName || ""}`.trim(),
         dateOfBirth: formattedDateOfBirth,
         mobile: response.mobile || "N/A",
         email: response.email || "N/A",
@@ -84,9 +85,10 @@ const ViewPage = () => {
 
       setDetails({
         matrimonialid: response.martrId || "N/A",
-        name: `${response.firstName || ""} ${response.middleName || ""} ${
-          response.lastName || ""
-        }`.trim(),
+        // name: `${response.firstName || ""} ${response.middleName || ""} ${
+        //   response.lastName || ""
+        // }`.trim(),
+        lastName: `${response.lastName || ""}`.trim(),
         dateOfBirth: formattedDateOfBirth,
         mobile: response.mobile || "N/A",
         email: response.email || "N/A",

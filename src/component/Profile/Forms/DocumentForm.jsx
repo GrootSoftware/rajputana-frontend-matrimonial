@@ -22,6 +22,8 @@ const DocumentForm = ({
   const { updateData, fetchUserData, fetchprofile } = useAuth();
   const [profileImage, setProfileImage] = useState(null);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
+
   const options = [
     { id: "publicOption", value: false, label: "Public" },
     { id: "onRequestOption", value: true, label: "On Request" },
@@ -62,16 +64,12 @@ const DocumentForm = ({
     try {
       const token = localStorage.getItem("authToken");
       console.log("Form Data:", formData);
-      const response = await axios.post(
-        "http://localhost:5000/upload-files",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.post(`${BASE_URL}/upload-files`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const uploadedPhotos = response.data?.photos || [];
       setImages((prev) => [...uploadedPhotos]);
     } catch (error) {
@@ -103,7 +101,7 @@ const DocumentForm = ({
       const token = localStorage.getItem("authToken");
       console.log("Form Data:", formData);
       const response = await axios.post(
-        "http://localhost:5000/upload-documents",
+        `${BASE_URL}/upload-documents`,
         formData,
         {
           headers: {
@@ -134,7 +132,7 @@ const DocumentForm = ({
       setImages(updatedImages);
       let route = "set-profile-image";
       let response = await axios.put(
-        `http://localhost:5000/${route}`,
+        `${BASE_URL}/${route}`,
         { data },
         {
           headers: {
@@ -165,7 +163,7 @@ const DocumentForm = ({
 
       let route = "delete-image";
       let response = await axios.put(
-        `http://localhost:5000/${route}`,
+        `${BASE_URL}/${route}`,
         { data },
         {
           headers: {

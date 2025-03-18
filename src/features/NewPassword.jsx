@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../component/Layout/AuthContext";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
@@ -20,99 +19,78 @@ function NewPassword() {
   });
   const [errors, setErrors] = useState({});
 
+  // ✅ Extract token & userid from URL
+  const [searchParams] = useSearchParams();
+  const token = searchParams.get("token");
+  const userId = searchParams.get("userid");
+
   const navigate = useNavigate();
 
-  const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev);
-  };
-
-  const toggleConfirmPasswordVisibility = () => {
+  const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
+  const toggleConfirmPasswordVisibility = () =>
     setShowConfirmPassword((prev) => !prev);
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
-  // Validation function
+  // ✅ Validation function
   const verify = () => {
     const newErrors = {};
-
-    if (!formData.password.trim()) {
-      newErrors.password = "Password is required.";
-    } else if (formData.password.length < 6) {
+    if (!formData.password.trim()) newErrors.password = "Password is required.";
+    else if (formData.password.length < 6)
       newErrors.password = "Password must be at least 6 characters long.";
-    }
 
-    if (!formData.newpassword.trim()) {
+    if (!formData.newpassword.trim())
       newErrors.newpassword = "Confirm Password is required.";
-    } else if (formData.newpassword.length < 6) {
+    else if (formData.newpassword.length < 6)
       newErrors.newpassword =
         "Confirm Password must be at least 6 characters long.";
-    } else if (formData.newpassword !== formData.password) {
+    else if (formData.newpassword !== formData.password)
       newErrors.newpassword = "Passwords do not match!";
-    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  // ✅ Handle Form Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!verify()) {
-      console.log("Form has errors:", errors);
-      return;
-    }
+    if (!verify()) return;
 
     try {
-      const token = localStorage.getItem("authToken");
-
-      if (!token) {
-        toast.error("Authentication token missing. Please log in again.", {
+      if (!token || !userId) {
+        toast.error("Invalid or expired reset link. Please try again.", {
           position: "top-center",
           autoClose: 3000,
         });
         return;
       }
-
       const response = await axios.post(
         `${BASE_URL}/reset-password`,
         {
           password: formData.password,
           newPassword: formData.newpassword,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        { headers: { Authorization: `Bearer ${token}` } }
       );
-
-      if (response.data && response.data.success) {
+      if (response.data?.success) {
         toast.success("Password reset successful!", {
           position: "top-center",
           autoClose: 2000,
         });
-
-        localStorage.removeItem("authToken");
         navigate("/login");
       } else {
         throw new Error(response.data.message || "Unknown error occurred.");
       }
     } catch (error) {
       console.error("Error during password reset:", error);
-      const errorMessage =
-        error.response?.data?.message || "An error occurred. Please try again.";
-
-      toast.error(errorMessage, {
-        position: "top-center",
-        autoClose: 3000,
-      });
+      toast.error(
+        error.response?.data?.message || "An error occurred. Please try again.",
+        { position: "top-center", autoClose: 3000 }
+      );
     }
   };
 
@@ -128,7 +106,7 @@ function NewPassword() {
               className="rounded-full border-4 border-white"
             />
           </div>
-          <p className="subtitle">Find Your Elite Match with Ease</p>
+          <p className="subtitle">Create new password</p>
           <form onSubmit={handleSubmit}>
             <div className="form-groups">
               <label htmlFor="password" className="label">

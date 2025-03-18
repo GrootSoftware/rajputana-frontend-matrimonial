@@ -88,36 +88,73 @@ function MyInterest() {
     return (profile.height.feet || 0) * 12 + (profile.height.inches || 0);
   };
 
+  // const filterAndSortProfiles = (status, criteria) => {
+  //   let filteredProfiles =
+  //     activeTab === "requestReceived"
+  //       ? [...data.photoReqReceived]
+  //       : [...data.photoReqSent];
+
+  //   if (status !== "all") {
+  //     filteredProfiles = filteredProfiles.filter(
+  //       (profile) => profile.status === status
+  //     );
+  //   }
+
+  //   if (criteria) {
+  //     filteredProfiles.sort((a, b) => {
+  //       if (criteria === "age") {
+  //         return sortDirection === "asc"
+  //           ? calculateAge(a.userId.dateOfBirth) -
+  //               calculateAge(b.userId.dateOfBirth)
+  //           : calculateAge(b.userId.dateOfBirth) -
+  //               calculateAge(a.userId.dateOfBirth);
+  //       } else if (criteria === "height") {
+  //         return sortDirection === "asc"
+  //           ? calculateHeightInInches(a.userId) -
+  //               calculateHeightInInches(b.userId)
+  //           : calculateHeightInInches(b.userId) -
+  //               calculateHeightInInches(a.userId);
+  //       }
+  //       return 0;
+  //     });
+  //   }
+  //   setProfiles(filteredProfiles);
+  // };
   const filterAndSortProfiles = (status, criteria) => {
     let filteredProfiles =
       activeTab === "requestReceived"
         ? [...data.photoReqReceived]
         : [...data.photoReqSent];
 
+    // Filter by status
     if (status !== "all") {
       filteredProfiles = filteredProfiles.filter(
         (profile) => profile.status === status
       );
     }
 
-    if (criteria) {
+    // Apply sorting only when criteria matches the selected one
+    if (criteria && sortDirection.criteria === criteria) {
+      const direction = sortDirection.direction === "asc" ? 1 : -1;
+
       filteredProfiles.sort((a, b) => {
         if (criteria === "age") {
-          return sortDirection === "asc"
-            ? calculateAge(a.userId.dateOfBirth) -
-                calculateAge(b.userId.dateOfBirth)
-            : calculateAge(b.userId.dateOfBirth) -
-                calculateAge(a.userId.dateOfBirth);
+          return (
+            direction *
+            (calculateAge(a.userId.dateOfBirth) -
+              calculateAge(b.userId.dateOfBirth))
+          );
         } else if (criteria === "height") {
-          return sortDirection === "asc"
-            ? calculateHeightInInches(a.userId) -
-                calculateHeightInInches(b.userId)
-            : calculateHeightInInches(b.userId) -
-                calculateHeightInInches(a.userId);
+          return (
+            direction *
+            (calculateHeightInInches(a.userId) -
+              calculateHeightInInches(b.userId))
+          );
         }
         return 0;
       });
     }
+
     setProfiles(filteredProfiles);
   };
 
@@ -129,7 +166,7 @@ function MyInterest() {
 
   function RequestImageContainer({ profile, activeButton }) {
     const { updateData } = useAuth();
-      const navigate = useNavigate();
+    const navigate = useNavigate();
     const totalPhotos = profile?.filesId?.totalPhotos;
 
     const handleViewimage = (profileId) => {
@@ -157,17 +194,16 @@ function MyInterest() {
     const renderEmptyState = (actionButtons = null) => (
       <div
         className="image-container"
-        style={{ position: "relative", width: "100%", height: "14rem" }}
+        style={{ position: "relative", width: "100%" }}
       >
         <img
           src={placeholderImage}
           className="img-fluid m-auto"
           alt="Placeholder"
           style={{
-            width: "100%",
-            height: "100%",
+            width: "230px",
+            height: "230px",
             objectFit: "cover",
-            objectPosition: "top",
           }}
         />
 
@@ -182,13 +218,12 @@ function MyInterest() {
             zIndex: "20",
             fontFamily: "Open Sans, sans-serif",
           }}
-
           onClick={() => {
             handleViewimage(profile._id);
           }}
         >
           <IoImageSharp size={15} color="white" />
-          <span style={{ color: "white", fontSize: "14px" }} className="p-1">
+          <span style={{ color: "white" }} className="p-1">
             0{totalPhotos}
           </span>
         </span>
@@ -244,20 +279,16 @@ function MyInterest() {
 
     return profile?.filesId?.photos?.map((photo) => (
       <>
-        <div
-          className="image-container"
-          style={{ position: "relative", width: "100%", height: "14rem" }}
-        >
+        <div className="image-container" style={{ position: "relative" }}>
           <img
             key={photo._id}
             src={photo.url}
             className="img-fluid m-auto"
             alt="Profile"
             style={{
-              width: "100%",
-              height: "14rem",
+              width: "230px",
+              height: "230px",
               objectFit: "cover",
-              objectPosition: "top",
             }}
           />
 
@@ -272,7 +303,6 @@ function MyInterest() {
               zIndex: "20",
               fontFamily: "Open Sans, sans-serif",
             }}
-
             onClick={() => {
               handleViewimage(profile._id);
             }}
@@ -299,7 +329,7 @@ function MyInterest() {
     <div className="profileContainer">
       <div className="profileListHeader">
         <div className="pagetitle">My Interests</div>
-        <div className="filters">
+        {/* <div className="filters">
           {["age", "height"].map((criteria) => (
             <div
               key={criteria}
@@ -318,11 +348,33 @@ function MyInterest() {
               </span>
             </div>
           ))}
+        </div> */}
+        <div className="filters">
+          {["age", "height"].map((criteria) => (
+            <select
+              key={criteria}
+              value={
+                sortDirection.criteria === criteria
+                  ? sortDirection.direction
+                  : "asc"
+              }
+              onChange={(e) =>
+                setSortDirection({ criteria, direction: e.target.value })
+              }
+              className="form-select form-select-lg p-2 filterItem"
+            >
+              <option value="asc">
+                {criteria.charAt(0).toUpperCase() + criteria.slice(1)}
+              </option>
+              <option value="asc">Increasing</option>
+              <option value="desc">Decreasing</option>
+            </select>
+          ))}
         </div>
       </div>
 
       <div className="row m-0 mb-1 p-0 bg-white">
-        <div className="col-9 d-flex p-0">
+        <div className="col-8 col-sm-9 col-md-10 d-flex p-0">
           {["requestSent", "requestReceived"].map((tab) => (
             <div
               key={tab}
@@ -337,7 +389,10 @@ function MyInterest() {
             </div>
           ))}
         </div>
-        <div className="col-3 p-0 p-sm-2" style={{ alignContent: "center" }}>
+        <div
+          className="col-4 col-sm-3 col-md-2 p-2"
+          style={{ alignContent: "center" }}
+        >
           <select
             className="form-select form-select-lg m-0"
             style={{
@@ -347,13 +402,13 @@ function MyInterest() {
               padding: "0.5rem 1rem",
               fontFamily: "Open Sans, sans-serif",
               fontWeight: "600",
-              fontSize: "clamp(12px, 2vw, 14px)",
+              fontSize: "clamp(8px, 11px, 14px)",
               outline: "none",
               wordWrap: "break-word",
               overflow: "hidden",
               textOverflow: "ellipsis",
             }}
-            aria-label=".form-select-lg example"
+            aria-label="form-select-lg example"
             onChange={(e) =>
               filterAndSortProfiles(e.target.value, sortCriteria)
             }
@@ -382,34 +437,52 @@ function MyInterest() {
           ))
         )}
       </div>
-      <div className="d-flex align-items-center justify-content-center mt-3">
-        <button
-          className="btn"
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
-          <FaChevronLeft />
-        </button>
-        {Array.from({ length: totalPages }).map((_, index) => (
+
+      <div className="d-flex align-items-center justify-content-center mt-3 mb-3">
+        <div className="d-flex align-items-center gap-2">
           <button
-            key={index}
-            className={`btn rounded-circle px-3 fw-bold ${
-              currentPage === index + 1 ? "btn-danger text-white" : "bg-white"
-            }`}
-            onClick={() => setCurrentPage(index + 1)}
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            style={{
+              all: "unset",
+              cursor: currentPage === 1 ? "default" : "pointer",
+            }}
           >
-            {index + 1}
+            <FaChevronLeft />
           </button>
-        ))}
-        <button
-          className="btn"
-          onClick={() =>
-            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-          }
-          disabled={currentPage === totalPages}
-        >
-          <FaChevronRight />
-        </button>
+
+          {Array.from({ length: totalPages }).map((_, index) => (
+            <button
+              key={index}
+              className={`btn fw-bold d-flex align-items-center justify-content-center ${
+                currentPage === index + 1 ? "text-white" : "bg-white text-black"
+              }`}
+              style={{
+                backgroundColor: "rgba(153, 37, 37, 1)",
+                width: "40px",
+                height: "40px",
+                borderRadius: "50%",
+                padding: 0,
+              }}
+              onClick={() => setCurrentPage(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))}
+
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            style={{
+              all: "unset",
+              cursor: currentPage === totalPages ? "default" : "pointer",
+            }}
+          >
+            <FaChevronRight />
+          </button>
+        </div>
       </div>
     </div>
   );

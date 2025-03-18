@@ -8,6 +8,8 @@ function PaternalfamilyinfoForm({
   handleInputChange,
   formData,
   handleSaveClick,
+  handleRemoveRow,
+  error,
 }) {
   return (
     <div className={style.modalContainer}>
@@ -32,7 +34,7 @@ function PaternalfamilyinfoForm({
                 <input
                   type="text"
                   id="grandFatherName"
-                  name="grandFatherName"
+                  name="grandFatherName rounded-0"
                   className="form-control"
                   placeholder="Enter Name"
                   aria-label="Grand Father Name"
@@ -47,7 +49,7 @@ function PaternalfamilyinfoForm({
                   type="text"
                   id="grandFathersonOf"
                   name="grandFathersonOf" // name added
-                  className="form-control"
+                  className="form-control rounded-0"
                   placeholder="Enter Occupation"
                   aria-label="Son of"
                   value={formData.grandFathersonOf}
@@ -62,7 +64,7 @@ function PaternalfamilyinfoForm({
                   type="text"
                   id="grandFatheroccupation"
                   name="grandFatheroccupation" // name added
-                  className="form-control"
+                  className="form-control rounded-0"
                   placeholder="Enter Occupation"
                   aria-label="grandFatheroccupation"
                   value={formData.grandFatheroccupation} // value bound to state
@@ -75,7 +77,7 @@ function PaternalfamilyinfoForm({
                   type="text"
                   id="grandFatherthikana"
                   name="grandFatherthikana"
-                  className="form-control"
+                  className="form-control rounded-0"
                   placeholder="Grand Father Thikana"
                   aria-label="grandFatherthikana"
                   value={formData.grandFatherthikana}
@@ -90,7 +92,7 @@ function PaternalfamilyinfoForm({
                   type="text"
                   id="grandMotherName"
                   name="grandMotherName"
-                  className="form-control"
+                  className="form-control rounded-0"
                   placeholder="Enter Name"
                   aria-label="Grand Mother Name"
                   value={formData.grandMotherName}
@@ -103,7 +105,7 @@ function PaternalfamilyinfoForm({
                   type="text"
                   id="grandMotherdaughterOf"
                   name="grandMotherdaughterOf"
-                  className="form-control"
+                  className="form-control rounded-0"
                   placeholder="Enter Name"
                   aria-label="Daughter of"
                   value={formData.grandMotherdaughterOf}
@@ -118,7 +120,7 @@ function PaternalfamilyinfoForm({
                   type="text"
                   id="grandmotherthikana"
                   name="grandmotherthikana"
-                  className="form-control"
+                  className="form-control rounded-0"
                   placeholder=""
                   aria-label="Thikana"
                   value={formData.grandmotherthikana}
@@ -137,7 +139,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`name-${index}`}
                       name="name"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="name"
                       value={item.name || ""}
@@ -150,7 +152,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`marriedto-${index}`}
                       name="marriedto"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="marriedto"
                       value={item.marriedto || ""}
@@ -163,39 +165,57 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`daughterof-${index}`}
                       name="daughterof"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="daughterof"
                       value={item.daughterof || ""}
                       onChange={(e) => handleInputChange(e, index, "badePapa")}
                     />
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-4 mb-2">
                     <label htmlFor={`thikana-${index}`}>Thikana</label>
                     <input
                       type="text"
                       id={`thikana-${index}`}
                       name="thikana"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="thikana"
                       value={item.thikana || ""}
                       onChange={(e) => handleInputChange(e, index, "badePapa")}
                     />
                   </div>
+                  <hr />
+
+                  <div className="col-12 text-end">
+                    {/* Show Add button only for the last row */}
+                    {index === formData.badePapa.length - 1 && (
+                      <span
+                        className="custom-add text-danger"
+                        onClick={() => handleAddRow("badePapa")}
+                        style={{
+                          cursor: "pointer",
+                          marginRight: "10px",
+                          fontWeight: "600",
+                        }}
+                      >
+                        + ADD
+                      </span>
+                    )}
+
+                    {/* Show Remove button for all rows except the first one */}
+                    {index > 0 && (
+                      <span
+                        className="custom-remove text-danger"
+                        onClick={() => handleRemoveRow(index, "badePapa")}
+                        style={{ cursor: "pointer", fontWeight: "600" }}
+                      >
+                        - REMOVE
+                      </span>
+                    )}
+                  </div>
                 </div>
               ))}
-              <div className="row">
-                <div className="col-12 text-end text-danger">
-                  <span
-                    className="custom-add"
-                    onClick={() => handleAddRow("badePapa")}
-                    style={{ cursor: "pointer" }}
-                  >
-                    + ADD
-                  </span>
-                </div>
-              </div>
             </div>
 
             <label>All Kakosa</label>
@@ -208,7 +228,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`kakosa-name-${index}`}
                       name="name"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="name"
                       value={item.name || ""}
@@ -223,7 +243,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`kakosa-marriedto-${index}`}
                       name="marriedto"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="marriedto"
                       value={item.marriedto || ""}
@@ -238,29 +258,57 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`kakosa-daughterof-${index}`}
                       name="daughterof"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="daughterof"
                       value={item.daughterof || ""}
                       onChange={(e) => handleInputChange(e, index, "kakosa")}
                     />
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-4 mb-2">
                     <label htmlFor={`kakosa-thikana-${index}`}>Thikana</label>
                     <input
                       type="text"
                       id={`kakosa-thikana-${index}`}
                       name="thikana"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="thikana"
                       value={item.thikana || ""}
                       onChange={(e) => handleInputChange(e, index, "kakosa")}
                     />
                   </div>
+                  <hr />
+                  <div className="col-12 text-end">
+                    {/* Show Add button only for the last row */}
+                    {index === formData.kakosa.length - 1 && (
+                      <span
+                        className="custom-add text-danger"
+                        onClick={() => handleAddRow("kakosa")}
+                        style={{
+                          cursor: "pointer",
+                          marginRight: "10px",
+                          fontWeight: "600",
+                        }}
+                      >
+                        + ADD
+                      </span>
+                    )}
+
+                    {/* Show Remove button for all rows except the first one */}
+                    {index > 0 && (
+                      <span
+                        className="custom-remove text-danger"
+                        onClick={() => handleRemoveRow(index, "kakosa")}
+                        style={{ cursor: "pointer", fontWeight: "600" }}
+                      >
+                        - REMOVE
+                      </span>
+                    )}
+                  </div>
                 </div>
               ))}
-              <div className="row">
+              {/* <div className="row">
                 <div className="col-12 text-end text-danger">
                   <span
                     className="custom-add"
@@ -270,7 +318,7 @@ function PaternalfamilyinfoForm({
                     + ADD
                   </span>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <label>All Bhuasa</label>
@@ -283,7 +331,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`bhuasa-name-${index}`}
                       name="name"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="name"
                       value={item.name || ""}
@@ -298,7 +346,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`bhuasa-marriedto-${index}`}
                       name="marriedto"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="marriedto"
                       value={item.marriedto || ""}
@@ -311,39 +359,57 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`bhuasa-sonof-${index}`}
                       name="sonof"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="sonof"
                       value={item.sonof || ""}
                       onChange={(e) => handleInputChange(e, index, "bhuasa")}
                     />
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-4 mb-2">
                     <label htmlFor={`bhuasa-thikana-${index}`}>Thikana</label>
                     <input
                       type="text"
                       id={`bhuasa-thikana-${index}`}
                       name="thikana"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="thikana"
                       value={item.thikana || ""}
                       onChange={(e) => handleInputChange(e, index, "bhuasa")}
                     />
                   </div>
+                  <hr />
+
+                  <div className="col-12 text-end">
+                    {/* Show Add button only for the last row */}
+                    {index === formData.bhuasa.length - 1 && (
+                      <span
+                        className="custom-add text-danger"
+                        onClick={() => handleAddRow("bhuasa")}
+                        style={{
+                          cursor: "pointer",
+                          marginRight: "10px",
+                          fontWeight: "600",
+                        }}
+                      >
+                        + ADD
+                      </span>
+                    )}
+
+                    {/* Show Remove button for all rows except the first one */}
+                    {index > 0 && (
+                      <span
+                        className="custom-remove text-danger"
+                        onClick={() => handleRemoveRow(index, "bhuasa")}
+                        style={{ cursor: "pointer", fontWeight: "600" }}
+                      >
+                        - REMOVE
+                      </span>
+                    )}
+                  </div>
                 </div>
               ))}
-              <div className="row">
-                <div className="col-12 text-end text-danger">
-                  <span
-                    className="custom-add"
-                    onClick={() => handleAddRow("bhuasa")}
-                    style={{ cursor: "pointer" }}
-                  >
-                    + ADD
-                  </span>
-                </div>
-              </div>
             </div>
 
             <div className="row mb-3">
@@ -353,7 +419,7 @@ function PaternalfamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="maternalGrandFatherName"
                   name="maternalGrandFatherName"
                   placeholder="Name"
@@ -370,7 +436,7 @@ function PaternalfamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="maternalGrandFathersonOf"
                   name="maternalGrandFathersonOf"
                   placeholder="Enter Name"
@@ -390,7 +456,7 @@ function PaternalfamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="maternalGrandFatheroccupation"
                   name="maternalGrandFatheroccupation"
                   placeholder="maternalGrandFatheroccupation"
@@ -407,7 +473,7 @@ function PaternalfamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="maternalGrandFatherthikana"
                   name="maternalGrandFatherthikana"
                   placeholder="Enter Thikana"
@@ -424,7 +490,7 @@ function PaternalfamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="maternalGrandMotherName"
                   name="maternalGrandMotherName"
                   placeholder="Enter Name"
@@ -441,7 +507,7 @@ function PaternalfamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="maternalGrandMotherdaughterOf"
                   name="maternalGrandMotherdaughterOf"
                   placeholder="Enter Name"
@@ -461,7 +527,7 @@ function PaternalfamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="maternalGrandMotherthikana"
                   name="maternalGrandMotherthikana"
                   placeholder="Maternal Grand Mother Thikana"
@@ -481,7 +547,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`mamosa-name-${index}`}
                       name="name"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="name"
                       value={item.name || ""}
@@ -496,7 +562,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`mamosa-marriedto-${index}`}
                       name="marriedto"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="marriedto"
                       value={item.marriedto || ""}
@@ -511,39 +577,56 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`mamosa-daughterof-${index}`}
                       name="daughterof"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder="Mj. Thakur"
                       aria-label="daughterof"
                       value={item.daughterof || ""}
                       onChange={(e) => handleInputChange(e, index, "mamosa")}
                     />
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-4 mb-2">
                     <label htmlFor={`mamosa-thikana-${index}`}>Thikana</label>
                     <input
                       type="text"
                       id={`mamosa-thikana-${index}`}
                       name="thikana"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder="City"
                       aria-label="thikana"
                       value={item.thikana || ""}
                       onChange={(e) => handleInputChange(e, index, "mamosa")}
                     />
                   </div>
+                  <hr />
+                  <div className="col-12 text-end">
+                    {/* Show Add button only for the last row */}
+                    {index === formData.mamosa.length - 1 && (
+                      <span
+                        className="custom-add text-danger"
+                        onClick={() => handleAddRow("mamosa")}
+                        style={{
+                          cursor: "pointer",
+                          marginRight: "10px",
+                          fontWeight: "600",
+                        }}
+                      >
+                        + ADD
+                      </span>
+                    )}
+
+                    {/* Show Remove button for all rows except the first one */}
+                    {index > 0 && (
+                      <span
+                        className="custom-remove text-danger"
+                        onClick={() => handleRemoveRow(index, "mamosa")}
+                        style={{ cursor: "pointer", fontWeight: "600" }}
+                      >
+                        - REMOVE
+                      </span>
+                    )}
+                  </div>
                 </div>
               ))}
-              <div className="row">
-                <div className="col-12 text-end text-danger">
-                  <span
-                    className="custom-add"
-                    onClick={() => handleAddRow("mamosa")}
-                    style={{ cursor: "pointer" }}
-                  >
-                    + ADD
-                  </span>
-                </div>
-              </div>
             </div>
 
             <label>All Masisa</label>
@@ -556,7 +639,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`masisa-name-${index}`}
                       name="name"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="name"
                       value={item.name || ""}
@@ -571,7 +654,7 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`masisa-marriedto-${index}`}
                       name="marriedto"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="marriedto"
                       value={item.marriedto || ""}
@@ -584,40 +667,59 @@ function PaternalfamilyinfoForm({
                       type="text"
                       id={`masisa-sonof-${index}`}
                       name="sonof"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="sonof"
                       value={item.sonof || ""}
                       onChange={(e) => handleInputChange(e, index, "masisa")}
                     />
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-4 mb-2">
                     <label htmlFor={`masisa-thikana-${index}`}>Thikana</label>
                     <input
                       type="text"
                       id={`masisa-thikana-${index}`}
                       name="thikana"
-                      className="form-control"
+                      className="form-control rounded-0"
                       placeholder=""
                       aria-label="thikana"
                       value={item.thikana || ""}
                       onChange={(e) => handleInputChange(e, index, "masisa")}
                     />
                   </div>
+                  <hr />
+                  <div className="col-12 text-end">
+                    {/* Show Add button only for the last row */}
+                    {index === formData.masisa.length - 1 && (
+                      <span
+                        className="custom-add text-danger"
+                        onClick={() => handleAddRow("masisa")}
+                        style={{
+                          cursor: "pointer",
+                          marginRight: "10px",
+                          fontWeight: "600",
+                        }}
+                      >
+                        + ADD
+                      </span>
+                    )}
+
+                    {/* Show Remove button for all rows except the first one */}
+                    {index > 0 && (
+                      <span
+                        className="custom-remove text-danger"
+                        onClick={() => handleRemoveRow(index, "masisa")}
+                        style={{ cursor: "pointer", fontWeight: "600" }}
+                      >
+                        - REMOVE
+                      </span>
+                    )}
+                  </div>
                 </div>
               ))}
-              <div className="row">
-                <div className="col-12 text-end text-danger">
-                  <span
-                    className="custom-add"
-                    onClick={() => handleAddRow("masisa")}
-                    style={{ cursor: "pointer" }}
-                  >
-                    + ADD
-                  </span>
-                </div>
-              </div>
             </div>
+
+            {error && <p className="error-text">{error}</p>}
 
             <div className={style.modalFooter}>
               <button

@@ -2,33 +2,33 @@
   background-image: url("../../assets/images/Testimonialbg.jpg");
   background-size: cover;
   background-position: center;
-  height: 90vh;
 }
 
 .overlay {
-  background-color: rgba(0, 0, 0, 0.8);
+  /* background-color: rgba(19, 19, 19, 0.8); */
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   width: 100%;
+  min-height: 845px;
+  max-height: fit-content;
 }
 
 .contentContainer {
   text-align: left;
   color: white;
-  max-width: 75%; /* 640px */
+  width: 1400px;
 }
 
 .privacylogo {
-  /* height: 8rem; */
-  width: 8rem;
+  height: 154px;
+  width: 154px;
 }
 
 .badge {
   display: flex;
   color: black;
-  padding: 0.5rem 1rem;
   margin-bottom: 1.5rem;
 }
 
@@ -43,11 +43,11 @@
 
 .paragraph {
   margin-bottom: 1.5rem;
-  line-height: 1.25rem;
-  width: 60%;
+  line-height: 2;
+  max-width: 748px;
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 1.125rem;
+  font-size: 1rem;
 }
 
 .ctaButton {
@@ -61,24 +61,35 @@
   transition: background-color 0.3s ease;
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 14px;
+  max-width: 278px;
 }
 
 .ctaButton:hover {
   background-color: #a50e0e;
 }
-
+@media (max-width: 1400px) {
+  .contentContainer {
+    text-align: left;
+    padding: 2%;
+    width: 100%;
+  }
+  .paragraph {
+    width: 100%;
+  }
+}
 @media (max-width: 670px) {
   .background {
-    height: 120vh;
+    /* height: 120vh; */
+    height: fit-content;
   }
   .contentContainer {
     text-align: left;
     width: 100%;
-    padding: 0%;
+    padding: 5%;
   }
   .heading {
-    font-size: 1.5rem;
+    font-size: 1.55rem;
     font-weight: bold;
     margin-left: 0;
   }
@@ -87,13 +98,11 @@
     padding: 0%;
   }
   .privacylogo {
-    width: 6rem;
-  }
-  .paragraph {
-    width: 80%;
+    width: 130px;
+    height: 130px;
   }
 
   .ctaButton {
-    padding: 0.55rem 1rem;
+    padding: 0.5rem 1rem;
   }
 }

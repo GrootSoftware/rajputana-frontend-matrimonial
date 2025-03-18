@@ -43,9 +43,10 @@ function FeatureSection() {
   };
 
   return (
-    <section style={{ backgroundColor: "white" }}>
+    <section style={{ backgroundColor: "white", paddingBottom: "3rem" }}>
       <Features />
       <VVIPSection
+        background="rgba(248, 235, 210, 1)"
         title={vvipData.title}
         description={vvipData.description}
         buttonText={vvipData.buttonText}
@@ -56,7 +57,7 @@ function FeatureSection() {
 
 export const Features = () => {
   return (
-    <div>
+    <div className="bg-white">
       <div className="feature-container">
         {/* Features Section */}
         <div className="features-grid">
@@ -104,17 +105,27 @@ export const FeatureCard = ({ iconClass, title, description }) => {
   );
 };
 
-export const VVIPSection = ({ title, description, buttonText }) => {
+export const VVIPSection = ({ title, description, buttonText, background }) => {
   return (
-    <div className="vip-section">
-      <h2>{title}</h2>
-      <div>
-        <p>{description}</p>
+    <div
+      className="box"
+      style={{
+        maxWidth: "1400px",
+        marginInline: "auto",
+        marginTop: "2rem",
+        background: "transparent",
+      }}
+    >
+      <div className="vip-section" style={{ backgroundColor: `${background}` }}>
+        <h2>{title}</h2>
+        <div>
+          <p>{description}</p>
 
-        <Link to="/login">
-          {" "}
-          <button>{buttonText} </button>
-        </Link>
+          <Link to="/login">
+            {" "}
+            <button>{buttonText} </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

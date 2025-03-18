@@ -107,17 +107,12 @@ filterItem:hover {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-
-  gap: 32px;
+  gap: 40px;
 }
-
-/* .detailItems {
-} */
 
 .detailLabel {
   font-size: 12px;
   color: rgba(122, 121, 115, 1);
-
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
 }
@@ -162,18 +157,18 @@ filterItem:hover {
   font-size: 1.2rem;
 }
 
-
 .reqbtn {
   cursor: pointer;
   align-content: center;
-  padding: 0.7rem 1.5rem;
+  padding: 0.6rem 1.5rem;
+  text-align: center;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
-  font-size: clamp(12px, 14px, 16px);
+  font-size: 16px;
 }
 
 /* Responsive styles */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .profileListHeader {
     padding-inline: 0.5rem;
   }
@@ -206,6 +201,34 @@ filterItem:hover {
   }
 
   .reqbtn {
-    padding: 0.2rem 0.5rem;
+    font-size: 13px;
+    padding: 0.6rem 1.2rem;
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profileDetails {
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .profileDetails > div {
+    width: calc(33.33% - 15px); /* 3 divs per row, adjusting for gap */
+  }
+  .detailItem {
+    text-align: center;
+    min-width: 100px;
+  }
+
+  .actionIcon {
+    font-size: 1.2rem;
+  }
+
+  .reqbtn {
+    font-size: 12px;
+    padding: 0.6rem 0.8rem;
+    min-width: 80px;
   }
 }

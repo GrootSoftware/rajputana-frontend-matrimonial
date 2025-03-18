@@ -29,6 +29,3 @@ function StoryCard({ text, imageSrc }) {
 }
 
 export default StoryCard;
-
-
-

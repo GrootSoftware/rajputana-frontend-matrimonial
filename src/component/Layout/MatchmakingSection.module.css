@@ -13,7 +13,12 @@
   align-items: center;
   gap: 3rem;
   flex-wrap: wrap;
+<<<<<<< HEAD
   width: 72%;
+=======
+  /* width: 75%; */
+  max-width: 1400px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   margin-inline: auto;
 }
 
@@ -30,7 +35,11 @@
   flex: 1;
   text-align: left;
   width: 100%;
+<<<<<<< HEAD
   padding: 2rem;
+=======
+  padding: 1rem;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   box-sizing: border-box;
 }
 

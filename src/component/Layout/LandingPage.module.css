@@ -2,33 +2,57 @@
   background-image: url("../../assets/images/Testimonialbg.jpg");
   background-size: cover;
   background-position: center;
+<<<<<<< HEAD
   height: 90vh;
 }
 
 .overlay {
   background-color: rgba(0, 0, 0, 0.8);
+=======
+}
+
+.overlay {
+  /* background-color: rgba(19, 19, 19, 0.8); */
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   width: 100%;
+<<<<<<< HEAD
+=======
+  min-height: 845px;
+  max-height: fit-content;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .contentContainer {
   text-align: left;
   color: white;
+<<<<<<< HEAD
   max-width: 75%; /* 640px */
 }
 
 .privacylogo {
   /* height: 8rem; */
   width: 8rem;
+=======
+  width: 1400px;
+}
+
+.privacylogo {
+  height: 154px;
+  width: 154px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .badge {
   display: flex;
   color: black;
+<<<<<<< HEAD
   padding: 0.5rem 1rem;
+=======
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   margin-bottom: 1.5rem;
 }
 
@@ -43,11 +67,19 @@
 
 .paragraph {
   margin-bottom: 1.5rem;
+<<<<<<< HEAD
   line-height: 1.25rem;
   width: 60%;
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-size: 1.125rem;
+=======
+  line-height: 2;
+  max-width: 748px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .ctaButton {
@@ -61,15 +93,35 @@
   transition: background-color 0.3s ease;
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
+<<<<<<< HEAD
   font-size: 0.875rem;
+=======
+  font-size: 14px;
+  max-width: 278px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .ctaButton:hover {
   background-color: #a50e0e;
 }
+<<<<<<< HEAD
 
 @media (max-width: 670px) {
  .background {
+=======
+@media (max-width: 1400px) {
+  .contentContainer {
+    text-align: left;
+    padding: 2%;
+    width: 100%;
+  }
+  .paragraph {
+    width: 100%;
+  }
+}
+@media (max-width: 670px) {
+  .background {
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     /* height: 120vh; */
     height: fit-content;
   }
@@ -79,7 +131,11 @@
     padding: 5%;
   }
   .heading {
+<<<<<<< HEAD
     font-size: 1.5rem;
+=======
+    font-size: 1.55rem;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     font-weight: bold;
     margin-left: 0;
   }
@@ -88,6 +144,7 @@
     padding: 0%;
   }
   .privacylogo {
+<<<<<<< HEAD
     width: 6rem;
   }
   .paragraph {
@@ -96,5 +153,13 @@
 
   .ctaButton {
     padding: 0.55rem 1rem;
+=======
+    width: 130px;
+    height: 130px;
+  }
+
+  .ctaButton {
+    padding: 0.5rem 1rem;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   }
 }

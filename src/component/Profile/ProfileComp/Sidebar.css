@@ -58,7 +58,11 @@
 
 @media (max-width: 992px) {
   .sidebar ul li {
+<<<<<<< HEAD
     font-size: 1rem;
+=======
+    font-size: 13px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   }
 }
 /* Responsive Styles */

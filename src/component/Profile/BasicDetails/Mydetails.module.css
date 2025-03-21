@@ -4,7 +4,11 @@
   /* margin-left: 1rem; */
   background-color: white;
 
+<<<<<<< HEAD
   padding: 1.5rem;
+=======
+  padding: 1rem;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   height: auto;
   margin-bottom: 1rem;
 }
@@ -12,12 +16,22 @@
 .detailsHeader {
   border-bottom: 2px solid #a6a7a9;
   color: black;
+<<<<<<< HEAD
   /* font-style: bold; */
   padding-bottom: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: left;
   font-family: "Roboto", sans-serif;
+=======
+
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+
+  font-family: "Open Sans", sans-serif;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .headerTitle {
@@ -48,7 +62,11 @@
   min-width: 37%;
   max-width: 40%;
   color: gray;
+<<<<<<< HEAD
   font-size: 1.125rem;
+=======
+  font-size: 16px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
@@ -63,11 +81,17 @@
   min-width: 60%;
   max-width: 73%;
   padding-left: 2%;
+<<<<<<< HEAD
   font-size: 1.125rem;
   font-weight: bold;
   color: black;
   box-sizing: border-box;
 
+=======
+  font-size: 16px;
+  color: black;
+  box-sizing: border-box;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   line-height: 1.2;
@@ -78,8 +102,14 @@
 }
 
 .textXs {
+<<<<<<< HEAD
   font-size: 0.95rem;
   font-weight: 600;
+=======
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   color: black;
   word-wrap: break-word;
   overflow: hidden;
@@ -87,12 +117,25 @@
 }
 
 .textsmValue {
+<<<<<<< HEAD
   font-size: 0.9rem;
   font-weight: bold;
 }
 
 .textSm {
   font-size: 0.9rem;
+=======
+  font-size: 14px;
+  /* font-weight: bold; */
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+.textSm {
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   word-wrap: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -108,7 +151,11 @@
     font-size: 0.9rem;
   }
   .value {
+<<<<<<< HEAD
     font-size: 1rem;
+=======
+    font-size: 14px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   }
 }
 

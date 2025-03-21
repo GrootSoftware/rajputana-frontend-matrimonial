@@ -55,7 +55,11 @@ function PhotoRequest() {
   function RequestImageContainer({ profile, activeButton }) {
     const { updateData } = useAuth();
     const totalPhotos = profile?.filesId?.totalPhotos;
+<<<<<<< HEAD
       const navigate = useNavigate();
+=======
+    const navigate = useNavigate();
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 
     const handleViewimage = (profileId) => {
       console.log(profileId);
@@ -80,19 +84,29 @@ function PhotoRequest() {
     };
 
     const renderEmptyState = (actionButtons = null) => (
+<<<<<<< HEAD
       <div
         className="image-container"
         style={{ position: "relative", width: "100%", height: "14rem" }}
       >
+=======
+      <div className="image-container" style={{ position: "relative" }}>
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
         <img
           src={placeholderImage}
           className="img-fluid m-auto"
           alt="Placeholder"
           style={{
+<<<<<<< HEAD
             width: "100%",
             height: "100%",
             objectFit: "cover",
             objectPosition: "top",
+=======
+            width: "230px",
+            height: "230px",
+            objectFit: "cover",
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           }}
         />
 
@@ -168,20 +182,30 @@ function PhotoRequest() {
 
     return profile?.filesId?.photos?.map((photo) => (
       <>
+<<<<<<< HEAD
         <div
           className="image-container"
           style={{ position: "relative", width: "100%", height: "14rem" }}
         >
+=======
+        <div className="image-container" style={{ position: "relative" }}>
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           <img
             key={photo._id}
             src={photo.url}
             className="img-fluid m-auto"
             alt="Profile"
             style={{
+<<<<<<< HEAD
               width: "100%",
               height: "14rem",
               objectFit: "cover",
               objectPosition: "top",
+=======
+              width: "230px",
+              height: "230px",
+              objectFit: "cover",
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
             }}
           />
 
@@ -236,12 +260,17 @@ function PhotoRequest() {
         ? [...data.photoReqReceived]
         : [...data.photoReqSent];
 
+<<<<<<< HEAD
+=======
+    // Filtering based on status
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     if (status !== "all") {
       filteredProfiles = filteredProfiles.filter(
         (profile) => profile.status === status
       );
     }
 
+<<<<<<< HEAD
     if (criteria) {
       filteredProfiles.sort((a, b) => {
         if (criteria === "age") {
@@ -256,6 +285,25 @@ function PhotoRequest() {
                 calculateHeightInInches(b.userId)
             : calculateHeightInInches(b.userId) -
                 calculateHeightInInches(a.userId);
+=======
+    // Sorting based on criteria
+    if (criteria) {
+      filteredProfiles.sort((a, b) => {
+        const direction = sortDirection?.direction === "asc" ? 1 : -1;
+
+        if (criteria === "age") {
+          return (
+            direction *
+            (calculateAge(a.userId.dateOfBirth) -
+              calculateAge(b.userId.dateOfBirth))
+          );
+        } else if (criteria === "height") {
+          return (
+            direction *
+            (calculateHeightInInches(a.userId) -
+              calculateHeightInInches(b.userId))
+          );
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
         }
         return 0;
       });
@@ -300,7 +348,11 @@ function PhotoRequest() {
     <div className="profileContainer">
       <div className="profileListHeader">
         <div className="pagetitle">Photo Request</div>
+<<<<<<< HEAD
         <div className="filters">
+=======
+        {/* <div className="filters">
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           {["age", "height"].map((criteria) => (
             <div
               key={criteria}
@@ -319,11 +371,35 @@ function PhotoRequest() {
               </span>
             </div>
           ))}
+<<<<<<< HEAD
+=======
+        </div> */}
+        <div className="filters">
+          {["age", "height"].map((criteria) => (
+            <select
+              key={criteria}
+              onChange={(e) =>
+                setSortDirection({ criteria, direction: e.target.value })
+              }
+              className="form-select form-select-lg p-2 filterItem"
+            >
+              <option value="asc">
+                {criteria.charAt(0).toUpperCase() + criteria.slice(1)}
+              </option>
+              <option value="asc">Increasing</option>
+              <option value="desc">Decreasing</option>
+            </select>
+          ))}
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
         </div>
       </div>
 
       <div className="row m-0 mb-1 p-0 bg-white">
+<<<<<<< HEAD
         <div className="col-9 d-flex p-0">
+=======
+        <div className="col-8 col-sm-9 col-md-10 d-flex p-0">
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           {["requestSent", "requestReceived"].map((tab) => (
             <div
               key={tab}
@@ -338,7 +414,14 @@ function PhotoRequest() {
             </div>
           ))}
         </div>
+<<<<<<< HEAD
         <div className="col-3 p-0 p-sm-2" style={{ alignContent: "center" }}>
+=======
+        <div
+          className="col-4 col-sm-3 col-md-2 p-2 "
+          style={{ alignContent: "center" }}
+        >
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           <select
             className="form-select form-select-lg m-0"
             style={{
@@ -384,9 +467,15 @@ function PhotoRequest() {
         )}
       </div>
 
+<<<<<<< HEAD
       <div className="d-flex align-items-center justify-content-center mt-3">
         <button
           className="btn"
+=======
+      {/* <div className="d-flex align-items-center justify-content-center mt-3 mb-3">
+        <button
+          className=""
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
         >
@@ -396,15 +485,25 @@ function PhotoRequest() {
           <button
             key={index}
             className={`btn rounded-circle px-3 fw-bold ${
+<<<<<<< HEAD
               currentPage === index + 1 ? "btn-danger text-white" : "bg-white"
             }`}
+=======
+              currentPage === index + 1 ? "text-white" : "bg-white text-black"
+            }`}
+            style={{ backgroundColor: "rgba(153, 37, 37, 1)" }}
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
             onClick={() => setCurrentPage(index + 1)}
           >
             {index + 1}
           </button>
         ))}
         <button
+<<<<<<< HEAD
           className="btn"
+=======
+          className=""
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           onClick={() =>
             setCurrentPage((prev) => Math.min(prev + 1, totalPages))
           }
@@ -412,6 +511,56 @@ function PhotoRequest() {
         >
           <FaChevronRight />
         </button>
+<<<<<<< HEAD
+=======
+      </div> */}
+
+      <div className="d-flex align-items-center justify-content-center mt-3 mb-3">
+        <div className="d-flex align-items-center gap-2">
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            style={{
+              all: "unset",
+              cursor: currentPage === 1 ? "default" : "pointer",
+            }}
+          >
+            <FaChevronLeft />
+          </button>
+
+          {Array.from({ length: totalPages }).map((_, index) => (
+            <button
+              key={index}
+              className={`btn fw-bold d-flex align-items-center justify-content-center ${
+                currentPage === index + 1 ? "text-white" : "bg-white text-black"
+              }`}
+              style={{
+                backgroundColor: "rgba(153, 37, 37, 1)",
+                width: "40px",
+                height: "40px",
+                borderRadius: "50%",
+                padding: 0,
+              }}
+              onClick={() => setCurrentPage(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))}
+
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            style={{
+              all: "unset",
+              cursor: currentPage === totalPages ? "default" : "pointer",
+            }}
+          >
+            <FaChevronRight />
+          </button>
+        </div>
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
       </div>
     </div>
   );

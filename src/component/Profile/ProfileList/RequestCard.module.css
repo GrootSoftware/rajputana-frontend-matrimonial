@@ -1,8 +1,18 @@
 .textSm {
+<<<<<<< HEAD
   font-size: "clamp(0.9rem,0.75rem)";
   line-height: 1.5;
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
+=======
+  font-size: "clamp(10px,16px,16px)";
+  line-height: 1.5;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .textLg {

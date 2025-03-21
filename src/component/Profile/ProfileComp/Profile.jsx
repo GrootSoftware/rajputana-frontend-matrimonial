@@ -52,7 +52,11 @@ const Profile = () => {
           <Link to="/home" style={{ textDecoration: "none", color: "inherit" }}>
             Home
           </Link>
+<<<<<<< HEAD
             <AiOutlineRight size={15} style={{ marginInline: "5px" }} />
+=======
+          <AiOutlineRight size={15} style={{ marginInline: "5px" }} />
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           <span>My Profile</span>
         </div>
         <div className={`${style.minhScreen} bg-gray-100}`}>

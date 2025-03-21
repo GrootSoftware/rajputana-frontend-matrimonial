@@ -8,6 +8,11 @@ function PaternalfamilyinfoForm({
   handleInputChange,
   formData,
   handleSaveClick,
+<<<<<<< HEAD
+=======
+  handleRemoveRow,
+  error,
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }) {
   return (
     <div className={style.modalContainer}>
@@ -32,8 +37,13 @@ function PaternalfamilyinfoForm({
                 <input
                   type="text"
                   id="grandFatherName"
+<<<<<<< HEAD
                   name="grandFatherName"
                   className="form-control rounded-0"
+=======
+                  name="grandFatherName rounded-0"
+                  className="form-control"
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
                   placeholder="Enter Name"
                   aria-label="Grand Father Name"
                   value={formData.grandFatherName}
@@ -170,7 +180,11 @@ function PaternalfamilyinfoForm({
                       onChange={(e) => handleInputChange(e, index, "badePapa")}
                     />
                   </div>
+<<<<<<< HEAD
                   <div className="col-md-4">
+=======
+                  <div className="col-md-4 mb-2">
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
                     <label htmlFor={`thikana-${index}`}>Thikana</label>
                     <input
                       type="text"
@@ -183,6 +197,7 @@ function PaternalfamilyinfoForm({
                       onChange={(e) => handleInputChange(e, index, "badePapa")}
                     />
                   </div>
+<<<<<<< HEAD
                 </div>
               ))}
               <div className="row">
@@ -196,6 +211,39 @@ function PaternalfamilyinfoForm({
                   </span>
                 </div>
               </div>
+=======
+                  <hr />
+
+                  <div className="col-12 text-end">
+                    {/* Show Add button only for the last row */}
+                    {index === formData.badePapa.length - 1 && (
+                      <span
+                        className="custom-add text-danger"
+                        onClick={() => handleAddRow("badePapa")}
+                        style={{
+                          cursor: "pointer",
+                          marginRight: "10px",
+                          fontWeight: "600",
+                        }}
+                      >
+                        + ADD
+                      </span>
+                    )}
+
+                    {/* Show Remove button for all rows except the first one */}
+                    {index > 0 && (
+                      <span
+                        className="custom-remove text-danger"
+                        onClick={() => handleRemoveRow(index, "badePapa")}
+                        style={{ cursor: "pointer", fontWeight: "600" }}
+                      >
+                        - REMOVE
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
             </div>
 
             <label>All Kakosa</label>
@@ -245,7 +293,11 @@ function PaternalfamilyinfoForm({
                       onChange={(e) => handleInputChange(e, index, "kakosa")}
                     />
                   </div>
+<<<<<<< HEAD
                   <div className="col-md-4">
+=======
+                  <div className="col-md-4 mb-2">
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
                     <label htmlFor={`kakosa-thikana-${index}`}>Thikana</label>
                     <input
                       type="text"
@@ -258,9 +310,43 @@ function PaternalfamilyinfoForm({
                       onChange={(e) => handleInputChange(e, index, "kakosa")}
                     />
                   </div>
+<<<<<<< HEAD
                 </div>
               ))}
               <div className="row">
+=======
+                  <hr />
+                  <div className="col-12 text-end">
+                    {/* Show Add button only for the last row */}
+                    {index === formData.kakosa.length - 1 && (
+                      <span
+                        className="custom-add text-danger"
+                        onClick={() => handleAddRow("kakosa")}
+                        style={{
+                          cursor: "pointer",
+                          marginRight: "10px",
+                          fontWeight: "600",
+                        }}
+                      >
+                        + ADD
+                      </span>
+                    )}
+
+                    {/* Show Remove button for all rows except the first one */}
+                    {index > 0 && (
+                      <span
+                        className="custom-remove text-danger"
+                        onClick={() => handleRemoveRow(index, "kakosa")}
+                        style={{ cursor: "pointer", fontWeight: "600" }}
+                      >
+                        - REMOVE
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+              {/* <div className="row">
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
                 <div className="col-12 text-end text-danger">
                   <span
                     className="custom-add"
@@ -270,7 +356,11 @@ function PaternalfamilyinfoForm({
                     + ADD
                   </span>
                 </div>
+<<<<<<< HEAD
               </div>
+=======
+              </div> */}
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
             </div>
 
             <label>All Bhuasa</label>
@@ -318,7 +408,11 @@ function PaternalfamilyinfoForm({
                       onChange={(e) => handleInputChange(e, index, "bhuasa")}
                     />
                   </div>
+<<<<<<< HEAD
                   <div className="col-md-4">
+=======
+                  <div className="col-md-4 mb-2">
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
                     <label htmlFor={`bhuasa-thikana-${index}`}>Thikana</label>
                     <input
                       type="text"
@@ -331,6 +425,7 @@ function PaternalfamilyinfoForm({
                       onChange={(e) => handleInputChange(e, index, "bhuasa")}
                     />
                   </div>
+<<<<<<< HEAD
                 </div>
               ))}
               <div className="row">
@@ -344,6 +439,39 @@ function PaternalfamilyinfoForm({
                   </span>
                 </div>
               </div>
+=======
+                  <hr />
+
+                  <div className="col-12 text-end">
+                    {/* Show Add button only for the last row */}
+                    {index === formData.bhuasa.length - 1 && (
+                      <span
+                        className="custom-add text-danger"
+                        onClick={() => handleAddRow("bhuasa")}
+                        style={{
+                          cursor: "pointer",
+                          marginRight: "10px",
+                          fontWeight: "600",
+                        }}
+                      >
+                        + ADD
+                      </span>
+                    )}
+
+                    {/* Show Remove button for all rows except the first one */}
+                    {index > 0 && (
+                      <span
+                        className="custom-remove text-danger"
+                        onClick={() => handleRemoveRow(index, "bhuasa")}
+                        style={{ cursor: "pointer", fontWeight: "600" }}
+                      >
+                        - REMOVE
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
             </div>
 
             <div className="row mb-3">
@@ -518,7 +646,11 @@ function PaternalfamilyinfoForm({
                       onChange={(e) => handleInputChange(e, index, "mamosa")}
                     />
                   </div>
+<<<<<<< HEAD
                   <div className="col-md-4">
+=======
+                  <div className="col-md-4 mb-2">
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
                     <label htmlFor={`mamosa-thikana-${index}`}>Thikana</label>
                     <input
                       type="text"
@@ -531,6 +663,7 @@ function PaternalfamilyinfoForm({
                       onChange={(e) => handleInputChange(e, index, "mamosa")}
                     />
                   </div>
+<<<<<<< HEAD
                 </div>
               ))}
               <div className="row">
@@ -544,6 +677,38 @@ function PaternalfamilyinfoForm({
                   </span>
                 </div>
               </div>
+=======
+                  <hr />
+                  <div className="col-12 text-end">
+                    {/* Show Add button only for the last row */}
+                    {index === formData.mamosa.length - 1 && (
+                      <span
+                        className="custom-add text-danger"
+                        onClick={() => handleAddRow("mamosa")}
+                        style={{
+                          cursor: "pointer",
+                          marginRight: "10px",
+                          fontWeight: "600",
+                        }}
+                      >
+                        + ADD
+                      </span>
+                    )}
+
+                    {/* Show Remove button for all rows except the first one */}
+                    {index > 0 && (
+                      <span
+                        className="custom-remove text-danger"
+                        onClick={() => handleRemoveRow(index, "mamosa")}
+                        style={{ cursor: "pointer", fontWeight: "600" }}
+                      >
+                        - REMOVE
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
             </div>
 
             <label>All Masisa</label>
@@ -591,7 +756,11 @@ function PaternalfamilyinfoForm({
                       onChange={(e) => handleInputChange(e, index, "masisa")}
                     />
                   </div>
+<<<<<<< HEAD
                   <div className="col-md-4">
+=======
+                  <div className="col-md-4 mb-2">
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
                     <label htmlFor={`masisa-thikana-${index}`}>Thikana</label>
                     <input
                       type="text"
@@ -604,6 +773,7 @@ function PaternalfamilyinfoForm({
                       onChange={(e) => handleInputChange(e, index, "masisa")}
                     />
                   </div>
+<<<<<<< HEAD
                 </div>
               ))}
               <div className="row">
@@ -619,6 +789,42 @@ function PaternalfamilyinfoForm({
               </div>
             </div>
 
+=======
+                  <hr />
+                  <div className="col-12 text-end">
+                    {/* Show Add button only for the last row */}
+                    {index === formData.masisa.length - 1 && (
+                      <span
+                        className="custom-add text-danger"
+                        onClick={() => handleAddRow("masisa")}
+                        style={{
+                          cursor: "pointer",
+                          marginRight: "10px",
+                          fontWeight: "600",
+                        }}
+                      >
+                        + ADD
+                      </span>
+                    )}
+
+                    {/* Show Remove button for all rows except the first one */}
+                    {index > 0 && (
+                      <span
+                        className="custom-remove text-danger"
+                        onClick={() => handleRemoveRow(index, "masisa")}
+                        style={{ cursor: "pointer", fontWeight: "600" }}
+                      >
+                        - REMOVE
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {error && <p className="error-text">{error}</p>}
+
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
             <div className={style.modalFooter}>
               <button
                 type="button"
@@ -673,7 +879,11 @@ export default PaternalfamilyinfoForm;
 //                     type="text"
 //                     id="name"
 //                     name="badePapa.name"
+<<<<<<< HEAD
 //                     className="form-control rounded-0"
+=======
+//                     className="form-control"
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 //                     placeholder="Late Maharaj Maan Singh Ji Jhala"
 //                     aria-label="name"
 //                     value={formData.badePapa?.name || ""}
@@ -686,7 +896,11 @@ export default PaternalfamilyinfoForm;
 //                     type="text"
 //                     id="marriedto"
 //                     name="badePapa.marriedto"
+<<<<<<< HEAD
 //                     className="form-control rounded-0"
+=======
+//                     className="form-control"
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 //                     placeholder="Hans Kunwar"
 //                     aria-label="marriedto"
 //                     value={formData.badePapa?.marriedto || ""}
@@ -699,7 +913,11 @@ export default PaternalfamilyinfoForm;
 //                     type="text"
 //                     id="daughterof"
 //                     name="badePapa.daughterof"
+<<<<<<< HEAD
 //                     className="form-control rounded-0"
+=======
+//                     className="form-control"
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 //                     placeholder="Mj. Thakur Chawand Singh"
 //                     aria-label="daughterof"
 //                     value={formData.badePapa?.daughterof || ""}
@@ -712,7 +930,11 @@ export default PaternalfamilyinfoForm;
 //                     type="text"
 //                     id="Thikana"
 //                     name="badePapa.Thikana"
+<<<<<<< HEAD
 //                     className="form-control rounded-0"
+=======
+//                     className="form-control"
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 //                     placeholder="Gyangarh, Mewar"
 //                     aria-label="Thikana"
 //                     value={formData.badePapa?.Thikana || ""}
@@ -742,7 +964,11 @@ export default PaternalfamilyinfoForm;
 //                     type="text"
 //                     id="name"
 //                     name="badeChacha.name"
+<<<<<<< HEAD
 //                     className="form-control rounded-0"
+=======
+//                     className="form-control"
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 //                     placeholder="Late Maharaj Maan Singh Ji Jhala"
 //                     aria-label="name"
 //                     value={formData.badeChacha?.name || ""}
@@ -755,7 +981,11 @@ export default PaternalfamilyinfoForm;
 //                     type="text"
 //                     id="marriedto"
 //                     name="badeChacha.marriedto"
+<<<<<<< HEAD
 //                     className="form-control rounded-0"
+=======
+//                     className="form-control"
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 //                     placeholder="Hans Kunwar"
 //                     aria-label="marriedto"
 //                     value={formData.badeChacha?.marriedto || ""}
@@ -768,7 +998,11 @@ export default PaternalfamilyinfoForm;
 //                     type="text"
 //                     id="daughterof"
 //                     name="badeChacha.daughterof"
+<<<<<<< HEAD
 //                     className="form-control rounded-0"
+=======
+//                     className="form-control"
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 //                     placeholder="Mj. Thakur Chawand Singh"
 //                     aria-label="daughterof"
 //                     value={formData.badeChacha?.daughterof || ""}
@@ -781,7 +1015,11 @@ export default PaternalfamilyinfoForm;
 //                     type="text"
 //                     id="Thikana"
 //                     name="badeChacha.Thikana"
+<<<<<<< HEAD
 //                     className="form-control rounded-0"
+=======
+//                     className="form-control"
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 //                     placeholder="Gyangarh, Mewar"
 //                     aria-label="Thikana"
 //                     value={formData.badeChacha?.Thikana || ""}

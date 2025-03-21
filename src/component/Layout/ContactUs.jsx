@@ -29,6 +29,7 @@ function ContactUs() {
           </div>
 
           <section className="contact-info text-center p-2">
+<<<<<<< HEAD
             <p>
               We're here to help! Reach out today and take the first step
               towards finding your perfect match.
@@ -45,6 +46,48 @@ function ContactUs() {
                 padding: "2rem",
                 minWidth: "319px",
                 marginInline: "auto",
+=======
+            <p
+              style={{
+                fontSize: "clamp(12px, 22px, 24px)",
+                fontWeight: 500,
+                fontFamily: "Lustria, serif",
+                lineHeight: 1.5,
+                marginBottom: "1rem",
+                marginTop: "3rem",
+              }}
+            >
+              We're here to help! Reach out today and take the first step
+              towards finding your perfect match.
+            </p>
+            <h2
+              className="m-0"
+              style={{
+                fontSize: "clamp(16px, 50px, 60px)",
+                fontWeight: 400,
+                fontFamily: "Open Sans, sans-serif",
+                lineHeight: 1,
+              }}
+            >
+              Get in Touch with Us
+            </h2>
+          </section>
+
+          {/* Stories Section */}
+          <div
+            className="d-flex flex-lg-row flex-column flex-wrap justify-content-between mt-4 g-md-0 g-2 text-left"
+            style={{
+              minHeight: "477px",
+            }}
+          >
+            <div
+              className="contact-info"
+              style={{
+                backgroundColor: "white",
+                padding: "2rem",
+                marginInline: "auto",
+                width: "clamp(300px, 50%,50%)",
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
               }}
             >
               <div className="mb-2">
@@ -74,9 +117,15 @@ function ContactUs() {
 
             {/* Contact Form Component */}
             <div
+<<<<<<< HEAD
               className="w-50 m-auto"
               style={{
                 minWidth: "319px",
+=======
+              className="m-auto contact-from"
+              style={{
+                width: "clamp(300px, 50%,50%)",
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
               }}
             >
               <ContactForm />
@@ -100,6 +149,10 @@ export function ContactForm() {
     mobile: "",
     email: "",
     additionalInfo: "",
+<<<<<<< HEAD
+=======
+    countryCode: "",
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   });
 
   const [errors, setErrors] = useState({});
@@ -108,7 +161,11 @@ export function ContactForm() {
     const { name, value } = e.target;
     let updatedValue = value.trimStart();
 
+<<<<<<< HEAD
     const nameRegex = /^[a-zA-Z\s]{1,20}$/;
+=======
+    const nameRegex = /^[a-zA-Z\s]{0,20}$/;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     const mobileRegex = /^\d*$/;
     const additionalInfoRegex = /^[a-zA-Z\s,.]*$/;
 
@@ -117,7 +174,10 @@ export function ContactForm() {
       case "lastName":
         if (!nameRegex.test(value)) return;
         break;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
       case "mobile":
         if (!mobileRegex.test(value)) return;
         break;
@@ -135,6 +195,7 @@ export function ContactForm() {
   const validateForm = () => {
     const newErrors = {};
 
+<<<<<<< HEAD
     // Validate First Name
     if (!formData.firstName.trim())
       newErrors.firstName = "First Name is required.";
@@ -151,6 +212,20 @@ export function ContactForm() {
     }
 
     // Validate Email
+=======
+    if (!formData.firstName.trim())
+      newErrors.firstName = "First Name is required.";
+    if (!formData.lastName.trim())
+      newErrors.lastName = "Last Name is required.";
+
+    if (!formData.mobile.trim()) {
+      newErrors.mobile = "Mobile is required.";
+    } else if (!/^\+?\d{8,15}$/.test(formData.mobile)) {
+      newErrors.mobile =
+        "Invalid mobile number. Must be 8 to 15 digits, with an optional '+'.";
+    }
+
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     if (!formData.email.trim()) {
       newErrors.email = "Email is required.";
     } else if (
@@ -159,11 +234,18 @@ export function ContactForm() {
       newErrors.email = "Invalid email format.";
     }
 
+<<<<<<< HEAD
+=======
+    if (!formData.countryCode)
+      newErrors.countryCode = "Country Code is required.";
+
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     return newErrors;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -173,12 +255,32 @@ export function ContactForm() {
       const route = "contactus";
       console.log("Saving Data:", formData);
       await updateData(route, formData);
+=======
+    console.log("handleSubmit triggered!");
+
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      console.log("Validation errors:", validationErrors);
+      setErrors(validationErrors);
+      return;
+    }
+
+    try {
+      console.log("Saving Data:", formData);
+      const route = "contactus";
+      await updateData(route, formData);
+
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
       setFormData({
         firstName: "",
         lastName: "",
         mobile: "",
         email: "",
         additionalInfo: "",
+<<<<<<< HEAD
+=======
+        countryCode: "",
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
       });
     } catch (error) {
       console.error("Error updating data:", error.message);
@@ -192,6 +294,10 @@ export function ContactForm() {
         backgroundColor: "rgba(153, 37, 37, 1)",
         padding: "2rem",
         borderTop: "2px solid yellow",
+<<<<<<< HEAD
+=======
+        minHeight: "477px",
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
       }}
       onSubmit={handleSubmit}
     >
@@ -205,6 +311,10 @@ export function ContactForm() {
             onChange={handleChange}
             placeholder="Enter First Name"
             className="input-field"
+<<<<<<< HEAD
+=======
+            maxLength="25"
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           />
           {errors.firstName && <p className="error-text">{errors.firstName}</p>}
         </div>
@@ -218,6 +328,10 @@ export function ContactForm() {
             onChange={handleChange}
             placeholder="Enter Last Name"
             className="input-field"
+<<<<<<< HEAD
+=======
+            maxLength="20"
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           />
           {errors.lastName && <p className="error-text">{errors.lastName}</p>}
         </div>
@@ -226,6 +340,7 @@ export function ContactForm() {
       <div className="form-group">
         <div>
           <label>Mobile</label>
+<<<<<<< HEAD
           <input
             type="text"
             name="mobile"
@@ -234,6 +349,102 @@ export function ContactForm() {
             placeholder="Enter Mobile"
             className="input-field"
           />
+=======
+          <div className="d-flex">
+            <select
+              className="form-select text-center w-25 rounded-0 background-md-visibelnone"
+              name="countryCode"
+              value={formData.countryCode}
+              onChange={handleChange}
+              style={{
+                backgroundPosition: "right 10px center",
+                paddingRight: "25px",
+                padding: "5px",
+                minWidth: "50px",
+              }}
+              required
+            >
+              <option value="+91">+91</option>
+              <option value="+1">+1 (USA, Canada)</option>
+              <option value="+7">+7 (Russia, Kazakhstan)</option>
+              <option value="+20">+20 (Egypt)</option>
+              <option value="+27">+27 (South Africa)</option>
+              <option value="+30">+30 (Greece)</option>
+              <option value="+31">+31 (Netherlands)</option>
+              <option value="+32">+32 (Belgium)</option>
+              <option value="+33">+33 (France)</option>
+              <option value="+34">+34 (Spain)</option>
+              <option value="+39">+39 (Italy)</option>
+              <option value="+40">+40 (Romania)</option>
+              <option value="+41">+41 (Switzerland)</option>
+              <option value="+44">+44 (United Kingdom)</option>
+              <option value="+49">+49 (Germany)</option>
+              <option value="+51">+51 (Peru)</option>
+              <option value="+52">+52 (Mexico)</option>
+              <option value="+55">+55 (Brazil)</option>
+              <option value="+56">+56 (Chile)</option>
+              <option value="+60">+60 (Malaysia)</option>
+              <option value="+61">+61 (Australia)</option>
+              <option value="+62">+62 (Indonesia)</option>
+              <option value="+63">+63 (Philippines)</option>
+              <option value="+64">+64 (New Zealand)</option>
+              <option value="+65">+65 (Singapore)</option>
+              <option value="+66">+66 (Thailand)</option>
+              <option value="+81">+81 (Japan)</option>
+              <option value="+82">+82 (South Korea)</option>
+              <option value="+84">+84 (Vietnam)</option>
+              <option value="+86">+86 (China)</option>
+              <option value="+90">+90 (Turkey)</option>
+              <option value="+91">+91 (India)</option>
+              <option value="+92">+92 (Pakistan)</option>
+              <option value="+93">+93 (Afghanistan)</option>
+              <option value="+94">+94 (Sri Lanka)</option>
+              <option value="+95">+95 (Myanmar)</option>
+              <option value="+98">+98 (Iran)</option>
+              <option value="+212">+212 (Morocco)</option>
+              <option value="+216">+216 (Tunisia)</option>
+              <option value="+218">+218 (Libya)</option>
+              <option value="+220">+220 (Gambia)</option>
+              <option value="+221">+221 (Senegal)</option>
+              <option value="+222">+222 (Mauritania)</option>
+              <option value="+223">+223 (Mali)</option>
+              <option value="+224">+224 (Guinea)</option>
+              <option value="+225">+225 (Ivory Coast)</option>
+              <option value="+226">+226 (Burkina Faso)</option>
+              <option value="+227">+227 (Niger)</option>
+              <option value="+228">+228 (Togo)</option>
+              <option value="+229">+229 (Benin)</option>
+              <option value="+230">+230 (Mauritius)</option>
+              <option value="+231">+231 (Liberia)</option>
+              <option value="+232">+232 (Sierra Leone)</option>
+              <option value="+233">+233 (Ghana)</option>
+              <option value="+234">+234 (Nigeria)</option>
+              <option value="+971">+971 (UAE)</option>
+              <option value="+972">+972 (Israel)</option>
+              <option value="+973">+973 (Bahrain)</option>
+              <option value="+974">+974 (Qatar)</option>
+              <option value="+975">+975 (Bhutan)</option>
+              <option value="+976">+976 (Mongolia)</option>
+              <option value="+977">+977 (Nepal)</option>
+              <option value="+992">+992 (Tajikistan)</option>
+              <option value="+993">+993 (Turkmenistan)</option>
+              <option value="+994">+994 (Azerbaijan)</option>
+              <option value="+995">+995 (Georgia)</option>
+              <option value="+996">+996 (Kyrgyzstan)</option>
+              <option value="+998">+998 (Uzbekistan)</option>
+            </select>
+
+            <input
+              type="text"
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleChange}
+              placeholder="Enter Mobile"
+              className="input-field w-75"
+              maxLength="16"
+            />
+          </div>
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           {errors.mobile && <p className="error-text">{errors.mobile}</p>}
         </div>
 
@@ -246,6 +457,10 @@ export function ContactForm() {
             onChange={handleChange}
             placeholder="Enter Email"
             className="input-field"
+<<<<<<< HEAD
+=======
+            maxLength="40"
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           />
           {errors.email && <p className="error-text">{errors.email}</p>}
         </div>
@@ -260,11 +475,26 @@ export function ContactForm() {
           className="input-field"
           rows="4"
           placeholder="Enter text"
+<<<<<<< HEAD
+=======
+          maxLength="150"
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
         ></textarea>
       </div>
 
       <div className="d-flex flex-row-reverse">
+<<<<<<< HEAD
         <button type="submit" className="submit-btn bg-black text-white">
+=======
+        <button
+          type="submit"
+          className="submit-btn bg-black text-white"
+          style={{
+            minWidth: "114px",
+            lineHeight: 2,
+          }}
+        >
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           SAVE
         </button>
       </div>

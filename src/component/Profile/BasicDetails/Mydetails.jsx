@@ -7,6 +7,11 @@ import PaternalSideDetails from "./PaternalSideDetails";
 import FamilyInfo from "./FamilyInfo";
 import ImagesAndDocuments from "./ImagesAndDocuments";
 
+<<<<<<< HEAD
+=======
+import FeatureSection from "../../Layout/FeatureSection";
+
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 // import MaternalInfo from "./MaternalInfo";
 // import PrefrenceDetails from "./PrefrenceDetails";
 // import AboutmeInfo from "./AboutmeInfo";
@@ -20,10 +25,17 @@ function Mydetails() {
       <Educationinfo />
       <ImagesAndDocuments />
       <PaternalSideDetails />
+<<<<<<< HEAD
 
       {/* <MaternalInfo /> */}
       {/* <PrefrenceDetails /> */}
       {/* <AboutmeInfo /> */}
+=======
+      {/* <MaternalInfo /> */}
+      {/* <PrefrenceDetails /> */}
+      {/* <AboutmeInfo /> */}
+      {/* <FeatureSection /> */}
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     </>
   );
 }

@@ -57,7 +57,11 @@ export function RequestImageContainer({ profile }) {
             className={styles.ctaButton}
             onClick={() => handlePhotoReq(profile?._id)}
           >
+<<<<<<< HEAD
             Request now
+=======
+            Request image
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           </button>
         </div>
       </div>
@@ -110,6 +114,7 @@ function PeopleVisited() {
   const [profiles, setProfiles] = useState([]);
   const [error, setError] = useState(null);
 
+<<<<<<< HEAD
     const profilesPerPage = 4;
     const [currentPage, setCurrentPage] = useState(1);
     const totalPages = Math.ceil(profiles?.length / profilesPerPage);
@@ -130,6 +135,28 @@ function PeopleVisited() {
     const handlePageClick = (page) => {
       setCurrentPage(page);
     };
+=======
+  const profilesPerPage = 4;
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(profiles?.length / profilesPerPage);
+
+  const getProfilesForCurrentPage = () => {
+    const startIdx = (currentPage - 1) * profilesPerPage;
+    return profiles?.slice(startIdx, startIdx + profilesPerPage);
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  };
+
+  const handlePageClick = (page) => {
+    setCurrentPage(page);
+  };
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 
   const fetchData = async () => {
     try {
@@ -247,6 +274,7 @@ function PeopleVisited() {
               />
             ))}
           </div>
+<<<<<<< HEAD
           <div className="d-flex align-items-center justify-content-center mt-3">
             <button
               className="btn"
@@ -277,6 +305,55 @@ function PeopleVisited() {
             >
               <FaChevronRight />
             </button>
+=======
+
+          <div className="d-flex align-items-center justify-content-center mt-3 mb-3">
+            <div className="d-flex align-items-center gap-2">
+              <button
+                style={{
+                  all: "unset",
+                  cursor: currentPage === 1 ? "default" : "pointer",
+                }}
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+              >
+                <FaChevronLeft />
+              </button>
+              {Array.from({ length: totalPages }).map((_, index) => (
+                <button
+                  key={index}
+                  className={`btn fw-bold d-flex align-items-center justify-content-center ${
+                    currentPage === index + 1
+                      ? "text-white"
+                      : "bg-white text-black"
+                  }`}
+                  style={{
+                    backgroundColor: "rgba(153, 37, 37, 1)",
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "50%",
+                    padding: 0,
+                  }}
+                  onClick={() => setCurrentPage(index + 1)}
+                >
+                  {index + 1}
+                </button>
+              ))}
+              <button
+                className=""
+                onClick={() =>
+                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                }
+                disabled={currentPage === totalPages}
+                style={{
+                  all: "unset",
+                  cursor: currentPage === totalPages ? "default" : "pointer",
+                }}
+              >
+                <FaChevronRight />
+              </button>
+            </div>
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           </div>
         </>
       )}

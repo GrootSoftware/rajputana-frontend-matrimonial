@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../component/Layout/AuthContext";
+=======
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 import { toast } from "react-toastify";
 import axios from "axios";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
@@ -20,6 +24,7 @@ function NewPassword() {
   });
   const [errors, setErrors] = useState({});
 
+<<<<<<< HEAD
   const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
@@ -56,11 +61,44 @@ function NewPassword() {
     } else if (formData.newpassword !== formData.password) {
       newErrors.newpassword = "Passwords do not match!";
     }
+=======
+  // ✅ Extract token & userid from URL
+  const [searchParams] = useSearchParams();
+  const token = searchParams.get("token");
+  const userId = searchParams.get("userid");
+
+  const navigate = useNavigate();
+
+  const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
+  const toggleConfirmPasswordVisibility = () =>
+    setShowConfirmPassword((prev) => !prev);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // ✅ Validation function
+  const verify = () => {
+    const newErrors = {};
+    if (!formData.password.trim()) newErrors.password = "Password is required.";
+    else if (formData.password.length < 6)
+      newErrors.password = "Password must be at least 6 characters long.";
+
+    if (!formData.newpassword.trim())
+      newErrors.newpassword = "Confirm Password is required.";
+    else if (formData.newpassword.length < 6)
+      newErrors.newpassword =
+        "Confirm Password must be at least 6 characters long.";
+    else if (formData.newpassword !== formData.password)
+      newErrors.newpassword = "Passwords do not match!";
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+<<<<<<< HEAD
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -74,18 +112,33 @@ function NewPassword() {
 
       if (!token) {
         toast.error("Authentication token missing. Please log in again.", {
+=======
+  // ✅ Handle Form Submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!verify()) return;
+
+    try {
+      if (!token || !userId) {
+        toast.error("Invalid or expired reset link. Please try again.", {
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           position: "top-center",
           autoClose: 3000,
         });
         return;
       }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
       const response = await axios.post(
         `${BASE_URL}/reset-password`,
         {
           password: formData.password,
           newPassword: formData.newpassword,
         },
+<<<<<<< HEAD
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -94,18 +147,27 @@ function NewPassword() {
       );
 
       if (response.data && response.data.success) {
+=======
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      if (response.data?.success) {
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
         toast.success("Password reset successful!", {
           position: "top-center",
           autoClose: 2000,
         });
+<<<<<<< HEAD
 
         localStorage.removeItem("authToken");
+=======
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
         navigate("/login");
       } else {
         throw new Error(response.data.message || "Unknown error occurred.");
       }
     } catch (error) {
       console.error("Error during password reset:", error);
+<<<<<<< HEAD
       const errorMessage =
         error.response?.data?.message || "An error occurred. Please try again.";
 
@@ -113,6 +175,12 @@ function NewPassword() {
         position: "top-center",
         autoClose: 3000,
       });
+=======
+      toast.error(
+        error.response?.data?.message || "An error occurred. Please try again.",
+        { position: "top-center", autoClose: 3000 }
+      );
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     }
   };
 
@@ -128,7 +196,11 @@ function NewPassword() {
               className="rounded-full border-4 border-white"
             />
           </div>
+<<<<<<< HEAD
           <p className="subtitle">Find Your Elite Match with Ease</p>
+=======
+          <p className="subtitle">Create new password</p>
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           <form onSubmit={handleSubmit}>
             <div className="form-groups">
               <label htmlFor="password" className="label">

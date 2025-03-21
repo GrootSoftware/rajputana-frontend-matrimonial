@@ -24,8 +24,14 @@
   margin-top: 1rem;
   background-color: white;
   padding: 1rem;
+<<<<<<< HEAD
   max-height: 400%;
   width: 45vw;
+=======
+  max-height: 420%;
+  width: 50vw;
+  max-width: 700px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -42,6 +48,10 @@
   font-size: 1.75rem;
   font-family: "Lustria", serif;
   font-weight: 400;
+<<<<<<< HEAD
+=======
+  line-height: 1.5;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .modalHeader {
@@ -71,9 +81,16 @@
 .modalFooter button {
   background-color: #8f1515;
   color: white;
+<<<<<<< HEAD
   padding: 0.5rem 1rem;
   border: none;
   cursor: pointer;
+=======
+  padding: 0.55rem 1.25rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 0%;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .modalFooter button:hover {
@@ -104,9 +121,15 @@
   border-bottom: 1px solid black;
   padding: 0.3rem;
 }
+<<<<<<< HEAD
 @media (max-width: 1000px) {
   .modalContent {
     width: 70%;
+=======
+@media (max-width: 1200px) {
+  .modalContent {
+    width: 60vw;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   }
   .viewPage {
     width: 90% !important;

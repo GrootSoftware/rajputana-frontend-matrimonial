@@ -1,13 +1,23 @@
 /* Global Styles */
 .container {
   margin: 0 auto;
+<<<<<<< HEAD
   padding: 2rem;
   padding-inline: 12.5%;
   background-color: rgba(249, 249, 249, 1);
+=======
+  /* padding: 2rem; */
+  padding-inline: auto;
+  max-width: 1400px;
+  background-color: rgba(249, 249, 249, 1);
+  min-height: 546px;
+  max-height: fit-content;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .header {
   text-align: center;
+<<<<<<< HEAD
   margin-bottom: 2rem;
 }
 
@@ -17,6 +27,17 @@
   background-color: #ffcc00; /* Yellow Divider */
   margin: 10px auto;
 }
+=======
+  margin-bottom: 25px;
+  margin-top: 75px;
+}
+
+/* .divider {
+  width: 60px;
+  height: 3px;
+  margin: 10px auto;
+} */
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 
 .mainTitle {
   font-size: 3.125rem;
@@ -25,9 +46,15 @@
   color: rgba(70, 44, 44, 1);
 }
 
+<<<<<<< HEAD
 @media (max-width: 1200px) {
   .container {
     padding-inline: 2%;
+=======
+@media (max-width: 1400px) {
+  .container {
+    padding-inline: 10px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   }
 }
 

@@ -148,7 +148,11 @@ const ReligionForm = ({
                   className="form-control rounded-0"
                   id="birthplace"
                   name="birthplace"
+<<<<<<< HEAD
                   placeholder="Ex: Hospital/Home"
+=======
+                  placeholder="Exact Place"
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
                   value={formData.birthplace || ""}
                   onChange={handleInputChange}
                 />
@@ -283,7 +287,11 @@ const ReligionForm = ({
                   placeholder="Enter Clan"
                   value={formData.clan || ""}
                   onChange={handleInputChange}
+<<<<<<< HEAD
                 />  
+=======
+                />
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
               </div>
 
               <div className="col-md-4">

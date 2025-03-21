@@ -1,20 +1,38 @@
 .container {
+<<<<<<< HEAD
   width: 75%;
   padding-bottom: 16rem;
   margin-inline: auto;
+=======
+  max-width: 1400px;
+  padding-bottom: 14rem;
+  margin-inline: auto;
+  min-height: 739px;
+  max-height: fit-content;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 .section {
   display: flex;
   justify-content: space-between;
+<<<<<<< HEAD
   align-items: center;
+=======
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   margin: 4vh auto;
 }
 
 /* Left Section */
 .leftSection {
+<<<<<<< HEAD
   width: 40%;
   margin-bottom: 2vh;
   padding-right: 0;
+=======
+  margin-top: 2rem;
+  max-width: 510px;
+  margin-bottom: 2vh;
+  /* padding: 1rem; */
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .heading {
@@ -28,6 +46,10 @@
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-size: 1.125rem;
+<<<<<<< HEAD
+=======
+  line-height: 1.5;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   margin-bottom: 1.5vh;
 }
 
@@ -35,10 +57,17 @@
   margin-top: 1.5vh;
   background-color: rgba(153, 37, 37, 1);
   color: white;
+<<<<<<< HEAD
   padding: 1rem 1.5rem;
   font-family: "Open Sans", sans-serif;
   font-weight: 500;
   font-size: 0.875rem;
+=======
+  padding: 1rem 2rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 
   cursor: pointer;
   border: none;
@@ -51,7 +80,11 @@
 
 /* Right Section */
 .rightSection {
+<<<<<<< HEAD
   width: 47%;
+=======
+  max-width: 621px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   padding-left: 0;
   box-sizing: border-box;
 }
@@ -88,6 +121,10 @@
   font-size: 1.5rem;
   font-family: "Lustria", serif;
   font-weight: 400;
+<<<<<<< HEAD
+=======
+  line-height: 1.16;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   margin-bottom: 0.5vh;
   margin-bottom: 1rem;
 }
@@ -96,6 +133,7 @@
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-size: 16px;
+<<<<<<< HEAD
   line-height: 1.2;
 }
 
@@ -130,12 +168,27 @@
 
   .featureDescription {
     font-size: 0.55rem;
+=======
+  line-height: 24px;
+}
+
+@media (max-width: 1400px) {
+  .container {
+    padding-inline: 1%;
+
+    width: 98%;
+    /* padding-bottom: 10%; */
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   }
 }
 
 @media (max-width: 780px) {
   .container {
     padding-inline: 2%;
+<<<<<<< HEAD
+=======
+    padding-bottom: 5rem;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   }
   .heading {
     font-size: 2.5rem;
@@ -165,7 +218,11 @@
   }
   .iconContainer {
     padding: 1.3rem;
+<<<<<<< HEAD
     margin-right: 3rem;
+=======
+    margin-right: 1rem;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   }
 
   .featureTitle {
@@ -210,6 +267,7 @@
 
 /* VVIP Section */
 .vipSection {
+<<<<<<< HEAD
   position: absolute;
   top: 0%;
   left: 50%;
@@ -224,6 +282,28 @@
   background-image: url("../../assets/images/vvipsectionbg.jpg");
   background-position: center;
   background-size: contain;
+=======
+  display: flex;
+  align-items: center;
+  max-width: 1360px;
+  box-sizing: border-box;
+  margin-inline: auto;
+  padding: 100px;
+  max-height: 328px;
+  background-repeat: no-repeat;
+  /* background-image: url("../../assets/images/vvipsectionbg.jpg"); */
+  background-color: rgba(248, 235, 210, 1);
+  background-position: center;
+  background-size: contain;
+
+  position: relative;
+  bottom: 10px;
+}
+
+.box {
+  padding-inline: 10px;
+  border: 2px solid rgba(255, 210, 64, 1);
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .vipSection img {
@@ -239,7 +319,12 @@
   font-size: 3.125rem;
   font-family: "Lustria", serif;
   font-weight: 400;
+<<<<<<< HEAD
   padding: 0rem 7vw;
+=======
+  padding: 0rem;
+  padding-right: 112px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   margin-bottom: 1rem;
 }
 
@@ -255,12 +340,20 @@
   background-color: rgba(153, 37, 37, 1);
   color: white;
   padding: 0.5rem 1.5rem;
+<<<<<<< HEAD
+=======
+  margin-top: 10px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   font-weight: bold;
   cursor: pointer;
   border: none;
   font-size: 14px;
   font-family: "Now", sans-serif;
   font-weight: 500;
+<<<<<<< HEAD
+=======
+  text-decoration: none;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .vipSection button:hover {
@@ -268,6 +361,7 @@
 }
 
 /* Add media queries for fine control */
+<<<<<<< HEAD
 @media (max-width: 1235px) {
   .vipSection {
     padding: 7vw;
@@ -281,10 +375,36 @@
 
   .vipSection p {
     font-size: 1.5vw;
+=======
+@media (max-width: 1200px) {
+  .box {
+    padding-inline: 8px;
+    bottom: 2px;
+    border: 1px solid rgba(255, 210, 64, 1);
+  }
+  .vipSection {
+    padding: 40px;
+    width: 100%;
+    margin-inline: auto;
+    min-height: 250px;
+    bottom: 8px;
+  }
+  .vipSection h2 {
+    font-size: 2.75rem;
+    margin-bottom: 0%;
+    text-align: left;
+    padding-right: 50px;
+    min-width: 230px;
+  }
+
+  .vipSection p {
+    font-size: 1rem;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     margin-bottom: 0%;
   }
 }
 
+<<<<<<< HEAD
 @media (max-width: 768px) {
   .vipSection {
     flex-direction: row;
@@ -319,11 +439,41 @@
   }
   .vipSection h2 {
     font-size: 3.5vw;
+=======
+@media (max-width: 992px) {
+  .vipSection h2 {
+    font-size: 2.5rem;
+    padding-right: 10px;
+  }
+  .vipSection {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 780px) {
+  .box {
+    padding-inline: 5px;
+    bottom: 2px;
+    border: 2px solid rgba(255, 210, 64, 1);
+  }
+  .vipSection {
+    min-height: 180px;
+    padding: 15px;
+    flex-direction: column;
+    min-height: fit-content;
+    bottom: 5px;
+  }
+  .vipSection h2 {
+    text-align: center;
+    font-size: 3.5vw;
+    margin-bottom: 8px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   }
 
   .vipSection p {
     padding-inline: 5vw;
     font-size: 1.75vw;
+<<<<<<< HEAD
   }
 
   .vipSection button {
@@ -331,3 +481,28 @@
     font-size: 1.2vw;
   }
 }
+=======
+    margin-bottom: 8px;
+  }
+  .vipSection div {
+    text-align: center;
+  }
+
+  .vipSection button {
+    padding: 0.5rem 1rem;
+    font-size: 1.2vw;
+  }
+}
+
+@media (max-width: 678px) {
+  .hideBelow679 {
+    display: none !important;
+  }
+}
+
+@media (max-width: 678px) {
+  .showBelow678 {
+    display: block !important;
+  }
+}
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b

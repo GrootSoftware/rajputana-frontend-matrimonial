@@ -3,6 +3,10 @@
   justify-content: center;
   padding: 1rem;
   width: 75%;
+<<<<<<< HEAD
+=======
+  max-width: 1400px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   align-items: center;
   gap: 2rem;
   /* flex-wrap: wrap; */
@@ -44,7 +48,11 @@
 
 .navIcons {
   position: absolute;
+<<<<<<< HEAD
   top: 60%;
+=======
+  top: 65%;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   width: 99%;
   display: flex;
   justify-content: space-between;

@@ -29,6 +29,9 @@ function StoryCard({ text, imageSrc }) {
 }
 
 export default StoryCard;
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b

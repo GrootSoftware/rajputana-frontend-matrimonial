@@ -66,9 +66,16 @@ const ViewPage = () => {
 
       setFormData({
         matrimonialid: response.martrId || "N/A",
+<<<<<<< HEAD
         name: `${response.firstName || ""} ${response.middleName || ""} ${
           response.lastName || ""
         }`.trim(),
+=======
+        // name: `${response.firstName || ""} ${response.middleName || ""} ${
+        //   response.lastName || ""
+        // }`.trim(),
+        lastName: `${response.lastName || ""}`.trim(),
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
         dateOfBirth: formattedDateOfBirth,
         mobile: response.mobile || "N/A",
         email: response.email || "N/A",
@@ -84,9 +91,16 @@ const ViewPage = () => {
 
       setDetails({
         matrimonialid: response.martrId || "N/A",
+<<<<<<< HEAD
         name: `${response.firstName || ""} ${response.middleName || ""} ${
           response.lastName || ""
         }`.trim(),
+=======
+        // name: `${response.firstName || ""} ${response.middleName || ""} ${
+        //   response.lastName || ""
+        // }`.trim(),
+        lastName: `${response.lastName || ""}`.trim(),
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
         dateOfBirth: formattedDateOfBirth,
         mobile: response.mobile || "N/A",
         email: response.email || "N/A",

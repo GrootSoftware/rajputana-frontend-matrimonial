@@ -84,7 +84,11 @@ export function Interestimagecontainer({ profile, status }) {
             className={styles.ctaButton}
             onClick={() => HandlePhotoReq(profile?._id)}
           >
+<<<<<<< HEAD
             Request now
+=======
+            Request image
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           </button>
         </div>
       </div>
@@ -576,12 +580,24 @@ const SearchPage = () => {
           </div>
         </div>
 
+<<<<<<< HEAD
         <div className="d-flex align-items-center justify-content-center mt-3">
           <div className="d-flex align-items-center gap-2">
             <button
               className="btn"
               onClick={handlePrevPage}
               disabled={currentPage === 1}
+=======
+        <div className="d-flex align-items-center justify-content-center mt-3 mb-3">
+          <div className="d-flex align-items-center gap-2">
+            <button
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+              style={{
+                all: "unset",
+                cursor: currentPage === 1 ? "default" : "pointer",
+              }}
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
             >
               <FaChevronLeft />
             </button>
@@ -589,21 +605,46 @@ const SearchPage = () => {
             {Array.from({ length: totalPages }).map((_, index) => (
               <button
                 key={index}
+<<<<<<< HEAD
                 className={`btn rounded-circle px-3 fw-bold ${
                   currentPage === index + 1
                     ? "btn-danger text-white"
                     : "bg-white"
                 }`}
                 onClick={() => handlePageClick(index + 1)}
+=======
+                className={`btn fw-bold d-flex align-items-center justify-content-center ${
+                  currentPage === index + 1
+                    ? "text-white"
+                    : "bg-white text-black"
+                }`}
+                style={{
+                  backgroundColor: "rgba(153, 37, 37, 1)",
+                  width: "40px", // Adjust size as needed
+                  height: "40px",
+                  borderRadius: "50%", // Ensures circular shape
+                  padding: 0, // Prevents extra spacing
+                }}
+                onClick={() => setCurrentPage(index + 1)}
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
               >
                 {index + 1}
               </button>
             ))}
 
             <button
+<<<<<<< HEAD
               className="btn"
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
+=======
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              style={{
+                all: "unset",
+                cursor: currentPage === totalPages ? "default" : "pointer",
+              }}
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
             >
               <FaChevronRight />
             </button>

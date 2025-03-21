@@ -39,8 +39,13 @@ function RecentAddedPage() {
         className="img-fluid m-auto"
         alt="Profile picture"
         style={{
+<<<<<<< HEAD
           width: "14rem",
           height: "14rem",
+=======
+          width: "230px",
+          height: "230px",
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           objectFit: "cover",
         }}
       />
@@ -49,6 +54,7 @@ function RecentAddedPage() {
 
   return (
     <div
+<<<<<<< HEAD
       className={RecentAddedPageCss.container}
       style={{ overflowY: "scroll" }}
     >
@@ -69,6 +75,33 @@ function RecentAddedPage() {
             />
           ))
         )}
+=======
+      className="m-auto"
+      style={{ backgroundColor: "rgba(249, 249, 249, 1)" }}
+    >
+      <div
+        className={RecentAddedPageCss.container}
+        style={{ overflowY: "scroll" }}
+      >
+        <div className={RecentAddedPageCss.header}>
+          <p className={RecentAddedPageCss.mainTitle}>Recent Added Profile</p>
+          {/* <div className={RecentAddedPageCss.divider}></div> */}
+        </div>
+
+        <div className="row m-0 p-0">
+          {profiles.length === 0 ? (
+            <div>No Profiles Available</div>
+          ) : (
+            profiles.map((profile) => (
+              <ProfileBoxCard
+                key={profile._id}
+                profile={profile}
+                ProfileImagerender={ProfileImagerender} // Passing the image render function
+              />
+            ))
+          )}
+        </div>
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
       </div>
     </div>
   );

@@ -8,8 +8,11 @@ import style from "./Form.module.css";
 import { useAuth } from "../../Layout/AuthContext";
 import { toast } from "react-toastify";
 
+<<<<<<< HEAD
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
+=======
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 const DocumentForm = ({
   handleCancelClick,
   handleSaveClick,
@@ -24,6 +27,11 @@ const DocumentForm = ({
   const { updateData, fetchUserData, fetchprofile } = useAuth();
   const [profileImage, setProfileImage] = useState(null);
 
+<<<<<<< HEAD
+=======
+  const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
+
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   const options = [
     { id: "publicOption", value: false, label: "Public" },
     { id: "onRequestOption", value: true, label: "On Request" },
@@ -64,6 +72,7 @@ const DocumentForm = ({
     try {
       const token = localStorage.getItem("authToken");
       console.log("Form Data:", formData);
+<<<<<<< HEAD
       const response = await axios.post(
         `${BASE_URL}/upload-files`,
        
@@ -75,6 +84,14 @@ const DocumentForm = ({
           },
         }
       );
+=======
+      const response = await axios.post(`${BASE_URL}/upload-files`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
       const uploadedPhotos = response.data?.photos || [];
       setImages((prev) => [...uploadedPhotos]);
     } catch (error) {
@@ -106,7 +123,11 @@ const DocumentForm = ({
       const token = localStorage.getItem("authToken");
       console.log("Form Data:", formData);
       const response = await axios.post(
+<<<<<<< HEAD
           `${BASE_URL}/upload-documents`,
+=======
+        `${BASE_URL}/upload-documents`,
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
         formData,
         {
           headers: {

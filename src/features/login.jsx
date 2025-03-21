@@ -26,6 +26,10 @@ function Login() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     setFormData({
       ...formData,
       [name]: value,
@@ -35,6 +39,7 @@ function Login() {
   const verify = () => {
     const newErrors = {};
 
+<<<<<<< HEAD
     if (!formData.username.trim()) {
       newErrors.username = "Email or mobile Number is required.";
     } else if (
@@ -42,6 +47,25 @@ function Login() {
       !/^\d{10}$/.test(formData.username)
     ) {
       newErrors.username = "Enter a valid email or a 10-digit mobile number.";
+=======
+    const emailRegex =
+      /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|outlook|hotmail|aol|icloud)\.(com|co|in)$/;
+    const mobileRegex = /^\d{6,14}$/;
+
+    if (!formData.username.trim()) {
+      newErrors.username = "Email or mobile number is required.";
+    } else if (
+      !emailRegex.test(formData.username) &&
+      !mobileRegex.test(formData.username)
+    ) {
+      newErrors.username = "Enter a valid email or mobile number.";
+    } else if (
+      emailRegex.test(formData.username) &&
+      mobileRegex.test(formData.username)
+    ) {
+      newErrors.username =
+        "Enter either an email or a mobile number, not both.";
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     }
 
     if (!formData.password.trim()) {
@@ -137,7 +161,11 @@ function Login() {
                 Forgot Password?
               </Link>
             </div>
+<<<<<<< HEAD
             {message && <p className="error-text">{message}</p>}
+=======
+            {/* {message && <p className="error-text">{message}</p>} */}
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
             <p className="signup-prompt">
               Are you a new user?{" "}
               <Link to="/auth/emailverification" className="signup-link">

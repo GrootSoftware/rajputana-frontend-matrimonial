@@ -9,6 +9,10 @@ function PaternalSideDetails() {
   const { fetchUserData, updateData } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [view, setView] = useState(false);
+<<<<<<< HEAD
+=======
+  const [error, setError] = useState("");
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 
   const keyNameMapping = {
     grandFatherName: "Grandfather Name",
@@ -73,6 +77,36 @@ function PaternalSideDetails() {
   };
 
   const handleSaveClick = async () => {
+<<<<<<< HEAD
+=======
+    // Check if all fields in the nested arrays are filled (except index 0)
+    for (const arrayName of [
+      "badePapa",
+      "kakosa",
+      "bhuasa",
+      "mamosa",
+      "masisa",
+    ]) {
+      if (formData[arrayName]) {
+        for (let index = 0; index < formData[arrayName].length; index++) {
+          const item = formData[arrayName][index];
+
+          // Skip validation for index 0
+          if (index === 0) continue;
+
+          for (const key in item) {
+            if (!item[key]?.trim()) {
+              setError(
+                `Please fill all fields in ${arrayName}, row ${index + 1}`
+              );
+              return;
+            }
+          }
+        }
+      }
+    }
+
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     try {
       const route = "updatepaternal-details";
       await updateData(route, formData);
@@ -112,9 +146,15 @@ function PaternalSideDetails() {
     setFormData({ ...formData, [arrayName]: [...formData[arrayName], newRow] });
   };
 
+<<<<<<< HEAD
   const removeRow = (arrayName) => {
     if (formData[arrayName].length === 0) return;
     const updatedArray = formData[arrayName].slice(0, -1);
+=======
+  const handleRemoveRow = (index, arrayName) => {
+    if (formData[arrayName].length === 1) return;
+    const updatedArray = formData[arrayName].filter((_, i) => i !== index);
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     setFormData({ ...formData, [arrayName]: updatedArray });
   };
 
@@ -144,9 +184,17 @@ function PaternalSideDetails() {
             <PaternalfamilyinfoForm
               handleCancelClick={handleCancelClick}
               handleAddRow={handleAddRow}
+<<<<<<< HEAD
               handleInputChange={handleInputChange}
               formData={formData}
               handleSaveClick={handleSaveClick}
+=======
+              handleRemoveRow={handleRemoveRow}
+              handleInputChange={handleInputChange}
+              formData={formData}
+              handleSaveClick={handleSaveClick}
+              error={error}
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
             />
           </div>
         )}
@@ -285,7 +333,14 @@ function PaternalSideDetails() {
 
             <div>
               {!view ? (
+<<<<<<< HEAD
                 <div className="text-danger fw-bold" onClick={handletoggle}>
+=======
+                <div
+                  className="text-danger fw-bold text-decoration-underline mb-4 mt-4"
+                  onClick={handletoggle}
+                >
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
                   View more
                 </div>
               ) : (
@@ -322,7 +377,14 @@ function PaternalSideDetails() {
                     <MasisaHukum details={details} />
                   </div>
 
+<<<<<<< HEAD
                   <div className="text-danger fw-bold" onClick={handletoggle}>
+=======
+                  <div
+                    className="text-danger fw-bold text-decoration-underline mb-4 mt-4"
+                    onClick={handletoggle}
+                  >
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
                     View less
                   </div>
                 </>

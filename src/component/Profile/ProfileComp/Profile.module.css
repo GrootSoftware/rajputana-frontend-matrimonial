@@ -16,19 +16,34 @@
 .navHeader {
   background-color: #991c1c;
   color: white;
+<<<<<<< HEAD
   padding-top: 0.35rem;
   padding-bottom: 0.35rem;
+=======
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+<<<<<<< HEAD
   width: 75%;
   margin-inline: auto;
+=======
+  max-width: 1400px;
+  margin-inline: auto;
+  height: 100px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .navHeader .title {
   margin-left: 1rem;
+<<<<<<< HEAD
   width: 10rem;
+=======
+  width: 180px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   z-index: 10;
 }
 
@@ -73,16 +88,29 @@
 }
 /* Header Section */
 .Container {
+<<<<<<< HEAD
   width: 75%;
   /* padding-top: 9vh; */
+=======
+  width: 100%;
+  /* padding-top: 9vh; */
+  max-width: 1400px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   margin-inline: auto;
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 @media (max-width: 1242px) {
   .Container {
     width: 100%;
     padding-inline: 0%;
+=======
+@media (max-width: 1200px) {
+  .Container {
+    width: 100%;
+    padding-inline: 5%;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     border: 0cm;
     margin: 0%;
   }
@@ -94,16 +122,36 @@
 @media (max-width: 995px) {
   .Container {
     width: 100%;
+<<<<<<< HEAD
     padding-inline: 0%;
+=======
+    padding-inline: 5%;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     margin: 0%;
   }
 
   .navHeader .title {
     width: 9rem;
   }
+<<<<<<< HEAD
 }
 
 @media (max-width: 768px) {
+=======
+  .navHeader {
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+    height: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navHeader {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    max-height: 60px;
+  }
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   .navHeader .title {
     width: 7rem;
     margin-left: 0.5rem;
@@ -166,7 +214,12 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+<<<<<<< HEAD
   height: 10rem;
+=======
+  height: 20vh;
+  max-height: 150px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   box-sizing: border-box;
 
   padding: 0%;
@@ -178,15 +231,25 @@
   position: relative;
   object-position: top;
   object-fit: cover;
+<<<<<<< HEAD
   width: 10.2rem;
   height: 10.2rem;
   top: 10vh;
+=======
+  width: 168px;
+  height: 168px;
+  top: 5vh;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   left: 2%;
 }
 
 .Relative {
   position: relative;
+<<<<<<< HEAD
   left: 11.5rem;
+=======
+  left: 12rem;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   text-align: left;
 }
 

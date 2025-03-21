@@ -107,6 +107,7 @@ filterItem:hover {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+<<<<<<< HEAD
 
   gap: 32px;
 }
@@ -118,6 +119,14 @@ filterItem:hover {
   font-size: 12px;
   color: rgba(122, 121, 115, 1);
 
+=======
+  gap: 40px;
+}
+
+.detailLabel {
+  font-size: 12px;
+  color: rgba(122, 121, 115, 1);
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
 }
@@ -162,6 +171,7 @@ filterItem:hover {
   font-size: 1.2rem;
 }
 
+<<<<<<< HEAD
 
 .reqbtn {
   cursor: pointer;
@@ -174,6 +184,20 @@ filterItem:hover {
 
 /* Responsive styles */
 @media (max-width: 768px) {
+=======
+.reqbtn {
+  cursor: pointer;
+  align-content: center;
+  padding: 0.6rem 1.5rem;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   .profileListHeader {
     padding-inline: 0.5rem;
   }
@@ -206,6 +230,38 @@ filterItem:hover {
   }
 
   .reqbtn {
+<<<<<<< HEAD
     padding: 0.2rem 0.5rem;
+=======
+    font-size: 13px;
+    padding: 0.6rem 1.2rem;
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profileDetails {
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .profileDetails > div {
+    width: calc(33.33% - 15px); /* 3 divs per row, adjusting for gap */
+  }
+  .detailItem {
+    text-align: center;
+    min-width: 100px;
+  }
+
+  .actionIcon {
+    font-size: 1.2rem;
+  }
+
+  .reqbtn {
+    font-size: 12px;
+    padding: 0.6rem 0.8rem;
+    min-width: 80px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   }
 }

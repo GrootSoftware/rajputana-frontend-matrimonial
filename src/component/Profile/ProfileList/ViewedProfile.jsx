@@ -56,7 +56,11 @@ function RequestImageContainer({ profile }) {
             className={styles.ctaButton}
             onClick={() => handlePhotoReq(profile?._id)}
           >
+<<<<<<< HEAD
             Request now
+=======
+            Request image
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           </button>
         </div>
       </div>
@@ -244,6 +248,7 @@ function ViewedProfile() {
               />
             ))}
           </div>
+<<<<<<< HEAD
           <div className="d-flex align-items-center justify-content-center mt-3">
             <button
               className="btn"
@@ -274,6 +279,56 @@ function ViewedProfile() {
             >
               <FaChevronRight />
             </button>
+=======
+          <div className="d-flex align-items-center justify-content-center mt-3 mb-3">
+            <div className="d-flex align-items-center gap-2">
+              <button
+                style={{
+                  all: "unset",
+                  cursor: currentPage === 1 ? "default" : "pointer",
+                }}
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+              >
+                <FaChevronLeft />
+              </button>
+
+              {Array.from({ length: totalPages }).map((_, index) => (
+                <button
+                  key={index}
+                  className={`btn fw-bold d-flex align-items-center justify-content-center ${
+                    currentPage === index + 1
+                      ? "text-white"
+                      : "bg-white text-black"
+                  }`}
+                  style={{
+                    backgroundColor: "rgba(153, 37, 37, 1)",
+                    width: "40px", // Adjust size as needed
+                    height: "40px",
+                    borderRadius: "50%", // Ensures circular shape
+                    padding: 0,
+                  }}
+                  onClick={() => setCurrentPage(index + 1)}
+                >
+                  {index + 1}
+                </button>
+              ))}
+
+              <button
+                className=""
+                onClick={() =>
+                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                }
+                disabled={currentPage === totalPages}
+                style={{
+                  all: "unset",
+                  cursor: currentPage === totalPages ? "default" : "pointer",
+                }}
+              >
+                <FaChevronRight />
+              </button>
+            </div>
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           </div>
         </>
       )}

@@ -32,7 +32,11 @@ function Home() {
       <FeatureSection />
       <RecentAddedPage />
       <LandingPage />
+<<<<<<< HEAD
       <Testimonial />
+=======
+      {/* <Testimonial /> */}
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
       <JourneyPage />
       <Footer />
     </>

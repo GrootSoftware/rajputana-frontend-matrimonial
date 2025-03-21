@@ -20,6 +20,10 @@ import ContactUs from "./component/Layout/ContactUs";
 import NotFoundPage from "./component/Layout/NotFoundPage";
 import ChatApp from "./component/Layout/ChatApp";
 import Verification from "./features/Verification";
+<<<<<<< HEAD
+=======
+import VerifyEmail from "./features/VerifyEmail";
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 
 import ViewImages from "./component/Profile/Forms/ViewImages";
 import ViewPage from "./component/Profile/Forms/ViewPage";
@@ -53,6 +57,10 @@ function App() {
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="set-new-password" element={<NewPassword />} />
         <Route path="auth/emailverification" element={<Verification />} />
+<<<<<<< HEAD
+=======
+        <Route path="verify-email" element={<VerifyEmail />} />
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 
         <Route path="about" element={<About />} />
         <Route path="stories" element={<Stories />} />

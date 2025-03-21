@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useRef } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -21,19 +22,64 @@ function Verification() {
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
     if (!/\S+@\S+\.\S+/.test(email)) {
+=======
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import Profilenavbar from "../component/Profile/ProfileComp/Profilenavbar";
+import logo from "../assets/images/logowhite.png";
+import { useAuth } from "../component/Layout/AuthContext";
+
+function Verification() {
+  const { setEmail, email } = useAuth();
+  // const [email, setEmail] = useState("");
+  const [timer, setTimer] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let interval;
+    if (timer > 0) {
+      interval = setInterval(() => {
+        setTimer((prev) => prev - 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [timer]);
+
+  const handleEmailSubmit = async (e) => {
+    e.preventDefault();
+    if (timer > 0 || loading) return; // Prevent resending while timer is running or loading
+
+    setLoading(true);
+
+    const emailRegex =
+      /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|outlook|hotmail|aol|icloud)\.(com|co|in)$/;
+    if (!emailRegex.test(email.trim())) {
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
       toast.error("Please enter a valid email address.", {
         position: "top-center",
         autoClose: 2000,
       });
+<<<<<<< HEAD
+=======
+      setLoading(false);
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
       return;
     }
     try {
       const response = await axios.post(
+<<<<<<< HEAD
         `${process.env.REACT_APP_BASE_URL}/send-verification-otp`,
+=======
+        `${process.env.REACT_APP_BASE_URL}/send-verification`,
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
         { email }
       );
 
       if (response?.data?.success) {
+<<<<<<< HEAD
         toast.success("OTP sent successfully!", {
           position: "top-center",
           autoClose: 2000,
@@ -119,6 +165,23 @@ function Verification() {
         return prev - 1;
       });
     }, 1000);
+=======
+        toast.success("Email sent successfully!", {
+          position: "top-center",
+          autoClose: 2000,
+        });
+        setTimer(120); // Start 2-minute countdown
+        navigate("/signup");
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Failed to send Email.", {
+        position: "top-center",
+        autoClose: 2000,
+      });
+      navigate("/auth/emailverification");
+    }
+    setLoading(false);
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   };
 
   return (
@@ -136,6 +199,7 @@ function Verification() {
           </div>
           <p className="subtitle">Welcome! Verify Your Email</p>
 
+<<<<<<< HEAD
           {!showOtpInput ? (
             <form onSubmit={handleEmailSubmit}>
               <div className="input-group">
@@ -194,6 +258,28 @@ function Verification() {
               Email
             </Link>
           </p> */}
+=======
+          <form onSubmit={handleEmailSubmit}>
+            <div className="input-group">
+              <label>Email Address</label>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="button-group">
+              <button type="submit" disabled={timer > 0 || loading}>
+                {loading
+                  ? "Sending..."
+                  : timer > 0
+                  ? `Resend in ${timer}s`
+                  : "Verify Email"}
+              </button>
+            </div>
+          </form>
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
         </div>
       </div>
     </>

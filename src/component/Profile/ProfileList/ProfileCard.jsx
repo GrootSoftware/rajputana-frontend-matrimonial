@@ -27,7 +27,13 @@ function ProfileCard({
         <div>
           <div className="matrId">Matr ID: {element?.profile?.martrId}</div>
           <div className="profileName">
+<<<<<<< HEAD
             {`${element?.profile?.firstName} ${element?.profile?.middleName} ${element?.profile?.lastName}`}
+=======
+            {/* {`${element?.profile?.firstName} ${element?.profile?.middleName} ${element?.profile?.lastName}`}
+          </div> */}
+            {`${element?.profile?.middleName} ${element?.profile?.lastName}`}
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           </div>
         </div>
       </div>
@@ -57,6 +63,7 @@ function ProfileCard({
             {formatDate(element?.dateShortlisted)}
           </div>
         </div>
+<<<<<<< HEAD
         <div className={`${element.isbookmarked ? "bookmarked" : "actions"}`}>
           <MdDelete
             className="actionIcon"
@@ -68,6 +75,23 @@ function ProfileCard({
             className="actionIcon"
             onClick={() => handleView(element?.profile?._id)}
           />
+=======
+        <div className="detailItems">
+          <div className={`${element.isbookmarked ? "bookmarked" : "actions"}`}>
+            <MdDelete
+              className="actionIcon"
+              onClick={() => handleDelete(element?.profile._id)}
+            />
+          </div>
+        </div>
+        <div className="detailItems">
+          <div className="actions">
+            <FaEye
+              className="actionIcon"
+              onClick={() => handleView(element?.profile?._id)}
+            />
+          </div>
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
         </div>
       </div>
     </div>

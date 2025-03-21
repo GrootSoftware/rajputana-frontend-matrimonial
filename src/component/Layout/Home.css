@@ -2,7 +2,12 @@
   background-image: url("../../assets/images/Bannerbg.jpg");
   background-size: cover;
   background-position: center;
+<<<<<<< HEAD
   min-height: 90vh;
+=======
+  min-height: 80vh;
+  padding-top: 2%;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   position: relative;
   box-sizing: border-box;
 }
@@ -16,6 +21,19 @@
   bottom: 0;
 }
 
+<<<<<<< HEAD
+=======
+.search-form select {
+  -webkit-appearance: none; /* Safari */
+  -moz-appearance: none; /* Firefox */
+  appearance: none;
+}
+
+.search-form select::-ms-expand {
+  display: none;
+}
+
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 .hero-content {
   position: relative;
   z-index: 10;
@@ -25,28 +43,54 @@
   align-items: baseline;
   justify-content: center;
   width: 75%;
+<<<<<<< HEAD
+=======
+  max-width: 1400px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   box-sizing: border-box;
   margin-inline: auto;
   text-align: start;
   height: 100%;
+<<<<<<< HEAD
 
   padding-top: 8%;
   padding-bottom: 9%;
+=======
+  font-family: "Open Sans", sans-serif;
+  padding-block: 10%;
+}
+
+.wrapper {
+  width: 50%;
+  text-align: start;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 @media (max-width: 768px) {
   .hero-content {
     margin-inline: auto;
     text-align: center;
+<<<<<<< HEAD
     padding-top: 7%;
     padding-bottom: 5%;
+=======
+    padding-block: 10%; /* Adjust as needed */
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     width: 90%;
   }
 }
 
+<<<<<<< HEAD
 .wrapper {
   width: 55%;
   text-align: start;
+=======
+@media (max-width: 1920px) {
+  .wrapper {
+    width: 56%;
+    text-align: start;
+  }
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .hero-header {
@@ -63,6 +107,7 @@
 /* navbar css */
 
 .hero-text p {
+<<<<<<< HEAD
   font-size: 1.5rem;
   font-family: "Open Sans", sans-serif;
   font-weight: 500;
@@ -72,6 +117,21 @@
   font-size: 3.75rem;
   font-family: "Lustria", serif;
   font-weight: 400;
+=======
+  font-size: 24px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.hero-text h1 {
+  font-size: 60px;
+  font-family: "Lustria", serif;
+  font-weight: 400;
+  line-height: 1.33;
+  padding-right: 20px;
+  box-sizing: border-box;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 /* input of radio */
@@ -79,14 +139,25 @@
 .radio-group {
   display: flex;
   flex-direction: row;
+<<<<<<< HEAD
 }
 .radio-group input[type="radio"] {
   display: inline;
 }
+=======
+  align-items: center;
+}
+
+.radio-group input[type="radio"] {
+  display: none; /* Hide default radio button */
+}
+
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 .radio-group label {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-size: 14px;
+<<<<<<< HEAD
 
   margin: 0 0.2rem;
   padding: 2px 7px;
@@ -96,6 +167,35 @@
 .radio-group input[type="radio"]:checked + label:before {
   border: 2px solid #8b0000;
 }
+=======
+  margin: 0 0.5rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Custom radio button before label */
+.radio-group label:before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  margin-right: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* When checked, change border color */
+.radio-group input[type="radio"]:checked + label:before {
+  border: 4px solid #8b0000; /* FIXED border issue */
+}
+
+/* Unchecked state */
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 .radio-group input[type="radio"]:not(:checked) + label:before {
   background-color: #fff;
 }
@@ -104,7 +204,13 @@
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-size: 14px;
+<<<<<<< HEAD
   padding: 5px;
+=======
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-bottom: 15px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   cursor: pointer;
 }
 
@@ -112,6 +218,7 @@
   width: 100%;
 }
 
+<<<<<<< HEAD
 .age-group .input-field {
   width: 39%;
 }
@@ -130,6 +237,39 @@
 .input-field:focus {
   outline: none;
   box-shadow: 0 0 0 2px #8b0000; /* Green 500 */
+=======
+.age-group select {
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none; /* Safari */
+  -moz-appearance: none; /* Firefox */
+
+  /* Custom SVG arrow with thinner stroke and gray color */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 25'%3E%3Cpath style='fill:%23999999; stroke:%23999999; stroke-width:1.8;' d='m18.294 16.793-5.293 5.293V1h-1v21.086l-5.295-5.294-.707.707L12.501 24l6.5-6.5-.707-.707z'/%3E%3C/svg%3E");
+
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Position arrow */
+  background-size: 12px; /* Slightly increased arrow size */
+  padding-right: 32px; /* Adjusted padding */
+}
+
+/* .age-group .input-field {
+  width: 39%;
+} */
+.input-field {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1;
+
+  box-sizing: border-box;
+  padding: 0.7rem;
+  border: 1px solid #d1d5db;
+  color: #4b5563;
+}
+
+.input-field:focus {
+  outline: none;
+  box-shadow: 0 0 0 0px #8b0000; /* Green 500 */
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .search-form {
@@ -137,17 +277,39 @@
   margin-top: 1rem;
   background: rgba(0, 0, 0, 0.5);
   padding: 1rem;
+<<<<<<< HEAD
+=======
+  margin-bottom: 1rem;
+}
+
+.search-groups .input-field {
+  font-size: 1rem;
+  line-height: 1;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  padding: 0.7rem;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .search-button {
   background-color: #8b0000;
   color: white;
   border: none;
+<<<<<<< HEAD
   padding: 0.6rem;
 }
 
 .search-button:hover {
   background-color: #802d2d;
+=======
+  padding: 0.7rem;
+  padding-inline: 0.9rem;
+  margin-left: 7px;
+}
+
+.search-button:hover {
+  background-color: #7a3434;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 .features {
@@ -160,7 +322,11 @@
 }
 
 .features div {
+<<<<<<< HEAD
   font-size: 0.85rem;
+=======
+  font-size: 14px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   font-family: "Open Sans", sans-serif;
   font-weight: 500;
   display: flex;
@@ -171,11 +337,21 @@
   .wrapper {
     width: 70%;
   }
+<<<<<<< HEAD
+=======
+  .features div {
+    font-size: 12px;
+  }
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 }
 
 @media (max-width: 995px) {
   .features div {
+<<<<<<< HEAD
     font-size: 0.65rem;
+=======
+    font-size: 12px;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   }
 
   .search-form {
@@ -186,6 +362,13 @@
     flex-direction: column;
   }
 
+<<<<<<< HEAD
+=======
+  .age-group {
+    margin-top: 0.5rem;
+  }
+
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   .age-group .input-field {
     width: 100%;
   }
@@ -232,7 +415,11 @@
   }
   .age-group .input-field {
     width: 100%;
+<<<<<<< HEAD
     padding: 0.5rem;
+=======
+    padding: 0.7rem;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   }
   .age-group label {
     margin-top: 1rem;
@@ -265,7 +452,11 @@
   }
 
   .features div {
+<<<<<<< HEAD
     font-size: 0.5rem;
+=======
+    font-size: 0.6rem;
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   }
 }
 

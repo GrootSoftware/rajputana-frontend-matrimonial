@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import React from "react";
 import { Link } from "react-router-dom";
 
+=======
+import { Link } from "react-router-dom";
+import React, { useRef, useState } from "react";
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
 import styles from "./JourneyPage.module.css";
 
 import { IoLockClosedOutline } from "react-icons/io5";
@@ -8,9 +13,31 @@ import { FaConnectdevelop } from "react-icons/fa";
 import { SlBadge } from "react-icons/sl";
 import { BsPersonLock } from "react-icons/bs";
 
+<<<<<<< HEAD
 import royalbg from "../../assets/images/royalplacebg.jpg";
 
 const JourneyPage = () => {
+=======
+import { IoPlaySharp, IoPauseSharp } from "react-icons/io5";
+
+import royalbg from "../../assets/images/royalplacebg.jpg";
+import ellipse from "../../assets/images/ellipse.png";
+
+const JourneyPage = () => {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   return (
     <section>
       <div className={styles.container}>
@@ -94,6 +121,7 @@ const JourneyPage = () => {
             </div>
           </div>
         </div>
+<<<<<<< HEAD
       </div>
 
       <div
@@ -142,6 +170,111 @@ const JourneyPage = () => {
                 JOIN THE RAJPUT LEGACY{" "}
               </button>
             </Link>
+=======
+        <div
+          className={`${styles.showBelow678}`}
+          style={{ width: "100%", display: "none" }}
+        >
+          <div
+            className="box"
+            style={{
+              maxWidth: "1400px",
+              width: "100%",
+              marginInline: "auto",
+            }}
+          >
+            <div className={styles.vipSection}>
+              <h2>Start Your Journey to a Royal Match Today</h2>
+              <div>
+                <p>
+                  Join Rajput Matches and embark on a journey to find your
+                  perfect partner within a community that respects your legacy
+                  and honors your privacy. Let us guide you in finding a partner
+                  who complements your values, lifestyle, and heritage.
+                </p>
+                <Link to="/login">
+                  <button className={styles.ctaButton}>
+                    JOIN THE RAJPUT LEGACY
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="position-relative text-center p-0 m-0">
+        {/* Background Video */}
+        {/* <video
+          ref={videoRef}
+          className="w-100 m-0"
+          style={{ maxHeight: "933px", objectFit: "cover" }}
+          src="https://www.w3schools.com/html/mov_bbb.mp4"
+          loop
+          muted
+        /> */}
+        <img
+          src={royalbg}
+          alt="Background"
+          className="w-100 p-0"
+          style={{ maxHeight: "933px", objectFit: "cover" }}
+        />
+
+        <div className=" position-absolute top-50 start-50 translate-middle">
+          <img
+            src={ellipse}
+            alt="Ellipse"
+            className="position-relative img-fluid"
+            onClick={handlePlayPause}
+            style={{ maxWidth: "173px", width: "10vw" }}
+          />
+          <div
+            // onClick={handlePlayPause}
+            className="position-absolute top-50 start-50 translate-middle d-flex justify-content-center align-items-center"
+            style={{
+              width: "28%",
+              height: "28%",
+              maxWidth: "53px",
+              maxHeight: "53px",
+            }}
+          >
+            {isPlaying ? (
+              <IoPauseSharp size="100%" color="white" />
+            ) : (
+              <IoPlaySharp size="100%" color="white" />
+            )}
+          </div>
+        </div>
+
+        <div
+          className={`${styles.hideBelow679} position-absolute d-flex justify-content-center align-items-center top-0 start-50 translate-middle`}
+          style={{ width: "100%", minHeight: "100vh" }}
+        >
+          <div
+            className="box"
+            style={{
+              maxWidth: "1400px",
+              width: "90%",
+              marginInline: "auto",
+            }}
+          >
+            <div className={styles.vipSection}>
+              <h2>Start Your Journey to a Royal Match Today</h2>
+              <div>
+                <p>
+                  Join Rajput Matches and embark on a journey to find your
+                  perfect partner within a community that respects your legacy
+                  and honors your privacy. Let us guide you in finding a partner
+                  who complements your values, lifestyle, and heritage.
+                </p>
+                <Link to="/login">
+                  <button className={styles.ctaButton}>
+                    JOIN THE RAJPUT LEGACY
+                  </button>
+                </Link>
+              </div>
+            </div>
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           </div>
         </div>
       </div>

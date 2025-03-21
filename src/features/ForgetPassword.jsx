@@ -10,8 +10,11 @@ import { useNavigate } from "react-router-dom";
 function ForgotPassword() {
   const [formData, setFormData] = useState({ username: "" });
   const [errors, setErrors] = useState({});
+<<<<<<< HEAD
   const [showOtpInput, setShowOtpInput] = useState(false);
   const [otp, setOtp] = useState("");
+=======
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -20,6 +23,7 @@ function ForgotPassword() {
 
   const verify = () => {
     const newErrors = {};
+<<<<<<< HEAD
     if (!formData.username.trim()) {
       newErrors.username = "Email or mobile number is required.";
     } else if (formData.username.length > 25) {
@@ -30,6 +34,27 @@ function ForgotPassword() {
     ) {
       newErrors.username = "Enter a valid email or a 10-digit mobile number.";
     }
+=======
+
+    // Email validation regex (flexible for most email formats)
+    const emailRegex =
+      /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|outlook|hotmail|aol|icloud)\.(com|co|in)$/;
+    // Mobile validation regex (accepts country code with optional +, and 6-14 digits)
+    const mobileRegex = /^(\+?\d{1,4})?\d{6,14}$/;
+
+    if (!formData.username.trim()) {
+      newErrors.username = "Email or mobile number is required.";
+    } else if (formData.username.length > 40) {
+      newErrors.username = "Username must not exceed 40 characters.";
+    } else if (
+      !emailRegex.test(formData.username) &&
+      !mobileRegex.test(formData.username)
+    ) {
+      newErrors.username =
+        "Enter a valid email or a valid mobile number with optional country code.";
+    }
+
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -49,7 +74,10 @@ function ForgotPassword() {
           position: "top-center",
           autoClose: 2000,
         });
+<<<<<<< HEAD
         setShowOtpInput(true);
+=======
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
       }
     } catch (error) {
       toast.error(
@@ -63,6 +91,7 @@ function ForgotPassword() {
     }
   };
 
+<<<<<<< HEAD
   const handleOtpSubmit = async (e) => {
     e.preventDefault();
     if (!/^\d{4}$/.test(otp)) {
@@ -101,6 +130,8 @@ function ForgotPassword() {
     }
   };
 
+=======
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
   return (
     <>
       <Profilenavbar />
@@ -117,7 +148,11 @@ function ForgotPassword() {
           <p className="subtitle">Oops! Did you forget your password?</p>
           <form onSubmit={handleSubmit}>
             <div className="input-group">
+<<<<<<< HEAD
               <label htmlFor="username">Email / Mobile Number</label>
+=======
+              <label htmlFor="username">Email / Phone Number</label>
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
               <input
                 id="username"
                 name="username"
@@ -128,6 +163,7 @@ function ForgotPassword() {
               />
             </div>
             {errors.username && <p className="error-text">{errors.username}</p>}
+<<<<<<< HEAD
             {!showOtpInput && (
               <div className="button-group">
                 <button type="submit">RESET PASSWORD</button>
@@ -179,6 +215,22 @@ function ForgotPassword() {
               </p>
             </div>
           )}
+=======
+
+            <div className="button-group">
+              <button type="submit">RESET PASSWORD</button>
+            </div>
+          </form>
+
+          <div className="signup-link">
+            <p>
+              Are you a new user?{" "}
+              <Link to="/signup" className="signup-now">
+                Signup Now
+              </Link>
+            </p>
+          </div>
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
         </div>
       </div>
     </>

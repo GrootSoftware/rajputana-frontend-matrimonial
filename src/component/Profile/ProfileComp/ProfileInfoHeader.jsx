@@ -58,7 +58,16 @@ const ProfileInfoHeader = () => {
     <div className="border pb-3 bg-white text-right">
       <ProfileHeader />
 
+<<<<<<< HEAD
       <div className="d-flex row p-0 m-0">
+=======
+      <div
+        className="d-flex row p-0 m-0 mt-3"
+        style={{
+          minHeight: "118px",
+        }}
+      >
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
         <div
           className={`col-12 col-md-8 col-lg-5 mt-md-2 accordion ${style.Relative}`}
         >
@@ -100,7 +109,11 @@ const ProfileInfoHeader = () => {
           </div>
         </div>
 
+<<<<<<< HEAD
         <div className="col-lg-7 d-flex justify-content-around flex-wrap mt-2">
+=======
+        <div className="col-xl-7 d-flex justify-content-around flex-wrap mt-2">
+>>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
           <div className="">
             <p
               className="mb-1"

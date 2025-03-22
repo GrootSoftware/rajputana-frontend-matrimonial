@@ -20,32 +20,26 @@ import ContactUs from "./component/Layout/ContactUs";
 import NotFoundPage from "./component/Layout/NotFoundPage";
 import ChatApp from "./component/Layout/ChatApp";
 import Verification from "./features/Verification";
-<<<<<<< HEAD
-=======
 import VerifyEmail from "./features/VerifyEmail";
->>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
-
 import ViewImages from "./component/Profile/Forms/ViewImages";
 import ViewPage from "./component/Profile/Forms/ViewPage";
 
 import { ToastContainer } from "react-toastify";
-
 import "react-toastify/dist/ReactToastify.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function App() {
   return (
     <AuthProvider>
-      {/* ToastContainer for displaying toast notifications */}
       <ToastContainer
-        position="bottom-left" // Position of the toast
-        autoClose={1000} // Auto-close after 3 seconds
-        hideProgressBar={false} // Show the progress bar
-        newestOnTop={false} // Toasts are not stacked newest on top
-        closeOnClick // Close on click
-        pauseOnHover // Pause auto-close on hover
-        draggable // Enable drag-and-drop
-        theme="light" // Light theme
+        position="bottom-left"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="light"
       />
 
       <Routes>
@@ -57,16 +51,10 @@ function App() {
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="set-new-password" element={<NewPassword />} />
         <Route path="auth/emailverification" element={<Verification />} />
-<<<<<<< HEAD
-=======
         <Route path="verify-email" element={<VerifyEmail />} />
->>>>>>> 97ede3914175742e3e2e83c8205bfe6b386e310b
-
         <Route path="about" element={<About />} />
         <Route path="stories" element={<Stories />} />
         <Route path="contact-us" element={<ContactUs />} />
-
-        {/* <Route path="*" element={<Home />} /> */}
         <Route path="*" element={<NotFoundPage />} />
 
         {/* Protected Routes */}
@@ -95,7 +83,7 @@ function App() {
               <ChatApp />
             </ProtectedRoute>
           }
-        ></Route>
+        />
         <Route
           path="profile/view/:profileId"
           element={

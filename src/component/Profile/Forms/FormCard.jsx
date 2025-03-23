@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./Form.module.css";
-
-import { AiOutlineClose } from "react-icons/ai";
+import { MdOutlineCancelPresentation } from "react-icons/md";
 
 function FormCard({
   handleCancelClick,
@@ -11,17 +10,18 @@ function FormCard({
   handleSaveClick,
 }) {
   const feetOptions = Array.from({ length: 8 }, (_, i) => i + 1);
-  const inchOptions = Array.from({ length: 12 }, (_, i) => i + 1);
+  const inchOptions = Array.from({ length: 12 }, (_, i) => i);
 
   return (
     <div className={style.modalContainer}>
       <div className={style.modalContent}>
         <div className={style.modalHeader}>
-          <h1>Basic Details</h1>
+          <h4 className={style.headerTitle}>Basic Details</h4>
           <div>
-            <AiOutlineClose
+          <MdOutlineCancelPresentation
               onClick={handleCancelClick}
               className={style.closeIcon}
+              size="22"
             />
           </div>
         </div>
@@ -35,11 +35,11 @@ function FormCard({
                 </label>
                 <input
                   type="text"
-                  className="form-control formControl"
+                  className="form-control formControl rounded-0"
                   id="firstName"
                   name="firstName"
                   placeholder="Enter Name"
-                  value={formData.firstName || ""}
+                  value={formData.firstName}
                   onChange={handleInputChange}
                 />
               </div>
@@ -50,7 +50,7 @@ function FormCard({
                 </label>
                 <input
                   type="text"
-                  className="form-control formControl"
+                  className="form-control formControl rounded-0"
                   id="middleName"
                   name="middleName"
                   placeholder="Enter Name"
@@ -65,7 +65,7 @@ function FormCard({
                 </label>
                 <input
                   type="text"
-                  className="form-control formControl"
+                  className="form-control formControl rounded-0"
                   id="lastName"
                   name="lastName"
                   placeholder="Enter Name"
@@ -76,38 +76,50 @@ function FormCard({
             </div>
 
             <div className="row">
-              <div className="col-sm-6 d-flex flex-column">
-                <label htmlFor="dob" className="m-1">
+              <div className="col-12">
+                <label htmlFor="dateOfBirth" className="m-1">
                   DOB
                 </label>
                 <input
                   type="date"
-                  className="form-control"
-                  id="dob"
-                  name="dob"
-                  value={formData.dob || ""}
+                  className="form-control rounded-0"
+                  id="dateOfBirth"
+                  name="dateOfBirth"
+                  value={formData.dateOfBirth}
                   onChange={handleInputChange}
                 />
               </div>
-
-              <div className="col-sm-6">
+            </div>
+            <div className="row">
+              <div className="col-sm-6  d-flex flex-column">
                 <label htmlFor="mobile" className="form-label m-1">
                   Mobile
                 </label>
                 <div className="input-group">
                   <select
-                    className="form-select"
+                    className="form-select rounded-0"
                     id="countryCode"
                     name="countryCode"
                     aria-label="Country code"
-                    value={formData.countryCode || "+91"}
+                    value={formData.countryCode || ""}
                     onChange={handleInputChange}
                   >
-                    <option value="+91">+91</option>
+                    <option value="+1">+1 (USA)</option>
+                    <option value="+44">+44 (UK)</option>
+                    <option value="+91">+91 (India)</option>
+                    <option value="+61">+61 (Australia)</option>
+                    <option value="+81">+81 (Japan)</option>
+                    <option value="+49">+49 (Germany)</option>
+                    <option value="+33">+33 (France)</option>
+                    <option value="+39">+39 (Italy)</option>
+                    <option value="+55">+55 (Brazil)</option>
+                    <option value="+7">+7 (Russia)</option>
+                    <option value="+86">+86 (China)</option>
+                    <option value="+971">+971 (UAE)</option>
                   </select>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control rounded-0"
                     id="mobile"
                     name="mobile"
                     aria-label="Mobile number"
@@ -124,7 +136,7 @@ function FormCard({
                 </label>
                 <input
                   type="email"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="email"
                   name="email"
                   placeholder="Enter email"
@@ -139,12 +151,12 @@ function FormCard({
                 </label>
                 <div className="d-flex align-items-center">
                   <select
-                    className="form-control me-2"
+                    className="form-control me-2 rounded-0"
                     id="height-feet"
                     name="heightFeet"
                     aria-label="Height in feet"
                     style={{ width: "50%" }}
-                    value={formData.heightFeet || ""}
+                    value={formData.height?.feet || ""}
                     onChange={handleInputChange}
                   >
                     <option disabled>Select feet</option>
@@ -155,12 +167,12 @@ function FormCard({
                     ))}
                   </select>
                   <select
-                    className="form-control"
+                    className="form-control rounded-0"
                     id="height-inch"
                     name="heightInch"
                     aria-label="Height in inches"
                     style={{ width: "50%" }}
-                    value={formData.heightInch || ""}
+                    value={formData.height?.inches || ""}
                     onChange={handleInputChange}
                   >
                     <option disabled>Select inch</option>
@@ -179,7 +191,7 @@ function FormCard({
                 </label>
                 <input
                   type="number"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="weight"
                   name="weight"
                   placeholder="Enter weight"
@@ -196,17 +208,17 @@ function FormCard({
                 Marital Status
               </label>
               <select
-                className="form-select formSelectp"
+                className="form-select formSelectp rounded-0"
                 id="maritalStatus"
                 name="maritalStatus"
                 value={formData.maritalStatus || ""}
                 onChange={handleInputChange}
               >
                 <option value="">Select</option>
-                <option value="single">Single</option>
-                <option value="married">Married</option>
-                <option value="divorced">Divorced</option>
-                <option value="widowed">Widowed</option>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Divorced">Divorced</option>
+                <option value="Widowed">Widowed</option>
               </select>
             </div>
 
@@ -215,7 +227,7 @@ function FormCard({
                 Additional Info
               </label>
               <textarea
-                className="form-control formControl"
+                className="form-control formControl rounded-0"
                 id="additionalInfo"
                 name="additionalInfo"
                 rows="3"

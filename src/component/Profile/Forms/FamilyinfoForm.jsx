@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Form.module.css";
-import { AiOutlineClose } from "react-icons/ai";
+import { MdOutlineCancelPresentation } from "react-icons/md";
 
 function FamilyinfoForm({
   handleCancelClick,
@@ -12,11 +12,12 @@ function FamilyinfoForm({
     <div className={style.modalContainer}>
       <div className={style.modalContent}>
         <div className={style.modalHeader}>
-          <h1>Family Details</h1>
+          <h4 className={style.headerTitle}>Family Details</h4>
           <div>
-            <AiOutlineClose
+          <MdOutlineCancelPresentation
               onClick={handleCancelClick}
               className={style.closeIcon}
+              size="22"
             />
           </div>
         </div>
@@ -30,7 +31,7 @@ function FamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="fatherName"
                   name="fatherName"
                   value={formData.fatherName}
@@ -44,7 +45,7 @@ function FamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="occupation"
                   name="occupation"
                   value={formData.occupation}
@@ -61,7 +62,7 @@ function FamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="fatherNativePlace"
                   name="fatherNativePlace"
                   value={formData.fatherNativePlace}
@@ -75,7 +76,7 @@ function FamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="motherName"
                   name="motherName"
                   value={formData.motherName}
@@ -92,7 +93,7 @@ function FamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="motherNativePlace"
                   name="motherNativePlace"
                   value={formData.motherNativePlace}
@@ -106,7 +107,7 @@ function FamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="maternalGotra"
                   name="maternalGotra"
                   value={formData.maternalGotra}
@@ -123,12 +124,12 @@ function FamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="siblings"
                   name="siblings"
                   value={formData.siblings}
                   onChange={handleInputChange}
-                  placeholder="EX: 03"
+                  placeholder="Ex:03"
                 />
               </div>
               <div className="col-md-4">
@@ -137,7 +138,7 @@ function FamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="familyLocation"
                   name="familyLocation"
                   value={formData.familyLocation}
@@ -151,7 +152,7 @@ function FamilyinfoForm({
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="additionalMaternal"
                   name="additionalMaternal"
                   value={formData.additionalMaternal}
@@ -167,7 +168,7 @@ function FamilyinfoForm({
                   Family Info
                 </label>
                 <textarea
-                  className="form-control"
+                  className="form-control rounded-0"
                   id="familyInfo"
                   name="familyInfo"
                   rows="3"

@@ -1,53 +1,72 @@
 import React from "react";
 import "./ShortListedProfile.css";
-import { FaRegBookmark } from "react-icons/fa";
-import { AiOutlineDelete } from "react-icons/ai";
 
-function ProfileCard({ profile, handleDelete }) {
+import { formatDate, calculateAge } from "../ProfileComp/ProfileInfoHeader";
+import { useParams, useNavigate } from "react-router-dom";
+import { FaEye } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+
+function ProfileCard({
+  element,
+  handleDelete,
+  ProfileImagerender,
+  handleBookmark,
+}) {
+  const navigate = useNavigate();
+
+  const handleView = (profileId) => {
+    console.log(profileId);
+    navigate(`view/${profileId}`);
+  };
+
   return (
-    <div key={profile.id} className="profileCard">
-      
+    <div key={element?._id} className="profileCard">
       <div className="profileInfo">
-        <img
-          src={profile.imageUrl}
-          alt={profile.imgAlt}
-          className="profileImage"
-        />
+        {element?.profile && <ProfileImagerender profile={element?.profile} />}
+
         <div>
-          <div className="matrId">Matr ID: {profile.id}</div>
-          <div className="profileName">{profile.name}</div>
+          <div className="matrId">Matr ID: {element?.profile?.martrId}</div>
+          <div className="profileName">
+            {`${element?.profile?.firstName} ${element?.profile?.middleName} ${element?.profile?.lastName}`}
+          </div>
         </div>
       </div>
 
       <div className="profileDetails">
         <div className="detailItems">
           <div className="detailLabel">Birthdate</div>
-          <div className="detailValue">23 July, 1999 (26year)</div>
+          <div className="detailValue">
+            {formatDate(element?.profile?.dateOfBirth)}
+          </div>
         </div>
         <div className="detailItems">
           <div className="detailLabel">Age</div>
-          <div className="detailValue">{profile.age}</div>
+          <div className="detailValue">
+            {calculateAge(element?.profile?.dateOfBirth)} Years
+          </div>
         </div>
         <div className="detailItems">
           <div className="detailLabel">Height</div>
           <div className="detailValue">
-            {profile.height ? profile.height : "N/A"}
+            {`${element?.profile.height?.feet}'${element?.profile.height?.inches}"`}
           </div>
         </div>
         <div className="detailItems">
           <div className="detailLabel">Shortlisted Date</div>
-          <div className="detailValue">23 July, 2024</div>
+          <div className="detailValue">
+            {formatDate(element?.dateShortlisted)}
+          </div>
         </div>
-        <div className="actions">
-          <FaRegBookmark
+        <div className={`${element.isbookmarked ? "bookmarked" : "actions"}`}>
+          <MdDelete
             className="actionIcon"
-            onClick={() => handleDelete(profile.id)}
+            onClick={() => handleDelete(element?.profile._id)}
           />
         </div>
         <div className="actions">
-          <AiOutlineDelete
+          <FaEye
             className="actionIcon"
-            onClick={() => handleDelete(profile.id)}
+            onClick={() => handleView(element?.profile?._id)}
           />
         </div>
       </div>

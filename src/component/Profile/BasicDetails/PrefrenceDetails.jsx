@@ -45,7 +45,7 @@ function PrefrenceDetails() {
         <h4 className="header-title">Partner Preferences</h4>
         {!isEditing ? (
           <div onClick={handleEditClick} className="edit-btn">
-            <FaRegEdit />
+           <FaRegEdit  size="18" />
           </div>
         ) : (
           <div>

@@ -1,18 +1,34 @@
 import React from "react";
 import style from "./Form.module.css";
-
-import { AiOutlineClose } from "react-icons/ai";
+import { useState } from "react";
+import { useAuth } from "../../Layout/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { MdOutlineCancelPresentation } from "react-icons/md";
 
 function MessageCard({ profile, closeMessageCard }) {
-  const handleSendMessage = () => {};
+  const { updateData } = useAuth();
+  const [message, setMessage] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleAction = async (action, profileId) => {
+    try {
+      let data = { message: message, user2: profileId };
+      let route = `profile/${action}`;
+      await updateData(route, data);
+      navigate("/message");
+    } catch (error) {
+      console.error(`Error performing action: ${action}`, error);
+    }
+  };
 
   return (
     <div className={style.modalContainer}>
       <div className={style.modalContent}>
         <div className={style.modalHeader}>
-          <h1>Message</h1>
+          <h4 className={style.headerTitle}>Message</h4>
           <div>
-            <AiOutlineClose
+            <MdOutlineCancelPresentation
               onClick={closeMessageCard}
               className={style.closeIcon}
             />
@@ -25,10 +41,13 @@ function MessageCard({ profile, closeMessageCard }) {
               <div className="col-12 align-baseline">
                 <textarea
                   id="message"
-                  class="form-control border"
+                  name="message"
+                  className="form-control border"
                   rows="4"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   placeholder="Enter your message here"
-                ></textarea>
+                />
               </div>
             </div>
           </div>
@@ -37,7 +56,7 @@ function MessageCard({ profile, closeMessageCard }) {
             <button
               type="button"
               className={`btn btn-primary ${style.saveButton}`}
-              onClick={handleSendMessage}
+              onClick={() => handleAction("message", profile._id)}
             >
               Send
             </button>

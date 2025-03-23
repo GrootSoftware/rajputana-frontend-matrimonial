@@ -4,9 +4,9 @@
   display: flex;
   align-items: center;
   padding-left: 13%;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  min-height: 85vh;
+  padding-top: 3%;
+  padding-bottom: 5%;
+  min-height: 93vh;
   /* background-color: rgba(0, 0, 0, 0.5); */
   background-image: url("../assets/images/Bannerbg.jpg");
   box-sizing: border-box;
@@ -21,12 +21,12 @@
   padding-top: 0%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   max-width: 100%;
-  width: 600px;
+  width: 550px;
   box-sizing: border-box;
 }
 
 .signup-prompt {
-  margin-top: 0.4rem;
+  margin-top: 1rem;
   text-align: left;
   color: rgba(0, 0, 0, 1); /* Gray 700 */
   font-size: 1.125rem;
@@ -38,12 +38,22 @@
   margin-bottom: 0.2rem;
 }
 
+.title img {
+  min-width: 30%;
+  max-width: 50%;
+  margin: 0%;
+  margin-left: 1rem;
+  padding: 0%;
+}
+
 .subtitle {
-  text-align: left;
-  font-size: 1.75rem;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 1.5;
   font-family: "Lustria", serif;
   font-weight: 400;
-  margin: 0.2rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
   color: "rgba(0, 0, 0, 1)";
 }
 
@@ -52,7 +62,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 label {
@@ -68,8 +78,8 @@ label {
   width: 100%;
   box-sizing: border-box;
 
-  font-size: 1.125rem;
-  line-height: 0;
+  font-size: 1rem;
+  line-height: 1;
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
 }
@@ -87,7 +97,7 @@ label {
 
 .select-field {
   padding: 0.5rem;
-  border-radius: 5px;
+
   font-size: 1rem;
   width: 100%;
   box-sizing: border-box;
@@ -174,13 +184,11 @@ label {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
   .register-container {
-    padding-top: 3rem;
-    padding-bottom: 2rem;
+    padding: 5%;
     justify-content: center;
     width: 100%;
-    padding-inline: 0rem;
   }
   .register-title {
     font-size: 1.5rem;
@@ -201,5 +209,10 @@ label {
 
   .text-left p {
     font-size: 0.9rem;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    line-height: 1.5;
   }
 }

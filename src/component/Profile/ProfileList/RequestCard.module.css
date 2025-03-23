@@ -1,12 +1,62 @@
 .textSm {
-  font-size: 1rem;
+  font-size: "clamp(0.9rem,0.75rem)";
   line-height: 1.5;
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
 }
 
+.textLg {
+  font-family: "Lustria", serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+
 .imgSize {
   overflow: hidden;
+}
+
+.vipSection {
+  flex-direction: column;
+  width: 100%;
+  margin-inline: auto;
+  color: white;
+}
+
+.vipSection button {
+  background-color: rgba(153, 37, 37, 1);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  font-size: 15px;
+  font-family: "Now", sans-serif;
+  font-weight: 500;
+}
+
+.vipSection button:hover {
+  background-color: #991b1b;
+}
+
+.actionIcon {
+  font-size: clamp(12px, 13px, 15px);
+  stroke-width: 1.15;
+  stroke: white;
+  font-weight: 700;
+}
+
+.actionText {
+  margin-left: 0.2rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: clamp(12px, 12px, 14px);
+}
+
+@media (max-width: 576px) {
+  .vipSection button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 650px) {
@@ -26,6 +76,9 @@
     line-height: 1.2;
     text-align: center;
   }
+  .textLg {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 440px) {
@@ -39,5 +92,8 @@
     font-size: 0.75rem;
     line-height: 1.2;
     text-align: center;
+  }
+  .textLg {
+    font-size: 20px;
   }
 }

@@ -15,9 +15,9 @@ function Login() {
     username: "",
     password: "",
   });
-  const [errors, setErrors] = useState({}); 
+  const [errors, setErrors] = useState({});
 
-  const { login } = useAuth();
+  const { login, message } = useAuth();
   const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
@@ -32,7 +32,6 @@ function Login() {
     });
   };
 
-  // Validation function
   const verify = () => {
     const newErrors = {};
 
@@ -55,13 +54,18 @@ function Login() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (verify()) {
-      const fakeToken = "your-auth-token";
-      console.log("loged in ");
-      login(fakeToken);
-      navigate("/home");
+      const route = "login";
+      console.log("logging in ");
+      console.log({ formData });
+      try {
+        await login(route, formData);
+        navigate("/home");
+      } catch (error) {
+        console.error("Error during login:", error);
+      }
     } else {
       console.log("Form has errors:", errors);
     }
@@ -112,7 +116,8 @@ function Login() {
                   onChange={handleChange}
                   placeholder="Enter password"
                   className="input-field"
-                />   
+                  autoComplete="current-password"
+                />
                 <FaRegEye
                   className="icon"
                   onClick={togglePasswordVisibility}
@@ -132,11 +137,11 @@ function Login() {
                 Forgot Password?
               </Link>
             </div>
-
+            {message && <p className="error-text">{message}</p>}
             <p className="signup-prompt">
               Are you a new user?{" "}
-              <Link to="/signup" className="signup-link">
-                Signup Now
+              <Link to="/auth/emailverification" className="signup-link">
+                Register
               </Link>
             </p>
           </form>

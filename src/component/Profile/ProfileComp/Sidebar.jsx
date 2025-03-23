@@ -4,7 +4,7 @@ import "./Sidebar.css";
 
 const Sidebar = ({ setActiveContent }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState("");
+  const [activeItem, setActiveItem] = useState("myDetails");
 
   const handleItemClick = (item) => {
     setActiveItem(item);
@@ -24,7 +24,7 @@ const Sidebar = ({ setActiveContent }) => {
       <ul className={`menu ${isDropdownOpen ? "show" : ""}`}>
         {[
           { label: "My Details", value: "myDetails" },
-          { label: "Shortlisted Profile", value: "shortlisted" },
+          { label: "Shortlisted", value: "shortlisted" },
           { label: "Viewed Profile", value: "viewed" },
           { label: "Visited Profile", value: "visited" },
           { label: "Interest Profile", value: "interest" },

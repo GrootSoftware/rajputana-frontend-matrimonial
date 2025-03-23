@@ -37,15 +37,15 @@ const Profilenavbar = () => {
           <ul
             className={`${style.navLinks} ${isDropdownOpen ? style.open : ""}`}
           >
-            {isAuthenticated ? (
-              <>
-                <li>
-                  <Link to="/home">Home</Link>
-                </li>
-              </>
+            {/* {isAuthenticated ? (
+              <> */}
+            <li>
+              <Link to="/home">Home</Link>
+            </li>
+            {/* </>
             ) : (
               <></>
-            )}
+            )} */}
             <li>
               <Link to="/about">About Us</Link>
             </li>
@@ -76,10 +76,11 @@ const Profilenavbar = () => {
                 </li>
                 <li>
                   <Link onClick={logout}>
-                    <icon>
+                    Logout
+                    {/* <icon>
                       <FaSignOutAlt style={{ scale: "1.1" }} />
                     </icon>
-                    <span>Logout</span>
+                    <span>Logout</span> */}
                   </Link>
                 </li>
               </>

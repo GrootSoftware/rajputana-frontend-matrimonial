@@ -10,7 +10,7 @@
   background-size: cover;
   background-position: center;
 
-  height: 90vh;
+  min-height: 90vh;
   width: 100vw;
 }
 
@@ -34,8 +34,8 @@
   font-family: "Lustria", serif;
   font-weight: 400;
   color: rgba(0, 0, 0, 1);
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
   text-align: left;
 }
 
@@ -149,6 +149,7 @@
   .form-actions {
     flex-direction: column; /* Stack the actions on smaller screens */
     align-items: stretch;
+    gap: 1rem;
   }
 
   .forgot-password {
@@ -157,15 +158,19 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
   .login-container {
     padding: 5%;
+  }
+
+  .form-actions {
+    flex-direction: column; /* Stack the actions on smaller screens */
   }
 
   .login-box {
     padding: 5%;
     margin: 0;
-    width: 100%; /* Reduce width for smaller screens */
+    width: 100%;
   }
 }
 

@@ -1,0 +1,66 @@
+.matrifont {
+  font-family: "Lustria", serif;
+  font-weight: 400;
+  font-size: clamp(18px, 20px, 24px);
+  color: black;
+}
+
+.smstext {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: clamp(12px, 14px, 16px);
+  line-height: 1.2;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  overflow: hidden;
+}
+
+.chatbodysms {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: clamp(12px, 14px, 16px);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.smstextbold {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: clamp(12px, 14px, 16px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.btnstyle {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: clamp(9px, 11px, 12px);
+}
+
+.timetext {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: clamp(9px, 11px, 13px);
+}
+
+.messageStyle {
+  width: 55%;
+}
+
+.chatrequestBtn:hover {
+  background-color: rgb(250, 249, 249);
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .messageStyle {
+    width: 75%;
+  }
+}

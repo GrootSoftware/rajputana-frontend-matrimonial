@@ -60,10 +60,7 @@
   .features-grid {
     grid-template-columns: repeat(1, 1fr);
   }
-
 }
-
-
 
 /* VVIP Section */
 .vip-section {
@@ -74,10 +71,9 @@
   box-sizing: border-box;
   padding: 7vw;
   background-repeat: no-repeat;
-  background-image: url("../../assets/images/vipsectionbg.png");
+  background-image: url("../../assets/images/vvipsectionbg.jpg");
   background-position: center;
-  background-size: contain;  
-
+  background-size: contain;
 }
 
 .vip-section img {

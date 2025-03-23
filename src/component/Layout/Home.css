@@ -232,14 +232,14 @@
   }
   .age-group .input-field {
     width: 100%;
-    padding: 0.3rem;
+    padding: 0.5rem;
   }
   .age-group label {
     margin-top: 1rem;
     text-align: left;
   }
   .search-groups input {
-    padding: 0.3rem;
+    padding: 0.6rem;
   }
   .search-button {
     text-align: center;

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import style from "./Profile.module.css";
 import { AiOutlineRight } from "react-icons/ai";
@@ -48,9 +49,11 @@ const Profile = () => {
       <Profilenavbar />
       <div className={style.Container}>
         <div className={style.routerpathtext}>
-          {"Home  "}
+          <Link to="/home" style={{ textDecoration: "none", color: "inherit" }}>
+            Home
+          </Link>
           <AiOutlineRight />
-          {"  My Profile"}
+          <span>My Profile</span>
         </div>
         <div className={`${style.minhScreen} bg-gray-100}`}>
           <ProfileInfoHeader />

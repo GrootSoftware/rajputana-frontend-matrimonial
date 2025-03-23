@@ -1,6 +1,7 @@
 // WhoWeAre.jsx
 import React from "react";
 import style from "../Profile/ProfileComp/Profile.module.css";
+import { Link } from "react-router-dom";
 
 import Profilenavbar from "../Profile/ProfileComp/Profilenavbar";
 import Footer from "./Footer";
@@ -74,7 +75,12 @@ function About() {
         <Profilenavbar />
         <div className={style.Container}>
           <div className={style.routerpathtext}>
-            {"Home  "}
+            <Link
+              to="/home"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Home
+            </Link>
             <AiOutlineRight />
             {"  About Us"}
           </div>

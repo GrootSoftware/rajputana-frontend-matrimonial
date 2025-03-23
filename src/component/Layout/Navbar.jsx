@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/images/Logo.png"; // Replace with your logo path
 import style from "../Profile/ProfileComp/Profile.module.css";
 import { FaSearch, FaUserCircle, FaSignOutAlt } from "react-icons/fa";
-import { useAuth } from "../Layout/AuthContext";
+import { useAuth } from "./AuthContext";
 
 const Navbar = () => {
   const { isAuthenticated, logout } = useAuth();
@@ -73,10 +73,11 @@ const Navbar = () => {
               </li>
               <li>
                 <Link onClick={logout}>
-                  <icon>
+                  Logout
+                  {/* <icon>
                     <FaSignOutAlt style={{ scale: "1.1" }} />
                   </icon>
-                  <span>Logout</span>
+                  <span>Logout</span> */}
                 </Link>
               </li>
             </>

@@ -17,14 +17,13 @@
   width: 75%;
   margin: 0 auto;
   color: white;
-  min-height: 70vh;
-  padding: 2rem 1rem;
+  height: fit-content;
+  padding: 0.5rem 1rem;
   box-sizing: border-box;
 }
 
 .footer-about {
   width: 40%;
-  
 }
 .footer-links,
 .footer-legal {
@@ -90,7 +89,7 @@
 
 .footer-links a:hover,
 .footer-legal a:hover {
-  color: #ffdd00; 
+  color: #ffdd00;
 }
 
 /* Footer Bottom Section */
@@ -131,6 +130,7 @@
   .footer-description {
     margin-top: 0.5rem;
     font-size: 0.9rem;
+      line-height: 2;
   }
 
   .footer-heading {

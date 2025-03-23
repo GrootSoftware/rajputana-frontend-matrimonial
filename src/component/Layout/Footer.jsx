@@ -4,7 +4,7 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 import "./Footer.css";
 import Logo from "../../assets/images/Logo.png";
-import { useAuth } from "../../component/Layout/AuthContext";
+import { useAuth } from "./AuthContext";
 import {
   FaFacebook,
   FaInstagram,

@@ -12,7 +12,7 @@ import royalbg from "../../assets/images/royalplacebg.jpg";
 
 const JourneyPage = () => {
   return (
-    <>
+    <section>
       <div className={styles.container}>
         <div className={`${styles.section}`}>
           <div className={styles.leftSection}>
@@ -24,7 +24,12 @@ const JourneyPage = () => {
               connection meaningful, and each match has the potential to be
               lasting.
             </p>
-            <button className={styles.ctaButton}>FIND YOUR ROYAL MATCH</button>
+            <Link to="/login">
+              {" "}
+              <button className={styles.ctaButton}>
+                FIND YOUR ROYAL MATCH
+              </button>
+            </Link>
           </div>
 
           <div className={styles.rightSection}>
@@ -91,28 +96,56 @@ const JourneyPage = () => {
         </div>
       </div>
 
-      <div className={styles.vipSection}>
-        <h2>Start Your Journey to a Royal Match Today</h2>
-        <div>
-          <p>
-            Join Rajput Matches and embark on a journey to find your perfect
-            partner within a community that respects your legacy and honors your
-            privacy. Let us guide you in finding a partner who complements your
-            values, lifestyle, and heritage.
-          </p>{" "}
-          <Link to="/login">
-            {" "}
-            <button className={styles.ctaButton}>
-              JOIN THE RAJPUT LEGACY{" "}
-            </button>
-          </Link>
+      <div
+        className="text-center"
+        style={{ marginTop: "1rem", position: "relative" }}
+      >
+      <img
+          className=""
+          style={{ maxHeight: "700px", width: "100%" }}
+          src={royalbg}
+          alt="img"
+        />
+        {/* <video
+          className=""
+          style={{ height: "700px", width: "100%", objectFit: "cover" }}
+          src="https://www.w3schools.com/html/mov_bbb.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        ></video> */}
+        {/* <div style={{ height: "700px", width: "100%", position: "relative" }}>
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/V-YPJO9_qbg?autoplay=1&mute=1" 
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div> */}
+
+        <div className={styles.vipSection}>
+          <h2>Start Your Journey to a Royal Match Today</h2>
+          <div>
+            <p>
+              Join Rajput Matches and embark on a journey to find your perfect
+              partner within a community that respects your legacy and honors
+              your privacy. Let us guide you in finding a partner who
+              complements your values, lifestyle, and heritage.
+            </p>{" "}
+            <Link to="/login">
+              {" "}
+              <button className={styles.ctaButton}>
+                JOIN THE RAJPUT LEGACY{" "}
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
-
-      <div className="text-center" style={{ marginTop: "1rem" }}>
-        <img className="w-100 h-100" src={royalbg} alt="img" />
-      </div>
-    </>
+    </section>
   );
 };
 

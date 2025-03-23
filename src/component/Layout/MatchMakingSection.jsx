@@ -3,6 +3,8 @@ import styles from "./MatchmakingSection.module.css";
 import herobg from "../../assets/images/matchmakingbg.jpg";
 import border from "../../assets/images/border.png";
 
+import { Link } from "react-router-dom";
+
 const MatchmakingSection = () => {
   return (
     <>
@@ -21,7 +23,13 @@ const MatchmakingSection = () => {
               connection meaningful, and each match has the potential to be
               lasting.
             </p>
-            <button className={styles.ctaButton}>FIND YOUR ROYAL MATCH</button>
+
+            <Link to="/login">
+              {" "}
+              <button className={styles.ctaButton}>
+                FIND YOUR ROYAL MATCH
+              </button>
+            </Link>
           </div>
         </div>
         {/* Decorative Border */}

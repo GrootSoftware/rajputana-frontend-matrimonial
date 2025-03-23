@@ -40,7 +40,7 @@ function AboutmeInfo() {
         <h4 className={style.headerTitle}>About Me</h4>
         {!isEditing && (
           <button onClick={handleEditClick} className={style.editBtn}>
-            <FaRegEdit /> Edit
+           <FaRegEdit  size="18" /> Edit
           </button>
         )}
       </div>

@@ -1,398 +1,99 @@
-// import React from "react";
-// import style from "./RequestCard.module.css";
-
-// import MessageCard from "../Forms/MessageCard";
-// import { useState } from "react";
-
-// import {
-//   FaTrashAlt,
-//   FaEye,
-//   FaBell,
-//   FaEnvelope,
-//   FaCheckCircle,
-//   FaPlusCircle,
-// } from "react-icons/fa";
-
-// const RequestCard = ({ profile, handlecheck, key }) => {
-//   const [showMessageCard, setShowMessageCard] = useState(false);
-
-//   const openMessageCard = () => {
-//     setShowMessageCard(true);
-//   };
-
-//   const closeMessageCard = () => {
-//     setShowMessageCard(false);
-//   };
-
-//   return (
-//     <>
-//       <div
-//         className="col-10 col-sm-9 col-md-6 col-xl-6 mt-1 p-0 m-auto"
-//         style={{ boxSizing: "border-box", marginInline: "0rem" }}
-//       >
-//         <div className="card shadow-sm border-0 rounded-0">
-//           <div
-//             className="row g-0 p-1"
-//             style={{
-//               boxSizing: "border-box",
-//               borderBottom: "2px solid gray",
-//               minWidth: "13rem",
-//               width: "100%",
-//               Height: "13rem",
-//               objectFit: "cover",
-//             }}
-//           >
-//             <div className="col-10 col-sm-6 col-md-5 d-flex align-items-center m-0 p-0">
-//               <img
-//                 src={profile.imageUrl}
-//                 className="img-fluid m-auto"
-//                 alt="Profile picture"
-//               />
-//             </div>
-
-//             <div className="col-10 col-sm-6 col-md-7 m-auto">
-//               <div className="card-body p-1">
-//                 <div className="d-flex align-items-center justify-content-start mb-2">
-//                   <span
-//                     style={{
-//                       fontSize: "1.5rem",
-//                       fontWeight: "400",
-//                       fontFamily: "Lustria, serif",
-//                     }}
-//                   >
-//                     Matri ID: {profile.id}
-//                   </span>
-//                   <StatusTag text={profile.status} />
-//                 </div>
-
-//                 <p className={`card-text m-1 d-flex ${style.textSm}`}>
-//                   <span className="text-secondary w-50">Clan</span>
-//                   <span className="fw-bold w-50">{profile.clan}</span>
-//                 </p>
-
-//                 <p className={`card-text m-1 d-flex ${style.textSm}`}>
-//                   <span className="text-secondary w-50">Age</span>
-//                   <span className="fw-bold w-50">{profile.age} years old</span>
-//                 </p>
-
-//                 <p className={`card-text m-1 d-flex ${style.textSm}`}>
-//                   <span className="text-secondary w-50">Location</span>
-//                   <span className="fw-bold w-50">{profile.location}</span>
-//                 </p>
-
-//                 <p className={`card-text m-1 d-flex ${style.textSm}`}>
-//                   <span className="text-secondary w-50">High. Education</span>
-//                   <span className="fw-bold w-50">{profile.education}</span>
-//                 </p>
-
-//                 <p className={`card-text m-1 d-flex ${style.textSm}`}>
-//                   <span className="text-secondary w-50">Occupation</span>
-//                   <span className="fw-bold w-50">{profile.occupation}</span>
-//                 </p>
-
-//                 <p className={`card-text m-1 d-flex ${style.textSm}`}>
-//                   <span className="text-secondary w-50">Class</span>
-//                   <span className="fw-bold w-50">{profile.class}</span>
-//                 </p>
-//               </div>
-//             </div>
-//           </div>
-//           <ActionButtons
-//             status={profile.status}
-//             openMessageCard={openMessageCard}
-//           />
-//         </div>
-//         {showMessageCard && (
-//           <MessageCard closeMessageCard={closeMessageCard} profile={profile} />
-//         )}
-//       </div>
-//     </>
-//   );
-// };
-
-// export default RequestCard;
-
-// const ActionButtons = ({ status, openMessageCard }) => {
-//   const renderButtons = () => {
-//     switch (status) {
-//       case "pending":
-//         return (
-//           <>
-//             <div
-//               style={{
-//                 width: "25%",
-//                 textAlign: "center",
-//                 boxSizing: "border-box",
-//               }}
-//               className="p-3 border-2"
-//             >
-//               <FaTrashAlt />
-//               <span className={style.actionText}> Delete</span>
-//             </div>
-
-//             <div
-//               style={{
-//                 width: "25%",
-//                 borderLeft: "2px solid gray",
-//                 textAlign: "center",
-//                 boxSizing: "border-box",
-//               }}
-//               className="p-3"
-//             >
-//               <FaEye />
-//               <span className={style.actionText}> View</span>
-//             </div>
-
-//             <div
-//               style={{
-//                 width: "25%",
-//                 borderLeft: "2px solid gray",
-//                 textAlign: "center",
-//                 boxSizing: "border-box",
-//               }}
-//               className="p-3"
-//             >
-//               <FaBell />
-//               <span className={style.actionText}> Reminder</span>
-//             </div>
-
-//             <div
-//               style={{
-//                 width: "25%",
-//                 borderLeft: "2px solid gray",
-//                 textAlign: "center",
-//                 boxSizing: "border-box",
-//               }}
-//               className="p-3"
-//               onClick={openMessageCard}
-//             >
-//               <FaEnvelope />
-//               <span className={style.actionText}> Message</span>
-//             </div>
-//           </>
-//         );
-
-//       case "rejected":
-//         return (
-//           <>
-//             <div
-//               style={{
-//                 width: "50%",
-//                 textAlign: "center",
-//                 boxSizing: "border-box",
-//               }}
-//               className="p-3"
-//             >
-//               <FaTrashAlt />
-//               <span className={style.actionText}> Delete</span>
-//             </div>
-
-//             <div
-//               style={{
-//                 width: "50%",
-//                 borderLeft: "2px solid gray",
-//                 textAlign: "center",
-//                 boxSizing: "border-box",
-//               }}
-//               className="p-3"
-//             >
-//               <FaEye />
-//               <span className={style.actionText}> View</span>
-//             </div>
-//           </>
-//         );
-
-//       case "accepted":
-//         return (
-//           <>
-//             <div
-//               style={{
-//                 width: "33.33%",
-//                 textAlign: "center",
-//                 boxSizing: "border-box",
-//               }}
-//               className="p-3"
-//             >
-//               <FaTrashAlt />
-//               <span className={style.actionText}> Delete</span>
-//             </div>
-
-//             <div
-//               style={{
-//                 width: "33.33%",
-//                 borderLeft: "2px solid gray",
-//                 textAlign: "center",
-//                 boxSizing: "border-box",
-//               }}
-//               className="p-3"
-//             >
-//               <FaEye />
-//               <span className={style.actionText}> View</span>
-//             </div>
-
-//             <div
-//               style={{
-//                 width: "33.33%",
-//                 borderLeft: "2px solid gray",
-//                 textAlign: "center",
-//                 boxSizing: "border-box",
-//               }}
-//               className="p-3"
-//             >
-//               <FaEnvelope />
-//               <span className={style.actionText}> Send Message</span>
-//             </div>
-//           </>
-//         );
-
-//       case "null":
-//         return (
-//           <>
-//             <div
-//               style={{
-//                 width: "33.33%",
-//                 textAlign: "center",
-//                 boxSizing: "border-box",
-//               }}
-//               className="p-3"
-//             >
-//               <FaEye />
-//               <span className={style.actionText}> View</span>
-//             </div>
-//             <div
-//               style={{
-//                 width: "33.33%",
-//                 borderLeft: "2px solid gray",
-//                 textAlign: "center",
-//                 boxSizing: "border-box",
-//               }}
-//               className="p-3"
-//             >
-//               <FaCheckCircle />
-//               <span className={style.actionText}> Shortlist</span>
-//             </div>
-//             <div
-//               style={{
-//                 width: "33.33%",
-//                 borderLeft: "2px solid gray",
-//                 textAlign: "center",
-//                 boxSizing: "border-box",
-//               }}
-//               className="p-3"
-//               onClick={openMessageCard}
-//             >
-//               <FaPlusCircle />
-//               <span className={style.actionText}> Send Request</span>
-//             </div>
-//           </>
-//         );
-
-//       default:
-//         return null;
-//     }
-//   };
-
-//   return <div className="d-flex">{renderButtons()}</div>;
-// };
-
-// StatusTag component (unchanged)
-// const StatusTag = ({ text }) => {
-//   let backgroundColor;
-//   switch (text) {
-//     case "pending":
-//       backgroundColor = "#f8a35b";
-//       break;
-//     case "rejected":
-//       backgroundColor = "#ff4d4d";
-//       break;
-//     case "accepted":
-//       backgroundColor = "#4caf50";
-//       break;
-//     default:
-//       backgroundColor = "#f8a35b";
-//   }
-//   return (
-//     <span
-//       className="textSm ms-1"
-//       style={{
-//         backgroundColor,
-//         color: "white",
-//         borderRadius: "1rem",
-//         padding: "0.1rem 0.5rem",
-//         fontSize: "0.8rem",
-//       }}
-//     >
-//       {text}
-//     </span>
-//   );
-// };
-
-// export default ActionButtons;
-
-//jhhhh
-
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import styles from "./RequestCard.module.css";
+import { useParams, useNavigate } from "react-router-dom";
+
 import MessageCard from "../Forms/MessageCard";
-import {
-  FaTrashAlt,
-  FaEye,
-  FaBell,
-  FaEnvelope,
-  FaCheckCircle,
-  FaPlusCircle,
-} from "react-icons/fa";
+import { calculateAge } from "../ProfileComp/ProfileInfoHeader";
+import { useAuth } from "../../Layout/AuthContext";
+import styles from "./RequestCard.module.css";
+import pro from "../../../assets/images/blurimage.png";
+import ViewPage from "../Forms/ViewPage";
 
-const RequestCard = ({ profile, handlecheck }) => {
+import { RiDeleteBin4Line } from "react-icons/ri";
+import { IoEyeOutline } from "react-icons/io5";
+import { FaRegEye } from "react-icons/fa";
+import { TiMessages } from "react-icons/ti";
+import { BsBell } from "react-icons/bs";
+import { FaRegHeart } from "react-icons/fa6";
+import { FaUserPlus } from "react-icons/fa6";
+import { IoImageSharp } from "react-icons/io5";
+import { MdOutlineCancelPresentation } from "react-icons/md";
+
+const RequestCard = ({
+  profile,
+  status,
+  handlecheck,
+  activeTab,
+  ProfileImagerender,
+  fetchData,
+}) => {
   const [showMessageCard, setShowMessageCard] = useState(false);
-
   const openMessageCard = () => setShowMessageCard(true);
   const closeMessageCard = () => setShowMessageCard(false);
 
   const renderProfileDetails = () => {
     const details = [
-      { label: "Clan", value: profile.clan },
-      { label: "Age", value: `${profile.age} years old` },
-      { label: "Location", value: profile.location },
-      { label: "High. Education", value: profile.education },
-      { label: "Occupation", value: profile.occupation },
-      { label: "Class", value: profile.class },
+      { label: "Clan", value: profile?.HoroscopicId?.clan },
+      {
+        label: "Age",
+        value: `${calculateAge(profile?.dateOfBirth)} years old`,
+      },
+      {
+        label: "Location",
+        value: `${profile?.address?.city}, ${profile?.address?.state}`,
+      },
+      {
+        label: "High. Education",
+        value: profile?.profdetailsId?.qualifications,
+      },
+      { label: "Occupation", value: profile?.familydetailsId?.occupation },
+      { label: "Class", value: profile?.profdetailsId?.class },
     ];
 
     return details.map(({ label, value }, index) => (
       <div key={index} className={`card-text m-1 d-flex ${styles.textSm}`}>
         <span className="text-secondary w-50">{label}</span>
-        <span className="w-50">{value}</span>
+        <span
+          className="w-50"
+          style={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {value || "N/A"}
+        </span>
       </div>
     ));
   };
 
   return (
-    <div className="col-10 col-sm-9 col-md-6 col-xl-6 mt-1 p-0 m-auto">
+    <div
+      className="col-11 col-sm-11 col-md-6 col-xl-6 mb-2 mt-1 p-0 p-sm-1 m-auto"
+      style={{ boxSizing: "border-box" }}
+    >
       <div className="card shadow-sm border-0 rounded-0">
-        <div className="row g-0 p-1" style={{ borderBottom: "1px solid gray" }}>
-          <div className="col-10 col-sm-6 col-md-5 d-flex align-items-center m-auto">
-            <img
-              src={profile.imageUrl}
-              className="img-fluid m-auto"
-              alt="Profile"
-              style={{
-                width: "100%",
-                // minWidth: "14rem",
-                maxHeight: "14rem",
-                objectFit: "cover",
-              }}
-            />
+        <div
+          className="row g-0 mt-1 ms-1 me-1 mb-0 p-1 bg-bg-white"
+          style={{
+            borderBottom: "1px solid gray",
+            // backgroundColor: "white",
+            boxSizing: "border-box",
+          }}
+        >
+          <div className="col-12 col-sm-6 col-md-5 d-flex align-items-center m-0">
+            {profile && (
+              <ProfileImagerender profile={profile} activeButton={activeTab} />
+            )}
           </div>
 
           <div className="col-10 col-sm-6 col-md-7 m-auto">
             <div className="card-body p-1">
               <div className="d-flex align-items-center justify-content-start mb-2">
                 <span className={`${styles.textLg}`}>
-                  Matri ID: {profile.id}
+                  Matri ID: {profile.martrId}
                 </span>
-                <StatusTag text={profile.status} />
+                <StatusTag text={status} />
               </div>
               {renderProfileDetails()}
             </div>
@@ -400,8 +101,11 @@ const RequestCard = ({ profile, handlecheck }) => {
         </div>
 
         <ActionButtons
-          status={profile.status}
+          status={status}
           openMessageCard={openMessageCard}
+          profile={profile}
+          fetchData={fetchData}
+          activeTab={activeTab}
         />
       </div>
 
@@ -413,62 +117,217 @@ const RequestCard = ({ profile, handlecheck }) => {
 };
 
 RequestCard.propTypes = {
-  profile: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired,
-    clan: PropTypes.string.isRequired,
-    age: PropTypes.number.isRequired,
-    location: PropTypes.string.isRequired,
-    education: PropTypes.string.isRequired,
-    occupation: PropTypes.string.isRequired,
-    class: PropTypes.string.isRequired,
-  }).isRequired,
+  profile: PropTypes.object.isRequired,
   handlecheck: PropTypes.func,
+  fetchData: PropTypes.func.isRequired,
+  ProfileImagerender: PropTypes.func.isRequired,
 };
 
-const ActionButtons = ({ status, openMessageCard }) => {
-  const buttonConfig = {
-    pending: [
-      { icon: <FaTrashAlt />, label: "Delete" },
-      { icon: <FaEye />, label: "View" },
-      { icon: <FaBell />, label: "Reminder" },
-      { icon: <FaEnvelope />, label: "Message", onClick: openMessageCard },
-    ],
-    rejected: [
-      { icon: <FaTrashAlt />, label: "Delete" },
-      { icon: <FaEye />, label: "View" },
-    ],
-    accepted: [
-      { icon: <FaTrashAlt />, label: "Delete" },
-      { icon: <FaEye />, label: "View" },
-      { icon: <FaEnvelope />, label: "Send Message" },
-    ],
-    null: [
-      { icon: <FaEye />, label: "View" },
-      { icon: <FaCheckCircle />, label: "Shortlist" },
-      {
-        icon: <FaPlusCircle />,
-        label: "Send Request",
-        onClick: openMessageCard,
-      },
-    ],
+const ActionButtons = ({
+  status,
+  openMessageCard,
+  profile,
+  fetchData,
+  activeTab,
+}) => {
+  const { updateData } = useAuth();
+  const navigate = useNavigate();
+
+  const handleAction = async (action, profileId) => {
+    try {
+      let route = `profile/${action}`;
+      await updateData(route, profileId);
+      fetchData();
+    } catch (error) {
+      console.error(`Error performing action: ${action}`, error);
+    }
   };
+
+  const handleView = (profileId) => {
+    console.log(profileId);
+    navigate(`view/${profileId}`);
+  };
+
+  var buttonConfig = [];
+
+  if (activeTab == "requestReceived") {
+    buttonConfig = {
+      pending: [
+        {
+          icon: <RiDeleteBin4Line />,
+          label: "Delete",
+          onClick: () => handleAction("delete/delete", profile._id),
+        },
+        {
+          icon: <FaRegEye />,
+          label: "View",
+          onClick: () => {
+            handleView(profile._id);
+            handleAction("view", profile._id);
+          },
+        },
+        { icon: <BsBell />, label: "Reminder" },
+        {
+          icon: <TiMessages />,
+          label: "Message",
+          onClick: () => {
+            openMessageCard("message", profile._id);
+          },
+        },
+      ],
+      rejected: [
+        // {
+        //   icon: <RiDeleteBin4Line />,
+        //   label: "Delete",
+        //   onClick: () => handleAction("delete", profile._id),
+        // },
+        {
+          icon: <FaRegEye />,
+          label: "View",
+          onClick: () => {
+            handleView(profile._id);
+            handleAction("view", profile._id);
+          },
+        },
+      ],
+      accepted: [
+        //   { icon: <RiDeleteBin4Line />, label: "Delete" },
+        {
+          icon: <FaRegEye />,
+          label: "View",
+          onClick: () => {
+            handleView(profile._id);
+            handleAction("view", profile._id);
+          },
+        },
+        {
+          icon: <TiMessages />,
+          label: "Message",
+          onClick: () => {
+            openMessageCard("message", profile._id);
+          },
+        },
+      ],
+      new: [
+        {
+          icon: <FaRegEye />,
+          label: "View",
+          onClick: () => {
+            handleView(profile._id);
+            handleAction("view", profile._id);
+          },
+        },
+        {
+          icon: <FaRegHeart />,
+          label: "Shortlist",
+          onClick: () => handleAction("shortlist", profile._id),
+        },
+        {
+          icon: <FaUserPlus />,
+          label: "Send Request",
+          onClick: () => handleAction("request", profile._id),
+        },
+      ],
+    };
+  } else {
+    buttonConfig = {
+      pending: [
+        {
+          icon: <RiDeleteBin4Line />,
+          label: "Delete",
+          onClick: () => handleAction("delete/delete", profile._id),
+        },
+        {
+          icon: <FaRegEye />,
+          label: "View",
+          onClick: () => {
+            handleView(profile._id);
+            handleAction("view", profile._id);
+          },
+        },
+        { icon: <BsBell />, label: "Reminder" },
+        {
+          icon: <TiMessages />,
+          label: "Message",
+          onClick: () => {
+            openMessageCard("message", profile._id);
+          },
+        },
+      ],
+      rejected: [
+        // {
+        //   icon: <RiDeleteBin4Line />,
+        //   label: "Delete",
+        //   onClick: () => handleAction("delete", profile._id),
+        // },
+        {
+          icon: <FaRegEye />,
+          label: "View",
+          onClick: () => {
+            handleView(profile._id);
+            handleAction("view", profile._id);
+          },
+        },
+      ],
+      accepted: [
+        //   { icon: <RiDeleteBin4Line />, label: "Delete" },
+        {
+          icon: <FaRegEye />,
+          label: "View",
+          onClick: () => {
+            handleView(profile._id);
+            handleAction("view", profile._id);
+          },
+        },
+        {
+          icon: <TiMessages />,
+          label: "Message",
+          onClick: () => {
+            openMessageCard("message", profile._id);
+          },
+        },
+      ],
+      new: [
+        {
+          icon: <FaRegEye />,
+          label: "View",
+          onClick: () => {
+            handleView(profile._id);
+            handleAction("view", profile._id);
+          },
+        },
+        {
+          icon: <FaRegHeart />,
+          label: "Shortlist",
+          onClick: () => handleAction("shortlist", profile._id),
+        },
+        {
+          icon: <FaUserPlus />,
+          label: "Send Request",
+          onClick: () => handleAction("request", profile._id),
+        },
+      ],
+    };
+  }
 
   return (
     <div className="d-flex">
       {buttonConfig[status]?.map(({ icon, label, onClick }, index) => (
         <div
           key={index}
-          className={`p-3 ${index > 0 ? "borderLeft" : ""}`}
+          className={`p-2 ${index > 0 ? "borderLeft" : ""}`}
           style={{
             width: `${100 / buttonConfig[status].length}%`,
             textAlign: "center",
+            backgroundColor: "white",
             borderLeft: index > 0 ? "1px solid gray" : "none",
+            cursor: "pointer",
           }}
           onClick={onClick}
         >
-          {icon}
+          <span className={styles.actionIcon}>
+            {icon ? React.cloneElement(icon, { strokeWidth: 1.2 }) : null}
+          </span>
           <span className={styles.actionText}> {label}</span>
         </div>
       ))}
@@ -479,6 +338,8 @@ const ActionButtons = ({ status, openMessageCard }) => {
 ActionButtons.propTypes = {
   status: PropTypes.string.isRequired,
   openMessageCard: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
+  fetchData: PropTypes.func.isRequired,
 };
 
 const StatusTag = ({ text }) => {
@@ -495,11 +356,12 @@ const StatusTag = ({ text }) => {
         backgroundColor: colors[text] || colors.default,
         color: "white",
         borderRadius: "1rem",
+        marginLeft: "0.3rem",
         padding: "0.1rem 0.5rem",
         fontSize: "0.8rem",
       }}
     >
-      {text}
+      {text !== "new" ? text : ""}
     </span>
   );
 };

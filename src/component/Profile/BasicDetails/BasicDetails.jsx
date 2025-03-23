@@ -17,7 +17,7 @@ const BasicDetails = () => {
         ].map((detail, index) => (
           <div className="col-sm-5 m-2">
             <div className={styles.textSm}>{detail.label}</div>
-            <div className={styles.textXs}>{detail.value}</div>
+            <p className={styles.textXs}>{detail.value}</p>
           </div>
         ))}
       </div>
